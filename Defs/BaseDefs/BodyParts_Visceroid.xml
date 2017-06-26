@@ -7,7 +7,6 @@
 		<hitPoints>165</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
-		<frostbiteVulnerability>0.4</frostbiteVulnerability>
 	</BodyPartDef>
   
 	<BodyPartDef>
@@ -15,39 +14,39 @@
 		<label>Veins</label>
 		<hitPoints>26</hitPoints>
 		<bleedingRateMultiplier>3</bleedingRateMultiplier>
-		<tags>
-			<li>BloodPumpingSource</li>
-			<li>BloodFiltrationSource</li>
-		</tags>
+		<activities>
+			<li>BloodPumping</li>
+			<li>BloodFiltration</li>
+		</activities>
 	</BodyPartDef>
 	
 	<BodyPartDef>
 		<defName>VisceroidDigester</defName>
 		<label>Digester</label>
 		<hitPoints>30</hitPoints>
-		<tags>
-			<li>MetabolismSource</li>
-		</tags>
+		<activities>
+			<li>Metabolism</li>
+		</activities>
 	</BodyPartDef>
 	
 	<BodyPartDef>
 		<defName>VisceroidBreather</defName>
 		<label>Breather</label>
 		<hitPoints>30</hitPoints>
-		<tags>
-			<li>BreathingSource</li>
-		</tags>
+		<activities>
+			<li>Breathing</li>
+		</activities>
 	</BodyPartDef>
 	
 	<BodyPartDef>
 		<defName>VisceroidOrifice</defName>
 		<label>Orifice</label>
 		<hitPoints>32</hitPoints>
-		<tags>
-			<li>BreathingWay</li>
-			<li>EatingSource</li>
-			<li>TalkingSource</li>
-		</tags>
+		<activities>
+			<li>Breathing_way</li>
+			<li>Eating_source</li>
+			<li>Talking_source</li>
+		</activities>
 	</BodyPartDef>
   
 	<BodyPartDef>
@@ -56,10 +55,10 @@
 		<hitPoints>48</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
-		<tags>
-			<li>MovingLimbCore</li>
-			<li>ManipulationLimbCore</li>
-		</tags>
+		<activities>
+			<li>Moving_leftWay</li>
+			<li>Manipulation_tool</li>
+		</activities>
 	</BodyPartDef>
 
 	<BodyPartDef>
@@ -68,10 +67,10 @@
 		<hitPoints>48</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
-		<tags>
-			<li>MovingLimbCore</li>
-			<li>ManipulationLimbCore</li>
-		</tags>
+		<activities>
+			<li>Moving_rightWay</li>
+		    <li>Manipulation_tool</li>
+		</activities>
 	</BodyPartDef>
 	
 	<BodyPartDef>
@@ -80,49 +79,10 @@
 		<hitPoints>48</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
-		<tags>
-			<li>MovingLimbCore</li>
-			<li>ManipulationLimbCore</li>
-		</tags>
+		<activities>
+			<li>Moving_rightWay</li>
+			<li>Manipulation_tool</li>
+		</activities>
 	</BodyPartDef>
   
-  	<BodyPartDef>
-		<defName>VeinmonsterMouth</defName>
-		<label>Mouth</label>
-		<hitPoints>12</hitPoints>
-		<tags>
-			<li>BreathingWay</li>
-			<li>EatingSource</li>
-			<li>TalkingSource</li>
-		</tags>
-	</BodyPartDef>
-	
-	<BodyPartDef>
-		<defName>MiddleEye</defName>
-		<label>eye</label>
-		<hitPoints>15</hitPoints>
-		<oldInjuryBaseChance>1</oldInjuryBaseChance>
-		<skinCovered>false</skinCovered>
-		<useDestroyedOutLabel>true</useDestroyedOutLabel>
-		<beautyRelated>true</beautyRelated>
-		<tags>
-			<li>SightSource</li>
-		</tags>
-		<hitChanceFactors>
-			<li>
-				<key>Blunt</key>
-				<value>0</value>
-			</li>
-		</hitChanceFactors>
-	</BodyPartDef>
-	
-	<BodyPartDef>
-		<defName>VeinmonsterBody</defName>
-		<label>veinmonster body</label>
-		<hitPoints>50</hitPoints>
-		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
-		<skinCovered>true</skinCovered>
-		<frostbiteVulnerability>0.6</frostbiteVulnerability>
-	</BodyPartDef>
-	
 </Defs>
