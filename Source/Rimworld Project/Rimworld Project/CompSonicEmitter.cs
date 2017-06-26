@@ -30,16 +30,25 @@ namespace TiberiumRim
             cacheCells();
         }
 
+        public override void PostDestroy(DestroyMode mode, Map previousMap)
+        {
+            cells.Clear();
+            inhibitedLocations.Clear();
+            base.PostDestroy(mode, previousMap);
+        }
+
         public void DictionCheck()
         {
             if (!this.powerComp.PowerOn)
             {
-                inhibitedLocations.Clear();
+                inhibitedLocations[parent.Map.Tile].Clear();
                 cells.Clear();
+                return;
             }
-            else if (cells.Count == 0)
+            if (cells.Count == 0)
             {
                 cacheCells();
+                return;
             }
         }
 
@@ -53,12 +62,12 @@ namespace TiberiumRim
 
         public override void CompTickRare()
         {
+            DictionCheck();
             //TiberiumBase.Instance.logMessage("Ticking");
-            if(((double)parent.HitPoints/(double)parent.def.BaseMaxHitPoints > def.damageShutdownPercent) && this.Working)
+            if (((double)parent.HitPoints/(double)parent.def.BaseMaxHitPoints > def.damageShutdownPercent) && this.Working)
             {
                 //TiberiumBase.Instance.logMessage("Checking plants");
                 checkPlantLife();
-                DictionCheck();
             }
         }
 

@@ -574,7 +574,7 @@ namespace TiberiumRim
             if (!GenPlant.SnowAllowsPlanting(dest, map))
                 return null;
 
-            if (CompSonicEmitter.inhibitedLocations.Count != 0)
+            if (CompSonicEmitter.inhibitedLocations.ContainsKey(map.Tile))
             {
                 if (CompSonicEmitter.inhibitedLocations[map.Tile].Contains(dest))
                 {
