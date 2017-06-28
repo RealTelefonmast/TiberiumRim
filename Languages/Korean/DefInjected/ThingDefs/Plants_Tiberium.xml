@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
 
-	<TiberiumGreen.label>그린 타이베리움</TiberiumGreen.label>
+	<TiberiumPod.label>원시 타이베리움</TiberiumPod.label>
+	<TiberiumPod.description>넓적한 덩굴 식물 위로 아름다운 광물 결정이 자라나 있습니다.</TiberiumPod.description>
+
+	<TiberiumGreen.label>녹색 타이베리움</TiberiumGreen.label>
 	<TiberiumGreen.description>녹색으로 희미하게 빛나는 결정입니다. 아름답습니다.</TiberiumGreen.description>
 	
-	<TiberiumBlue.label>블루 타이베리움</TiberiumBlue.label>
+	<TiberiumBlue.label>청색 타이베리움</TiberiumBlue.label>
 	<TiberiumBlue.description>청색으로 희미하게 빛나는 결정입니다. 폭발성이 있습니다.</TiberiumBlue.description>
 	
-	<TiberiumRed.label>레드 타이베리움</TiberiumRed.label>
+	<TiberiumRed.label>적색 타이베리움</TiberiumRed.label>
 	<TiberiumRed.description>적색으로 희미하게 빛나는 결정입니다. 희귀하며, 매우 느리게 자라납니다.</TiberiumRed.description>
 
 	<TiberiumGlacier.label>타이베리움 빙하</TiberiumGlacier.label>
