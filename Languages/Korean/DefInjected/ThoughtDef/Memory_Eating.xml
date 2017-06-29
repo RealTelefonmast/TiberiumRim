@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <AteTiberiumMeatDirect.stages.0.label>오염된 식재료 섭취</AteTiberiumMeatDirect.stages.0.label>
+  <AteTiberiumMeatDirect.stages.0.description>녹색빛이 감도는 고깃덩이를 먹었다. 죽을 정도로 끔찍한 맛이야.</AteTiberiumMeatDirect.stages.0.description>
+
+  <AteTiberiumMeatAsIngredient.stages.0.label>오염된 음식 섭취</AteTiberiumMeatAsIngredient.stages.0.label>
+  <AteTiberiumMeatAsIngredient.stages.0.description>녹색빛이 감도는 요리를 먹다가 작은 결정 조각에 혀를 찔렸다. 상처가 타들어가는 느낌이다.</AteTiberiumMeatAsIngredient.stages.0.description>
+
+</LanguageData>
