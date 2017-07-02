@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <LanguageData>
-
+	
 	<TiberiumPod.label>원시 타이베리움</TiberiumPod.label>
 	<TiberiumPod.description>넓적한 덩굴 식물 위로 아름다운 광물 결정이 자라나 있습니다.</TiberiumPod.description>
 
@@ -18,20 +18,5 @@
 	
 	<TiberiumVein.label>베인 덩굴</TiberiumVein.label>
 	<TiberiumVein.description>끈적끈적한 적갈색의 생물 조직입니다. 베인홀로부터 계속 자라납니다.</TiberiumVein.description>
-	
-	<TiberiumDesertGreen.label>녹색 파편질 타이베리움</TiberiumDesertGreen.label>
-	<TiberiumDesertGreen.description>녹색을 띠는 파편질 타이베리움입니다. 모래 위에서만 자라납니다.</TiberiumDesertGreen.description>
-
-	<TiberiumDesertBlue.label>청색 파편질 타이베리움</TiberiumDesertBlue.label>
-	<TiberiumDesertBlue.description>청색을 띠는 파편질 타이베리움입니다. 모래 위에서만 자라납니다.</TiberiumDesertBlue.description>
-	
-	<TiberiumDesertRed.label>적색 파편질 타이베리움</TiberiumDesertRed.label>
-	<TiberiumDesertRed.description>적색을 띠는 파편질 타이베리움입니다. 모래 위에서만 자라납니다.</TiberiumDesertRed.description>
-	
-	<TiberiumMossGreen.label>녹색 타이베리움 이끼</TiberiumMossGreen.label>
-	<TiberiumMossGreen.description>이끼 형태를 띤 녹색 타이베리움이 습지를 뒤덮고 있습니다. 매우 유독해 보입니다.</TiberiumMossGreen.description>
-	
-	<TiberiumMossBlue.label>청색 타이베리움 이끼</TiberiumMossBlue.label>
-	<TiberiumMossBlue.description>이끼 형태를 띤 청색 타이베리움이 습지를 뒤덮고 있습니다. 매우 유독해 보입니다.</TiberiumMossBlue.description>
 	
 </LanguageData>
