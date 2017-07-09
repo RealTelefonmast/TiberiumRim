@@ -89,18 +89,17 @@ namespace TiberiumRim
             {
                 TerrainDef terrain = c.GetTerrain(this.parent.Map);
                 TerrainDef Postterrain = null;
-                if (terrain.defName.Contains("Tiberium") | terrain.defName.Contains("Vein") && !terrain.defName.Contains("TiberiumWater"))
+                if (terrain.defName.Contains("Tiberium") | terrain.defName.Contains("Vein") && !terrain.defName.Contains("TiberiumWater") && !terrain.defName.Contains("TiberiumSand"))
                 {
                     Postterrain = DefDatabase<TerrainDef>.GetNamed("DecrystallizedSoil");
                     this.parent.Map.terrainGrid.SetTerrain(c, Postterrain);
                 }
-                /*
                 if (terrain.defName.Contains("TiberiumSand"))
                 {
-                    Postterrain = DefDatabase<TerrainDef>.GetNamed("TiberiumSandDecrystallized");
+                    Postterrain = DefDatabase<TerrainDef>.GetNamed("DecrystallizedSand");
                     this.parent.Map.terrainGrid.SetTerrain(c, Postterrain);
                 }
-                */
+                
                 return;
             }
         }

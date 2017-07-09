@@ -6,14 +6,17 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    class Comp_TiberiumProducer : ThingComp
+    public class Comp_TiberiumProducer : ThingComp
     {
-        private CompProperties_TiberiumProducer Props
+        private CompProperties_TiberiumProducer def;
+
+        public override void PostSpawnSetup(bool respawningAfterLoad)
         {
-            get
-            {
-                return (CompProperties_TiberiumProducer)this.props;
-            }
+            this.def = (CompProperties_TiberiumProducer)this.props;
+
+            removeGrass();
+            spawnTerrain(def.corruptsInto);
+            base.PostSpawnSetup(respawningAfterLoad);
         }
 
         public override void CompTickRare()
@@ -24,20 +27,49 @@ namespace TiberiumRim
 
         public void DestroyWalls()
         {
-            var c = this.parent.RandomAdjacentCell8Way();
-            if (c.InBounds(this.parent.Map))
+            var c = this.parent.CellsAdjacent8WayAndInside();
+            foreach (IntVec3 d in c)
             {
-                var p = c.GetFirstBuilding(this.parent.Map);
-
-                if (p != null)
+                if (d.InBounds(this.parent.Map))
                 {
-                    int amt = 150;
+                    var p = d.GetFirstBuilding(this.parent.Map);
 
-                    DamageInfo damage = new DamageInfo(DamageDefOf.Mining, amt);
-
-                    if (!p.def.defName.Contains("TBNS"))
+                    if (p != null)
                     {
-                        p.TakeDamage(damage);
+                        int amt = 150;
+
+                        DamageInfo damage = new DamageInfo(DamageDefOf.Mining, amt);
+
+                        if (!p.def.defName.Contains("TBNS"))
+                        {
+                            p.TakeDamage(damage);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void spawnTerrain(TerrainDef setTerrain)
+        {
+            foreach (IntVec3 inside in this.parent.CellsAdjacent8WayAndInside())
+            {
+                if (inside.InBounds(this.parent.Map))
+                {
+                    this.parent.Map.terrainGrid.SetTerrain(inside, setTerrain);
+                }
+            }
+        }
+
+        public void removeGrass()
+        {
+            foreach (IntVec3 inside in this.parent.CellsAdjacent8WayAndInside())
+            {
+                if (inside.InBounds(this.parent.Map))
+                {
+                    Plant plant = inside.GetPlant(this.parent.Map);
+                    if (plant != null)
+                    {
+                        plant.Destroy();
                     }
                 }
             }
@@ -46,6 +78,9 @@ namespace TiberiumRim
 
     class CompProperties_TiberiumProducer : CompProperties
     {
+
+        public TerrainDef corruptsInto;
+             
         public CompProperties_TiberiumProducer()
         {
             this.compClass = typeof(Comp_TiberiumProducer);

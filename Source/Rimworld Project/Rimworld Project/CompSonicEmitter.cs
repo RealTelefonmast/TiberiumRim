@@ -14,19 +14,21 @@ namespace TiberiumRim
         private CompProperties_SonicEmitter def;
         private List<IntVec3> cells = new List<IntVec3>();
         public static Dictionary<int, List<IntVec3>> inhibitedLocations = new Dictionary<int, List<IntVec3>>();
+        private int key;
 
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
-
             this.powerComp = this.parent.TryGetComp<CompPowerTrader>();
             this.def = (CompProperties_SonicEmitter)this.props;
+            key = parent.Map.Tile;
 
             /*if(def == null)
             {
                 Debug.LogError("XML property failure at" + this.ToString());
             }*/
             cells.Clear();
+            inhibitedLocations.Clear();
             cacheCells();
         }
 
@@ -41,9 +43,12 @@ namespace TiberiumRim
         {
             if (!this.powerComp.PowerOn)
             {
-                inhibitedLocations[parent.Map.Tile].Clear();
-                cells.Clear();
-                return;
+                if (key == this.parent.Map.Tile)
+                {
+                    inhibitedLocations[key].Clear();
+                    cells.Clear();
+                    return;
+                }
             }
             if (cells.Count == 0)
             {
@@ -83,9 +88,11 @@ namespace TiberiumRim
                     var c = new IntVec3(x, 0, z);
 
                     cells.Add(c);
-                    if (!inhibitedLocations.ContainsKey(parent.Map.Tile))
-                        inhibitedLocations.Add(parent.Map.Tile, new List<IntVec3>());
-                        inhibitedLocations[parent.Map.Tile].Add(c);
+                    if (!inhibitedLocations.ContainsKey(key))
+                    {
+                        inhibitedLocations.Add(key, new List<IntVec3>());
+                    }
+                    inhibitedLocations[key].Add(c);
                 }
             }
         }

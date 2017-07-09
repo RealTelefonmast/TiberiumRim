@@ -11,7 +11,7 @@ namespace TiberiumRim
     {
         public override void CompPostTick(ref float severityAdjustment)
         {
-            if (base.Pawn.IsHashIntervalTick(5000))
+            if (base.Pawn.IsHashIntervalTick(7500))
             {
                 CheckSeverity(this.Pawn);
             }
@@ -68,6 +68,24 @@ namespace TiberiumRim
                 p.health.AddHediff(Addiction);
                 p.health.RemoveHediff(this.parent);
                 HealthUtility.AdjustSeverity(p, Exposure, -1.5f);
+            }
+            else if(p.kindDef.defName.Contains("Tribesperson"))
+            {
+                if(Rand.Chance(0.25f))
+                {
+                    p.health.AddHediff(MutationGood);
+                    p.health.AddHediff(Addiction);
+                    p.health.RemoveHediff(this.parent);
+                    HealthUtility.AdjustSeverity(p, Exposure, -1.5f);
+                    return;
+                }
+                else
+                {
+                    p.health.AddHediff(MutationBad);
+                    p.health.AddHediff(Addiction);
+                    p.health.RemoveHediff(this.parent);
+                    HealthUtility.AdjustSeverity(p, Exposure, -1.5f);
+                }
             }
 
         }

@@ -26,8 +26,8 @@
 			<maxMeshCount>4</maxMeshCount>
 			<growDays>3</growDays>
 			<visualSizeRange>
-				<min>0.5</min>
-				<max>1.0</max>
+				<min>1.0</min>
+				<max>2.0</max>
 			</visualSizeRange>
 			<soundHarvesting>Harvest_Tree</soundHarvesting>
 			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
@@ -38,6 +38,11 @@
 			<li>TiberiumPod</li>
 			<li>TiberiumBlue</li>
 			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
 			<li>TiberiumPlant</li>
 			<li>TiberiumVein</li>
 			<li>TiberiumGlacier</li>
@@ -71,8 +76,8 @@
 			<maxMeshCount>4</maxMeshCount>
 			<growDays>3.5</growDays>
 			<visualSizeRange>
-				<min>0.5</min>
-				<max>1.0</max>
+				<min>1.0</min>
+				<max>2.0</max>
 			</visualSizeRange>
 			<soundHarvesting>Harvest_Tree</soundHarvesting>
 			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
@@ -83,11 +88,16 @@
 			<li>TiberiumPod</li>
 			<li>TiberiumBlue</li>
 			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
 			<li>TiberiumPlant</li>
 			<li>TiberiumVein</li>
 			<li>TiberiumGlacier</li>
 		</friendlyTo>
-		<buildingDamage>10</buildingDamage>
+		<buildingDamage>0</buildingDamage>
 		<entityDamage>2</entityDamage>
 	</ThingDef>
 
@@ -116,8 +126,8 @@
 			<reproduceRadius>3</reproduceRadius>
 			<maxMeshCount>4</maxMeshCount>
 			<visualSizeRange>
-				<min>0.5</min>
-				<max>1.0</max>
+				<min>1.0</min>
+				<max>2.0</max>
 			</visualSizeRange>
 		</plant>
 		<corruptsInto>TiberiumSoilBlue</corruptsInto>
@@ -126,6 +136,11 @@
 			<li>TiberiumPod</li>
 			<li>TiberiumBlue</li>
 			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
 			<li>TiberiumPlant</li>
 			<li>TiberiumVein</li>
 			<li>TiberiumGlacier</li>
@@ -160,8 +175,8 @@
 			<reproduceRadius>1</reproduceRadius>
 			<maxMeshCount>4</maxMeshCount>
 			<visualSizeRange>
-				<min>0.5</min>
-				<max>1.0</max>
+				<min>1.0</min>
+				<max>2.0</max>
 			</visualSizeRange>
 		</plant>
 		<corruptsInto>TiberiumSoilRed</corruptsInto>
@@ -171,13 +186,271 @@
 			<li>TiberiumBlue</li>
 			<li>TiberiumRed</li>
 			<li>TiberiumPlant</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
 			<li>TiberiumVein</li>
 			<li>TiberiumGlacier</li>
 		</friendlyTo>
 		<buildingDamage>25</buildingDamage>
 		<entityDamage>3</entityDamage>
 	</ThingDef>
+	
+	<!-- Desert Tiberium -->
+	
+	<ThingDef ParentName="TiberiumBase" Class="TiberiumRim.TiberiumDef">
+		<defName>TiberiumDesertGreen</defName>
+		<label>Green Tiberium shards</label>
+		<description>Green shards growing out of the sand, they seem to be instable.</description>
+		<statBases>
+			<MaxHitPoints>15</MaxHitPoints>
+			<Beauty>15</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/SandGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>45</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.3</reproduceMtbDays>
+			<harvestWork>175</harvestWork>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>GreenTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>3</growDays>
+			<visualSizeRange>
+				<min>0.50</min>
+				<max>1</max>
+			</visualSizeRange>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+		</plant>
+		<corruptsInto>TiberiumSandGreen</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumPlant</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<buildingDamage>3</buildingDamage>
+		<entityDamage>1</entityDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumBase" Class="TiberiumRim.TiberiumDef">
+		<defName>TiberiumDesertBlue</defName>
+		<label>Blue Tiberium shards</label>
+		<description>Blue shards growing out of the sand, they seem to be instable.</description>
+		<statBases>
+			<MaxHitPoints>15</MaxHitPoints>
+			<Beauty>15</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/SandBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>45</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.2</reproduceMtbDays>
+			<harvestWork>175</harvestWork>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>BlueTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>5</growDays>
+			<visualSizeRange>
+				<min>0.5</min>
+				<max>1</max>
+			</visualSizeRange>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+		</plant>
+		<corruptsInto>TiberiumSandBlue</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumPlant</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<buildingDamage>6</buildingDamage>
+		<entityDamage>1</entityDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumBase" Class="TiberiumRim.TiberiumDef">
+		<defName>TiberiumDesertRed</defName>
+		<label>Red Tiberium shards</label>
+		<description>Red shards growing out of the sand, they seem to be instable.</description>
+		<statBases>
+			<MaxHitPoints>15</MaxHitPoints>
+			<Beauty>15</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/SandRed</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>45</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.1</reproduceMtbDays>
+			<harvestWork>175</harvestWork>
+			<harvestTag>Standard</harvestTag>
+			<harvestedThingDef>RedTiberiumRaw</harvestedThingDef>
+			<harvestYield>1</harvestYield>
+			<reproduceRadius>2</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>7</growDays>
+			<visualSizeRange>
+				<min>0.5</min>
+				<max>1</max>
+			</visualSizeRange>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+		</plant>
+		<corruptsInto>TiberiumSandRed</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumPlant</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<buildingDamage>8</buildingDamage>
+		<entityDamage>1</entityDamage>
+	</ThingDef>
+	
+	<!-- Tiberium Moss-->
 
+		<ThingDef ParentName="TiberiumBase" Class="TiberiumRim.TiberiumDef">
+		<defName>TiberiumMossGreen</defName>
+		<label>Green Tiberium moss</label>
+		<description>A mossy mass is covering this tile. It seems to be highly toxic.</description>
+		<statBases>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Beauty>-20</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/MossGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<selectable>true</selectable>
+		<pathCost>15</pathCost>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.3</reproduceMtbDays>
+			<harvestWork>250</harvestWork>
+			<harvestTag>Standard</harvestTag>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>1</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+		</plant>
+		<corruptsInto>TiberiumRockGreen</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumPlant</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<buildingDamage>5</buildingDamage>
+		<entityDamage>1</entityDamage>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumBase" Class="TiberiumRim.TiberiumDef">
+		<defName>TiberiumMossBlue</defName>
+		<label>Blue Tiberium moss</label>
+		<description>A mossy mass is covering this tile. It seems to be highly toxic.</description>
+		<statBases>
+			<MaxHitPoints>35</MaxHitPoints>
+			<Beauty>-20</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/MossBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+		</graphicData>
+		<altitudeLayer>FloorEmplacement</altitudeLayer>
+		<selectable>true</selectable>
+		<pathCost>15</pathCost>
+		<plant>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduceMtbDays>0.2</reproduceMtbDays>
+			<harvestWork>175</harvestWork>
+			<harvestTag>Standard</harvestTag>
+			<reproduceRadius>3</reproduceRadius>
+			<maxMeshCount>4</maxMeshCount>
+			<growDays>2</growDays>
+			<visualSizeRange>
+				<min>1.0</min>
+				<max>2.0</max>
+			</visualSizeRange>
+			<soundHarvesting>Harvest_Tree</soundHarvesting>
+			<soundHarvestFinish>Harvest_Tree_Finish</soundHarvestFinish>
+		</plant>
+		<corruptsInto>TiberiumRockBlue</corruptsInto>
+		<friendlyTo>
+			<li>TiberiumGreen</li>
+			<li>TiberiumPod</li>
+			<li>TiberiumBlue</li>
+			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
+			<li>TiberiumPlant</li>
+			<li>TiberiumVein</li>
+			<li>TiberiumGlacier</li>
+		</friendlyTo>
+		<buildingDamage>5</buildingDamage>
+		<entityDamage>1</entityDamage>
+	</ThingDef>
+	
+	
 	<ThingDef ParentName="TiberiumBase" Class="TiberiumRim.TiberiumDef">
 		<defName>TiberiumGlacier</defName>
 		<label>Tiberium Glacier</label>
@@ -198,8 +471,8 @@
 			<reproduceRadius>1</reproduceRadius>
 			<growDays>5</growDays>
 			<visualSizeRange>
-				<min>0.5</min>
-				<max>1</max>
+				<min>1</min>
+				<max>2</max>
 			</visualSizeRange>
 			<maxMeshCount>4</maxMeshCount>
 			<topWindExposure>0.1</topWindExposure>
@@ -210,6 +483,11 @@
 			<li>TiberiumPod</li>
 			<li>TiberiumBlue</li>
 			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
 			<li>TiberiumPlant</li>
 			<li>TiberiumVein</li>
 			<li>TiberiumGlacier</li>
@@ -254,6 +532,11 @@
 			<li>TiberiumPod</li>
 			<li>TiberiumBlue</li>
 			<li>TiberiumRed</li>
+			<li>TiberiumDesertGreen</li>
+			<li>TiberiumDesertBlue</li>
+			<li>TiberiumDesertRed</li>
+			<li>TiberiumMossGreen</li>
+			<li>TiberiumMossBlue</li>
 			<li>TiberiumPlant</li>
 			<li>TiberiumVein</li>
 			<li>TiberiumGlacier</li>

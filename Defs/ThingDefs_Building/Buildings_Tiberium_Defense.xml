@@ -20,9 +20,10 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<minifiedDef>MinifiedFurniture</minifiedDef>
 		<statBases>
-			<MaxHitPoints>350</MaxHitPoints>
+			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>2500</WorkToBuild>
 			<Flammability>1.0</Flammability>
+			<Beauty>-13</Beauty>
 		</statBases>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
@@ -38,7 +39,7 @@
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>85</basePowerConsumption>
+				<basePowerConsumption>115</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
@@ -120,7 +121,7 @@
 	</ThingDef>
 	
 	<ThingDef ParentName="BuildingBase">
-		<defName>SonicFence_TBNS</defName>
+		<defName>SonicFence</defName>
 		<label>Sonic Inhibitor Fence</label>
 		<thingClass>Building</thingClass>
 		<category>Building</category>
@@ -142,7 +143,7 @@
 		<castEdgeShadows>true</castEdgeShadows>
 		<fillPercent>0.65</fillPercent>
 		<statBases>
-			<MaxHitPoints>150</MaxHitPoints>
+			<MaxHitPoints>50</MaxHitPoints>
 			<WorkToBuild>180</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
@@ -156,7 +157,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>5</basePowerConsumption>
+				<basePowerConsumption>7</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 				<transmitsPower>true</transmitsPower>
 			</li>

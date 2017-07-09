@@ -10,6 +10,7 @@ namespace TiberiumRim
     {
         private const float minGrowthTemperature = 5;
         private int bledTimes = 0;
+        private int veinmonsters = 0;
 
 
         //Veins shouldn't infect pawns directly
@@ -81,7 +82,7 @@ namespace TiberiumRim
         }
 
         //Veins don't mutate creatures
-        public override void spawnFiendOrVisceroid(IntVec3 pos, BodyDef p)
+        public override void spawnFiendOrVisceroid(IntVec3 pos, Pawn p)
         {
             return;
         }
@@ -96,8 +97,11 @@ namespace TiberiumRim
 
         public virtual void spawnVeinmonster(IntVec3 pos)
         {
-            if (Rand.Chance(0.0001f))
+            int maximum = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinhole")).Count * 30;
+
+            if (Rand.Chance(0.000001f) && veinmonsters <= maximum) 
             {
+                veinmonsters = veinmonsters + 1;
                 PawnKindDef Veinmonster = DefDatabase<PawnKindDef>.GetNamed("Veinmonster_TBI", true);
                 PawnGenerationRequest request = new PawnGenerationRequest(Veinmonster);
                 Pawn pawn = PawnGenerator.GeneratePawn(request);

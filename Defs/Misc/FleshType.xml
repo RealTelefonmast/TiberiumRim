@@ -3,6 +3,7 @@
 <FleshTypeDefs>
 
   <FleshTypeDef>
+  
     <defName>Tiberium</defName>
 	<ateDirect>AteTiberiumMeatDirect</ateDirect>
 	<ateAsIngredient>AteTiberiumMeatAsIngredient</ateAsIngredient>

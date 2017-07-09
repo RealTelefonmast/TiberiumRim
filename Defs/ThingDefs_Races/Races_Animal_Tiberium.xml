@@ -65,7 +65,7 @@
     <statBases>
       <ToxicSensitivity>0</ToxicSensitivity>
 	  <LeatherAmount>5</LeatherAmount>
-	  <MeatAmount>12</MeatAmount>
+	  <MeatAmount>6</MeatAmount>
     </statBases>
     <race>
       <fleshType>Tiberium</fleshType>
@@ -83,7 +83,7 @@
 		<label>Visceroid</label>
 		<description>A blob-like and disturbing lifeform. Formed after the death of a creature by Tiberium.</description>
 		<statBases>
-			<MoveSpeed>4</MoveSpeed>
+			<MoveSpeed>1</MoveSpeed>
 			<ComfyTemperatureMin>-50</ComfyTemperatureMin>
 			<MarketValue>732</MarketValue>
 		</statBases>
@@ -98,7 +98,7 @@
 					<extraMeleeDamages>
 						<li>
 							<def>Stun</def>
-							<amount>20</amount>
+							<amount>17</amount>
 						</li>
 					</extraMeleeDamages>
 				</surpriseAttack>
@@ -115,7 +115,7 @@
 		<trainableIntelligence>Simple</trainableIntelligence>
 		<leatherColor>(204,102,0)</leatherColor>
 		<leatherLabel>Visceroid Skin</leatherLabel>
-		<leatherInsulation>0.5</leatherInsulation>
+		<leatherInsulation>0.2</leatherInsulation>
 		<meatLabel>Visceroid Matter</meatLabel>
 		<wildness>0.75</wildness>
 		<gestationPeriodDays>25</gestationPeriodDays>
@@ -197,7 +197,7 @@
 		<label>Veinmonster</label>
 		<description>Veinmonster, also known as Proto-Visceroids, are creatures expelled by Veins. Small and weak on it's own they can cause huge damage in masses, be sure to destroy a Veinhole asap when it gets too big!</description>
 		<statBases>
-			<MoveSpeed>6</MoveSpeed>
+			<MoveSpeed>3</MoveSpeed>
 			<ComfyTemperatureMin>0</ComfyTemperatureMin>
 			<MarketValue>150</MarketValue>
 		</statBases>
@@ -206,7 +206,7 @@
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<defaultCooldownTime>5</defaultCooldownTime>
 				<meleeDamageBaseAmount>2</meleeDamageBaseAmount>
-				<!-- Keeping the ToxicBite since I don't want it to be Tiberium damage that is dealt. But still something poionous. -->
+				<!-- Keeping the ToxicBite since I don't want it to be Tiberium damage that is dealt. But still something poisonous. -->
 				<meleeDamageDef>ToxicBite</meleeDamageDef>
 				<surpriseAttack>
 					<extraMeleeDamages>

@@ -66,6 +66,35 @@
   <Crawler_TBI_Meat.description>크롤러 내장</Crawler_TBI_Meat.description>
   <Crawler_TBI_Corpse.label>크롤러 시체</Crawler_TBI_Corpse.label>
   <Crawler_TBI_Corpse.description>크롤러 시체</Crawler_TBI_Corpse.description>
+  
+  <Tiffalo_TBI.label>티팔로</Tiffalo_TBI.label>
+  <Tiffalo_TBI.description>이 생물은 결정질 모피 때문에 푹신함을 잃어버렸습니다. 그리고 약간 사납습니다.</Tiffalo_TBI.description>
+  <Tiffalo_TBI_Leather.label>티팔로 모피</Tiffalo_TBI_Leather.label>
+  <Tiffalo_TBI_Leather.description>티팔로 모피</Tiffalo_TBI_Leather.description>
+  <Tiffalo_TBI_Leather.stuffProps.stuffAdjective>티팔로 모피</Tiffalo_TBI_Leather.stuffProps.stuffAdjective>
+  <Tiffalo_TBI_Meat.label>티팔로 고기</Tiffalo_TBI_Meat.label>
+  <Tiffalo_TBI_Meat.description>티팔로 고기</Tiffalo_TBI_Meat.description>
+  <Tiffalo_TBI_Corpse.label>티팔로 시체</Tiffalo_TBI_Corpse.label>
+  <Tiffalo_TBI_Corpse.description>티팔로 시체</Tiffalo_TBI_Corpse.description>
 
+  <Spiner_TBI.label>스피너</Spiner_TBI.label>
+  <Spiner_TBI.description>돼지처럼 생긴 사나운 돌연변이 생물입니다. 척추 전체가 타이베리움으로 강화되어 있습니다.</Spiner_TBI.description>
+  <Spiner_TBI_Leather.label>스피너 가죽</Spiner_TBI_Leather.label>
+  <Spiner_TBI_Leather.description>스피너 가죽</Spiner_TBI_Leather.description>
+  <Spiner_TBI_Leather.stuffProps.stuffAdjective>스피너 가죽</Spiner_TBI_Leather.stuffProps.stuffAdjective>
+  <Spiner_TBI_Meat.label>스피너 내장</Spiner_TBI_Meat.label>
+  <Spiner_TBI_Meat.description>스피너 내장</Spiner_TBI_Meat.description>
+  <Spiner_TBI_Corpse.label>스피너 시체</Spiner_TBI_Corpse.label>
+  <Spiner_TBI_Corpse.description>스피너 시체</Spiner_TBI_Corpse.description>
+  
+  <Boomfiend_TBI.label>폭탄마</Boomfiend_TBI.label>
+  <Boomfiend_TBI.description>폭탄마는 타이베리움 환경에 적합한 유전자를 가진 폭탄쥐의 변종입니다.</Boomfiend_TBI.description>
+  <Boomfiend_TBI_Leather.label>폭탄마 껍질</Boomfiend_TBI_Leather.label>
+  <Boomfiend_TBI_Leather.description>폭탄마 껍질</Boomfiend_TBI_Leather.description>
+  <Boomfiend_TBI_Leather.stuffProps.stuffAdjective>폭탄마 껍질</Boomfiend_TBI_Leather.stuffProps.stuffAdjective>
+  <Boomfiend_TBI_Meat.label>폭탄마 조직</Boomfiend_TBI_Meat.label>
+  <Boomfiend_TBI_Meat.description>폭탄마 조직</Boomfiend_TBI_Meat.description>
+  <Boomfiend_TBI_Corpse.label>폭탄마 잔해</Boomfiend_TBI_Corpse.label>
+  <Boomfiend_TBI_Corpse.description>폭탄마 잔해</Boomfiend_TBI_Corpse.description>
   
 </LanguageData>
