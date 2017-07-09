@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef Name="TiberiumChunkBase" Abstract="True">
+    <category>Item</category>
+    <thingClass>Thing</thingClass>
+    <altitudeLayer>Item</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <fillPercent>0.50</fillPercent>
+    <statBases>
+      <MaxHitPoints>300</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <Beauty>-8</Beauty>
+      <Cleanliness>-12</Cleanliness>
+    </statBases>
+    <selectable>true</selectable>
+    <pathCost>55</pathCost>
+    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+    <drawerType>MapMeshOnly</drawerType>
+    <randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+    <designateHaulable>true</designateHaulable>
+    <saveCompressible>true</saveCompressible>
+    <stackLimit>1</stackLimit>
+    <tradeability>Never</tradeability>
+  </ThingDef>
+  
+	<ThingDef ParentName="TiberiumChunkBase">
+		<defName>GreenTiberiumChunk</defName>
+		<label>green tiberium chunk</label>
+		<description></description>
+		<statBases>
+		  <MaxHitPoints>600</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Item/StoneGreen</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<killedLeavings>
+            <TiberiumGreen>1</TiberiumGreen>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumChunkBase">
+		<defName>BlueTiberiumChunk</defName>
+		<label>blue tiberium chunk</label>
+		<description></description>
+		<statBases>
+		  <MaxHitPoints>900</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Item/StoneBlue</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<killedLeavings>
+            <TiberiumBlue>1</TiberiumBlue>
+        </killedLeavings>
+	</ThingDef>
+	
+	<ThingDef ParentName="TiberiumChunkBase">
+		<defName>RedTiberiumChunk</defName>
+		<label>red tiberium chunk</label>
+		<description></description>
+		<statBases>
+		  <MaxHitPoints>1200</MaxHitPoints>
+		</statBases>
+		<graphicData>
+			<texPath>Item/StoneRed</texPath>
+			<graphicClass>Graphic_Random</graphicClass>
+			<flipExtraRotation>80</flipExtraRotation>
+		</graphicData>
+		<killedLeavings>
+            <TiberiumRed>1</TiberiumRed>
+        </killedLeavings>
+	</ThingDef>
+	
+</Defs>

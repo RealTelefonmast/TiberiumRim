@@ -4,7 +4,7 @@
   <WeatherDef>
     <defName>IonStormWeather</defName>
     <label>Ion Storm</label>
-    <description>An Ion Storm - Not very good to life.</description>
+    <description>An Ion Storm is cursing your map.</description>
     <repeatable>true</repeatable>
     <favorability>VeryBad</favorability>
     <ambientSounds>
@@ -37,7 +37,7 @@
     </skyColorsNightMid>
 	<durationRange>
       <min>90000</min>
-      <max>120000</max>
+      <max>160000</max>
     </durationRange>
 	 <eventMakers>
       <li>
@@ -45,7 +45,7 @@
         <eventClass>WeatherEvent_LightningFlash</eventClass>
       </li>
       <li>
-        <averageInterval>200</averageInterval>
+        <averageInterval>450</averageInterval>
         <eventClass>WeatherEvent_LightningStrike</eventClass>
       </li>
     </eventMakers>

@@ -29,13 +29,13 @@
 		<passability>PassThroughOnly</passability>
 		<pathCost>70</pathCost>
 		<statBases>
-			<MaxHitPoints>600</MaxHitPoints>
+			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<size>(3,4)</size>
 		<costList>
-			<Uranium>15</Uranium>
+			<Uranium>5</Uranium>
 			<Plasteel>10</Plasteel>
 			<Gold>5</Gold>
 			<Steel>150</Steel>
@@ -51,7 +51,7 @@
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>375</basePowerConsumption>
+				<basePowerConsumption>425</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>
@@ -115,7 +115,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<rotatable>false</rotatable>
 		<statBases>
-			<MaxHitPoints>450</MaxHitPoints>
+			<MaxHitPoints>400</MaxHitPoints>
 			<WorkToBuild>3222</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
@@ -127,15 +127,15 @@
 		</building>
 		<costList>
 			<Steel>250</Steel>
-			<Uranium>35</Uranium>
-			<Plasteel>25</Plasteel>
+			<Uranium>25</Uranium>
+			<Plasteel>15</Plasteel>
 			<Component>5</Component>
 			<TiberiumFuel>5</TiberiumFuel>
 		</costList>
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerPlant</compClass>
-				<basePowerConsumption>-2750</basePowerConsumption>
+				<basePowerConsumption>-2250</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
 			</li>
 			<li Class="CompProperties_Flickable" />

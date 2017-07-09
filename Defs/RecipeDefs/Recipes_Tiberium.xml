@@ -6,7 +6,7 @@
 		<label>get resources from green Tiberium</label>
 		<description>This refinery uses complex reactions to break down green Tiberium into steel.</description>
 		<jobString>Refining green Tiberium.</jobString>
-		<workAmount>1000</workAmount>
+		<workAmount>1500</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<ingredients>
@@ -35,7 +35,7 @@
 		<label>get resources from blue Tiberium</label>
 		<description>This refinery uses complex reactions to break down blue Tiberium into plasteel.</description>
 		<jobString>Refining blue Tiberium.</jobString>
-		<workAmount>1200</workAmount>
+		<workAmount>1750</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<ingredients>
@@ -64,7 +64,7 @@
 		<label>get resources from red Tiberium</label>
 		<description>This refinery uses complex reactions to break down red Tiberium into gold and Uranium.</description>
 		<jobString>Refining red Tiberium.</jobString>
-		<workAmount>1500</workAmount>
+		<workAmount>2000</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<ingredients>
@@ -94,7 +94,7 @@
 		<label>get resources from Tiberium veins</label>
 		<description>This refinery uses complex reactions to break down Tiberium veins into Uranium and green Tiberium.</description>
 		<jobString>Refining Tiberium veins.</jobString>
-		<workAmount>1600</workAmount>
+		<workAmount>2200</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<ingredients>
@@ -124,7 +124,7 @@
 		<label>Make Tiberium fuel</label>
 		<description>This refinery uses complex reactions to refine Tiberium.</description>
 		<jobString>Making Tiberium fuel.</jobString>
-		<workAmount>1800</workAmount>
+		<workAmount>2000</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<ingredients>
@@ -155,6 +155,9 @@
 					<li>GreenTiberiumRaw</li>
 				</thingDefs>
 			</fixedIngredientFilter>
+		<researchPrerequisite>
+			<li>TiberiumPower</li>
+		</researchPrerequisite>
 	</RecipeDef>
 
 	<RecipeDef>

@@ -142,6 +142,7 @@
 		<label>Tiberium exposure</label>
 		<makesSickThought>true</makesSickThought>
 		<scenarioCanAdd>false</scenarioCanAdd>
+		<maxSeverity>1.2</maxSeverity>
 		<comps>
 		  <li Class="HediffCompProperties_Immunizable">
 			<severityPerDayNotImmune>-0.2</severityPerDayNotImmune>
@@ -155,7 +156,7 @@
 			<capMods>
 			  <li>
 				<capacity>Consciousness</capacity>
-				<offset>-0.10</offset>
+				<offset>-0.1</offset>
 			  </li>
 			</capMods>
 		  </li>
@@ -176,11 +177,11 @@
 			<capMods>
 			  <li>
 				<capacity>Consciousness</capacity>
-				<offset>-0.30</offset>
+				<offset>-0.20</offset>
 			  </li>
 			  <li>
 					<capacity>Moving</capacity>
-					<offset>-0.40</offset>
+					<offset>-0.20</offset>
 			  </li>
 			</capMods>
 		  </li>
@@ -191,11 +192,11 @@
 			<capMods>
 			  <li>
 				<capacity>Consciousness</capacity>
-				<offset>-0.40</offset>
+				<offset>-0.25</offset>
 			  </li>
 			  <li>
-					<capacity>Moving</capacity>
-					<offset>-0.50</offset>
+				<capacity>Moving</capacity>
+				<offset>-0.30</offset>
 			  </li>
 			</capMods>
 		  </li>
@@ -206,11 +207,11 @@
 			<capMods>
 			  <li>
 				<capacity>Consciousness</capacity>
-				<offset>-0.50</offset>
+				<offset>-0.30</offset>
 			  </li>
 			  <li>
-					<capacity>Moving</capacity>
-					<offset>-0.60</offset>
+				<capacity>Moving</capacity>
+				<offset>-0.40</offset>
 			  </li>
 			</capMods>
 		  </li>
@@ -249,7 +250,7 @@
 				</li>
 				<li>
 					<capacity>Breathing</capacity>
-					<offset>-0.15</offset>
+					<offset>-0.10</offset>
 				</li>
 				<li>
 					<capacity>BloodPumping</capacity>
@@ -257,11 +258,11 @@
 				</li>
 				<li>
 					<capacity>Consciousness</capacity>
-					<offset>-0.20</offset>
+					<offset>-0.1</offset>
 				</li>
 				<li>
 					<capacity>Sight</capacity>
-					<offset>-0.15</offset>
+					<offset>-0.3</offset>
 				</li>
 				<li>
 					<capacity>Manipulation</capacity>
@@ -269,7 +270,7 @@
 				</li>
 				<li>
 					<capacity>Moving</capacity>
-					<offset>-0.25</offset>
+					<offset>-0.3</offset>
 				</li>
 			</capMods>
 		  </li>
@@ -280,31 +281,31 @@
 			<capMods>
 				<li>
 					<capacity>BloodFiltration</capacity>
-					<offset>-0.25</offset>
+					<offset>-0.15</offset>
 				</li>
 				<li>
 					<capacity>Breathing</capacity>
-					<offset>-0.30</offset>
+					<offset>-0.15</offset>
 				</li>
 				<li>
 					<capacity>BloodPumping</capacity>
-					<offset>-0.25</offset>
+					<offset>-0.2</offset>
 				</li>
 				<li>
 					<capacity>Consciousness</capacity>
-					<offset>-0.35</offset>
-				</li>
-				<li>
-					<capacity>Sight</capacity>
 					<offset>-0.20</offset>
 				</li>
 				<li>
+					<capacity>Sight</capacity>
+					<offset>-0.50</offset>
+				</li>
+				<li>
 					<capacity>Manipulation</capacity>
-					<offset>-0.40</offset>
+					<offset>-0.50</offset>
 				</li>
 				<li>
 					<capacity>Moving</capacity>
-					<offset>-0.50</offset>
+					<offset>-0.40</offset>
 				</li>
 			</capMods>
 		  </li>
@@ -315,31 +316,31 @@
 			<capMods>
 				<li>
 					<capacity>BloodFiltration</capacity>
-					<offset>-0.4</offset>
+					<offset>-0.2</offset>
 				</li>
 				<li>
 					<capacity>Breathing</capacity>
-					<offset>-0.45</offset>
+					<offset>-0.25</offset>
 				</li>
 				<li>
 					<capacity>BloodPumping</capacity>
-					<offset>-0.50</offset>
+					<offset>-0.2</offset>
 				</li>
 				<li>
 					<capacity>Consciousness</capacity>
-					<offset>-0.60</offset>
+					<offset>-0.30</offset>
 				</li>
 				<li>
 					<capacity>Sight</capacity>
-					<offset>-0.60</offset>
+					<offset>-0.70</offset>
 				</li>
 				<li>
 					<capacity>Manipulation</capacity>
-					<offset>-0.50</offset>
+					<offset>-0.70</offset>
 				</li>
 				<li>
 					<capacity>Moving</capacity>
-					<offset>-0.70</offset>
+					<offset>-0.50</offset>
 				</li>
 			</capMods>
 		  </li>
@@ -513,16 +514,16 @@
 		  </li>
 		  <li>
 			<label>Lacking</label>
-			<minSeverity>0.4</minSeverity>
+			<minSeverity>0.45</minSeverity>
 			<painOffset>0.2</painOffset>
 			<capMods>
 				<li>
 				  <capacity>Manipulation</capacity>
-				  <offset>-0.2</offset>
+				  <offset>-0.1</offset>
 				</li>
 								<li>
 					<capacity>Moving</capacity>
-					<offset>-0.25</offset>
+					<offset>-0.15</offset>
 				</li>
 				<li>
 					<capacity>Consciousness</capacity>
@@ -532,14 +533,22 @@
 		  </li>
 		  <li>
 			<label>Urgent</label>
-			<minSeverity>0.8</minSeverity>
+			<minSeverity>0.85</minSeverity>
 			<painOffset>0.4</painOffset>
 			<lifeThreatening>true</lifeThreatening>
-			<deathMtbDays>10</deathMtbDays>
+			<deathMtbDays>6</deathMtbDays>
 			<capMods>
+				<li>
+				  <capacity>Manipulation</capacity>
+				  <offset>-0.3</offset>
+				</li>
+								<li>
+					<capacity>Moving</capacity>
+					<offset>-0.25</offset>
+				</li>
 			  <li>
 				<capacity>Consciousness</capacity>
-				<setMax>0.8</setMax>
+				<setMax>0.5</setMax>
 			  </li>
 			</capMods>
 			<mentalStateGivers>

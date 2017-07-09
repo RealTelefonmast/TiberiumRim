@@ -35,8 +35,7 @@
 		<soundDrop>Silver_Drop</soundDrop>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<MaxHitPoints>25</MaxHitPoints>
-			<DeteriorationRate>1</DeteriorationRate>
+			<MaxHitPoints>75</MaxHitPoints>
 			<MarketValue>5</MarketValue>
 			<Mass>0.1</Mass>
 		</statBases>
@@ -64,8 +63,7 @@
 		<soundDrop>Silver_Drop</soundDrop>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<MaxHitPoints>25</MaxHitPoints>
-			<DeteriorationRate>1</DeteriorationRate>
+			<MaxHitPoints>75</MaxHitPoints>
 			<MarketValue>15</MarketValue>
 			<Mass>0.2</Mass>
 		</statBases>
@@ -74,7 +72,7 @@
 		</thingCategories>
 		<stackLimit>150</stackLimit>
 		 <killedLeavings>
-            <TiberiumBlue>2</TiberiumBlue>
+            <TiberiumBlue>5</TiberiumBlue>
         </killedLeavings>
     </ThingDef>
 	    
@@ -91,8 +89,7 @@
 		<soundDrop>Silver_Drop</soundDrop>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<MaxHitPoints>25</MaxHitPoints>
-			<DeteriorationRate>1</DeteriorationRate>
+			<MaxHitPoints>75</MaxHitPoints>
 			<MarketValue>25</MarketValue>
 			<Mass>0.5</Mass>
 		</statBases>
@@ -101,7 +98,7 @@
 		</thingCategories>
 		<stackLimit>150</stackLimit>
 		<killedLeavings>
-            <TiberiumRed>1</TiberiumRed>
+            <TiberiumRed>2</TiberiumRed>
         </killedLeavings>
     </ThingDef>
 	
@@ -118,9 +115,7 @@
 		<soundDrop>Wood_Drop</soundDrop>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<MaxHitPoints>25</MaxHitPoints>
-			<DeteriorationRate>1</DeteriorationRate>
-			<MarketValue>35</MarketValue>
+			<MaxHitPoints>100</MaxHitPoints>
 			<Mass>0.6</Mass>
 		</statBases>
 		<thingCategories>
@@ -128,7 +123,7 @@
 		</thingCategories>
 		<stackLimit>150</stackLimit>
 		<killedLeavings>
-            <TiberiumVein>1</TiberiumVein>
+            <TiberiumVein>4</TiberiumVein>
         </killedLeavings>
     </ThingDef>
 	
@@ -145,7 +140,7 @@
 		<soundDrop>Silver_Drop</soundDrop>
 		<useHitPoints>true</useHitPoints>
 		<statBases>
-			<MaxHitPoints>50</MaxHitPoints>
+			<MaxHitPoints>150</MaxHitPoints>
 			<MarketValue>75</MarketValue>
 			<Mass>0.1</Mass>
 		</statBases>

@@ -44,8 +44,8 @@
 		</graphicData>
 		<altitudeLayer>Floor</altitudeLayer>
 		<statBases>
-			<MaxHitPoints>7500</MaxHitPoints>
-			<Beauty>180</Beauty>
+			<MaxHitPoints>5000</MaxHitPoints>
+			<Beauty>175</Beauty>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<selectable>true</selectable>
@@ -53,6 +53,7 @@
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<corruptsInto>TiberiumSoilGreen</corruptsInto>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>10</glowRadius>
@@ -89,8 +90,8 @@
 			<drawSize>(5,5)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>9500</MaxHitPoints>
-			<Beauty>240</Beauty>
+			<MaxHitPoints>6500</MaxHitPoints>
+			<Beauty>125</Beauty>
 		</statBases>
 		<altitudeLayer>Floor</altitudeLayer>
 		<tickerType>Rare</tickerType>
@@ -99,6 +100,7 @@
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<corruptsInto>TiberiumSoilBlue</corruptsInto>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>47</heatPerSecond>
@@ -143,9 +145,9 @@
 		<fillPercent>0.50</fillPercent>
 		<size>(2,2)</size>
 		<statBases>
-			<MaxHitPoints>5000</MaxHitPoints>
+			<MaxHitPoints>3500</MaxHitPoints>
 			<Flammability>0</Flammability>
-			<Beauty>20</Beauty>
+			<Beauty>-125</Beauty>
 			<WorkToBuild>56000</WorkToBuild>
 		</statBases>
 		<costList>
@@ -162,8 +164,6 @@
 		<drawerType>MapMeshOnly</drawerType>
 		<repairEffect>ConstructMetal</repairEffect>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
-			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>6</glowRadius>
 				<glowColor>(51,255,51,0)</glowColor>
@@ -199,7 +199,7 @@
 			<drawSize>(2,6)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>10000</MaxHitPoints>
+			<MaxHitPoints>6000</MaxHitPoints>
 			<Beauty>240</Beauty>
 		</statBases>
 		<rotatable>false</rotatable>
@@ -213,13 +213,14 @@
 		</building>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+			<corruptsInto>TiberiumSoilBlue</corruptsInto>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>20</heatPerSecond>
 				<heatPushMaxTemperature>207</heatPushMaxTemperature>
 			</li>
 			<li Class="CompProperties_Glower">
-				<glowRadius>5</glowRadius>
+				<glowRadius>10</glowRadius>
 				<glowColor>(120,150,255,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Spawner">
@@ -252,21 +253,22 @@
 			<drawSize>(2,6)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>5000</MaxHitPoints>
-			<Beauty>-160</Beauty>
+			<MaxHitPoints>2500</MaxHitPoints>
+			<Beauty>-75</Beauty>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<selectable>true</selectable>
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+			<corruptsInto>TiberiumSoilPod</corruptsInto>
 			</li>
 			<li Class="CompProperties_Glower">
-				<glowRadius>8</glowRadius>
+				<glowRadius>7</glowRadius>
 				<glowColor>(120,255,120,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Spawner">
-				<thingToSpawn>TiberiumGreen</thingToSpawn>
+				<thingToSpawn>TiberiumPod</thingToSpawn>
 				<spawnCount>1</spawnCount>
 				<spawnIntervalRange>
 					<min>50600</min>
@@ -278,7 +280,7 @@
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
         <killedLeavings>
-            <TiberiumGreen>9</TiberiumGreen>
+            <TiberiumPod>9</TiberiumPod>
         </killedLeavings>
     </ThingDef>
 	
@@ -295,17 +297,18 @@
 			<drawSize>(2,6)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>12500</MaxHitPoints>
-			<Beauty>180</Beauty>
+			<MaxHitPoints>10000</MaxHitPoints>
+			<Beauty>380</Beauty>
 		</statBases>
 		<tickerType>Rare</tickerType>
 		<selectable>true</selectable>
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+			<corruptsInto>TiberiumSoilRed</corruptsInto>
 			</li>
 			<li Class="CompProperties_Glower">
-				<glowRadius>6</glowRadius>
+				<glowRadius>8</glowRadius>
 				<glowColor>(255,120,120,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Spawner">
@@ -338,7 +341,7 @@
 			<drawSize>(3,3)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>8000</MaxHitPoints>
+			<MaxHitPoints>4500</MaxHitPoints>
 			<Beauty>-260</Beauty>
 		</statBases>
 		<altitudeLayer>Floor</altitudeLayer>
@@ -348,6 +351,7 @@
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+			<corruptsInto>VeinSoilRed</corruptsInto>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>47</heatPerSecond>
@@ -381,7 +385,6 @@
 		<statBases>
 			<MaxHitPoints>1500</MaxHitPoints>
 			<Beauty>360</Beauty>
-			<WorkToBuild>86000</WorkToBuild>
 		</statBases>
 		<rotatable>false</rotatable>
 		<tickerType>Rare</tickerType>
@@ -392,8 +395,6 @@
 			<deconstructible>true</deconstructible>
 		</building>
 		<comps>
-			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
-			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>20</heatPerSecond>
 				<heatPushMaxTemperature>207</heatPushMaxTemperature>

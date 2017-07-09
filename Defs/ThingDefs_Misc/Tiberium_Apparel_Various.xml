@@ -66,14 +66,14 @@
 		</thingCategories>
 		<statBases>
 			<MarketValue>1250</MarketValue>
-			<MaxHitPoints>260</MaxHitPoints>
+			<MaxHitPoints>75</MaxHitPoints>
 			<WorkToMake>10000</WorkToMake>
 			<Mass>4</Mass>
 			<ArmorRating_Blunt>0.04</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0.04</ArmorRating_Sharp>
 			<ArmorRating_Heat>0.05</ArmorRating_Heat>
-			<Insulation_Cold>-50</Insulation_Cold>
-			<Insulation_Heat>50</Insulation_Heat>
+			<Insulation_Cold>-23</Insulation_Cold>
+			<Insulation_Heat>26</Insulation_Heat>
 		</statBases>
 		<equippedStatOffsets>
 			<MoveSpeed>-0.02</MoveSpeed>

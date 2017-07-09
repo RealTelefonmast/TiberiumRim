@@ -9,7 +9,7 @@
 		<thingClass>Building_ResearchBench</thingClass>
 		<size>(7,4)</size>
 		<costList>
-			<Uranium>25</Uranium>
+			<Uranium>10</Uranium>
 			<Steel>350</Steel>
 			<Component>10</Component>
 			<GreenTiberiumRaw>50</GreenTiberiumRaw>
@@ -37,7 +37,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>375</basePowerConsumption>
+				<basePowerConsumption>475</basePowerConsumption>
 				<startElectricalFires>false</startElectricalFires>
 			</li>
 			<li Class="CompProperties_Flickable"/>
@@ -119,7 +119,7 @@
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<startElectricalFires>true</startElectricalFires>
-				<basePowerConsumption>75</basePowerConsumption>
+				<basePowerConsumption>125</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Facility">

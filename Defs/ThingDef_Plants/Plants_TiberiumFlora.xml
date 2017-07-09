@@ -18,6 +18,7 @@
 		<plant>
 			<dieIfLeafless>false</dieIfLeafless>
 			<growDays>4</growDays>
+			<lifespanFraction>269</lifespanFraction>
 			<visualSizeRange>
 				<min>2.0</min>
 				<max>3.0</max>
