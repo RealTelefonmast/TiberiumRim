@@ -42,8 +42,9 @@ namespace TiberiumRim
             if (!p.health.hediffSet.HasHediff(Stage2) && this.parent.Severity > 0.6 && Rand.Chance(0.4f))
             {
                 HealthUtility.AdjustSeverity(p, Stage2, 0.2f);
+                p.health.RemoveHediff(this.parent);
 
-                if (p.health.hediffSet.HasHediff(Stage1))
+                if (R != null)
                 {
                     p.health.RemoveHediff(R);
                 }

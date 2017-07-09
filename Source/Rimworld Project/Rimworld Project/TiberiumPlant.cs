@@ -11,9 +11,9 @@ namespace TiberiumRim
     //Extended Plant Class. Tiberium Grows, is Harvested, and Spreads like a plant, so branching off of this will be the easiest technique.
     public class TiberiumCrystal : Plant
     {
+
         //Tiberium is a Crystal, so it doesn't freeze to death
         private const float minGrowthTemperature = -300;
-
 
         public TerrainDef corruptsTo = null;
         //Tiberium never rests
@@ -53,7 +53,7 @@ namespace TiberiumRim
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            var c = this.Position.GetPlant(map);
+            Plant c = this.Position.GetPlant(map);
             if (c != null && c != this)
             {
                 if (c.def.defName.Contains("Tiberium"))
@@ -71,10 +71,9 @@ namespace TiberiumRim
         public object cachedLabelMouseover { get; private set; }
         public int DyingDamagePerTick { get; private set; }
 
-
         //Overriding the TickLong to respect the fact that Tiberium doesn't properly behave like a plant.
         public override void TickLong()
-        {
+        {       
             /* Tiberium Cannot become Leafless. Lets save the effort on the check.
             CheckTemperatureMakeLeafless();
             */
@@ -83,9 +82,16 @@ namespace TiberiumRim
 
             //Fetch a reference to the ThingDef.
             TiberiumDef Localdef = this.def as TiberiumDef;
-
             corruptsTo = Localdef.corruptsInto;
             List<ThingDef> friendlyTo = Localdef.friendlyTo;
+
+
+            //In case tiberium spawns without reproducing    
+            TerrainDef t = this.Position.GetTerrain(Map);
+            if (t != null && t != this.corruptsTo)
+            {
+                Map.terrainGrid.SetTerrain(this.Position, this.corruptsTo);
+            }
 
             //Previously, checked if it was growing season. Tiberium doesn't have a restricted growth season.
             if (true)
@@ -216,6 +222,14 @@ namespace TiberiumRim
         {
             HediffDef tiberium = DefDatabase<HediffDef>.GetNamed("TiberiumBuildupHediff", true);
             HediffDef addiction = DefDatabase<HediffDef>.GetNamed("TiberiumAddiction", true);
+            HediffDef Stage1 = DefDatabase<HediffDef>.GetNamed("TiberiumStage1", true);
+            HediffDef Stage2 = DefDatabase<HediffDef>.GetNamed("TiberiumStage2", true);
+            HediffDef Stage3 = DefDatabase<HediffDef>.GetNamed("TiberiumContactPoison", true);
+
+            if (p.health.hediffSet.HasHediff(Stage1) | p.health.hediffSet.HasHediff(Stage2) | p.health.hediffSet.HasHediff(addiction))
+            {
+                return;
+            }
 
             if (p.RaceProps.IsMechanoid)
             {
@@ -227,7 +241,7 @@ namespace TiberiumRim
                 return;
             }
 
-            if (!p.health.hediffSet.HasHediff(addiction) && p.Position.InBounds(this.Map))
+            if (p.Position.InBounds(this.Map))
             {
                 List<BodyPartRecord> list = new List<BodyPartRecord>();
 
@@ -290,20 +304,28 @@ namespace TiberiumRim
                                 {
                                     return;
                                 }
-                                if (protection < Clothing[j].GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp")))
+                                if (Clothing[j] != null)
                                 {
-                                    protection = Clothing[j].GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp"));
+                                    if (protection < Clothing[j].GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp")))
+                                    {
+                                        protection = protection + Clothing[j].GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp"));
+                                    }
+
+                                    if (Clothing[j].def.label.Contains("Tiberium"))
+                                    {
+                                        protection = protection + 0.2f;
+                                    }
                                 }
                             }
                         }
                     }
                 }
 
-                if (Rand.Chance(protection * 1.8f))
+                if (protection >= 0.6)
                 {
                     return;
                 }
-                HealthUtility.AdjustSeverity(p, tiberium, +0.1f);
+                HealthUtility.AdjustSeverity(p, tiberium, +0.045f);
             }
         }
 
@@ -360,14 +382,22 @@ namespace TiberiumRim
                     if (p.def.IsCorpse)
                     {
                         Corpse body = (Corpse)p;
-                        if (Rand.Chance(0.05f) && !body.InnerPawn.def.defName.Contains("_TBI"))
+                        if (Rand.Chance(0.75f) && !body.InnerPawn.def.defName.Contains("_TBI"))
                         {
-                            spawnFiendOrVisceroid(c, body.InnerPawn.def.race.body);
+                            if (body.AnythingToStrip())
+                            {
+                                body.Strip();
+                            }
+
+                            spawnFiendOrVisceroid(c, body.InnerPawn);
                             p.Destroy(DestroyMode.Vanish);
                             return;
                         }
                     }
-                    p.TakeDamage(damage);
+                    if (!p.def.defName.Contains("Tiberium"))
+                    {
+                        p.TakeDamage(damage);
+                    }
                 }
             }
         }
@@ -383,7 +413,67 @@ namespace TiberiumRim
 
                 if (p != null)
                 {
-                    p.TakeDamage(damage);
+                    if (!p.def.defName.Contains("Tiberium"))
+                    {
+                        if (p.def.defName.Contains("Chunk") && Rand.Chance(0.05f))
+                        {
+                            ThingDef rock = null;
+
+                            switch (this.def.defName)
+                            {
+                                case "TiberiumGreen":
+                                    rock = DefDatabase<ThingDef>.GetNamed("GreenTiberiumChunk", true);
+                                    break;
+
+                                case "TiberiumBlue":
+                                    rock = DefDatabase<ThingDef>.GetNamed("BlueTiberiumChunk", true);
+                                    break;
+
+                                case "TiberiumRed":
+                                    rock = DefDatabase<ThingDef>.GetNamed("RedTiberiumChunk", true);
+                                    break;
+
+                                case "TiberiumDesertGreen":
+                                    rock = DefDatabase<ThingDef>.GetNamed("GreenTiberiumChunk", true);
+                                    break;
+
+                                case "TiberiumDesertBlue":
+                                    rock = DefDatabase<ThingDef>.GetNamed("BlueTiberiumChunk", true);
+                                    break;
+
+                                case "TiberiumDesertRed":
+                                    rock = DefDatabase<ThingDef>.GetNamed("RedTiberiumChunk", true);
+                                    break;
+
+                                case "TiberiumPod":
+                                    rock = DefDatabase<ThingDef>.GetNamed("GreenTiberiumChunk", true);
+                                    break;
+
+                                case "TiberiumVein":
+                                    return;
+
+                                case "TiberiumMossGreen":
+                                    return;
+
+                                case "TiberiumMossBlue":
+                                    return;
+
+                                case "TiberiumGlacier":
+                                    return;
+                            }
+
+                            IntVec3 loc = p.Position;
+
+                            if (loc.InBounds(Map))
+                            {
+                                p.Destroy(DestroyMode.Vanish);
+                                GenSpawn.Spawn(rock, loc, Map);
+                                Map.terrainGrid.SetTerrain(loc, this.corruptsTo);
+                                return;
+                            }
+                        }
+                            p.TakeDamage(damage);                        
+                    }
                 }
             }
         }
@@ -409,28 +499,43 @@ namespace TiberiumRim
                         wall = DefDatabase<ThingDef>.GetNamed("RedTiberiumRock_TBNS", true);
                         break;
 
-                    /* Gonna leave that out for now
-                    case "TiberiumGreenDesert":
+                    case "TiberiumPod":
                         return;
 
-                    case "TiberiumBlueDesert":
-                        return;
+                    case "TiberiumDesertGreen":
+                        wall = DefDatabase<ThingDef>.GetNamed("GreenTiberiumRock_TBNS", true);
+                        break;
 
-                    case "TiberiumRedDesert":
-                        return;
-                    */
+                    case "TiberiumDesertBlue":
+                        wall = DefDatabase<ThingDef>.GetNamed("BlueTiberiumRock_TBNS", true);
+                        break;
+
+                    case "TiberiumDesertRed":
+                        wall = DefDatabase<ThingDef>.GetNamed("RedTiberiumRock_TBNS", true);
+                        break;
+
+                    case "TiberiumMossGreen":
+                        wall = DefDatabase<ThingDef>.GetNamed("GreenTiberiumRock_TBNS", true);
+                        break;
+
+                    case "TiberiumMossBlue":
+                        wall = DefDatabase<ThingDef>.GetNamed("BlueTiberiumRock_TBNS", true);
+                        break;
 
                     case "TiberiumGlacier":
                         return;
-                } 
+                }
 
                 IntVec3 loc = p.Position;
 
-                //Only natural rocks should be infected, not constructed walls
-                if (p.def.mineable && !p.def.defName.Contains("TBNS"))
+                if (loc.InBounds(Map))
                 {
-                    p.Destroy(DestroyMode.Vanish);
-                    GenSpawn.Spawn(wall, loc, Map);
+                    //Only natural rocks should be infected, not constructed walls
+                    if (p.def.mineable && !p.def.defName.Contains("TBNS"))
+                    {
+                        p.Destroy(DestroyMode.Vanish);
+                        GenSpawn.Spawn(wall, loc, Map);
+                    }
                 }
             }
             return;
@@ -475,7 +580,7 @@ namespace TiberiumRim
             return;
         }
 
-        public virtual void spawnFiendOrVisceroid(IntVec3 pos, BodyDef p)
+        public virtual void spawnFiendOrVisceroid(IntVec3 pos, Pawn p)
         {
             Pawn pawn = null;
             if (Rand.Chance(0.25f))
@@ -483,9 +588,9 @@ namespace TiberiumRim
                 //Unique organism based on bodytype
                 PawnKindDef creature = null;
 
-                switch (p.defName)
+                switch (p.def.defName)
                 {
-                    case "QuadrupedAnimalWithHoovesAndHorn":
+                    case "Thrumbo":
                         if (Rand.Chance(0.2f))
                         {
                             creature = DefDatabase<PawnKindDef>.GetNamed("TiberiumTerror_TBI", true);
@@ -494,25 +599,52 @@ namespace TiberiumRim
                         creature = DefDatabase<PawnKindDef>.GetNamed("Thrimbo_TBI", true);
                         break;
 
-                    case "QuadrupedAnimalWithPaws":
+                    case "GrizzlyBear":
                         creature = DefDatabase<PawnKindDef>.GetNamed("BigTiberiumFiend_TBI", true);
                         break;
 
-                    case "BeetleLike":
+                    case "PolarBear":
+                        creature = DefDatabase<PawnKindDef>.GetNamed("BigTiberiumFiend_TBI", true);
+                        break;
+
+                    case "Megascarab":
                         creature = DefDatabase<PawnKindDef>.GetNamed("Tibscarab_TBI", true);
                         break;
 
-                    case "QuadrupedAnimalWithPawsAndTail":
-                        if (Rand.Chance(0.6f))
-                        {
-                            creature = DefDatabase<PawnKindDef>.GetNamed("TiberiumFiend_TBI", true);
-                            break;
-                        }
+                    case "WolfTimber":
+                        creature = DefDatabase<PawnKindDef>.GetNamed("TiberiumFiend_TBI", true);
+                        break;
+
+                    case "WolfArctic":
+                        creature = DefDatabase<PawnKindDef>.GetNamed("TiberiumFiend_TBI", true);
+                        break;
+
+                    case "FoxFennec":
                         creature = DefDatabase<PawnKindDef>.GetNamed("SmallTiberiumFiend_TBI", true);
                         break;
 
-                    case "Snake":
+                    case "FoxRed":
+                        creature = DefDatabase<PawnKindDef>.GetNamed("SmallTiberiumFiend_TBI", true);
+                        break;
+
+                    case "FoxArctic":
+                        creature = DefDatabase<PawnKindDef>.GetNamed("SmallTiberiumFiend_TBI", true);
+                        break;
+
+                    case "Cobra":
                         creature = DefDatabase<PawnKindDef>.GetNamed("Crawler_TBI", true);
+                        break;
+
+                    case "Boomrat":
+                        creature = DefDatabase<PawnKindDef>.GetNamed("Boomfiend_TBI", true);
+                        break;
+
+                    case "Muffalo":
+                        creature = DefDatabase<PawnKindDef>.GetNamed("Tiffalo_TBI", true);
+                        break;
+
+                    case "Warg":
+                        creature = DefDatabase<PawnKindDef>.GetNamed("Spiner_TBI", true);
                         break;
 
                     default:
@@ -554,9 +686,11 @@ namespace TiberiumRim
         }
     }
 
+
     //Custom Version of the Reproduction Code
     public static class GenPlantReproduction
     {
+
         public static Plant TryReproduceFrom(IntVec3 source, ThingDef plantDef, SeedTargFindMode mode, Map map, TerrainDef setTerrain, List<ThingDef> friendlyTo)
         {
             IntVec3 dest;
@@ -583,6 +717,8 @@ namespace TiberiumRim
             }
             var t = dest.GetTerrain(map);
 
+            // -- Tiberium Spreading Behaviour Checker --
+
             //Since we have glaciers we need a way to tell the game when to spawn them
             if (t.defName.Contains("Water") | t.defName.Contains("Marsh") && !t.defName.Contains("Marshy"))
             {
@@ -598,34 +734,45 @@ namespace TiberiumRim
                 return null;
             }
 
-            /* For balance purposes deserts shall not get covered in Tiberium soil
-            if (t.defName.Contains("Sand") && !plantDef.defName.Contains("Desert") && Rand.Chance(0.3f))
+            //Sand Tiberium
+            if (t.defName.Contains("Sand") && !t.defName.Contains("Sandstone") && !plantDef.defName.Contains("Desert") && Rand.Chance(0.3f))
             {
                 switch (plantDef.defName)
                 {
                     case "TiberiumGreen":
-                        plantDef = ThingDef.Named("TiberiumGreenDesert");
-                        setTerrain = TerrainDef.Named("GreenTiberiumSand");
+                        plantDef = ThingDef.Named("TiberiumDesertGreen");
+                        setTerrain = TerrainDef.Named("TiberiumSandGreen");
                         break;
 
                     case "TiberiumBlue":
-                        plantDef = ThingDef.Named("TiberiumBlueDesert");
-                        setTerrain = TerrainDef.Named("BlueTiberiumSand");
+                        plantDef = ThingDef.Named("TiberiumDesertBlue");
+                        setTerrain = TerrainDef.Named("TiberiumSandBlue");
                         break;
 
                     case "TiberiumRed":
-                        plantDef = ThingDef.Named("TiberiumRedDesert");
-                        setTerrain = TerrainDef.Named("RedTiberiumSand");
+                        plantDef = ThingDef.Named("TiberiumDesertRed");
+                        setTerrain = TerrainDef.Named("TiberiumSandRed");
                         break;
+
                     case "TiberiumVein":
                         plantDef = ThingDef.Named("TiberiumVein");
-                        setTerrain = TerrainDef.Named("RedTiberiumSand");
+                        setTerrain = TerrainDef.Named("TiberiumSandRed");
                         break;
+
+                    case "TiberiumPod":
+                        return null;
+
+                    case "TiberiumMossGreen":
+                        return null;
+
+                    case "TiberiumMossBlue":
+                        return null;
+
                 }
                 changeTerrain(dest, map, setTerrain);
                 return (Plant)GenSpawn.Spawn(plantDef, dest, map);
             }
-            else if (t.defName.Contains("Sand"))
+            else if (t.defName.Contains("Sand") && !t.defName.Contains("Sandstone"))
             {
                 if (plantDef.defName.Contains("Desert"))
                 {
@@ -638,16 +785,93 @@ namespace TiberiumRim
             {
                 return null;
             }
-            */
 
+            //Tiberium Moss
+            if(t.defName.Contains("Marble") || t.defName.Contains("Slate") || t.defName.Contains("Limestone") || t.defName.Contains("Sandstone") || t.defName.Contains("Granite") || t.defName.Contains("Rock"))
+            {
+                if(plantDef.defName.Contains("Moss"))
+                {
+                    changeTerrain(dest, map, setTerrain);
+                    return (Plant)GenSpawn.Spawn(plantDef, dest, map);
+                }
+                else
+                switch(plantDef.defName)
+                {
+                    case "TiberiumGreen":
+                        plantDef = ThingDef.Named("TiberiumMossGreen");
+                        setTerrain = TerrainDef.Named("TiberiumRockGreen");
+                        break;
+
+                    case "TiberiumBlue":
+                        plantDef = ThingDef.Named("TiberiumMossBlue");
+                        setTerrain = TerrainDef.Named("TiberiumRockBlue");
+                        break;
+
+                    case "TiberiumRed":
+                        return null;
+
+                    case "TiberiumPod":
+                        return null;
+
+                    case "TiberiumVein":
+                        plantDef = ThingDef.Named("TiberiumVein");
+                        setTerrain = TerrainDef.Named("TiberiumRockGreen");
+                        break;
+
+                    case "TiberiumDesertGreen":
+                        plantDef = ThingDef.Named("TiberiumMossGreen");
+                        setTerrain = TerrainDef.Named("TiberiumRockGreen");
+                        break;
+
+                    case "TiberiumDesertBlue":
+                        plantDef = ThingDef.Named("TiberiumMossBlue");
+                        setTerrain = TerrainDef.Named("TiberiumRockBlue");
+                        break;
+
+                    case "TiberiumDesertRed":
+                        return null;
+                }
+            }
+            else if(t.defName.Contains("Mossy") || t.defName.Contains("Mud"))
+            {
+                if(plantDef.defName.Contains("Moss"))
+                {
+                    switch(plantDef.defName)
+                    {
+                        case "TiberiumMossGreen":
+                            setTerrain = TerrainDef.Named("TiberiumMossyTerrainGreen");
+                            break;
+
+                        case "TiberiumMossBlue":
+                            setTerrain = TerrainDef.Named("TiberiumMossyTerrainBlue"); 
+                            break;
+                    }
+                }
+                else
+                switch (plantDef.defName)
+                {
+                    case "TiberiumGreen":
+                        plantDef = ThingDef.Named("TiberiumMossGreen");
+                        setTerrain = TerrainDef.Named("TiberiumMossyTerrainGreen");
+                            break;
+
+                    case "TiberiumBlue":
+                        plantDef = ThingDef.Named("TiberiumMossBlue");
+                        setTerrain = TerrainDef.Named("TiberiumMossyTerrainBlue");
+                            break;
+                }
+            }
+            else if(plantDef.defName.Contains("Moss"))
+            {
+                return null;
+            }
+            
             if (Rand.Chance(0.8f))
             {
                 //Log.Message("Spawn Tiberium: " + plantDef);
                 changeTerrain(dest, map, setTerrain);
-
                 return (Plant)GenSpawn.Spawn(plantDef, dest, map);
             }
-            //Log.Message("You got unlucky! No tiberium spread, or is that lucky actually?");
             return null;
         }
 
@@ -692,11 +916,13 @@ namespace TiberiumRim
                                 if (Rand.Chance(0.05f))
                                 {
                                     ThingDef flora = DefDatabase<ThingDef>.GetNamed("TiberiumPlant", true);
+                                    TerrainDef setTerrain = DefDatabase<TerrainDef>.GetNamed("TiberiumSoilGreen", true);
                                     IntVec3 loc = p.Position;
 
                                     p.Destroy(DestroyMode.Vanish);
 
                                     GenSpawn.Spawn(flora, loc, map);
+                                    changeTerrain(loc, map, setTerrain);
 
                                 }
                                 else

@@ -23,24 +23,39 @@ namespace TiberiumRim
 
         public void Adjust(Pawn pawn)
         {
-            var c = pawn.RandomAdjacentCell8Way();
-            if (c.InBounds(pawn.Map))
+            if (pawn != null && pawn.Map != null)
             {
-                var t = c.GetFirstThing(pawn.Map, DefDatabase<ThingDef>.GetNamed("TiberiumGreen"));
-                Need N = pawn.needs.AllNeeds.Find((Need x) => x.def.defName.Contains("Need_Tiberium"));
-                HediffDef Exposure = DefDatabase<HediffDef>.GetNamed("TiberiumBuildupHediff", true);
-
-                if (N != null)
+                if (pawn.Position.InBounds(pawn.Map))
                 {
-                    if (t != null)
+                    var c = pawn.RandomAdjacentCell8Way();
+                    if (c.InBounds(pawn.Map))
                     {
-                        HealthUtility.AdjustSeverity(pawn, this.parent.def, -this.parent.Severity);
-                        HealthUtility.AdjustSeverity(pawn, this.parent.def, 1 - N.CurLevelPercentage * 0.999999f);
-                    }                   
-                }
-                if (pawn.health.hediffSet.HasHediff(Exposure))
-                {
-                    HealthUtility.AdjustSeverity(pawn, Exposure, -0.5f);
+                        var t = c.GetPlant(pawn.Map);
+                        Need N = pawn.needs.AllNeeds.Find((Need x) => x.def.defName.Contains("Need_Tiberium"));
+                        HediffDef Exposure = DefDatabase<HediffDef>.GetNamed("TiberiumBuildupHediff", true);
+
+                        if (N != null)
+                        {
+                            if (t != null)
+                            {
+                                if (t.def.defName.Contains("Tiberium"))
+                                {
+                                    HealthUtility.AdjustSeverity(pawn, this.parent.def, -this.parent.Severity);
+                                    HealthUtility.AdjustSeverity(pawn, this.parent.def, 1 - N.CurLevelPercentage * 0.999999f);
+
+                                    Hediff hediff;
+                                    if ((from hd in pawn.health.hediffSet.hediffs where !hd.IsOld() && !hd.def.defName.Contains("Tiberium") select hd).TryRandomElement(out hediff))
+                                    {
+                                        hediff.Heal(0.2f);
+                                    }
+                                }
+                            }
+                        }
+                        if (pawn.health.hediffSet.HasHediff(Exposure))
+                        {
+                            HealthUtility.AdjustSeverity(pawn, Exposure, -0.5f);
+                        }
+                    }
                 }
             }
         }

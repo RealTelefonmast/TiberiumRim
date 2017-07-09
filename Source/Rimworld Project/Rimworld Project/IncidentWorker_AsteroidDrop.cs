@@ -16,8 +16,28 @@ namespace TiberiumRim
             for (int i = 0; i < countToSpawn; i++)
             {
                 //Makes sure asteroid doesn't attempt to land in a roofed area, or in an unseen area.
+                //Added Check to ensure that that no producer lands in an already occupied field.
                 Predicate<IntVec3> validator = delegate (IntVec3 c)
                 {
+                    Plant plant = c.GetPlant(map);
+                    TerrainDef terrain = c.GetTerrain(map);
+
+                    if (plant != null && c.InBounds(map))
+                    {
+                        if(plant.def.defName.Contains("Tiberium"))
+                        {
+                            return false;
+                        }
+                    }
+
+                    if (terrain != null && c.InBounds(map))
+                    {
+                        if (terrain.defName.Contains("Water") || terrain.defName.Contains("Marsh"))
+                        {
+                            return false;
+                        }
+                    }
+
                     if (c.Fogged(map))
                     {
                         return false;
