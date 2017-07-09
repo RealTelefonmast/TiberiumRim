@@ -17,4 +17,24 @@
   <TiberiumVein.description>Eine strang-artige, pulsierende rot-braune Ader. Es wächst aus einem Adermonster.</TiberiumVein.description>
 
 
+  <!-- Desert Tiberium -->
+
+  <TiberiumDesertGreen.label>Grüne Tiberium Scherben</TiberiumDesertGreen.label>
+  <TiberiumDesertGreen.description>Grüne Scherben die aus dem Boden wachsen, scheinen recht instabil.</TiberiumDesertGreen.description>
+
+  <TiberiumDesertBlue.label>Blaue Tiberium Scherben</TiberiumDesertBlue.label>
+  <TiberiumDesertBlue.description>Blaue Scherben die aus dem Boden wachsen, scheinen recht instabil.</TiberiumDesertBlue.description>
+
+  <TiberiumDesertRed.label>Rote Tiberium Scherben</TiberiumDesertRed.label>
+  <TiberiumDesertRed.description>Rote Scherben die aus dem Boden wachsen, scheinen recht instabil.</TiberiumDesertRed.description>
+
+
+  <!-- Tiberium Moss -->
+
+  <TiberiumMossGreen.label>Grünes Tiberium Moos</TiberiumMossGreen.label>
+  <TiberiumMossGreen.description>Eine moosartige Masse überwächst diese Fläche, es scheint sehr toxisch zu sein.</TiberiumMossGreen.description>
+
+  <TiberiumMossBlue.label>Blaues Tiberium Moos</TiberiumMossBlue.label>
+  <TiberiumMossBlue.description>Eine moosartige Masse überwächst diese Fläche, es scheint sehr toxisch zu sein.</TiberiumMossBlue.description>
+
 </LanguageData>

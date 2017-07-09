@@ -29,5 +29,8 @@
   <IonStormIncident.letterLabel>Ionen Sturm!</IonStormIncident.letterLabel>
   <IonStormIncident.letterText>Ein Ionen Sturm hat angefangen.\n\nDie starke Radioaktivität stört alle elektrischen Geräte.\n\nPass auf Tiberiumwachstum auf.</IonStormIncident.letterText>
 
+  <BlossomTreeFiends.label>Unholde sind angekommen!</BlossomTreeFiends.label>
+  <BlossomTreeFiends.letterLabel>Ankunft der Unholde!</BlossomTreeFiends.letterLabel>
+  <BlossomTreeFiends.letterText>Eine Gruppe von Unholden ist auf deiner Karte erschienen. Sie werden beim nächsten Blühten Baum ruhen.</BlossomTreeFiends.letterText>
 
 </LanguageData>

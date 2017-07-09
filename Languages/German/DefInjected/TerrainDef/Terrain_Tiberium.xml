@@ -8,5 +8,15 @@
   <TiberiumWater.label>Tiberium-Kontaminiertes Wasser</TiberiumWater.label>
   <DecrystallizedSoil.label>Umkristallisierter Boden</DecrystallizedSoil.label>
 
+  <TiberiumRockGreen.label>grünes Tiberium Gestein</TiberiumRockGreen.label>
+  <TiberiumRockBlue.label>blaues Tiberium Gestein</TiberiumRockBlue.label>
+  <TiberiumMossyTerrainGreen.label>grünes Tiberium Moos bedeckter Boden</TiberiumMossyTerrainGreen.label>
+  <TiberiumMossyTerrainBlue.label>blaues Tiberium Moos bedeckter Boden</TiberiumMossyTerrainBlue.label>
+  <TiberiumSandGreen.label>grüner Tiberium sand</TiberiumSandGreen.label>
+  <TiberiumSandBlue.label>blauer Tiberium sand</TiberiumSandBlue.label>
+  <TiberiumSandRed.label>roter Tiberium sand</TiberiumSandRed.label>
+  <TiberiumSoilPod.label>Topf Tiberium Boden</TiberiumSoilPod.label>
+  <DecrystallizedSand.label>Umkristallisierter Sand</DecrystallizedSand.label>
+
 
 </LanguageData>

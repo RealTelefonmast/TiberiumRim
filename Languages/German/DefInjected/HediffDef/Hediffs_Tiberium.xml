@@ -8,19 +8,19 @@
   <TiberiumContactPoison.stages.1.label>Mittlere Tiberium Infektion</TiberiumContactPoison.stages.1.label>
   <TiberiumContactPoison.stages.2.label>Tödliche Tiberium Infektion</TiberiumContactPoison.stages.2.label>
 
-  <TiberiumBuildupHediff.label>Tiberium Bestrahlung</TiberiumBuildupHediff.label>
-  <TiberiumBuildupHediff.stages.0.label>Minimale Bestrahlung</TiberiumBuildupHediff.stages.0.label>
-  <TiberiumBuildupHediff.stages.1.label>Geringe Bestrahlung</TiberiumBuildupHediff.stages.1.label>
-  <TiberiumBuildupHediff.stages.2.label>Ernstzunehmende Bestrahlung</TiberiumBuildupHediff.stages.2.label>
-  <TiberiumBuildupHediff.stages.3.label>Bedrohliche Bestrahlung</TiberiumBuildupHediff.stages.3.label>
-  <TiberiumBuildupHediff.stages.4.label>Extreme Bestrahlung</TiberiumBuildupHediff.stages.4.label>
+  <TiberiumBuildupHediff.label>Tiberium Verstrahlung</TiberiumBuildupHediff.label>
+  <TiberiumBuildupHediff.stages.0.label>Minimale Verstrahlung</TiberiumBuildupHediff.stages.0.label>
+  <TiberiumBuildupHediff.stages.1.label>Geringe Verstrahlung</TiberiumBuildupHediff.stages.1.label>
+  <TiberiumBuildupHediff.stages.2.label>Ernstzunehmende Verstrahlung</TiberiumBuildupHediff.stages.2.label>
+  <TiberiumBuildupHediff.stages.3.label>Bedrohliche Verstrahlung</TiberiumBuildupHediff.stages.3.label>
+  <TiberiumBuildupHediff.stages.4.label>Extreme Verstrahlung</TiberiumBuildupHediff.stages.4.label>
 
   <TiberiumStage1.label>Tiberium Vergiftung</TiberiumStage1.label>
   <TiberiumStage1.stages.0.label>Schwache Vergiftung</TiberiumStage1.stages.0.label>
   <TiberiumStage1.stages.1.label>Ernstzunehmende Vergiftung</TiberiumStage1.stages.1.label>
   <TiberiumStage1.stages.2.label>Anfängliche Vergiftung</TiberiumStage1.stages.2.label>
 
-  <TiberiumStage2.label>Tiberium Aufnahme</TiberiumStage2.label>
+  <TiberiumStage2.label>Tiberium Aneignung</TiberiumStage2.label>
   <TiberiumStage2.stages.0.label>Anfänglich</TiberiumStage2.stages.0.label>
   <TiberiumStage2.stages.1.label>Gering</TiberiumStage2.stages.1.label>
   <TiberiumStage2.stages.2.label>Infektions Risiko</TiberiumStage2.stages.2.label>

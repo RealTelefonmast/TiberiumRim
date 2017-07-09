@@ -4,11 +4,35 @@
   <TiberiumGreen.label>Green Tiberium</TiberiumGreen.label>
   <TiberiumGreen.description>A glowy green crystal. Looks strangely appealing. Interaction might be dangerous.</TiberiumGreen.description>
 
+  <TiberiumPod.label>Green Tiberium pod</TiberiumPod.label>
+  <TiberiumPod.description>A glowy green crystal, growing from a pod connected to the ground. Looks strangely appealing. Interaction might be dangerous.</TiberiumPod.description>
+
   <TiberiumBlue.label>Blue Tiberium</TiberiumBlue.label>
   <TiberiumBlue.description>A glowy blue crystal. Beautiful to the eye but of unknown properties.</TiberiumBlue.description>
 
   <TiberiumRed.label>red Tiberium</TiberiumRed.label>
   <TiberiumRed.description>A glowy red crystal. Beautiful to the eye but of unknown properties. Unusual.</TiberiumRed.description>
+
+
+  <!-- Desert Tiberium -->
+
+  <TiberiumDesertGreen.label>Green Tiberium shards</TiberiumDesertGreen.label>
+  <TiberiumDesertGreen.description>Green shards growing out of the sand, they seem to be instable.</TiberiumDesertGreen.description>
+
+  <TiberiumDesertBlue.label>Blue Tiberium shards</TiberiumDesertBlue.label>
+  <TiberiumDesertBlue.description>Blue shards growing out of the sand, they seem to be instable.</TiberiumDesertBlue.description>
+
+  <TiberiumDesertRed.label>Red Tiberium shards</TiberiumDesertRed.label>
+  <TiberiumDesertRed.description>Red shards growing out of the sand, they seem to be instable.</TiberiumDesertRed.description>
+
+
+  <!-- Tiberium Moss -->
+
+  <TiberiumMossGreen.label>Green Tiberium moss</TiberiumMossGreen.label>
+  <TiberiumMossGreen.description>A mossy mass is covering this tile. It seems to be highly toxic.</TiberiumMossGreen.description>
+
+  <TiberiumMossBlue.label>Blue Tiberium moss</TiberiumMossBlue.label>
+  <TiberiumMossBlue.description>A mossy mass is covering this tile. It seems to be highly toxic.</TiberiumMossBlue.description>
 
   <TiberiumGlacier.label>Tiberium Glacier</TiberiumGlacier.label>
   <TiberiumGlacier.description>Huge formations of crystalized water.</TiberiumGlacier.description>

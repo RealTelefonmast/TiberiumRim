@@ -67,5 +67,35 @@
   <Crawler_TBI_Corpse.label>crawler corpse</Crawler_TBI_Corpse.label>
   <Crawler_TBI_Corpse.description>crawler corpse</Crawler_TBI_Corpse.description>
 
+  <Boomfiend_TBI.label>boomfiend</Boomfiend_TBI.label>
+  <Boomfiend_TBI.description>When boomrats come into contact with Tiberium, beware of these creatures.</Boomfiend_TBI.description>
+  <Boomfiend_TBI_Leather.label>boomfiend leather</Boomfiend_TBI_Leather.label>
+  <Boomfiend_TBI_Leather.description>boomfiend leather</Boomfiend_TBI_Leather.description>
+  <Boomfiend_TBI_Leather.stuffProps.stuffAdjective>boomfiend leather</Boomfiend_TBI_Leather.stuffProps.stuffAdjective>
+  <Boomfiend_TBI_Meat.label>boomfiend meat</Boomfiend_TBI_Meat.label>
+  <Boomfiend_TBI_Meat.description>boomfiend meat</Boomfiend_TBI_Meat.description>
+  <Boomfiend_TBI_Corpse.label>boomfiend corpse</Boomfiend_TBI_Corpse.label>
+  <Boomfiend_TBI_Corpse.description>boomfiend corpse</Boomfiend_TBI_Corpse.description>
+
+  <Spiner_TBI.label>spiner</Spiner_TBI.label>
+  <Spiner_TBI.description>Heavily-muscled wolf-like creatures, iinfused with Tiberium. These "Spiners" are very dangerous and should be avoided.</Spiner_TBI.description>
+  <Spiner_TBI_Leather.label>warg fur</Spiner_TBI_Leather.label>
+  <Spiner_TBI_Leather.description>warg fur</Spiner_TBI_Leather.description>
+  <Spiner_TBI_Leather.stuffProps.stuffAdjective>warg fur</Spiner_TBI_Leather.stuffProps.stuffAdjective>
+  <Spiner_TBI_Meat.label>spiner meat</Spiner_TBI_Meat.label>
+  <Spiner_TBI_Meat.description>spiner meat</Spiner_TBI_Meat.description>
+  <Spiner_TBI_Corpse.label>spiner corpse</Spiner_TBI_Corpse.label>
+  <Spiner_TBI_Corpse.description>spiner corpse</Spiner_TBI_Corpse.description>
+
+  <Tiffalo_TBI.label>tiffalo</Tiffalo_TBI.label>
+  <Tiffalo_TBI.description>These creatures have lost all their fluffliness to a crystaline structure, they also seem less friendly.</Tiffalo_TBI.description>
+  <Tiffalo_TBI_Leather.label>tiffalo leather</Tiffalo_TBI_Leather.label>
+  <Tiffalo_TBI_Leather.description>tiffalo leather</Tiffalo_TBI_Leather.description>
+  <Tiffalo_TBI_Leather.stuffProps.stuffAdjective>tiffalo leather</Tiffalo_TBI_Leather.stuffProps.stuffAdjective>
+  <Tiffalo_TBI_Meat.label>tiffalo meat</Tiffalo_TBI_Meat.label>
+  <Tiffalo_TBI_Meat.description>tiffalo meat</Tiffalo_TBI_Meat.description>
+  <Tiffalo_TBI_Corpse.label>tiffalo corpse</Tiffalo_TBI_Corpse.label>
+  <Tiffalo_TBI_Corpse.description>tiffalo corpse</Tiffalo_TBI_Corpse.description>
+
 
 </LanguageData>

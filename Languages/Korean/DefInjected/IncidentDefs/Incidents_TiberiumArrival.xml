@@ -20,9 +20,9 @@
 	<BlossomTree.letterLabel>포자 식물</BlossomTree.letterLabel>
 	<BlossomTree.letterText>가스 구름에 노출된 나무가 괴상한 모습으로 변이했습니다.\n\n오염물질 확산에 주의하십시오.</BlossomTree.letterText>
 	
-	<VeinholeArrival.label>베인홀 발견</VeinholeArrival.label>
-	<VeinholeArrival.letterLabel>베인홀</VeinholeArrival.letterLabel>
-	<VeinholeArrival.letterText>지표면이 무너지면서 거대한 베인홀이 모습을 드러냈습니다.</VeinholeArrival.letterText>
+	<VeinholeArrival.label>침식 구덩이 발견</VeinholeArrival.label>
+	<VeinholeArrival.letterLabel>침식 구덩이</VeinholeArrival.letterLabel>
+	<VeinholeArrival.letterText>지표면이 무너지면서 거대한 침식 구덩이가 모습을 드러냈습니다.</VeinholeArrival.letterText>
 
 	<IonStormIncident.label>이온 폭풍</IonStormIncident.label>
 	<IonStormIncident.letterLabel>이온 폭풍</IonStormIncident.letterLabel>
