@@ -21,6 +21,7 @@ namespace TiberiumRim
 
         public override void CompTickRare()
         {
+            SnowUtility.AddSnowRadial(this.parent.OccupiedRect().RandomCell, this.parent.Map, 14f, -0.08f);
             DestroyWalls();
             base.CompTickRare();
         }

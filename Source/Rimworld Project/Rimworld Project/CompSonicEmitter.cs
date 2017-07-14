@@ -12,30 +12,31 @@ namespace TiberiumRim
     {
         private CompPowerTrader powerComp;
         private CompProperties_SonicEmitter def;
-        private List<IntVec3> cells = new List<IntVec3>();
-        public static Dictionary<int, List<IntVec3>> inhibitedLocations = new Dictionary<int, List<IntVec3>>();
-        private int key;
 
+        public static List<IntVec3> ProtectedCells = new List<IntVec3>();
+        private List<IntVec3> cells = new List<IntVec3>();
+
+        public void removeCells()
+        {
+            foreach(IntVec3 v in cells)
+            {
+                MapComponent_Inhibition.ProtectedCells.Remove(v);
+            }
+        }
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             this.powerComp = this.parent.TryGetComp<CompPowerTrader>();
             this.def = (CompProperties_SonicEmitter)this.props;
-            key = parent.Map.Tile;
-
-            /*if(def == null)
-            {
-                Debug.LogError("XML property failure at" + this.ToString());
-            }*/
+            removeCells();
             cells.Clear();
-            inhibitedLocations.Clear();
             cacheCells();
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
         {
+            removeCells();
             cells.Clear();
-            inhibitedLocations.Clear();
             base.PostDestroy(mode, previousMap);
         }
 
@@ -43,12 +44,9 @@ namespace TiberiumRim
         {
             if (!this.powerComp.PowerOn)
             {
-                if (key == this.parent.Map.Tile)
-                {
-                    inhibitedLocations[key].Clear();
-                    cells.Clear();
-                    return;
-                }
+                removeCells();
+                cells.Clear();
+                return;               
             }
             if (cells.Count == 0)
             {
@@ -69,7 +67,7 @@ namespace TiberiumRim
         {
             DictionCheck();
             //TiberiumBase.Instance.logMessage("Ticking");
-            if (((double)parent.HitPoints/(double)parent.def.BaseMaxHitPoints > def.damageShutdownPercent) && this.Working)
+            if (((double)parent.HitPoints / (double)parent.def.BaseMaxHitPoints > def.damageShutdownPercent) && this.Working)
             {
                 //TiberiumBase.Instance.logMessage("Checking plants");
                 checkPlantLife();
@@ -86,13 +84,12 @@ namespace TiberiumRim
                 for (int x = rect.minX; x <= rect.maxX; x++)
                 {
                     var c = new IntVec3(x, 0, z);
-
-                    cells.Add(c);
-                    if (!inhibitedLocations.ContainsKey(key))
+                   
+                    if (!MapComponent_Inhibition.ProtectedCells.Contains(c))
                     {
-                        inhibitedLocations.Add(key, new List<IntVec3>());
+                        cells.Add(c);
+                        MapComponent_Inhibition.ProtectedCells.Add(c);
                     }
-                    inhibitedLocations[key].Add(c);
                 }
             }
         }

@@ -38,8 +38,7 @@
 			<effectWorking>Tailor</effectWorking>
 			<soundWorking>Recipe_Tailor</soundWorking>
 			<recipeUsers>
-				<li>ElectricTailoringBench</li>
-				<li>HandTailoringBench</li>
+				<li>TiberiumResearchCraftingBench</li>
 			</recipeUsers>
 			<unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
 		</recipeMaker>
@@ -50,7 +49,7 @@
 		<description>A suit to protect from Tiberium.\n\n Also protects from toxic fallout.</description>
 		<label>Tiberium protection suit</label>
 		<recipeMaker>
-		<researchPrerequisite>TiberiumKnowledge</researchPrerequisite>
+			<researchPrerequisite>TiberiumKnowledge</researchPrerequisite>
 		</recipeMaker>
 		<graphicData>
 		<texPath>Pawn/Humanlike/Apparel/TiberiumSuitParts/TiberiumSuit</texPath>

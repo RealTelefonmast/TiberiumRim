@@ -131,6 +131,7 @@
 			<Plasteel>15</Plasteel>
 			<Component>5</Component>
 			<TiberiumFuel>5</TiberiumFuel>
+			<BookRiparius>1</BookRiparius>
 		</costList>
 		<comps>
 			<li Class="CompProperties_Power">

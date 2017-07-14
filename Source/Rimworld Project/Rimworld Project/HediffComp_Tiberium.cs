@@ -33,13 +33,14 @@ namespace TiberiumRim
             HediffDef Addiction = DefDatabase<HediffDef>.GetNamed("TiberiumAddiction", true);
 
 
-            if (!p.health.hediffSet.HasHediff(Stage1) && !p.health.hediffSet.HasHediff(Stage2) && this.parent.Severity > 0.3 && Rand.Chance(0.2f))
+            if (!p.health.hediffSet.HasHediff(Stage1) && !p.health.hediffSet.HasHediff(Stage2) && this.parent.Severity > 0.3 && Rand.Chance(0.3f))
             {
+                HealthUtility.AdjustSeverity(p, this.parent.def, -0.2f);
                 HealthUtility.AdjustSeverity(p, Stage1, 1.0f);
                 return;
             }
 
-            if (!p.health.hediffSet.HasHediff(Stage2) && this.parent.Severity > 0.6 && Rand.Chance(0.4f))
+            if (!p.health.hediffSet.HasHediff(Stage2) && this.parent.Severity > 0.7 && Rand.Chance(0.5f))
             {
                 HealthUtility.AdjustSeverity(p, Stage2, 0.2f);
                 p.health.RemoveHediff(this.parent);

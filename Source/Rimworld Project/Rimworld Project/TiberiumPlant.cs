@@ -202,7 +202,7 @@ namespace TiberiumRim
             //Rare chance of monolithRise() to happen
             if (Rand.Chance(0.000001f))
             {
-                if (this.def.defName.Contains("TiberiumBlue") && Rand.Chance(0.00001f))
+                if (this.def.defName.Contains("TiberiumBlue") && Rand.Chance(0.0001f))
                 {
                     MonolithRise(Map);
                 }
@@ -325,7 +325,7 @@ namespace TiberiumRim
                 {
                     return;
                 }
-                HealthUtility.AdjustSeverity(p, tiberium, +0.045f);
+                HealthUtility.AdjustSeverity(p, tiberium, +0.025f);
             }
         }
 
@@ -708,13 +708,16 @@ namespace TiberiumRim
             if (!GenPlant.SnowAllowsPlanting(dest, map))
                 return null;
 
-            if (CompSonicEmitter.inhibitedLocations.ContainsKey(map.Tile))
+
+
+            if (CompSonicEmitter.ProtectedCells != null)
             {
-                if (CompSonicEmitter.inhibitedLocations[map.Tile].Contains(dest))
+                if (CompSonicEmitter.ProtectedCells.Contains(dest))
                 {
                     return null;
                 }
             }
+
             var t = dest.GetTerrain(map);
 
             // -- Tiberium Spreading Behaviour Checker --

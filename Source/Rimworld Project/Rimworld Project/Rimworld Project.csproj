@@ -69,6 +69,7 @@
     <Compile Include="IncidentWorker_BlossomTree.cs" />
     <Compile Include="IncidentWorker_GreenAsteroid.cs" />
     <Compile Include="IncidentWorker_IonStorm.cs" />
+    <Compile Include="MapComponent_Inhibition.cs" />
     <Compile Include="Need_Tiberium.cs" />
     <Compile Include="TiberiumBase.cs" />
     <Compile Include="TiberiumDef.cs" />

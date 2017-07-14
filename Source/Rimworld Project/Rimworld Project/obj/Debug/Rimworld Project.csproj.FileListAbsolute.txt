@@ -64,3 +64,13 @@ F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim 1.4\Source\Rimworld Project\
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim 1.4\Source\Rimworld Project\Rimworld Project\obj\Debug\Rimworld Project.csprojResolveAssemblyReference.cache
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim 1.4\Source\Rimworld Project\Rimworld Project\obj\Debug\Rimworld Project.dll
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim 1.4\Source\Rimworld Project\Rimworld Project\obj\Debug\Rimworld Project.pdb
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\bin\Debug\Rimworld Project.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\bin\Debug\Rimworld Project.pdb
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\bin\Debug\0Harmony.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\bin\Debug\Assembly-CSharp.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\bin\Debug\HugsLib.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\bin\Debug\UnityEngine.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\bin\Debug\HugsLib.xml
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\obj\Debug\Rimworld Project.csprojResolveAssemblyReference.cache
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\obj\Debug\Rimworld Project.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\Rimworld Project\Rimworld Project\obj\Debug\Rimworld Project.pdb
