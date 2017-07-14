@@ -20,7 +20,7 @@ namespace TiberiumRim
         {
             foreach(IntVec3 v in cells)
             {
-                MapComponent_Inhibition.ProtectedCells.Remove(v);
+                ProtectedCells.Remove(v);
             }
         }
 
@@ -85,10 +85,10 @@ namespace TiberiumRim
                 {
                     var c = new IntVec3(x, 0, z);
                    
-                    if (!MapComponent_Inhibition.ProtectedCells.Contains(c))
+                    if (!ProtectedCells.Contains(c))
                     {
                         cells.Add(c);
-                        MapComponent_Inhibition.ProtectedCells.Add(c);
+                        ProtectedCells.Add(c);
                     }
                 }
             }
