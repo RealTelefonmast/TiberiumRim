@@ -1249,13 +1249,12 @@
       <body>QuadrupedAnimalWithHooves</body>
       <baseBodySize>2.1</baseBodySize>
       <baseHealthScale>1.75</baseHealthScale>
-		<baseHungerRate>0.85</baseHungerRate>
+	  <baseHungerRate>0.85</baseHungerRate>
       <foodType>CarnivoreAnimalStrict</foodType>
       <leatherColor>(152,170,174)</leatherColor>
       <leatherInsulation>1.0</leatherInsulation>
       <gestationPeriodDays>25</gestationPeriodDays>
       <wildness>0.5</wildness>
-		<packAnimal>true</packAnimal>
       <lifeExpectancy>15</lifeExpectancy>
       <lifeStageAges>
         <li>
