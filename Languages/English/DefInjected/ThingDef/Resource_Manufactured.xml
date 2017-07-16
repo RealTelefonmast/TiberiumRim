@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDI_ReinforcedPlate.label>Reinforced Plate</GDI_ReinforcedPlate.label>
+  <GDI_ReinforcedPlate.description>This material is used in many GDI constructions. This alloy is resistant to most influences.</GDI_ReinforcedPlate.description>
+
+  <Nod_CarbonPlate.label>Carbon Plate</Nod_CarbonPlate.label>
+  <Nod_CarbonPlate.description>Nod's engineers have been trying to figure out a material that is strong enough to sustain any direct attack. After years of development this new carbon based material was born.</Nod_CarbonPlate.description>
+
+  <Nod_LiquidTiberium.label>Liquid Tiberium</Nod_LiquidTiberium.label>
+  <Nod_LiquidTiberium.description>Liquid Tiberium in its purest form. WARNING - Beware of deterioration, this item is very unstable!</Nod_LiquidTiberium.description>
+
+  <Nod_LQTiberiumCore.label>Liquid Tiberium Core</Nod_LQTiberiumCore.label>
+  <Nod_LQTiberiumCore.description>Due to it's unstable nature, liquid Tiberium cannot be handled directly and needs to be stabilized. This component manages to do so.</Nod_LQTiberiumCore.description>
+
+  <GDI_SonicCore.label>Sonic Energy Core</GDI_SonicCore.label>
+  <GDI_SonicCore.description>Sonic technology is extremly experimental and needs special measures to be handled. This component serves as a core part in most sonic weaponry.</GDI_SonicCore.description>
+
+
+</LanguageData>

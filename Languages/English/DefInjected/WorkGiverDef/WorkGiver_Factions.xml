@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Factions_DoBillsTibRefinery.label>works at Tiberium refinery</Factions_DoBillsTibRefinery.label>
+  <Factions_DoBillsTibRefinery.verb>refine Tiberium</Factions_DoBillsTibRefinery.verb>
+  <Factions_DoBillsTibRefinery.gerund>refining Tiberium at</Factions_DoBillsTibRefinery.gerund>
+
+  <Factions_DoBillsFactory.label>works at factory</Factions_DoBillsFactory.label>
+  <Factions_DoBillsFactory.verb>make faction item at</Factions_DoBillsFactory.verb>
+  <Factions_DoBillsFactory.gerund>making faction item at</Factions_DoBillsFactory.gerund>
+
+
+</LanguageData>

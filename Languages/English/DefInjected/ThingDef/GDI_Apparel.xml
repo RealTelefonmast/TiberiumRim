@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- GDI Zone Trooper -->
+
+  <Apparel_GDIZoneHelmet_TBP.label>zone helmet</Apparel_GDIZoneHelmet_TBP.label>
+  <Apparel_GDIZoneHelmet_TBP.description>A part of the GDI Zone Trooper armor.</Apparel_GDIZoneHelmet_TBP.description>
+
+  <Apparel_GDIZoneSuit_TBP.label>zone suit</Apparel_GDIZoneSuit_TBP.label>
+  <Apparel_GDIZoneSuit_TBP.description>A GDI Zone Trooper suit, perfect against Tiberium.</Apparel_GDIZoneSuit_TBP.description>
+
+
+  <!-- Officer -->
+
+  <Apparel_GDIOfficerHelmet.label>GDI officer hat</Apparel_GDIOfficerHelmet.label>
+  <Apparel_GDIOfficerHelmet.description>A shique cap, perfect for every GDI officer!</Apparel_GDIOfficerHelmet.description>
+
+  <Apparel_GDIOfficerSuit.label>GDI officer suit</Apparel_GDIOfficerSuit.label>
+  <Apparel_GDIOfficerSuit.description>A nice looking suit, perfect for a GDI Officer.</Apparel_GDIOfficerSuit.description>
+
+  <Apparel_GDISoldierHelmet_TBP.label>GDI soldier mask</Apparel_GDISoldierHelmet_TBP.label>
+  <Apparel_GDISoldierHelmet_TBP.description>This mask has an integrated Tiberium filter, might also repell some bullets if you're lucky.</Apparel_GDISoldierHelmet_TBP.description>
+
+  <Apparel_GDISoldierSuit_TBP.label>GDI Soldier suit</Apparel_GDISoldierSuit_TBP.label>
+  <Apparel_GDISoldierSuit_TBP.description>This suit is optimized to resist most attacks.</Apparel_GDISoldierSuit_TBP.description>
+
+
+</LanguageData>

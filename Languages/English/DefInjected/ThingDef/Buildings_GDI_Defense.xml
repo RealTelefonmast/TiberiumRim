@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDIWall.label>GDI wall</GDIWall.label>
+  <GDIWall.description>An impassable wall, reinforced by GDI engineers.</GDIWall.description>
+  <GDIWall_Blueprint.label>GDI wall (blueprint)</GDIWall_Blueprint.label>
+  <GDIWall_Frame.label>GDI wall (building)</GDIWall_Frame.label>
+
+  <GDI_Door.label>GDI door</GDI_Door.label>
+  <GDI_Door.description>Divides rooms. Must be manually opened and closed, which slows people down.</GDI_Door.description>
+  <GDI_Door_Blueprint.label>GDI door (blueprint)</GDI_Door_Blueprint.label>
+  <GDI_Door_Frame.label>GDI door (building)</GDI_Door_Frame.label>
+
+  <GDI_Autodoor.label>GDI autodoor</GDI_Autodoor.label>
+  <GDI_Autodoor.description>Divides rooms. Powered operation allows people to move through the door without slowing down.</GDI_Autodoor.description>
+  <GDI_Autodoor_Blueprint.label>GDI autodoor (blueprint)</GDI_Autodoor_Blueprint.label>
+  <GDI_Autodoor_Frame.label>GDI autodoor (building)</GDI_Autodoor_Frame.label>
+
+
+  <!-- Watch Tower -->
+
+  <GDISecurity_WatchTower.label>Watch tower</GDISecurity_WatchTower.label>
+  <GDISecurity_WatchTower.description>A GDI watch tower, fires automatically upon enemies.</GDISecurity_WatchTower.description>
+  <GDISecurity_WatchTower_Blueprint.label>Watch tower (blueprint)</GDISecurity_WatchTower_Blueprint.label>
+  <GDISecurity_WatchTower_Frame.label>Watch tower (building)</GDISecurity_WatchTower_Frame.label>
+
+  <Gun_WatchTower.label>watchtower gun</Gun_WatchTower.label>
+  <Gun_WatchTower.description>pew pew</Gun_WatchTower.description>
+
+  <Bullet_WatchTower.label>pew pew</Bullet_WatchTower.label>
+
+
+  <!-- Sonic Emitter -->
+
+  <GDISecurity_SonicEmitter.label>Sonic Emitter</GDISecurity_SonicEmitter.label>
+  <GDISecurity_SonicEmitter.description>The sonic emitter, this heavy weapon clears anything in it's path.</GDISecurity_SonicEmitter.description>
+  <GDISecurity_SonicEmitter_Blueprint.label>Sonic Emitter (blueprint)</GDISecurity_SonicEmitter_Blueprint.label>
+  <GDISecurity_SonicEmitter_Frame.label>Sonic Emitter (building)</GDISecurity_SonicEmitter_Frame.label>
+
+  <Gun_SonicEmitter.label>sonic emitter gun</Gun_SonicEmitter.label>
+  <Gun_SonicEmitter.description>pew pew</Gun_SonicEmitter.description>
+
+  <Bullet_Emitter.label>emitter bullet</Bullet_Emitter.label>
+
+
+  <!-- Inhibition -->
+
+  <SonicInhibitorSmall.label>Sonic Inhibitor(s)</SonicInhibitorSmall.label>
+  <SonicInhibitorSmall.description>A device designed to destroy Tiberium and prevent further growth. Due to the experimental nature of the device, it requires direct line of sight to the Tiberium to function. This small version has a smaller radius.</SonicInhibitorSmall.description>
+  <SonicInhibitorSmall_Blueprint.label>Sonic Inhibitor(s) (blueprint)</SonicInhibitorSmall_Blueprint.label>
+  <SonicInhibitorSmall_Blueprint_Install.label>Sonic Inhibitor(s) (blueprint)</SonicInhibitorSmall_Blueprint_Install.label>
+  <SonicInhibitorSmall_Frame.label>Sonic Inhibitor(s) (building)</SonicInhibitorSmall_Frame.label>
+
+  <SonicInhibitorTall.label>Sonic Inhibitor(t)</SonicInhibitorTall.label>
+  <SonicInhibitorTall.description>A device designed to destroy Tiberium and prevent further growth. Due to the experimental nature of the device, it requires direct line of sight to the Tiberium to function. This tall version has a bigger radius.</SonicInhibitorTall.description>
+  <SonicInhibitorTall_Blueprint.label>Sonic Inhibitor(t) (blueprint)</SonicInhibitorTall_Blueprint.label>
+  <SonicInhibitorTall_Blueprint_Install.label>Sonic Inhibitor(t) (blueprint)</SonicInhibitorTall_Blueprint_Install.label>
+  <SonicInhibitorTall_Frame.label>Sonic Inhibitor(t) (building)</SonicInhibitorTall_Frame.label>
+
+  <Decrystallizer.label>Tiberium Soil Decrystallizer</Decrystallizer.label>
+  <Decrystallizer.description>Very slowly removes Tiberium from infected ground, converting any Tiberium ground into decrystallized soil that can be used again. Does not affect contaminated water. Requires power.</Decrystallizer.description>
+  <Decrystallizer_Blueprint.label>Tiberium Soil Decrystallizer (blueprint)</Decrystallizer_Blueprint.label>
+  <Decrystallizer_Blueprint_Install.label>Tiberium Soil Decrystallizer (blueprint)</Decrystallizer_Blueprint_Install.label>
+  <Decrystallizer_Frame.label>Tiberium Soil Decrystallizer (building)</Decrystallizer_Frame.label>
+
+  <SonicFence.label>Sonic Inhibitor Fence</SonicFence.label>
+  <SonicFence.description>This fence allows you to cut off Tiberium spread. Requires power.</SonicFence.description>
+  <SonicFence_Blueprint.label>Sonic Inhibitor Fence (blueprint)</SonicFence_Blueprint.label>
+  <SonicFence_Frame.label>Sonic Inhibitor Fence (building)</SonicFence_Frame.label>
+
+
+</LanguageData>

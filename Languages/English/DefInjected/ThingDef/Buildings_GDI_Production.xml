@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- GDI Structures -->
+
+  <GDI_Factory.label>GDI Factory</GDI_Factory.label>
+  <GDI_Factory.description>The GDI factory allows you to construct many different items, weapons and units if available.</GDI_Factory.description>
+  <GDI_Factory_Blueprint.label>GDI Factory (blueprint)</GDI_Factory_Blueprint.label>
+  <GDI_Factory_Frame.label>GDI Factory (building)</GDI_Factory_Frame.label>
+
+  <GDI_TiberiumRefinery.label>Advanced tiberium refinery</GDI_TiberiumRefinery.label>
+  <GDI_TiberiumRefinery.description>An advanced chemical refining plant. Used to refine lethal Tiberium into useful resources.</GDI_TiberiumRefinery.description>
+  <GDI_TiberiumRefinery_Blueprint.label>Advanced tiberium refinery (blueprint)</GDI_TiberiumRefinery_Blueprint.label>
+  <GDI_TiberiumRefinery_Frame.label>Advanced tiberium refinery (building)</GDI_TiberiumRefinery_Frame.label>
+
+  <GDI_TiberiumPowerPlant.label>GDI Powerplant</GDI_TiberiumPowerPlant.label>
+  <GDI_TiberiumPowerPlant.description>Produces power by consuming Tiberium fuel. Must be fueled by hand.</GDI_TiberiumPowerPlant.description>
+  <GDI_TiberiumPowerPlant_Blueprint.label>GDI Powerplant (blueprint)</GDI_TiberiumPowerPlant_Blueprint.label>
+  <GDI_TiberiumPowerPlant_Frame.label>GDI Powerplant (building)</GDI_TiberiumPowerPlant_Frame.label>
+
+
+</LanguageData>

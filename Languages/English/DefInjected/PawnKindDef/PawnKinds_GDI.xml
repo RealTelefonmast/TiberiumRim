@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Citizen.label>Citizen</Citizen.label>
+  <Citizen.labelPlural>Citizens</Citizen.labelPlural>
+  <Citizen.labelMale>male Citizen</Citizen.labelMale>
+  <Citizen.labelMalePlural>male Citizens</Citizen.labelMalePlural>
+  <Citizen.labelFemale>female Citizen</Citizen.labelFemale>
+  <Citizen.labelFemalePlural>female Citizens</Citizen.labelFemalePlural>
+
+  <CityDirector.label>City Director</CityDirector.label>
+  <CityDirector.labelPlural>city directors</CityDirector.labelPlural>
+  <CityDirector.labelMale>male City Director</CityDirector.labelMale>
+  <CityDirector.labelMalePlural>male city directors</CityDirector.labelMalePlural>
+  <CityDirector.labelFemale>female City Director</CityDirector.labelFemale>
+  <CityDirector.labelFemalePlural>female city directors</CityDirector.labelFemalePlural>
+
+  <CityTrader.label>city trader</CityTrader.label>
+  <CityTrader.labelPlural>city directors</CityTrader.labelPlural>
+  <CityTrader.labelMale>male city trader</CityTrader.labelMale>
+  <CityTrader.labelMalePlural>male city directors</CityTrader.labelMalePlural>
+  <CityTrader.labelFemale>female city trader</CityTrader.labelFemale>
+  <CityTrader.labelFemalePlural>female city directors</CityTrader.labelFemalePlural>
+
+  <GDIZoneTrooper.label>Zone Trooper</GDIZoneTrooper.label>
+  <GDIZoneTrooper.labelPlural>Zone Troopers</GDIZoneTrooper.labelPlural>
+  <GDIZoneTrooper.labelMale>male Zone Trooper</GDIZoneTrooper.labelMale>
+  <GDIZoneTrooper.labelMalePlural>male Zone Troopers</GDIZoneTrooper.labelMalePlural>
+  <GDIZoneTrooper.labelFemale>female Zone Trooper</GDIZoneTrooper.labelFemale>
+  <GDIZoneTrooper.labelFemalePlural>female Zone Troopers</GDIZoneTrooper.labelFemalePlural>
+
+  <GDIOfficerTroop.label>GDI Officer</GDIOfficerTroop.label>
+  <GDIOfficerTroop.labelPlural>GDI Officers</GDIOfficerTroop.labelPlural>
+  <GDIOfficerTroop.labelMale>male GDI Officer</GDIOfficerTroop.labelMale>
+  <GDIOfficerTroop.labelMalePlural>male GDI Officers</GDIOfficerTroop.labelMalePlural>
+  <GDIOfficerTroop.labelFemale>female GDI Officer</GDIOfficerTroop.labelFemale>
+  <GDIOfficerTroop.labelFemalePlural>female GDI Officers</GDIOfficerTroop.labelFemalePlural>
+
+  <GDISoldier.label>GDI Soldier</GDISoldier.label>
+  <GDISoldier.labelPlural>GDI Soldiers</GDISoldier.labelPlural>
+  <GDISoldier.labelMale>male GDI Soldier</GDISoldier.labelMale>
+  <GDISoldier.labelMalePlural>male GDI Soldiers</GDISoldier.labelMalePlural>
+  <GDISoldier.labelFemale>female GDI Soldier</GDISoldier.labelFemale>
+  <GDISoldier.labelFemalePlural>female GDI Soldiers</GDISoldier.labelFemalePlural>
+
+
+</LanguageData>

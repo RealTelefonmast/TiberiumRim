@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <NOD.label>Brotherhood Of Nod</NOD.label>
+  <NOD.description>The Brotherhood is a terrorist organization fighting for Tiberium and trying to spread it. Their prophet and leader Kane is convinced that Tiberium is the next step in human evolution. They do not mind using their weapons against heretics.</NOD.description>
+  <NOD.pawnsPlural>Nod troops</NOD.pawnsPlural>
+  <NOD.leaderTitle>Prophet</NOD.leaderTitle>
+
+
+</LanguageData>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <MakeLiquidTiberium.label>make Liquid Tiberium</MakeLiquidTiberium.label>
+  <MakeLiquidTiberium.description></MakeLiquidTiberium.description>
+  <MakeLiquidTiberium.jobString>Making liquid Tiberium</MakeLiquidTiberium.jobString>
+
+  <MakeReinforcedPlate.label>craft a Reinforced Plate</MakeReinforcedPlate.label>
+  <MakeReinforcedPlate.description>This factory produces multiple resources and items.</MakeReinforcedPlate.description>
+  <MakeReinforcedPlate.jobString>Crafting reinforced plate</MakeReinforcedPlate.jobString>
+
+  <MakeReinforcedPlateX5.label>craft 5 Reinforced Plates</MakeReinforcedPlateX5.label>
+  <MakeReinforcedPlateX5.description>This factory produces multiple resources and items.</MakeReinforcedPlateX5.description>
+  <MakeReinforcedPlateX5.jobString>Crafting reinforced plate</MakeReinforcedPlateX5.jobString>
+
+  <MakeCarbonPlate.label>craft a Carbon Plate</MakeCarbonPlate.label>
+  <MakeCarbonPlate.description>This factory produces multiple resources and items.</MakeCarbonPlate.description>
+  <MakeCarbonPlate.jobString>Crafting carbon plate</MakeCarbonPlate.jobString>
+
+  <MakeCarbonPlateX5.label>craft 5 Carbon Plates</MakeCarbonPlateX5.label>
+  <MakeCarbonPlateX5.description>This factory produces multiple resources and items.</MakeCarbonPlateX5.description>
+  <MakeCarbonPlateX5.jobString>Crafting carbon plate</MakeCarbonPlateX5.jobString>
+
+  <MakeLQTiberiumCore.label>make a Liquid Tiberium Core</MakeLQTiberiumCore.label>
+  <MakeLQTiberiumCore.description>This core is necessary in most of Nod's advanced technology, it serves as a power source.</MakeLQTiberiumCore.description>
+  <MakeLQTiberiumCore.jobString>Making liquid Tiberium core</MakeLQTiberiumCore.jobString>
+
+  <MakeGDISonicCore.label>make a Sonic Core</MakeGDISonicCore.label>
+  <MakeGDISonicCore.description>This core is a necessary component in most GDI sonic technology.</MakeGDISonicCore.description>
+  <MakeGDISonicCore.jobString>making a sonic core.</MakeGDISonicCore.jobString>
+
+
+</LanguageData>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Follower.label>Follower</Follower.label>
+  <Follower.labelPlural>Followers</Follower.labelPlural>
+  <Follower.labelMale>male Follower</Follower.labelMale>
+  <Follower.labelMalePlural>male Followers</Follower.labelMalePlural>
+  <Follower.labelFemale>female Follower</Follower.labelFemale>
+  <Follower.labelFemalePlural>female Followers</Follower.labelFemalePlural>
+
+  <NodOfficer.label>Officer</NodOfficer.label>
+  <NodOfficer.labelPlural>Nod Officers</NodOfficer.labelPlural>
+  <NodOfficer.labelMale>male Officer</NodOfficer.labelMale>
+  <NodOfficer.labelMalePlural>male Nod Officers</NodOfficer.labelMalePlural>
+  <NodOfficer.labelFemale>female Officer</NodOfficer.labelFemale>
+  <NodOfficer.labelFemalePlural>female Nod Officers</NodOfficer.labelFemalePlural>
+
+  <ClanTrader.label>clan trader</ClanTrader.label>
+  <ClanTrader.labelPlural>clan traders</ClanTrader.labelPlural>
+  <ClanTrader.labelMale>male clan trader</ClanTrader.labelMale>
+  <ClanTrader.labelMalePlural>male clan traders</ClanTrader.labelMalePlural>
+  <ClanTrader.labelFemale>female clan trader</ClanTrader.labelFemale>
+  <ClanTrader.labelFemalePlural>female clan traders</ClanTrader.labelFemalePlural>
+
+  <NodBlackHand.label>Black Hand</NodBlackHand.label>
+  <NodBlackHand.labelPlural>Black Hands</NodBlackHand.labelPlural>
+  <NodBlackHand.labelMale>male Black Hand</NodBlackHand.labelMale>
+  <NodBlackHand.labelMalePlural>male Black Hands</NodBlackHand.labelMalePlural>
+  <NodBlackHand.labelFemale>female Black Hand</NodBlackHand.labelFemale>
+  <NodBlackHand.labelFemalePlural>female Black Hands</NodBlackHand.labelFemalePlural>
+
+  <NodOfficerTroop.label>Officer trooper</NodOfficerTroop.label>
+  <NodOfficerTroop.labelPlural>Officer troopers</NodOfficerTroop.labelPlural>
+  <NodOfficerTroop.labelMale>male Officer trooper</NodOfficerTroop.labelMale>
+  <NodOfficerTroop.labelMalePlural>male Officer troopers</NodOfficerTroop.labelMalePlural>
+  <NodOfficerTroop.labelFemale>female Officer trooper</NodOfficerTroop.labelFemale>
+  <NodOfficerTroop.labelFemalePlural>female Officer troopers</NodOfficerTroop.labelFemalePlural>
+
+  <NodMilitia.label>Militia</NodMilitia.label>
+  <NodMilitia.labelPlural>Militias</NodMilitia.labelPlural>
+  <NodMilitia.labelMale>male Militia</NodMilitia.labelMale>
+  <NodMilitia.labelMalePlural>male Militias</NodMilitia.labelMalePlural>
+  <NodMilitia.labelFemale>female Militia</NodMilitia.labelFemale>
+  <NodMilitia.labelFemalePlural>female Militias</NodMilitia.labelFemalePlural>
+
+  <NodMilitiaRocket.label>Militia Rocketroop</NodMilitiaRocket.label>
+  <NodMilitiaRocket.labelPlural>Militia Rocketroops</NodMilitiaRocket.labelPlural>
+  <NodMilitiaRocket.labelMale>male Militia Rocketroop</NodMilitiaRocket.labelMale>
+  <NodMilitiaRocket.labelMalePlural>male Militia Rocketroops</NodMilitiaRocket.labelMalePlural>
+  <NodMilitiaRocket.labelFemale>female Militia Rocketroop</NodMilitiaRocket.labelFemale>
+  <NodMilitiaRocket.labelFemalePlural>female Militia Rocketroops</NodMilitiaRocket.labelFemalePlural>
+
+
+</LanguageData>

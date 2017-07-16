@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <NodResearch.label>NOD</NodResearch.label>
+  <NodResearch.description>Join the Brotherhood of Nod. And become the enemy of the GDI.</NodResearch.description>
+
+  <NodResearch_Buildings.label>Nod Structures</NodResearch_Buildings.label>
+  <NodResearch_Buildings.description>Get access to Nod structures. Unlocks the construction of basic structures and production facilities.</NodResearch_Buildings.description>
+
+  <NodResearch_Technology.label>Brotherhood Secrets</NodResearch_Technology.label>
+  <NodResearch_Technology.description>Get access to basic Nod technology. Necessary for further research.</NodResearch_Technology.description>
+
+  <NodResearch_AdvancedTechnology.label>Brotherhood's Enlightment</NodResearch_AdvancedTechnology.label>
+  <NodResearch_AdvancedTechnology.description>Get access to advanced Nod technology. Necessary for advanced research.</NodResearch_AdvancedTechnology.description>
+
+  <NodResearch_LiquidTechnology.label>Liquid Ichor</NodResearch_LiquidTechnology.label>
+  <NodResearch_LiquidTechnology.description>Nod's efforts have proven well, it is finally possible to liquify Tiberium and harness it's true power. Use it wisely commander. Unlocks Liquid Tiberium items.</NodResearch_LiquidTechnology.description>
+
+  <NodResearch_Security.label>Defensive Structures</NodResearch_Security.label>
+  <NodResearch_Security.description>Get access to basic Nod security structures. Unlocks the Shredder Turret.</NodResearch_Security.description>
+
+  <NodResearch_Production.label>Brotherhood Assembly I</NodResearch_Production.label>
+  <NodResearch_Production.description>Start conquering the world. Unlocks the production of small firearms and armor.</NodResearch_Production.description>
+
+  <NodResearch_AdvancedSecurity.label>Advanced Defense</NodResearch_AdvancedSecurity.label>
+  <NodResearch_AdvancedSecurity.description>Get access to advanced Nod security structures. Unlocks the Obelisk of Light.</NodResearch_AdvancedSecurity.description>
+
+  <NodResearch_AdvancedProduction.label>Brotherhood Assembly II</NodResearch_AdvancedProduction.label>
+  <NodResearch_AdvancedProduction.description>Cleanse this world from heretics. Unlocks the Black Hand armor, Flamethrower and advanced laser rifle.</NodResearch_AdvancedProduction.description>
+
+
+</LanguageData>

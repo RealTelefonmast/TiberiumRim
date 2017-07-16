@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GDIResearch.label>GDI</GDIResearch.label>
+  <GDIResearch.description>Join the Global Defense Initiative.And become the enemy of the Brotherhood.</GDIResearch.description>
+
+  <GDIResearch_Buildings.label>GDI Structures</GDIResearch_Buildings.label>
+  <GDIResearch_Buildings.description>Get access to GDI structures. Unlocks basic structures and production facilities.</GDIResearch_Buildings.description>
+
+  <GDIResearch_Technology.label>GDI Intel</GDIResearch_Technology.label>
+  <GDIResearch_Technology.description>Get access to information only known by GDI commanders. Necessary for basic technologies.</GDIResearch_Technology.description>
+
+  <GDIResearch_AdvancedTechnology.label>Classified Information</GDIResearch_AdvancedTechnology.label>
+  <GDIResearch_AdvancedTechnology.description>Get access to classified information only known by high ranking personell. Necessary for advanced technologies.</GDIResearch_AdvancedTechnology.description>
+
+  <GDIResearch_SonicTechnology.label>Sonic Breakthrough</GDIResearch_SonicTechnology.label>
+  <GDIResearch_SonicTechnology.description>GDI has developed new means in fighting Tiberium. These new weaponized sonic technologies can be used in warfare aswell. Unlocks the advanced sonic inhibitor, mobile sonic shatterer weapon and sonic emitter security stucture.</GDIResearch_SonicTechnology.description>
+
+  <GDIResearch_Security.label>Defensive Structures</GDIResearch_Security.label>
+  <GDIResearch_Security.description>Get access to basic GDI security structures. Unlocks the Watchtower.</GDIResearch_Security.description>
+
+  <GDIResearch_AdvancedSecurity.label>Advanced GDI Security</GDIResearch_AdvancedSecurity.label>
+  <GDIResearch_AdvancedSecurity.description>Get access to advanced GDI security structures. Unlocks sonic weaponry.</GDIResearch_AdvancedSecurity.description>
+
+  <GDIResearch_Production.label>GDI Armory I</GDIResearch_Production.label>
+  <GDIResearch_Production.description>Get access to GDI's Armory and protect the world. Unlocks small firearms and armor suits.</GDIResearch_Production.description>
+
+  <GDIResearch_AdvancedProduction.label>GDI Armory II</GDIResearch_AdvancedProduction.label>
+  <GDIResearch_AdvancedProduction.description>Get access to GDI's advanced and experimental weapons. Unlocks the Zone Trooper armor and railgun.</GDIResearch_AdvancedProduction.description>
+
+
+</LanguageData>

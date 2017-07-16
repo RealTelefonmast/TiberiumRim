@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Nod Structures -->
+
+  <Nod_Factory.label>Nod Assembler</Nod_Factory.label>
+  <Nod_Factory.description>The Nod Assembler is used to create high-tier materials and items.</Nod_Factory.description>
+  <Nod_Factory_Blueprint.label>Nod Assembler (blueprint)</Nod_Factory_Blueprint.label>
+  <Nod_Factory_Frame.label>Nod Assembler (building)</Nod_Factory_Frame.label>
+
+  <Nod_TiberiumRefinery.label>Nod advanced tiberium refinery</Nod_TiberiumRefinery.label>
+  <Nod_TiberiumRefinery.description>An advanced chemical refining plant. Used to refine lethal Tiberium into useful resources.</Nod_TiberiumRefinery.description>
+  <Nod_TiberiumRefinery_Blueprint.label>Nod advanced tiberium refinery (blueprint)</Nod_TiberiumRefinery_Blueprint.label>
+  <Nod_TiberiumRefinery_Frame.label>Nod advanced tiberium refinery (building)</Nod_TiberiumRefinery_Frame.label>
+
+  <Nod_TiberiumPowerPlant.label>Nod Powerplant</Nod_TiberiumPowerPlant.label>
+  <Nod_TiberiumPowerPlant.description>Produces power by consuming Tiberium fuel. Must be fueled by hand.</Nod_TiberiumPowerPlant.description>
+  <Nod_TiberiumPowerPlant_Blueprint.label>Nod Powerplant (blueprint)</Nod_TiberiumPowerPlant_Blueprint.label>
+  <Nod_TiberiumPowerPlant_Frame.label>Nod Powerplant (building)</Nod_TiberiumPowerPlant_Frame.label>
+
+
+</LanguageData>

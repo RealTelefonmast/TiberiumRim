@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Nod Structures -->
+
+  <NodWall_TBNW.label>Nod wall</NodWall_TBNW.label>
+  <NodWall_TBNW.description>An impassable wall especially designed for the Brotherhood.</NodWall_TBNW.description>
+  <NodWall_TBNW_Blueprint.label>Nod wall (blueprint)</NodWall_TBNW_Blueprint.label>
+  <NodWall_TBNW_Frame.label>Nod wall (building)</NodWall_TBNW_Frame.label>
+
+  <Nod_LaserFence_TBNW.label>Laser fence</Nod_LaserFence_TBNW.label>
+  <Nod_LaserFence_TBNW.description>Use this to protect yourself from enemies!</Nod_LaserFence_TBNW.description>
+  <Nod_LaserFence_TBNW_Blueprint.label>Laser fence (blueprint)</Nod_LaserFence_TBNW_Blueprint.label>
+  <Nod_LaserFence_TBNW_Frame.label>Laser fence (building)</Nod_LaserFence_TBNW_Frame.label>
+
+
+  <!-- Nod Doors -->
+
+  <Nod_Door.label>Nod door</Nod_Door.label>
+  <Nod_Door.description>Divides rooms. Must be manually opened and closed, which slows people down.</Nod_Door.description>
+  <Nod_Door_Blueprint.label>Nod door (blueprint)</Nod_Door_Blueprint.label>
+  <Nod_Door_Frame.label>Nod door (building)</Nod_Door_Frame.label>
+
+  <Nod_Autodoor.label>Nod autodoor</Nod_Autodoor.label>
+  <Nod_Autodoor.description>Divides rooms. Powered operation allows people to move through the door without slowing down.</Nod_Autodoor.description>
+  <Nod_Autodoor_Blueprint.label>Nod autodoor (blueprint)</Nod_Autodoor_Blueprint.label>
+  <Nod_Autodoor_Frame.label>Nod autodoor (building)</Nod_Autodoor_Frame.label>
+
+  <Nod_Laserdoor.label>Nod Lserdoor</Nod_Laserdoor.label>
+  <Nod_Laserdoor.description>Divides rooms. Powered operation allows people to move through the door without slowing down.</Nod_Laserdoor.description>
+  <Nod_Laserdoor_Blueprint.label>Nod Lserdoor (blueprint)</Nod_Laserdoor_Blueprint.label>
+  <Nod_Laserdoor_Frame.label>Nod Lserdoor (building)</Nod_Laserdoor_Frame.label>
+
+
+  <!-- Obelisk -->
+
+  <NodSecurity_Obelisk.label>Obelisk of Light</NodSecurity_Obelisk.label>
+  <NodSecurity_Obelisk.description>The Obelisk of Light.</NodSecurity_Obelisk.description>
+  <NodSecurity_Obelisk_Blueprint.label>Obelisk of Light (blueprint)</NodSecurity_Obelisk_Blueprint.label>
+  <NodSecurity_Obelisk_Frame.label>Obelisk of Light (building)</NodSecurity_Obelisk_Frame.label>
+
+  <Gun_NodObelisk.label>obelisk gun</Gun_NodObelisk.label>
+  <Gun_NodObelisk.description>pew pew</Gun_NodObelisk.description>
+
+  <Bullet_ObeliskGun.label>obelisk laser bullet</Bullet_ObeliskGun.label>
+
+
+  <!-- Shredder Turret -->
+
+  <NodSecurity_ShredderTurret.label>Shredder turret</NodSecurity_ShredderTurret.label>
+  <NodSecurity_ShredderTurret.description>A Nod shredder turret, useful to control masses.</NodSecurity_ShredderTurret.description>
+  <NodSecurity_ShredderTurret_Blueprint.label>Shredder turret (blueprint)</NodSecurity_ShredderTurret_Blueprint.label>
+  <NodSecurity_ShredderTurret_Frame.label>Shredder turret (building)</NodSecurity_ShredderTurret_Frame.label>
+
+  <Gun_ShredderTurret.label>shredder turret gun</Gun_ShredderTurret.label>
+  <Gun_ShredderTurret.description>pew pew</Gun_ShredderTurret.description>
+
+  <Bullet_Shredder.label>pew pew</Bullet_Shredder.label>
+
+
+  <!-- Nod Tiberium Suppressor -->
+
+  <Nod_TiberiumSuppressor.label>Tiberium-Growth Suppressor</Nod_TiberiumSuppressor.label>
+  <Nod_TiberiumSuppressor.description>This sepcialized facility connects to a nearby wall (needs to be touching) and spreads a suppressing liquid through those. This way Tiberium will be suppressed from further growth near the walls. Requires a huge amount of electricity.</Nod_TiberiumSuppressor.description>
+  <Nod_TiberiumSuppressor_Blueprint.label>Tiberium-Growth Suppressor (blueprint)</Nod_TiberiumSuppressor_Blueprint.label>
+  <Nod_TiberiumSuppressor_Frame.label>Tiberium-Growth Suppressor (building)</Nod_TiberiumSuppressor_Frame.label>
+
+
+</LanguageData>

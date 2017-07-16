@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <NodConcreteTile.label>Nod Concrete Tile</NodConcreteTile.label>
+  <NodConcreteTile.Description>Nod concrete tiles.</NodConcreteTile.Description>
+
+  <NodConcreteFloor.label>Nod Concrete Floor</NodConcreteFloor.label>
+  <NodConcreteFloor.Description>Nod concrete tiles.</NodConcreteFloor.Description>
+
+  <NodDangerTile.label>Nod Striped Tile</NodDangerTile.label>
+  <NodDangerTile.Description>Nod danger tiles.</NodDangerTile.Description>
+
+  <NodCarbonTile.label>Nod Carbon Tile</NodCarbonTile.label>
+  <NodCarbonTile.Description>Nod carbon tiles.</NodCarbonTile.Description>
+
+
+  <!-- GDI -->
+
+  <GDIConcreteTile.label>GDI Concrete Tile</GDIConcreteTile.label>
+  <GDIConcreteTile.Description>GDI concrete tiles.</GDIConcreteTile.Description>
+
+  <GDIConcreteFloor.label>GDI Concrete Floor</GDIConcreteFloor.label>
+  <GDIConcreteFloor.Description>GDI concrete tiles.</GDIConcreteFloor.Description>
+
+  <GDIDangerTile.label>GDI Striped Tile</GDIDangerTile.label>
+  <GDIDangerTile.Description>GDI striped tiles.</GDIDangerTile.Description>
+
+  <GDIReinforcedTile.label>GDI Reinforced Tile</GDIReinforcedTile.label>
+  <GDIReinforcedTile.Description>GDI reinforced tiles.</GDIReinforcedTile.Description>
+
+
+</LanguageData>

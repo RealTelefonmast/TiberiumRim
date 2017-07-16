@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- GDI Rifle -->
+
+  <Bullet_GDIRifle.label>bullet</Bullet_GDIRifle.label>
+
+  <Gun_GDIRifle.label>GDI rifle</Gun_GDIRifle.label>
+  <Gun_GDIRifle.description>A general-purpose military weapon for field or urban combat.</Gun_GDIRifle.description>
+
+
+  <!-- GDI Advanced Rifles -->
+
+  <Bullet_Railgun.label>railgun bolt</Bullet_Railgun.label>
+
+  <Gun_GDIRailgun.label>GDI Railgun</Gun_GDIRailgun.label>
+  <Gun_GDIRailgun.description>This railgun fires precise high velocity bolts.</Gun_GDIRailgun.description>
+
+  <Bullet_Shatterer.label>sonic wave</Bullet_Shatterer.label>
+
+  <Gun_GDIShatterer.label>Mobile Sonic Shatterer</Gun_GDIShatterer.label>
+  <Gun_GDIShatterer.description>This gun uses GDI's sonic technology. Extremly unstable.</Gun_GDIShatterer.description>
+
+  <Bullet_Mortar.label>mortar shell</Bullet_Mortar.label>
+
+  <GDI_Mortar.label>GDI Mobile Mortar</GDI_Mortar.label>
+  <GDI_Mortar.description>This is a expermintal weapon used by GDI for long distance fights.</GDI_Mortar.description>
+
+
+</LanguageData>
