@@ -29,24 +29,27 @@
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<fillPercent>0.65</fillPercent>
 		<costList>
-			<Steel>150</Steel>
+			<Steel>175</Steel>
 			<Component>10</Component>
 		</costList>
 		<comps>
+			<li Class="CompProperties_HeatPusher">
+				<heatPerSecond>-200</heatPerSecond>
+			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>3</glowRadius>
 				<glowColor>(200,200,255,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>325</basePowerConsumption>
+				<basePowerConsumption>350</basePowerConsumption>
 				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
 			<li Class="TiberiumRim.CompProperties_GroundFreezer">
 				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
-				<radius>9</radius>
-				<daysToRadius>5</daysToRadius>
+				<radius>10.5</radius>
+				<daysToRadius>3.5</daysToRadius>
 				<requiresElectricity>true</requiresElectricity>
 			</li>
 		</comps>
@@ -98,16 +101,15 @@
 		<comps>
 			<li Class="TiberiumRim.CompProperties_GroundFreezer">
 				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
-				<radius>3</radius>
-				<daysToRadius>2.5</daysToRadius>
+				<radius>3.5</radius>
+				<daysToRadius>1.5</daysToRadius>
 				<requiresElectricity>false</requiresElectricity>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>-25</heatPerSecond>
-				<heatPushMinTemperature>15</heatPushMinTemperature>
 			</li>
 			<li Class="CompProperties_Lifespan">
-				<lifeSpanTicks>600000</lifeSpanTicks>
+				<lifeSpanTicks>900000</lifeSpanTicks>
 			</li>
 		</comps>	
 		<designationCategory>Security</designationCategory>
