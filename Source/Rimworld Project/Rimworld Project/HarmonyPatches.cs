@@ -71,9 +71,10 @@ namespace TiberiumRim
             if (!c.Roofed(map) && c.Impassable(map) && RoofCollapseUtility.WithinRangeOfRoofHolder(c, map))
             {
                 Building b = c.GetFirstBuilding(map);
-                if (b != null)
+                Plant p = c.GetPlant(map);
+                if (b != null | p != null)
                 {
-                    if (b.def.defName.Contains("TBNS"))
+                    if (b.def.defName.Contains("TBNS") | p.def.defName.Contains("Tiberium"))
                     {
                         return false;
                     }

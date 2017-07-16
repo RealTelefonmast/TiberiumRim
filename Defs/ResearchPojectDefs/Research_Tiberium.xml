@@ -76,10 +76,10 @@
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
-		<defName>TiberiumSonicInhibition</defName>
+		<defName>TiberiumInhibition</defName>
 		<label>Tiberium Inhibition</label>
-		<description>Exploit the crystalline nature of Tiberium to shatter it with Sonic frequencies:\n\n -Construction of Sonic Inhibitors\n\n -Construction of Sonic Inhibitor Fences \n\n -Construction of the Decrystallizer (Misc)</description>
-		<baseCost>650</baseCost>
+		<description>Exploit the nature of Tiberium and stop it from spreading further:\n\n -Construction of deep ground freezer</description>
+		<baseCost>750</baseCost>
 		<techLevel>Industrial</techLevel>
 		<tab>Tiberium</tab>
 		<prerequisites>
@@ -92,6 +92,20 @@
 		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
 		<researchViewX>1.25</researchViewX>
 		<researchViewY>3.75</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TiberiumInhibitionTribal</defName>
+		<label>Tiberium Growth Block</label>
+		<description>Your tribe found a clever idea on how to reduce Tiberium threat. An ice box so cold it freezes the ground in a small radius around itself.</description>
+		<baseCost>750</baseCost>
+		<techLevel>Medieval</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>PassiveCooler</li>
+		</prerequisites>
+		<researchViewX>1.25</researchViewX>
+		<researchViewY>4.75</researchViewY>
 	</ResearchProjectDef>
 	
 </Defs>

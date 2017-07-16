@@ -29,6 +29,28 @@ namespace TiberiumRim
             });
         }
 
+        public override void TickRare()
+        {
+            spawnVeinmonster();
+            base.TickRare();
+        }
+
+        public virtual void spawnVeinmonster()
+        {
+            IntVec3 pos = this.Position.RandomAdjacentCell8Way();
+
+            int maximum = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinhole")).Count * 12;
+            int Veinmonsters = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinmonster_TBI")).Count;
+
+            if (Rand.Chance(0.01f) && Veinmonsters < maximum)
+            {
+                PawnKindDef Veinmonster = DefDatabase<PawnKindDef>.GetNamed("Veinmonster_TBI", true);
+                PawnGenerationRequest request = new PawnGenerationRequest(Veinmonster);
+                Pawn pawn = PawnGenerator.GeneratePawn(request);
+                GenSpawn.Spawn(pawn, pos, Map);
+            }
+        }
+
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
             destroyVeins(GenAdjFast.AdjacentCells8Way(this));

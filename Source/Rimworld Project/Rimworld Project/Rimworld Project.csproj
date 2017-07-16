@@ -58,8 +58,8 @@
   <ItemGroup>
     <Compile Include="AsteroidDef.cs" />
     <Compile Include="Building_Veinhole.cs" />
-    <Compile Include="CompSonicEmitter.cs" />
-    <Compile Include="Comp_Decrystallizer.cs" />
+    <Compile Include="CheckLists.cs" />
+    <Compile Include="Comp_GroundFreezer.cs" />
     <Compile Include="Comp_TiberiumProducer.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="HediffComp_Mutation.cs" />

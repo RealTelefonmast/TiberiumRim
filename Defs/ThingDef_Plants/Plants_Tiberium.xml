@@ -463,8 +463,9 @@
 			<texPath>Plant/Tiberium/Glaciers</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
-				<selectable>true</selectable>
+		<selectable>true</selectable>
 		<pathCost>355</pathCost>
+		<passability>Impassable</passability>
 		<plant>
 			<dieIfLeafless>false</dieIfLeafless>
 			<harvestWork>10000</harvestWork>

@@ -708,14 +708,9 @@ namespace TiberiumRim
             if (!GenPlant.SnowAllowsPlanting(dest, map))
                 return null;
 
-
-
-            if (CompSonicEmitter.ProtectedCells != null)
+            if(CheckLists.ProtectedCells.Contains(dest) || CheckLists.SuppressedCells.Contains(dest))
             {
-                if (CompSonicEmitter.ProtectedCells.Contains(dest))
-                {
-                    return null;
-                }
+                return null;
             }
 
             var t = dest.GetTerrain(map);

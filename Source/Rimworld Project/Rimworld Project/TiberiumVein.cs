@@ -90,22 +90,8 @@ namespace TiberiumRim
         {
             base.TickLong();
             Bleed(Map);
-            spawnVeinmonster(this.Position);
         }
 
-        public virtual void spawnVeinmonster(IntVec3 pos)
-        {
-            int maximum = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinhole")).Count * 12;            
-            int Veinmonsters = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinmonster_TBI")).Count;
-
-            if (Rand.Chance(0.01f) && Veinmonsters < maximum) 
-            {
-                PawnKindDef Veinmonster = DefDatabase<PawnKindDef>.GetNamed("Veinmonster_TBI", true);
-                PawnGenerationRequest request = new PawnGenerationRequest(Veinmonster);
-                Pawn pawn = PawnGenerator.GeneratePawn(request);
-                GenSpawn.Spawn(pawn, pos, Map);
-            }
-        }
 
         //Not quite sure what to use this for. So far it would only kill Veins that are not connected to an adult Vein. This rarely happens and basically causes unnecessary checks
         /*   public void Networkcheck(Map map)
