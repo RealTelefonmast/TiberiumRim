@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <AteTiberiumMeatDirect.stages.0.label>ate tiberium meat</AteTiberiumMeatDirect.stages.0.label>
+  <AteTiberiumMeatDirect.stages.0.description>I ate some glowing, green crunchy meat. I feel sick.</AteTiberiumMeatDirect.stages.0.description>
+
+  <AteTiberiumMeatAsIngredient.stages.0.label>ate cooked tiberium meat</AteTiberiumMeatAsIngredient.stages.0.label>
+  <AteTiberiumMeatAsIngredient.stages.0.description>I ate a meal cooked from glowing, crunchy meat. The seasoning partly covered the taste, but there were spikey pieces and a burning sensation is covering my tongue. I think I'm dying.</AteTiberiumMeatAsIngredient.stages.0.description>
+
+
+</LanguageData>

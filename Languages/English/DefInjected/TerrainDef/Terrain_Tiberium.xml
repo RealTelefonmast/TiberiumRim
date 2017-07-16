@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumRockGreen.label>green tiberium rock</TiberiumRockGreen.label>
+  <TiberiumRockBlue.label>blue tiberium rock</TiberiumRockBlue.label>
+  <TiberiumMossyTerrainGreen.label>green Tiberium moss covered ground</TiberiumMossyTerrainGreen.label>
+  <TiberiumMossyTerrainBlue.label>blue Tiberium moss covered ground</TiberiumMossyTerrainBlue.label>
+  <TiberiumSandGreen.label>green tiberium sand</TiberiumSandGreen.label>
+  <TiberiumSandBlue.label>blue tiberium sand</TiberiumSandBlue.label>
+  <TiberiumSandRed.label>red tiberium sand</TiberiumSandRed.label>
+  <TiberiumSoilGreen.label>green tiberium soil</TiberiumSoilGreen.label>
+  <TiberiumSoilPod.label>pod tiberium soil</TiberiumSoilPod.label>
+  <TiberiumSoilBlue.label>blue tiberium soil</TiberiumSoilBlue.label>
+  <TiberiumSoilRed.label>red tiberium soil</TiberiumSoilRed.label>
+  <VeinSoilRed.label>red vein soil</VeinSoilRed.label>
+  <TiberiumWater.label>Tiberium contaminated water</TiberiumWater.label>
+  <DecrystallizedSoil.label>Decrystallized soil</DecrystallizedSoil.label>
+  <DecrystallizedSand.label>Decrystallized sand</DecrystallizedSand.label>
+
+
+</LanguageData>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumResearch.label>tiberium base research</TiberiumResearch.label>
+  <TiberiumResearch.description>Allows the research of Tiberium technologies:\n\n -Construction of the Tiberium Research Building</TiberiumResearch.description>
+
+  <TiberiumKnowledge.label>tiberium knowledge</TiberiumKnowledge.label>
+  <TiberiumKnowledge.description>Allows the understanding of Tiberium:\n\n -Craft Tiberium (lore) books\n\n -Craft Tiberium Protection Suits.</TiberiumKnowledge.description>
+
+  <TiberiumResearchRefining.label>tiberium Refining</TiberiumResearchRefining.label>
+  <TiberiumResearchRefining.description>Allows Tiberium to be refined.\n\n -Construction of the Tiberium refinery</TiberiumResearchRefining.description>
+
+  <TiberiumPower.label>tiberium Power</TiberiumPower.label>
+  <TiberiumPower.description>Allows the construction of the Tiberium power plant.</TiberiumPower.description>
+
+  <TiberiumInhibition.label>Tiberium Inhibition</TiberiumInhibition.label>
+  <TiberiumInhibition.description>Exploit the nature of Tiberium and stop it from spreading further:\n\n -Construction of deep ground freezer</TiberiumInhibition.description>
+
+  <TiberiumInhibitionTribal.label>Tiberium Growth Block</TiberiumInhibitionTribal.label>
+  <TiberiumInhibitionTribal.description>Your tribe found a clever idea on how to reduce Tiberium threat. An ice box so cold it freezes the ground in a small radius around itself.</TiberiumInhibitionTribal.description>
+
+
+  <!--<TiberiumSonicInhibition.label>Tiberium Inhibition</TiberiumSonicInhibition.label>-->
+  <!--<TiberiumSonicInhibition.description>Exploit the crystalline nature of Tiberium to shatter it with Sonic frequencies:\n\n -Construction of Sonic Inhibitors\n\n -Construction of Sonic Inhibitor Fences \n\n -Construction of the Decrystallizer (Misc)</TiberiumSonicInhibition.description>-->
+
+</LanguageData>

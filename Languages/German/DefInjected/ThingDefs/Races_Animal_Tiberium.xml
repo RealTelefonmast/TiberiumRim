@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Visceroid_TBI.label>Visceroid</Visceroid_TBI.label>
+  <Visceroid_TBI.description>Eine schleimartige schreckliche Lebensform. Entstanden nach dem Tod einer Kreatur durch Tiberium.</Visceroid_TBI.description>
+  <Visceroid_TBI_Leather.label>Visceroid Haut</Visceroid_TBI_Leather.label>
+  <Visceroid_TBI_Leather.description>Visceroid Haut</Visceroid_TBI_Leather.description>
+  <Visceroid_TBI_Leather.stuffProps.stuffAdjective>Visceroid Haut</Visceroid_TBI_Leather.stuffProps.stuffAdjective>
+  <Visceroid_TBI_Meat.label>Visceroid Masse</Visceroid_TBI_Meat.label>
+  <Visceroid_TBI_Meat.description>Visceroid Masse</Visceroid_TBI_Meat.description>
+  <Visceroid_TBI_Corpse.label>Visceroid Leiche</Visceroid_TBI_Corpse.label>
+  <Visceroid_TBI_Corpse.description>Visceroid Leiche</Visceroid_TBI_Corpse.description>
+
+  <Veinmonster_TBI.label>Adermonsterchen</Veinmonster_TBI.label>
+  <Veinmonster_TBI.description>Adermonsterchen, auch als Proto-Visceroiden bekannt, sind Kreaturen die aus Tiberium Adern stammen. Zwar klein und schwach alleine, sind sie aber stark in großen Mengen, denk daran ein Adermonster so schnell wie möglich zu zerstören wenn es zu groß wird!</Veinmonster_TBI.description>
+  <Veinmonster_TBI_Leather.label>Adermonsterchen Haut</Veinmonster_TBI_Leather.label>
+  <Veinmonster_TBI_Leather.description>Adermonsterchen Haut</Veinmonster_TBI_Leather.description>
+  <Veinmonster_TBI_Leather.stuffProps.stuffAdjective>Adermonsterchen Haut</Veinmonster_TBI_Leather.stuffProps.stuffAdjective>
+  <Veinmonster_TBI_Meat.label>Adermonsterchen Fleisch</Veinmonster_TBI_Meat.label>
+  <Veinmonster_TBI_Meat.description>Adermonsterchen Fleisch</Veinmonster_TBI_Meat.description>
+  <Veinmonster_TBI_Corpse.label>Adermonsterchen Leiche</Veinmonster_TBI_Corpse.label>
+  <Veinmonster_TBI_Corpse.description>Adermonsterchen Leiche</Veinmonster_TBI_Corpse.description>
+
+
+</LanguageData>
