@@ -74,15 +74,22 @@ namespace TiberiumRim
             this.progressTicks = 0;
         }
 
+        public override void PostExposeData()
+        {
+            Scribe_Values.Look<int>(ref this.progressTicks, "progressTicks", 0, false);
+        }
+
         public override void CompTickRare()
         {
             if (this.Working)
             {
                 this.progressTicks += 250;
                 int num = GenRadial.NumCellsInRadius(this.CurrentRadius);
+
                 for (int i = 0; i < num; i++)
                 {
-                    this.AffectCell(this.parent.Position + GenRadial.RadialPattern[i]);
+                    IntVec3 positionToCheck = this.parent.Position + GenRadial.RadialPattern[i];
+                    this.AffectCell(positionToCheck);                 
                 }
             }
         }
@@ -91,21 +98,27 @@ namespace TiberiumRim
         {
             if (c.InBounds(this.parent.Map))
             {
-                SnowUtility.AddSnowRadial(this.parent.Position, this.parent.Map, CurrentRadius, 0.095f);
-
                 TerrainDef terrain = c.GetTerrain(this.parent.Map);
-                TerrainDef Postterrain = null;
-                if (terrain.defName.Contains("Water") | terrain.defName.Contains("Marsh"))
+                if (terrain != null)
                 {
-                    Postterrain = DefDatabase<TerrainDef>.GetNamed("Ice");
-                    this.parent.Map.terrainGrid.SetTerrain(c, Postterrain);
+                    if (!terrain.Removable)
+                    {
+
+                        this.parent.Map.snowGrid.AddDepth(c, 0.095f);
+                        TerrainDef Postterrain = null;
+                        if (terrain.defName.Contains("Water") | terrain.defName.Contains("Marsh"))
+                        {
+                            Postterrain = DefDatabase<TerrainDef>.GetNamed("Ice");
+                            this.parent.Map.terrainGrid.SetTerrain(c, Postterrain);
+                        }
+                        Plant p = c.GetPlant(this.parent.Map);
+                        if (p != null)
+                        {
+                            p.Destroy(DestroyMode.Vanish);
+                        }
+                        return;
+                    }
                 }
-                Plant p = c.GetPlant(this.parent.Map);
-                if(p != null)
-                {
-                    p.Destroy(DestroyMode.Vanish);
-                }
-                return;
             }
         }
 
