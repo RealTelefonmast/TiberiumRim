@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <ExtractResourcesFromGreenTiberium.label>Получить ресурсы из зелёного Тиберия</ExtractResourcesFromGreenTiberium.label>
+  <ExtractResourcesFromGreenTiberium.description>Этот очистительный завод использует сложные реакции для разложения зелёного Тиберия в сталь.</ExtractResourcesFromGreenTiberium.description>
+  <ExtractResourcesFromGreenTiberium.jobString>Очищает зелёный Тиберий.</ExtractResourcesFromGreenTiberium.jobString>
+
+  <ExtractResourcesFromBlueTiberium.label>Получить ресурсы из синего Тиберия</ExtractResourcesFromBlueTiberium.label>
+  <ExtractResourcesFromBlueTiberium.description>Этот очистительный завод использует сложные реакции для разложения синего Тиберия в пласталь.</ExtractResourcesFromBlueTiberium.description>
+  <ExtractResourcesFromBlueTiberium.jobString>Очищает синий Тиберий.</ExtractResourcesFromBlueTiberium.jobString>
+
+  <ExtractResourcesFromRedTiberium.label>Получить ресурсы из красного Тиберия</ExtractResourcesFromRedTiberium.label>
+  <ExtractResourcesFromRedTiberium.description>Этот очистительный завод использует сложные реакции для разложения красного Тиберия в уран.</ExtractResourcesFromRedTiberium.description>
+  <ExtractResourcesFromRedTiberium.jobString>Очищает красный Тиберий.</ExtractResourcesFromRedTiberium.jobString>
+
+  <ExtractResourcesFromVeinTiberium.label>Получить ресурсы из Тибериумной жилы</ExtractResourcesFromVeinTiberium.label>
+  <ExtractResourcesFromVeinTiberium.description>Этот очистительный завод использует сложные реакции для разложения Тибериумной жилы в уран и зелёный Тиберий.</ExtractResourcesFromVeinTiberium.description>
+  <ExtractResourcesFromVeinTiberium.jobString>Очищает жилу Тиберия.</ExtractResourcesFromVeinTiberium.jobString>
+
+  <MakeTiberiumFuel.label>Сделать Тибериумное топливо</MakeTiberiumFuel.label>
+  <MakeTiberiumFuel.description>Этот очистительный завод использует сложные реакции для очистки Тиберия.</MakeTiberiumFuel.description>
+  <MakeTiberiumFuel.jobString>Делает Тибериумное топливо.</MakeTiberiumFuel.jobString>
+
+  <MakeBookRiparius.label>Написать о зелёном Тибериуме.</MakeBookRiparius.label>
+  <MakeBookRiparius.jobString>Пишит о зелёном Тибериуме.</MakeBookRiparius.jobString>
+
+  <MakeBookVinifera.label>Написать о синем Тибериуме.</MakeBookVinifera.label>
+  <MakeBookVinifera.jobString>Пишит о синем Тибериуме.</MakeBookVinifera.jobString>
+
+  <MakeBookRutila.label>Написать о красном Тибериуме.</MakeBookRutila.label>
+  <MakeBookRutila.jobString>Пишит о красном Тибериуме.</MakeBookRutila.jobString>
+
+
+</LanguageData>

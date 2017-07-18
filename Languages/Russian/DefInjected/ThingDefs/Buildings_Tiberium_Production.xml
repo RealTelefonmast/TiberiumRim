@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumRefinery.label>Завод очистки тиберия</TiberiumRefinery.label>
+  <TiberiumRefinery.description>Специализированная установка химической очистки. Используется для очистки смертельного тиберия в полезные ресурсы.</TiberiumRefinery.description>
+  <TiberiumRefinery_Blueprint.label>Завод очистки тиберия (чертёж)</TiberiumRefinery_Blueprint.label>
+  <TiberiumRefinery_Frame.label>Завод очистки тиберия (постройка)</TiberiumRefinery_Frame.label>
+
+  <TiberiumPowerPlant.label>Тибериумная электростанция</TiberiumPowerPlant.label>
+  <TiberiumPowerPlant.description>Производит энергию, потребляя тибериумное топливо. Должна подпитываться вручную.</TiberiumPowerPlant.description>
+  <TiberiumPowerPlant_Blueprint.label>Тибериумная электростанция (чертёж)</TiberiumPowerPlant_Blueprint.label>
+  <TiberiumPowerPlant_Frame.label>Тибериумная электростанция (постройка)</TiberiumPowerPlant_Frame.label>
+
+
+</LanguageData>

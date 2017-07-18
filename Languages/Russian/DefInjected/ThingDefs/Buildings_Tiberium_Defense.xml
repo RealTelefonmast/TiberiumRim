@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GroundFreezer.label>Морозильная камера глубокой заморозки</GroundFreezer.label>
+  <GroundFreezer.description>Это устройство замораживает землю изнутри. Мороз и снег препятствуют росту кристаллов. Но остерегайтесь высоких температур!</GroundFreezer.description>
+  <GroundFreezer_Blueprint.label>Морозильная камера глубокой заморозки (чертёж)</GroundFreezer_Blueprint.label>
+  <GroundFreezer_Blueprint_Install.label>Морозильная камера глубокой заморозки (чертёж)</GroundFreezer_Blueprint_Install.label>
+  <GroundFreezer_Frame.label>Морозильная камера глубокой заморозки (постройка)</GroundFreezer_Frame.label>
+
+  <GroundFreezerTribal.label>Морозильная камера</GroundFreezerTribal.label>
+  <GroundFreezerTribal.description>Эта усовершенствованная версия пассивного кулера достаточно сильна, чтобы заморозить землю. Хорошая защита от тиберия.</GroundFreezerTribal.description>
+  <GroundFreezerTribal_Blueprint.label>Морозильная камера (чертёж)</GroundFreezerTribal_Blueprint.label>
+  <GroundFreezerTribal_Blueprint_Install.label>Морозильная камера (чертёж)</GroundFreezerTribal_Blueprint_Install.label>
+  <GroundFreezerTribal_Frame.label>Морозильная камера (постройка)</GroundFreezerTribal_Frame.label>
+
+
+</LanguageData>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Visceroid_TBI.label>Вискеройд</Visceroid_TBI.label>
+  <Visceroid_TBI.labelPlural>Вискеройды</Visceroid_TBI.labelPlural>
+  <Visceroid_TBI.labelMale>Вискеройд самец</Visceroid_TBI.labelMale>
+  <Visceroid_TBI.labelMalePlural>Самцы вискеройдов</Visceroid_TBI.labelMalePlural>
+  <Visceroid_TBI.labelFemale>Самка вискеройда</Visceroid_TBI.labelFemale>
+  <Visceroid_TBI.labelFemalePlural>Самки вискеройдов</Visceroid_TBI.labelFemalePlural>
+  <Visceroid_TBI.lifeStages.0.label>Малыш вискеройд</Visceroid_TBI.lifeStages.0.label>
+  <Visceroid_TBI.lifeStages.0.labelPlural>Малыши вискеройдов</Visceroid_TBI.lifeStages.0.labelPlural>
+  <Visceroid_TBI.lifeStages.0.labelMale>Самец вискеройд (малыш)</Visceroid_TBI.lifeStages.0.labelMale>
+  <Visceroid_TBI.lifeStages.0.labelMalePlural>Самцы вискеройдов (малыш)</Visceroid_TBI.lifeStages.0.labelMalePlural>
+  <Visceroid_TBI.lifeStages.0.labelFemale>Самка вискеройд (малыш)</Visceroid_TBI.lifeStages.0.labelFemale>
+  <Visceroid_TBI.lifeStages.0.labelFemalePlural>Самки вискеройдов (малыш)</Visceroid_TBI.lifeStages.0.labelFemalePlural>
+  <Visceroid_TBI.lifeStages.1.label>Вискеройд</Visceroid_TBI.lifeStages.1.label>
+  <Visceroid_TBI.lifeStages.1.labelPlural>Вискеройд</Visceroid_TBI.lifeStages.1.labelPlural>
+  <Visceroid_TBI.lifeStages.1.labelMale>Самец вискеройд</Visceroid_TBI.lifeStages.1.labelMale>
+  <Visceroid_TBI.lifeStages.1.labelMalePlural>Самцы вискеройдов</Visceroid_TBI.lifeStages.1.labelMalePlural>
+  <Visceroid_TBI.lifeStages.1.labelFemale>Самка вискеройд</Visceroid_TBI.lifeStages.1.labelFemale>
+  <Visceroid_TBI.lifeStages.1.labelFemalePlural>Самки вискеройдов</Visceroid_TBI.lifeStages.1.labelFemalePlural>
+  <Visceroid_TBI.lifeStages.2.label>Вискеройд</Visceroid_TBI.lifeStages.2.label>
+  <Visceroid_TBI.lifeStages.2.labelPlural>Вискеройд</Visceroid_TBI.lifeStages.2.labelPlural>
+  <Visceroid_TBI.lifeStages.2.labelMale>Самец вискеройд</Visceroid_TBI.lifeStages.2.labelMale>
+  <Visceroid_TBI.lifeStages.2.labelMalePlural>Самцы вискеройдов</Visceroid_TBI.lifeStages.2.labelMalePlural>
+  <Visceroid_TBI.lifeStages.2.labelFemale>Самка вискеройд</Visceroid_TBI.lifeStages.2.labelFemale>
+  <Visceroid_TBI.lifeStages.2.labelFemalePlural>Самки вискеройдов</Visceroid_TBI.lifeStages.2.labelFemalePlural>
+
+  <Veinmonster_TBI.label>Вейн-монстр</Veinmonster_TBI.label>
+  <Veinmonster_TBI.labelPlural>Вейн-монстры</Veinmonster_TBI.labelPlural>
+  <Veinmonster_TBI.labelMale>Самец вейн-монстр</Veinmonster_TBI.labelMale>
+  <Veinmonster_TBI.labelMalePlural>Самцы вейн-монстра</Veinmonster_TBI.labelMalePlural>
+  <Veinmonster_TBI.labelFemale>Самка вейн-монстр</Veinmonster_TBI.labelFemale>
+  <Veinmonster_TBI.labelFemalePlural>Самки вейн-монстра</Veinmonster_TBI.labelFemalePlural>
+  <Veinmonster_TBI.lifeStages.0.label>Малыш вейн-монстр</Veinmonster_TBI.lifeStages.0.label>
+  <Veinmonster_TBI.lifeStages.0.labelPlural>Малыш вейн-монстра</Veinmonster_TBI.lifeStages.0.labelPlural>
+  <Veinmonster_TBI.lifeStages.0.labelMale>Самец малыш вейн-монстр</Veinmonster_TBI.lifeStages.0.labelMale>
+  <Veinmonster_TBI.lifeStages.0.labelMalePlural>Самцы вейн-монстра (малыш)</Veinmonster_TBI.lifeStages.0.labelMalePlural>
+  <Veinmonster_TBI.lifeStages.0.labelFemale>Самка малыш вейн-монстр</Veinmonster_TBI.lifeStages.0.labelFemale>
+  <Veinmonster_TBI.lifeStages.0.labelFemalePlural>Самки вейн-монстра (малыш)</Veinmonster_TBI.lifeStages.0.labelFemalePlural>
+  <Veinmonster_TBI.lifeStages.1.label>Вейн-монстр</Veinmonster_TBI.lifeStages.1.label>
+  <Veinmonster_TBI.lifeStages.1.labelPlural>Вейн-монстр</Veinmonster_TBI.lifeStages.1.labelPlural>
+  <Veinmonster_TBI.lifeStages.1.labelMale>Самец вейн-монстр</Veinmonster_TBI.lifeStages.1.labelMale>
+  <Veinmonster_TBI.lifeStages.1.labelMalePlural>Самцы вейн-монстра</Veinmonster_TBI.lifeStages.1.labelMalePlural>
+  <Veinmonster_TBI.lifeStages.1.labelFemale>Самка вейн-монстр</Veinmonster_TBI.lifeStages.1.labelFemale>
+  <Veinmonster_TBI.lifeStages.1.labelFemalePlural>Самки вейн-монстра</Veinmonster_TBI.lifeStages.1.labelFemalePlural>
+  <Veinmonster_TBI.lifeStages.2.label>Вейн-монстр</Veinmonster_TBI.lifeStages.2.label>
+  <Veinmonster_TBI.lifeStages.2.labelPlural>Вейн-монстр</Veinmonster_TBI.lifeStages.2.labelPlural>
+  <Veinmonster_TBI.lifeStages.2.labelMale>Самец вейн-монстр</Veinmonster_TBI.lifeStages.2.labelMale>
+  <Veinmonster_TBI.lifeStages.2.labelMalePlural>Самцы вейн-монстра</Veinmonster_TBI.lifeStages.2.labelMalePlural>
+  <Veinmonster_TBI.lifeStages.2.labelFemale>Самка вейн-монстр</Veinmonster_TBI.lifeStages.2.labelFemale>
+  <Veinmonster_TBI.lifeStages.2.labelFemalePlural>Самки вейн-монстра</Veinmonster_TBI.lifeStages.2.labelFemalePlural>
+
+
+</LanguageData>

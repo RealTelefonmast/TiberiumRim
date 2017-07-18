@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Thrimbo_TBI.label>Трумбо</Thrimbo_TBI.label>
+  <Thrimbo_TBI.labelPlural>Трумбо</Thrimbo_TBI.labelPlural>
+  <Thrimbo_TBI.labelMale>Самец трумбо</Thrimbo_TBI.labelMale>
+  <Thrimbo_TBI.labelMalePlural>Самцы трумбо</Thrimbo_TBI.labelMalePlural>
+  <Thrimbo_TBI.labelFemale>Самка трумбо</Thrimbo_TBI.labelFemale>
+  <Thrimbo_TBI.labelFemalePlural>Самки трумбо</Thrimbo_TBI.labelFemalePlural>
+  <Thrimbo_TBI.lifeStages.0.label>Телёнок трумбо</Thrimbo_TBI.lifeStages.0.label>
+  <Thrimbo_TBI.lifeStages.0.labelPlural>Телята трумбо</Thrimbo_TBI.lifeStages.0.labelPlural>
+  <Thrimbo_TBI.lifeStages.0.labelMale>Телёнок трумбо (самец)</Thrimbo_TBI.lifeStages.0.labelMale>
+  <Thrimbo_TBI.lifeStages.0.labelMalePlural>Телята трумбо (самцы)</Thrimbo_TBI.lifeStages.0.labelMalePlural>
+  <Thrimbo_TBI.lifeStages.0.labelFemale>Телёнок трумбо (самка)</Thrimbo_TBI.lifeStages.0.labelFemale>
+  <Thrimbo_TBI.lifeStages.0.labelFemalePlural>Телята трумбо (самки)</Thrimbo_TBI.lifeStages.0.labelFemalePlural>
+  <Thrimbo_TBI.lifeStages.1.label>Трумбо</Thrimbo_TBI.lifeStages.1.label>
+  <Thrimbo_TBI.lifeStages.1.labelPlural>Трумбо</Thrimbo_TBI.lifeStages.1.labelPlural>
+  <Thrimbo_TBI.lifeStages.1.labelMale>Самец трумбо</Thrimbo_TBI.lifeStages.1.labelMale>
+  <Thrimbo_TBI.lifeStages.1.labelMalePlural>Самцы трумбо</Thrimbo_TBI.lifeStages.1.labelMalePlural>
+  <Thrimbo_TBI.lifeStages.1.labelFemale>Самка трумбо</Thrimbo_TBI.lifeStages.1.labelFemale>
+  <Thrimbo_TBI.lifeStages.1.labelFemalePlural>Самки трумбо</Thrimbo_TBI.lifeStages.1.labelFemalePlural>
+  <Thrimbo_TBI.lifeStages.2.label>Трумбо</Thrimbo_TBI.lifeStages.2.label>
+  <Thrimbo_TBI.lifeStages.2.labelPlural>Трумбо</Thrimbo_TBI.lifeStages.2.labelPlural>
+  <Thrimbo_TBI.lifeStages.2.labelMale>Самец трумбо</Thrimbo_TBI.lifeStages.2.labelMale>
+  <Thrimbo_TBI.lifeStages.2.labelMalePlural>Самцы трумбо</Thrimbo_TBI.lifeStages.2.labelMalePlural>
+  <Thrimbo_TBI.lifeStages.2.labelFemale>Самка трумбо</Thrimbo_TBI.lifeStages.2.labelFemale>
+  <Thrimbo_TBI.lifeStages.2.labelFemalePlural>Самки трумбо</Thrimbo_TBI.lifeStages.2.labelFemalePlural>
+
+  <TiberiumTerror_TBI.label>Тибериумный террор</TiberiumTerror_TBI.label>
+  <TiberiumTerror_TBI.labelPlural>Тибериумный террор</TiberiumTerror_TBI.labelPlural>
+  <TiberiumTerror_TBI.labelMale>Тибериумный террор самец</TiberiumTerror_TBI.labelMale>
+  <TiberiumTerror_TBI.labelMalePlural>Тибериумный террор самец</TiberiumTerror_TBI.labelMalePlural>
+  <TiberiumTerror_TBI.labelFemale>Тибериумный террор самка</TiberiumTerror_TBI.labelFemale>
+  <TiberiumTerror_TBI.labelFemalePlural>Тибериумный террор самка</TiberiumTerror_TBI.labelFemalePlural>
+  <TiberiumTerror_TBI.lifeStages.0.label>Тибро-теленок</TiberiumTerror_TBI.lifeStages.0.label>
+  <TiberiumTerror_TBI.lifeStages.0.labelPlural>Тибро-теленок</TiberiumTerror_TBI.lifeStages.0.labelPlural>
+  <TiberiumTerror_TBI.lifeStages.0.labelMale>Тибро-теленок самец</TiberiumTerror_TBI.lifeStages.0.labelMale>
+  <TiberiumTerror_TBI.lifeStages.0.labelMalePlural>Тибро-теленок самец</TiberiumTerror_TBI.lifeStages.0.labelMalePlural>
+  <TiberiumTerror_TBI.lifeStages.0.labelFemale>Тибро-теленок самка</TiberiumTerror_TBI.lifeStages.0.labelFemale>
+  <TiberiumTerror_TBI.lifeStages.0.labelFemalePlural>Тибро-теленок самка</TiberiumTerror_TBI.lifeStages.0.labelFemalePlural>
+  <TiberiumTerror_TBI.lifeStages.1.label>Тибериумный террор</TiberiumTerror_TBI.lifeStages.1.label>
+  <TiberiumTerror_TBI.lifeStages.1.labelPlural>Тибериумный террор</TiberiumTerror_TBI.lifeStages.1.labelPlural>
+  <TiberiumTerror_TBI.lifeStages.1.labelMale>Тибериумный террор самец</TiberiumTerror_TBI.lifeStages.1.labelMale>
+  <TiberiumTerror_TBI.lifeStages.1.labelMalePlural>Тибериумный террор самец</TiberiumTerror_TBI.lifeStages.1.labelMalePlural>
+  <TiberiumTerror_TBI.lifeStages.1.labelFemale>Тибериумный террор самка</TiberiumTerror_TBI.lifeStages.1.labelFemale>
+  <TiberiumTerror_TBI.lifeStages.1.labelFemalePlural>Тибериумный террор самка</TiberiumTerror_TBI.lifeStages.1.labelFemalePlural>
+  <TiberiumTerror_TBI.lifeStages.2.label>Тибериумный террор</TiberiumTerror_TBI.lifeStages.2.label>
+  <TiberiumTerror_TBI.lifeStages.2.labelPlural>Тибериумный террор</TiberiumTerror_TBI.lifeStages.2.labelPlural>
+  <TiberiumTerror_TBI.lifeStages.2.labelMale>Тибериумный террор самец</TiberiumTerror_TBI.lifeStages.2.labelMale>
+  <TiberiumTerror_TBI.lifeStages.2.labelMalePlural>Тибериумный террор самец</TiberiumTerror_TBI.lifeStages.2.labelMalePlural>
+  <TiberiumTerror_TBI.lifeStages.2.labelFemale>Тибериумный террор самка</TiberiumTerror_TBI.lifeStages.2.labelFemale>
+  <TiberiumTerror_TBI.lifeStages.2.labelFemalePlural>Тибериумный террор самка</TiberiumTerror_TBI.lifeStages.2.labelFemalePlural>
+
+  <BigTiberiumFiend_TBI.label>Большой тибериумный изверг</BigTiberiumFiend_TBI.label>
+  <BigTiberiumFiend_TBI.labelPlural>Большой тибериумный изверг</BigTiberiumFiend_TBI.labelPlural>
+  <BigTiberiumFiend_TBI.labelMale>Большой тибериумный изверг самец</BigTiberiumFiend_TBI.labelMale>
+  <BigTiberiumFiend_TBI.labelMalePlural>Большой тибериумный изверг самец</BigTiberiumFiend_TBI.labelMalePlural>
+  <BigTiberiumFiend_TBI.labelFemale>Большой тибериумный изверг самка</BigTiberiumFiend_TBI.labelFemale>
+  <BigTiberiumFiend_TBI.labelFemalePlural>Большой тибериумный изверг самка</BigTiberiumFiend_TBI.labelFemalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.0.label>Большой тибериумный изверг</BigTiberiumFiend_TBI.lifeStages.0.label>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelPlural>Большой тибериумный изверг</BigTiberiumFiend_TBI.lifeStages.0.labelPlural>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelMale>Большой тибериумный изверг самец</BigTiberiumFiend_TBI.lifeStages.0.labelMale>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelMalePlural>Большой тибериумный изверг самец</BigTiberiumFiend_TBI.lifeStages.0.labelMalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelFemale>Большой тибериумный изверг самка</BigTiberiumFiend_TBI.lifeStages.0.labelFemale>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelFemalePlural>Большой тибериумный изверг самка</BigTiberiumFiend_TBI.lifeStages.0.labelFemalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.1.label>Большой тибериумный изверг</BigTiberiumFiend_TBI.lifeStages.1.label>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelPlural>Большой тибериумный изверг</BigTiberiumFiend_TBI.lifeStages.1.labelPlural>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelMale>Большой тибериумный изверг самец</BigTiberiumFiend_TBI.lifeStages.1.labelMale>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelMalePlural>Большой тибериумный изверг самец</BigTiberiumFiend_TBI.lifeStages.1.labelMalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelFemale>Большой тибериумный изверг самка</BigTiberiumFiend_TBI.lifeStages.1.labelFemale>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelFemalePlural>Большой тибериумный изверг самка</BigTiberiumFiend_TBI.lifeStages.1.labelFemalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.2.label>Большой тибериумный изверг</BigTiberiumFiend_TBI.lifeStages.2.label>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelPlural>Большой тибериумный изверг</BigTiberiumFiend_TBI.lifeStages.2.labelPlural>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelMale>Большой тибериумный изверг самец</BigTiberiumFiend_TBI.lifeStages.2.labelMale>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelMalePlural>Большой тибериумный изверг самец</BigTiberiumFiend_TBI.lifeStages.2.labelMalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelFemale>Большой тибериумный изверг самка</BigTiberiumFiend_TBI.lifeStages.2.labelFemale>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelFemalePlural>Большой тибериумный изверг самка</BigTiberiumFiend_TBI.lifeStages.2.labelFemalePlural>
+
+  <Tibscarab_TBI.label>Тибериумный скарабей</Tibscarab_TBI.label>
+  <Tibscarab_TBI.labelPlural>Тибериумный скарабей</Tibscarab_TBI.labelPlural>
+  <Tibscarab_TBI.labelMale>Тибериумный скарабей самец</Tibscarab_TBI.labelMale>
+  <Tibscarab_TBI.labelMalePlural>Тибериумный скарабей самец</Tibscarab_TBI.labelMalePlural>
+  <Tibscarab_TBI.labelFemale>Тибериумный скарабей самка</Tibscarab_TBI.labelFemale>
+  <Tibscarab_TBI.labelFemalePlural>Тибериумный скарабей самка</Tibscarab_TBI.labelFemalePlural>
+  <Tibscarab_TBI.lifeStages.0.label>Тибериумный скарабей</Tibscarab_TBI.lifeStages.0.label>
+  <Tibscarab_TBI.lifeStages.0.labelPlural>Тибериумный скарабей</Tibscarab_TBI.lifeStages.0.labelPlural>
+  <Tibscarab_TBI.lifeStages.0.labelMale>Тибериумный скарабей самец</Tibscarab_TBI.lifeStages.0.labelMale>
+  <Tibscarab_TBI.lifeStages.0.labelMalePlural>Тибериумный скарабей самец</Tibscarab_TBI.lifeStages.0.labelMalePlural>
+  <Tibscarab_TBI.lifeStages.0.labelFemale>Тибериумный скарабей самка</Tibscarab_TBI.lifeStages.0.labelFemale>
+  <Tibscarab_TBI.lifeStages.0.labelFemalePlural>Тибериумный скарабей самка</Tibscarab_TBI.lifeStages.0.labelFemalePlural>
+  <Tibscarab_TBI.lifeStages.1.label>Тибериумный скарабей</Tibscarab_TBI.lifeStages.1.label>
+  <Tibscarab_TBI.lifeStages.1.labelPlural>Тибериумный скарабей</Tibscarab_TBI.lifeStages.1.labelPlural>
+  <Tibscarab_TBI.lifeStages.1.labelMale>Тибериумный скарабей самец</Tibscarab_TBI.lifeStages.1.labelMale>
+  <Tibscarab_TBI.lifeStages.1.labelMalePlural>Тибериумный скарабей самец</Tibscarab_TBI.lifeStages.1.labelMalePlural>
+  <Tibscarab_TBI.lifeStages.1.labelFemale>Тибериумный скарабей самка</Tibscarab_TBI.lifeStages.1.labelFemale>
+  <Tibscarab_TBI.lifeStages.1.labelFemalePlural>Тибериумный скарабей самка</Tibscarab_TBI.lifeStages.1.labelFemalePlural>
+  <Tibscarab_TBI.lifeStages.2.label>Тибериумный скарабей</Tibscarab_TBI.lifeStages.2.label>
+  <Tibscarab_TBI.lifeStages.2.labelPlural>Тибериумный скарабей</Tibscarab_TBI.lifeStages.2.labelPlural>
+  <Tibscarab_TBI.lifeStages.2.labelMale>Тибериумный скарабей самец</Tibscarab_TBI.lifeStages.2.labelMale>
+  <Tibscarab_TBI.lifeStages.2.labelMalePlural>Тибериумный скарабей самец</Tibscarab_TBI.lifeStages.2.labelMalePlural>
+  <Tibscarab_TBI.lifeStages.2.labelFemale>Тибериумный скарабей самка</Tibscarab_TBI.lifeStages.2.labelFemale>
+  <Tibscarab_TBI.lifeStages.2.labelFemalePlural>Тибериумный скарабей самка</Tibscarab_TBI.lifeStages.2.labelFemalePlural>
+
+  <TiberiumFiend_TBI.label>Тибериумный изверг</TiberiumFiend_TBI.label>
+  <TiberiumFiend_TBI.labelPlural>Тибериумный изверг</TiberiumFiend_TBI.labelPlural>
+  <TiberiumFiend_TBI.labelMale>Тибериумный изверг самец</TiberiumFiend_TBI.labelMale>
+  <TiberiumFiend_TBI.labelMalePlural>Тибериумный изверг самец</TiberiumFiend_TBI.labelMalePlural>
+  <TiberiumFiend_TBI.labelFemale>Тибериумный изверг самка</TiberiumFiend_TBI.labelFemale>
+  <TiberiumFiend_TBI.labelFemalePlural>Тибериумный изверг самка</TiberiumFiend_TBI.labelFemalePlural>
+  <TiberiumFiend_TBI.lifeStages.0.label>Щенок тибериумного изверга</TiberiumFiend_TBI.lifeStages.0.label>
+  <TiberiumFiend_TBI.lifeStages.0.labelPlural>Щенок тибериумного изверга</TiberiumFiend_TBI.lifeStages.0.labelPlural>
+  <TiberiumFiend_TBI.lifeStages.0.labelMale>Щенок тибериумного изверга самец</TiberiumFiend_TBI.lifeStages.0.labelMale>
+  <TiberiumFiend_TBI.lifeStages.0.labelMalePlural>Щенок тибериумного изверга самец</TiberiumFiend_TBI.lifeStages.0.labelMalePlural>
+  <TiberiumFiend_TBI.lifeStages.0.labelFemale>Щенок тибериумного изверга самка</TiberiumFiend_TBI.lifeStages.0.labelFemale>
+  <TiberiumFiend_TBI.lifeStages.0.labelFemalePlural>Щенок тибериумного изверга самка</TiberiumFiend_TBI.lifeStages.0.labelFemalePlural>
+  <TiberiumFiend_TBI.lifeStages.1.label>Тибериумный изверг</TiberiumFiend_TBI.lifeStages.1.label>
+  <TiberiumFiend_TBI.lifeStages.1.labelPlural>Тибериумный изверг</TiberiumFiend_TBI.lifeStages.1.labelPlural>
+  <TiberiumFiend_TBI.lifeStages.1.labelMale>Тибериумный изверг самец</TiberiumFiend_TBI.lifeStages.1.labelMale>
+  <TiberiumFiend_TBI.lifeStages.1.labelMalePlural>Тибериумный изверг самец</TiberiumFiend_TBI.lifeStages.1.labelMalePlural>
+  <TiberiumFiend_TBI.lifeStages.1.labelFemale>Тибериумный изверг самка</TiberiumFiend_TBI.lifeStages.1.labelFemale>
+  <TiberiumFiend_TBI.lifeStages.1.labelFemalePlural>Тибериумный изверг самка</TiberiumFiend_TBI.lifeStages.1.labelFemalePlural>
+  <TiberiumFiend_TBI.lifeStages.2.label>Тибериумный изверг</TiberiumFiend_TBI.lifeStages.2.label>
+  <TiberiumFiend_TBI.lifeStages.2.labelPlural>Тибериумный изверг</TiberiumFiend_TBI.lifeStages.2.labelPlural>
+  <TiberiumFiend_TBI.lifeStages.2.labelMale>Тибериумный изверг самец</TiberiumFiend_TBI.lifeStages.2.labelMale>
+  <TiberiumFiend_TBI.lifeStages.2.labelMalePlural>Тибериумный изверг самец</TiberiumFiend_TBI.lifeStages.2.labelMalePlural>
+  <TiberiumFiend_TBI.lifeStages.2.labelFemale>Тибериумный изверг самка</TiberiumFiend_TBI.lifeStages.2.labelFemale>
+  <TiberiumFiend_TBI.lifeStages.2.labelFemalePlural>Тибериумный изверг самка</TiberiumFiend_TBI.lifeStages.2.labelFemalePlural>
+
+  <SmallTiberiumFiend_TBI.label>Маленький тибериумный изверг</SmallTiberiumFiend_TBI.label>
+  <SmallTiberiumFiend_TBI.labelPlural>Маленький тибериумный изверг</SmallTiberiumFiend_TBI.labelPlural>
+  <SmallTiberiumFiend_TBI.labelMale>Маленький тибериумный изверг самец</SmallTiberiumFiend_TBI.labelMale>
+  <SmallTiberiumFiend_TBI.labelMalePlural>Маленький тибериумный изверг самец</SmallTiberiumFiend_TBI.labelMalePlural>
+  <SmallTiberiumFiend_TBI.labelFemale>Маленький тибериумный изверг самка</SmallTiberiumFiend_TBI.labelFemale>
+  <SmallTiberiumFiend_TBI.labelFemalePlural>Маленький тибериумный изверг самка</SmallTiberiumFiend_TBI.labelFemalePlural>
+  <SmallTiberiumFiend_TBI.lifeStages.0.label>Щенок маленького тибериумного изверга</SmallTiberiumFiend_TBI.lifeStages.0.label>
+  <SmallTiberiumFiend_TBI.lifeStages.0.labelPlural>Щенок маленького тибериумного изверга</SmallTiberiumFiend_TBI.lifeStages.0.labelPlural>
+  <SmallTiberiumFiend_TBI.lifeStages.0.labelMale>Щенок маленького тибериумного изверга самец</SmallTiberiumFiend_TBI.lifeStages.0.labelMale>
+  <SmallTiberiumFiend_TBI.lifeStages.0.labelMalePlural>Щенок маленького тибериумного изверга самец</SmallTiberiumFiend_TBI.lifeStages.0.labelMalePlural>
+  <SmallTiberiumFiend_TBI.lifeStages.0.labelFemale>Щенок маленького тибериумного изверга самка</SmallTiberiumFiend_TBI.lifeStages.0.labelFemale>
+  <SmallTiberiumFiend_TBI.lifeStages.0.labelFemalePlural>Щенок маленького тибериумного изверга самка</SmallTiberiumFiend_TBI.lifeStages.0.labelFemalePlural>
+  <SmallTiberiumFiend_TBI.lifeStages.1.label>Маленький тибериумный изверг</SmallTiberiumFiend_TBI.lifeStages.1.label>
+  <SmallTiberiumFiend_TBI.lifeStages.1.labelPlural>Маленький тибериумный изверг</SmallTiberiumFiend_TBI.lifeStages.1.labelPlural>
+  <SmallTiberiumFiend_TBI.lifeStages.1.labelMale>Маленький тибериумный изверг самец</SmallTiberiumFiend_TBI.lifeStages.1.labelMale>
+  <SmallTiberiumFiend_TBI.lifeStages.1.labelMalePlural>Маленький тибериумный изверг самец</SmallTiberiumFiend_TBI.lifeStages.1.labelMalePlural>
+  <SmallTiberiumFiend_TBI.lifeStages.1.labelFemale>Маленький тибериумный изверг самка</SmallTiberiumFiend_TBI.lifeStages.1.labelFemale>
+  <SmallTiberiumFiend_TBI.lifeStages.1.labelFemalePlural>Маленький тибериумный изверг самка</SmallTiberiumFiend_TBI.lifeStages.1.labelFemalePlural>
+  <SmallTiberiumFiend_TBI.lifeStages.2.label>Маленький тибериумный изверг</SmallTiberiumFiend_TBI.lifeStages.2.label>
+  <SmallTiberiumFiend_TBI.lifeStages.2.labelPlural>Маленький тибериумный изверг</SmallTiberiumFiend_TBI.lifeStages.2.labelPlural>
+  <SmallTiberiumFiend_TBI.lifeStages.2.labelMale>Маленький тибериумный изверг самец</SmallTiberiumFiend_TBI.lifeStages.2.labelMale>
+  <SmallTiberiumFiend_TBI.lifeStages.2.labelMalePlural>Маленький тибериумный изверг самец</SmallTiberiumFiend_TBI.lifeStages.2.labelMalePlural>
+  <SmallTiberiumFiend_TBI.lifeStages.2.labelFemale>Маленький тибериумный изверг самка</SmallTiberiumFiend_TBI.lifeStages.2.labelFemale>
+  <SmallTiberiumFiend_TBI.lifeStages.2.labelFemalePlural>Маленький тибериумный изверг самка</SmallTiberiumFiend_TBI.lifeStages.2.labelFemalePlural>
+
+  <Crawler_TBI.label>Тибериумная кобра</Crawler_TBI.label>
+  <Crawler_TBI.labelPlural>Тибериумная кобра</Crawler_TBI.labelPlural>
+  <Crawler_TBI.labelMale>Тибериумная кобра самец</Crawler_TBI.labelMale>
+  <Crawler_TBI.labelMalePlural>Тибериумная кобра самец</Crawler_TBI.labelMalePlural>
+  <Crawler_TBI.labelFemale>Тибериумная кобра самка</Crawler_TBI.labelFemale>
+  <Crawler_TBI.labelFemalePlural>Тибериумная кобра самка</Crawler_TBI.labelFemalePlural>
+  <Crawler_TBI.lifeStages.0.label>Тибериумная кобра</Crawler_TBI.lifeStages.0.label>
+  <Crawler_TBI.lifeStages.0.labelPlural>Тибериумная кобра</Crawler_TBI.lifeStages.0.labelPlural>
+  <Crawler_TBI.lifeStages.0.labelMale>Тибериумная кобра самец</Crawler_TBI.lifeStages.0.labelMale>
+  <Crawler_TBI.lifeStages.0.labelMalePlural>Тибериумная кобра самец</Crawler_TBI.lifeStages.0.labelMalePlural>
+  <Crawler_TBI.lifeStages.0.labelFemale>Тибериумная кобра самка</Crawler_TBI.lifeStages.0.labelFemale>
+  <Crawler_TBI.lifeStages.0.labelFemalePlural>Тибериумная кобра самка</Crawler_TBI.lifeStages.0.labelFemalePlural>
+  <Crawler_TBI.lifeStages.1.label>Тибериумная кобра</Crawler_TBI.lifeStages.1.label>
+  <Crawler_TBI.lifeStages.1.labelPlural>Тибериумная кобра</Crawler_TBI.lifeStages.1.labelPlural>
+  <Crawler_TBI.lifeStages.1.labelMale>Тибериумная кобра самец</Crawler_TBI.lifeStages.1.labelMale>
+  <Crawler_TBI.lifeStages.1.labelMalePlural>Тибериумная кобра самец</Crawler_TBI.lifeStages.1.labelMalePlural>
+  <Crawler_TBI.lifeStages.1.labelFemale>Тибериумная кобра самка</Crawler_TBI.lifeStages.1.labelFemale>
+  <Crawler_TBI.lifeStages.1.labelFemalePlural>Тибериумная кобра самка</Crawler_TBI.lifeStages.1.labelFemalePlural>
+  <Crawler_TBI.lifeStages.2.label>Тибериумная кобра</Crawler_TBI.lifeStages.2.label>
+  <Crawler_TBI.lifeStages.2.labelPlural>Тибериумная кобра</Crawler_TBI.lifeStages.2.labelPlural>
+  <Crawler_TBI.lifeStages.2.labelMale>Тибериумная кобра самец</Crawler_TBI.lifeStages.2.labelMale>
+  <Crawler_TBI.lifeStages.2.labelMalePlural>Тибериумная кобра самец</Crawler_TBI.lifeStages.2.labelMalePlural>
+  <Crawler_TBI.lifeStages.2.labelFemale>Тибериумная кобра самка</Crawler_TBI.lifeStages.2.labelFemale>
+  <Crawler_TBI.lifeStages.2.labelFemalePlural>Тибериумная кобра самка</Crawler_TBI.lifeStages.2.labelFemalePlural>
+
+  <Boomfiend_TBI.label>Бум-дьявол</Boomfiend_TBI.label>
+  <Boomfiend_TBI.labelPlural>Бум-дьявол</Boomfiend_TBI.labelPlural>
+  <Boomfiend_TBI.labelMale>Бум-дьявол самец</Boomfiend_TBI.labelMale>
+  <Boomfiend_TBI.labelMalePlural>Бум-дьявол самец</Boomfiend_TBI.labelMalePlural>
+  <Boomfiend_TBI.labelFemale>Бум-дьявол самка</Boomfiend_TBI.labelFemale>
+  <Boomfiend_TBI.labelFemalePlural>Бум-дьявол самка</Boomfiend_TBI.labelFemalePlural>
+  <Boomfiend_TBI.lifeStages.0.label>Бум-дьявол</Boomfiend_TBI.lifeStages.0.label>
+  <Boomfiend_TBI.lifeStages.0.labelPlural>Бум-дьявол</Boomfiend_TBI.lifeStages.0.labelPlural>
+  <Boomfiend_TBI.lifeStages.0.labelMale>Бум-дьявол самец</Boomfiend_TBI.lifeStages.0.labelMale>
+  <Boomfiend_TBI.lifeStages.0.labelMalePlural>Бум-дьявол самец</Boomfiend_TBI.lifeStages.0.labelMalePlural>
+  <Boomfiend_TBI.lifeStages.0.labelFemale>Бум-дьявол самка</Boomfiend_TBI.lifeStages.0.labelFemale>
+  <Boomfiend_TBI.lifeStages.0.labelFemalePlural>Бум-дьявол самка</Boomfiend_TBI.lifeStages.0.labelFemalePlural>
+  <Boomfiend_TBI.lifeStages.1.label>Бум-дьявол</Boomfiend_TBI.lifeStages.1.label>
+  <Boomfiend_TBI.lifeStages.1.labelPlural>Бум-дьявол</Boomfiend_TBI.lifeStages.1.labelPlural>
+  <Boomfiend_TBI.lifeStages.1.labelMale>Бум-дьявол самец</Boomfiend_TBI.lifeStages.1.labelMale>
+  <Boomfiend_TBI.lifeStages.1.labelMalePlural>Бум-дьявол самец</Boomfiend_TBI.lifeStages.1.labelMalePlural>
+  <Boomfiend_TBI.lifeStages.1.labelFemale>Бум-дьявол самка</Boomfiend_TBI.lifeStages.1.labelFemale>
+  <Boomfiend_TBI.lifeStages.1.labelFemalePlural>Бум-дьявол самка</Boomfiend_TBI.lifeStages.1.labelFemalePlural>
+  <Boomfiend_TBI.lifeStages.2.label>Бум-дьявол</Boomfiend_TBI.lifeStages.2.label>
+  <Boomfiend_TBI.lifeStages.2.labelPlural>Бум-дьявол</Boomfiend_TBI.lifeStages.2.labelPlural>
+  <Boomfiend_TBI.lifeStages.2.labelMale>Бум-дьявол самец</Boomfiend_TBI.lifeStages.2.labelMale>
+  <Boomfiend_TBI.lifeStages.2.labelMalePlural>Бум-дьявол самец</Boomfiend_TBI.lifeStages.2.labelMalePlural>
+  <Boomfiend_TBI.lifeStages.2.labelFemale>Бум-дьявол самка</Boomfiend_TBI.lifeStages.2.labelFemale>
+  <Boomfiend_TBI.lifeStages.2.labelFemalePlural>Бум-дьявол самка</Boomfiend_TBI.lifeStages.2.labelFemalePlural>
+
+  <Spiner_TBI.label>Тибериумный кабан</Spiner_TBI.label>
+  <Spiner_TBI.labelPlural>Тибериумный кабан</Spiner_TBI.labelPlural>
+  <Spiner_TBI.labelMale>Тибериумный кабан самец</Spiner_TBI.labelMale>
+  <Spiner_TBI.labelMalePlural>Тибериумный кабан самец</Spiner_TBI.labelMalePlural>
+  <Spiner_TBI.labelFemale>Тибериумный кабан самка</Spiner_TBI.labelFemale>
+  <Spiner_TBI.labelFemalePlural>Тибериумный кабан самка</Spiner_TBI.labelFemalePlural>
+  <Spiner_TBI.lifeStages.0.label>Поросёнок тибериумного кабана</Spiner_TBI.lifeStages.0.label>
+  <Spiner_TBI.lifeStages.0.labelPlural>Поросёнок тибериумного кабана</Spiner_TBI.lifeStages.0.labelPlural>
+  <Spiner_TBI.lifeStages.0.labelMale>Поросёнок тибериумного кабана</Spiner_TBI.lifeStages.0.labelMale>
+  <Spiner_TBI.lifeStages.0.labelMalePlural>Поросёнок тибериумного кабана</Spiner_TBI.lifeStages.0.labelMalePlural>
+  <Spiner_TBI.lifeStages.0.labelFemale>Свинка тибериумного кабана</Spiner_TBI.lifeStages.0.labelFemale>
+  <Spiner_TBI.lifeStages.0.labelFemalePlural>Свинка тибериумного кабана</Spiner_TBI.lifeStages.0.labelFemalePlural>
+  <Spiner_TBI.lifeStages.1.label>Тибериумный кабан</Spiner_TBI.lifeStages.1.label>
+  <Spiner_TBI.lifeStages.1.labelPlural>Тибериумный кабан</Spiner_TBI.lifeStages.1.labelPlural>
+  <Spiner_TBI.lifeStages.1.labelMale>Тибериумный кабан самец</Spiner_TBI.lifeStages.1.labelMale>
+  <Spiner_TBI.lifeStages.1.labelMalePlural>Тибериумный кабан самец</Spiner_TBI.lifeStages.1.labelMalePlural>
+  <Spiner_TBI.lifeStages.1.labelFemale>Тибериумный кабан самка</Spiner_TBI.lifeStages.1.labelFemale>
+  <Spiner_TBI.lifeStages.1.labelFemalePlural>Тибериумный кабан самка</Spiner_TBI.lifeStages.1.labelFemalePlural>
+  <Spiner_TBI.lifeStages.2.label>Тибериумный кабан</Spiner_TBI.lifeStages.2.label>
+  <Spiner_TBI.lifeStages.2.labelPlural>Тибериумный кабан</Spiner_TBI.lifeStages.2.labelPlural>
+  <Spiner_TBI.lifeStages.2.labelMale>Тибериумный кабан самец</Spiner_TBI.lifeStages.2.labelMale>
+  <Spiner_TBI.lifeStages.2.labelMalePlural>Тибериумный кабан самец</Spiner_TBI.lifeStages.2.labelMalePlural>
+  <Spiner_TBI.lifeStages.2.labelFemale>Тибериумный кабан самка</Spiner_TBI.lifeStages.2.labelFemale>
+  <Spiner_TBI.lifeStages.2.labelFemalePlural>Тибериумный кабан самка</Spiner_TBI.lifeStages.2.labelFemalePlural>
+
+  <Tiffalo_TBI.label>Тиффало</Tiffalo_TBI.label>
+  <Tiffalo_TBI.labelPlural>Тиффало</Tiffalo_TBI.labelPlural>
+  <Tiffalo_TBI.labelMale>Самец тиффало</Tiffalo_TBI.labelMale>
+  <Tiffalo_TBI.labelMalePlural>Самец тиффало</Tiffalo_TBI.labelMalePlural>
+  <Tiffalo_TBI.labelFemale>Самка тиффало</Tiffalo_TBI.labelFemale>
+  <Tiffalo_TBI.labelFemalePlural>Самка тиффало</Tiffalo_TBI.labelFemalePlural>
+  <Tiffalo_TBI.lifeStages.0.label>Телёнок тиффало</Tiffalo_TBI.lifeStages.0.label>
+  <Tiffalo_TBI.lifeStages.0.labelPlural>Телёнок тиффало</Tiffalo_TBI.lifeStages.0.labelPlural>
+  <Tiffalo_TBI.lifeStages.0.labelMale>Телёнок тиффало самец</Tiffalo_TBI.lifeStages.0.labelMale>
+  <Tiffalo_TBI.lifeStages.0.labelMalePlural>Телёнок тиффало самец</Tiffalo_TBI.lifeStages.0.labelMalePlural>
+  <Tiffalo_TBI.lifeStages.0.labelFemale>Телёнок тиффало самка</Tiffalo_TBI.lifeStages.0.labelFemale>
+  <Tiffalo_TBI.lifeStages.0.labelFemalePlural>Телёнок тиффало самка</Tiffalo_TBI.lifeStages.0.labelFemalePlural>
+  <Tiffalo_TBI.lifeStages.1.label>Тиффало</Tiffalo_TBI.lifeStages.1.label>
+  <Tiffalo_TBI.lifeStages.1.labelPlural>Тиффало</Tiffalo_TBI.lifeStages.1.labelPlural>
+  <Tiffalo_TBI.lifeStages.1.labelMale>Самец тиффало</Tiffalo_TBI.lifeStages.1.labelMale>
+  <Tiffalo_TBI.lifeStages.1.labelMalePlural>Самец тиффало</Tiffalo_TBI.lifeStages.1.labelMalePlural>
+  <Tiffalo_TBI.lifeStages.1.labelFemale>Самка тиффало</Tiffalo_TBI.lifeStages.1.labelFemale>
+  <Tiffalo_TBI.lifeStages.1.labelFemalePlural>Самка тиффало</Tiffalo_TBI.lifeStages.1.labelFemalePlural>
+  <Tiffalo_TBI.lifeStages.2.label>Тиффало</Tiffalo_TBI.lifeStages.2.label>
+  <Tiffalo_TBI.lifeStages.2.labelPlural>Тиффало</Tiffalo_TBI.lifeStages.2.labelPlural>
+  <Tiffalo_TBI.lifeStages.2.labelMale>Самец тиффало</Tiffalo_TBI.lifeStages.2.labelMale>
+  <Tiffalo_TBI.lifeStages.2.labelMalePlural>Самец тиффало</Tiffalo_TBI.lifeStages.2.labelMalePlural>
+  <Tiffalo_TBI.lifeStages.2.labelFemale>Самка тиффало</Tiffalo_TBI.lifeStages.2.labelFemale>
+  <Tiffalo_TBI.lifeStages.2.labelFemalePlural>Самка тиффало</Tiffalo_TBI.lifeStages.2.labelFemalePlural>
+
+
+</LanguageData>

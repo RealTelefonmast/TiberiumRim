@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Treating Tiberium like a disease -->
+
+  <TiberiumContactPoison.label>Тибериумная инфекция</TiberiumContactPoison.label>
+  <TiberiumContactPoison.stages.0.label>Незначительная тибериумная инфекция</TiberiumContactPoison.stages.0.label>
+  <TiberiumContactPoison.stages.1.label>Значительная тибериумная инфекция</TiberiumContactPoison.stages.1.label>
+  <TiberiumContactPoison.stages.2.label>Летальная тибериумная инферция</TiberiumContactPoison.stages.2.label>
+
+  <TiberiumBuildupHediff.label>Тибериумные выделения</TiberiumBuildupHediff.label>
+  <TiberiumBuildupHediff.stages.0.label>Минимальные выделения</TiberiumBuildupHediff.stages.0.label>
+  <TiberiumBuildupHediff.stages.1.label>Незначительные выделения</TiberiumBuildupHediff.stages.1.label>
+  <TiberiumBuildupHediff.stages.2.label>Средние выделения</TiberiumBuildupHediff.stages.2.label>
+  <TiberiumBuildupHediff.stages.3.label>Серьезные выделения</TiberiumBuildupHediff.stages.3.label>
+  <TiberiumBuildupHediff.stages.4.label>Экстремальные выделения</TiberiumBuildupHediff.stages.4.label>
+
+  <TiberiumStage1.label>Тибериумное отравление</TiberiumStage1.label>
+  <TiberiumStage1.stages.0.label>Слабое отравление</TiberiumStage1.stages.0.label>
+  <TiberiumStage1.stages.1.label>Средние отравление</TiberiumStage1.stages.1.label>
+  <TiberiumStage1.stages.2.label>Начальное отравление</TiberiumStage1.stages.2.label>
+
+  <TiberiumStage2.label>Тибериумная ассимиляция</TiberiumStage2.label>
+  <TiberiumStage2.stages.0.label>Начальная</TiberiumStage2.stages.0.label>
+  <TiberiumStage2.stages.1.label>Незначительная</TiberiumStage2.stages.1.label>
+  <TiberiumStage2.stages.2.label>Риск заражения</TiberiumStage2.stages.2.label>
+  <TiberiumStage2.stages.3.label>Риск мутации</TiberiumStage2.stages.3.label>
+  <TiberiumStage2.stages.4.label>Высокий риск мутации</TiberiumStage2.stages.4.label>
+
+  <TiberiumMutationGood.label>Тибериумная мутация (Хорошая)</TiberiumMutationGood.label>
+  <TiberiumMutationBad.label>Тибериумная мутация (плохая)</TiberiumMutationBad.label>
+
+  <TiberiumAddiction.label>Потребность в тибериуме</TiberiumAddiction.label>
+  <TiberiumAddiction.stages.0.label>Доволен</TiberiumAddiction.stages.0.label>
+  <TiberiumAddiction.stages.1.label>Не хватает</TiberiumAddiction.stages.1.label>
+  <TiberiumAddiction.stages.2.label>Срочная</TiberiumAddiction.stages.2.label>
+
+
+  <!--<TiberiumBuildup.label>Tiberium exposure</TiberiumBuildup.label>-->
+  <!--<TiberiumBuildup.stages.0.label>initial-hidden</TiberiumBuildup.stages.0.label>-->
+  <!--<TiberiumBuildup.stages.1.label>initial</TiberiumBuildup.stages.1.label>-->
+  <!--<TiberiumBuildup.stages.2.label>minor</TiberiumBuildup.stages.2.label>-->
+  <!--<TiberiumBuildup.stages.3.label>moderate</TiberiumBuildup.stages.3.label>-->
+  <!--<TiberiumBuildup.stages.4.label>serious</TiberiumBuildup.stages.4.label>-->
+  <!--<TiberiumBuildup.stages.5.label>extreme</TiberiumBuildup.stages.5.label>-->
+
+</LanguageData>

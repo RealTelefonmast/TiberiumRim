@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumGreen.label>Зелёный тиберий</TiberiumGreen.label>
+  <TiberiumGreen.description>Светящийся зеленый кристалл. Выглядит странно, привлекательно. Взаимодействие может быть опасным.</TiberiumGreen.description>
+
+  <TiberiumPod.label>Коконон  зелёного тиберия</TiberiumPod.label>
+  <TiberiumPod.description>Светящийся зеленый кристалл, Растущий из кокона, связанного с землей. Выглядит странно, привлекательно. Взаимодействие может быть опасным.</TiberiumPod.description>
+
+  <TiberiumBlue.label>Синий тиберий</TiberiumBlue.label>
+  <TiberiumBlue.description>Светящийся синий кристалл. Красиво для глаз, но неизвестные свойства.</TiberiumBlue.description>
+
+  <TiberiumRed.label>Красный тиберий</TiberiumRed.label>
+  <TiberiumRed.description>Светящийся красный кристалл. Красиво для глаз, но неизвестные свойства. Необычный.</TiberiumRed.description>
+
+
+  <!-- Desert Tiberium -->
+
+  <TiberiumDesertGreen.label>Осколок зелёного тиберия</TiberiumDesertGreen.label>
+  <TiberiumDesertGreen.description>Зеленые осколки, растущие из песка, кажутся неустойчивыми.</TiberiumDesertGreen.description>
+
+  <TiberiumDesertBlue.label>Осколок синего тиберия</TiberiumDesertBlue.label>
+  <TiberiumDesertBlue.description>Синие осколки, растущие из песка, кажутся неустойчивыми.</TiberiumDesertBlue.description>
+
+  <TiberiumDesertRed.label>Осколок красного тиберия</TiberiumDesertRed.label>
+  <TiberiumDesertRed.description>Красные осколки, растущие из песка, кажутся неустойчивыми.</TiberiumDesertRed.description>
+
+
+  <!-- Tiberium Moss -->
+
+  <TiberiumMossGreen.label>Зелёный тебериумный мох</TiberiumMossGreen.label>
+  <TiberiumMossGreen.description>Эта мшистая масса покрывает тайл. Кажется, она очень токсична.</TiberiumMossGreen.description>
+
+  <TiberiumMossBlue.label>Синий тебериумный мох</TiberiumMossBlue.label>
+  <TiberiumMossBlue.description>Эта мшистая масса покрывает тайл. Кажется, она очень токсична.</TiberiumMossBlue.description>
+
+  <TiberiumGlacier.label>Красный тебериумный мох</TiberiumGlacier.label>
+  <TiberiumGlacier.description>Огромные образования кристаллизованной воды.</TiberiumGlacier.description>
+
+  <TiberiumVein.label>Жила</TiberiumVein.label>
+  <TiberiumVein.description>Тягучая, пульсирующая коричнево-красноватая жила. Она вырастает из Вейнхола.</TiberiumVein.description>
+
+
+</LanguageData>

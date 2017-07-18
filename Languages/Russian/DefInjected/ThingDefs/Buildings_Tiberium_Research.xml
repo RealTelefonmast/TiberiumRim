@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumResearchBench.label>Станция исследования тиберия</TiberiumResearchBench.label>
+  <TiberiumResearchBench.description>Специализированная лаборатория по исследованию технологий тиберия.\n\nИсследования ускоряются высокотехнологичными инструментами.\n\nТребуется энергия.</TiberiumResearchBench.description>
+  <TiberiumResearchBench_Blueprint.label>Станция исследования тиберия (чертёж)</TiberiumResearchBench_Blueprint.label>
+  <TiberiumResearchBench_Frame.label>Станция исследования тиберия (постройка)</TiberiumResearchBench_Frame.label>
+
+  <TiberiumResearchCraftingBench.label>Адаптер для исследования тиберия</TiberiumResearchCraftingBench.label>
+  <TiberiumResearchCraftingBench.description>Это здание позволяет создавать информационные элементы тиберия.</TiberiumResearchCraftingBench.description>
+  <TiberiumResearchCraftingBench_Blueprint.label>Адаптер для исследования тиберия (чертёж)</TiberiumResearchCraftingBench_Blueprint.label>
+  <TiberiumResearchCraftingBench_Frame.label>Адаптер для исследования тиберия (постройка)</TiberiumResearchCraftingBench_Frame.label>
+
+
+</LanguageData>
