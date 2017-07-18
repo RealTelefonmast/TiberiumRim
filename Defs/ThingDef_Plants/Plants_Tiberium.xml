@@ -465,7 +465,8 @@
 		</graphicData>
 		<selectable>true</selectable>
 		<pathCost>355</pathCost>
-		<passability>Impassable</passability>
+		<fillPercent>0</fillPercent>
+		<holdsRoof>false</holdsRoof>
 		<plant>
 			<dieIfLeafless>false</dieIfLeafless>
 			<harvestWork>10000</harvestWork>
@@ -476,7 +477,7 @@
 				<max>2</max>
 			</visualSizeRange>
 			<maxMeshCount>4</maxMeshCount>
-			<topWindExposure>0.1</topWindExposure>
+			<topWindExposure>0.1</topWindExposure>			
 		</plant>
 		<corruptsInto>TiberiumWater</corruptsInto>
 		<friendlyTo>
