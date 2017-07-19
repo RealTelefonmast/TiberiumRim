@@ -464,9 +464,8 @@
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<selectable>true</selectable>
-		<pathCost>355</pathCost>
-		<fillPercent>0</fillPercent>
-		<holdsRoof>false</holdsRoof>
+		<pathCost>100</pathCost>
+		<passability>PassThroughOnly</passability>
 		<plant>
 			<dieIfLeafless>false</dieIfLeafless>
 			<harvestWork>10000</harvestWork>

@@ -40,7 +40,7 @@
 			<Mass>0.1</Mass>
 		</statBases>
 		<thingCategories>
-			<li>Tiberium</li>
+			<li>TiberiumItems</li>
 		</thingCategories>
 		<stackLimit>150</stackLimit>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
@@ -68,7 +68,7 @@
 			<Mass>0.2</Mass>
 		</statBases>
 		<thingCategories>
-			<li>Tiberium</li>
+			<li>TiberiumItems</li>
 		</thingCategories>
 		<stackLimit>150</stackLimit>
 		 <killedLeavings>
@@ -94,7 +94,7 @@
 			<Mass>0.5</Mass>
 		</statBases>
 		<thingCategories>
-			<li>Tiberium</li>
+			<li>TiberiumItems</li>
 		</thingCategories>
 		<stackLimit>150</stackLimit>
 		<killedLeavings>
@@ -119,7 +119,7 @@
 			<Mass>0.6</Mass>
 		</statBases>
 		<thingCategories>
-			<li>Tiberium</li>
+			<li>TiberiumItems</li>
 		</thingCategories>
 		<stackLimit>150</stackLimit>
 		<killedLeavings>
@@ -145,7 +145,7 @@
 			<Mass>0.1</Mass>
 		</statBases>
 		<thingCategories>
-			<li>Tiberium</li>
+			<li>TiberiumItems</li>
 		</thingCategories>
 		<stackLimit>175</stackLimit>
 		<killedLeavings>
@@ -173,7 +173,7 @@
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<thingCategories>
-			<li>Tiberium</li>
+			<li>TiberiumItems</li>
 		</thingCategories>
 		<stackLimit>25</stackLimit>
     </ThingDef>
@@ -199,7 +199,7 @@
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<thingCategories>
-			<li>Tiberium</li>
+			<li>TiberiumItems</li>
 		</thingCategories>
 		<stackLimit>25</stackLimit>
     </ThingDef>
@@ -225,7 +225,7 @@
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<thingCategories>
-			<li>Tiberium</li>
+			<li>TiberiumItems</li>
 		</thingCategories>
 		<stackLimit>25</stackLimit>
     </ThingDef>

@@ -226,106 +226,88 @@ namespace TiberiumRim
             HediffDef Stage2 = DefDatabase<HediffDef>.GetNamed("TiberiumStage2", true);
             HediffDef Stage3 = DefDatabase<HediffDef>.GetNamed("TiberiumContactPoison", true);
 
-            if (p.health.hediffSet.HasHediff(Stage1) | p.health.hediffSet.HasHediff(Stage2) | p.health.hediffSet.HasHediff(addiction))
+            if (p != null)
             {
-                return;
-            }
-
-            if (p.RaceProps.IsMechanoid)
-            {
-                return;
-            }
-
-            if (p.def.defName.Contains("_TBI"))
-            {
-                return;
-            }
-
-            if (p.Position.InBounds(this.Map))
-            {
-                List<BodyPartRecord> list = new List<BodyPartRecord>();
-
-                foreach (BodyPartRecord i in p.RaceProps.body.AllParts)
+                if (p.health.hediffSet.HasHediff(Stage1) | p.health.hediffSet.HasHediff(Stage2) | p.health.hediffSet.HasHediff(addiction))
                 {
-                    if (i.depth == BodyPartDepth.Outside && !p.health.hediffSet.PartIsMissing(i))
-                    {
-                        list.Add(i);
-                    }
-                }
-                bool search = true;
-
-                BodyPartRecord target = null;
-
-                while (search)
-                {
-                    //TiberiumBase.Instance.logMessage("Rerolling for target body part");
-                    target = list.RandomElement();
-
-                    if (target.height == BodyPartHeight.Bottom && Rand.Chance(0.8f))
-                    {
-                        //TiberiumBase.Instance.logMessage("Selected a body part with height of Bottom");
-                        search = false;
-                    }
-                    else if (target.height == BodyPartHeight.Middle && Rand.Chance(0.5f))
-                    {
-                        //TiberiumBase.Instance.logMessage("Selected a body part with height of Middle");
-                        search = false;
-                    }
-                    else if (target.height == BodyPartHeight.Top && Rand.Chance(0.2f))
-                    {
-                        //TiberiumBase.Instance.logMessage("Selected a body part with height of Top");
-                        search = false;
-                    }
-                }
-
-                List<BodyPartGroupDef> groups = target.groups;
-
-                if (p.apparel == null)
-                {
-                    HealthUtility.AdjustSeverity(p, tiberium, +0.3f);
                     return;
                 }
 
-                List<Apparel> Clothing = p.apparel.WornApparel;
-
-                float protection = 0;
-
-                for (int j = 0; j < Clothing.Count; j++)
+                if (p.RaceProps.IsMechanoid)
                 {
-                    List<BodyPartGroupDef> covered = Clothing[j].def.apparel.bodyPartGroups;
+                    return;
+                }
 
-                    if (covered.Count > 0)
+                if (p.def.defName.Contains("_TBI"))
+                {
+                    return;
+                }               
+
+                if (p.Position.InBounds(this.Map))
+                {
+                    List<BodyPartRecord> list = new List<BodyPartRecord>();
+
+                    foreach (BodyPartRecord i in p.RaceProps.body.AllParts)
                     {
-                        for (int k = 0; k < covered.Count; k++)
+                        if (i.depth == BodyPartDepth.Outside && !p.health.hediffSet.PartIsMissing(i))
                         {
-                            if (groups.Contains(covered[k]))
+                            list.Add(i);
+                        }
+                    }
+
+                    if (p.apparel == null)
+                    {
+                        HealthUtility.AdjustSeverity(p, tiberium, +0.2f);
+                        return;
+                    }
+
+                    List<Apparel> Clothing = p.apparel.WornApparel;
+
+                    float protection = 0;
+
+                    int parts = 0;
+
+                    foreach (Apparel a in Clothing)
+                    {
+                        List<BodyPartGroupDef> covered = a.def.apparel.bodyPartGroups;
+                        if (covered.Count > 0)
+                        {
+                            foreach (BodyPartGroupDef b in covered)
                             {
-                                if (Clothing[j].def.defName.Contains("TBP"))
-                                {
-                                    return;
-                                }
-                                if (Clothing[j] != null)
-                                {
-                                    if (protection < Clothing[j].GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp")))
+                                if (p.apparel.BodyPartGroupIsCovered(b))
+                                {                                  
+                                    if (a.def.defName.Contains("_TBP"))
                                     {
-                                        protection = protection + Clothing[j].GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp"));
+                                        if (a.HitPoints < a.MaxHitPoints * 0.35)
+                                        {
+                                            HealthUtility.AdjustSeverity(p, tiberium, +0.015f);
+                                            Messages.Message("MessageTiberiumSuitLeak".Translate(), new TargetInfo(p.Position, Map, false), MessageSound.Standard);
+                                            return;
+                                        }
+                                        parts = parts + 1;
+                                        return;
                                     }
 
-                                    if (Clothing[j].def.label.Contains("Tiberium"))
+                                    if (protection < a.GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp")))
                                     {
-                                        protection = protection + 0.2f;
+                                        protection = protection + a.GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp"));
                                     }
                                 }
                             }
                         }
                     }
-                }
 
-                if (protection >= 0.6)
-                {
-                    return;
+                    if (protection >= 0.6)
+                    {
+                        return;
+                    }
+
+                    if (parts < 2)
+                    {
+                        HealthUtility.AdjustSeverity(p, tiberium, +0.025f);
+                        return;
+                    }
                 }
-                HealthUtility.AdjustSeverity(p, tiberium, +0.025f);
             }
         }
 

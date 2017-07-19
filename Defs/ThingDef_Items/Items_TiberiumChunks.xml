@@ -13,6 +13,10 @@
       <Beauty>-8</Beauty>
       <Cleanliness>-12</Cleanliness>
     </statBases>
+	<thingCategories>
+      <li>Chunks</li>	
+	  <li>TiberiumMisc</li>
+    </thingCategories>
     <selectable>true</selectable>
     <pathCost>55</pathCost>
     <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
