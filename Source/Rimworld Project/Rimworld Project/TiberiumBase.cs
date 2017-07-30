@@ -36,13 +36,11 @@ namespace TiberiumRim
         }
 
         public SettingHandle<bool> BuildingDamage;
-        public SettingHandle<bool> TiberiumCompetes;
         public SettingHandle<bool> EntityDamage;
 
         public override void DefsLoaded()
         {
             BuildingDamage = Settings.GetHandle<bool>("BuildingDamage", "Tiberium_Damages_Structures".Translate(), "Tiberium_Damages_Structures_Desc".Translate(), true);
-            TiberiumCompetes = Settings.GetHandle<bool>("TiberiumCompetes", "Tiberium_Competes".Translate(), "Tiberium_Competes_Desc".Translate(), false);
             EntityDamage = Settings.GetHandle<bool>("EntityDamage", "Tiberium_Damages_Items".Translate(), "Tiberium_Damages_Items_Desc".Translate(), true);
         }
     }

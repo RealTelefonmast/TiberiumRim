@@ -19,7 +19,6 @@ namespace TiberiumRim
             Map map = (Map)parms.target;
             int count = map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Tiberium")).Count;
             
-            Log.Message("Trying to execute the Ion Storm");
             if (count > 350)
             {
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
@@ -31,9 +30,7 @@ namespace TiberiumRim
                 base.SendStandardLetter();
                 return true;
             }
-            Log.Message("Can't execute Ion Storm with " + count + " Tiberium Items");
             return false;
         }
-
     }
 }

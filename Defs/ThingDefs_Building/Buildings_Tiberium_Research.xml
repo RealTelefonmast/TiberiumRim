@@ -66,7 +66,7 @@
 	<ThingDef ParentName="BenchBase">
 		<defName>TiberiumResearchCraftingBench</defName>
 		<label>Tiberium research crafting adapter</label>
-		<description>This building allows the crafting of Tiberium information items.</description>
+		<description>This building allows the crafting of Tiberium items.</description>
 		<thingClass>Building_WorkTable</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>

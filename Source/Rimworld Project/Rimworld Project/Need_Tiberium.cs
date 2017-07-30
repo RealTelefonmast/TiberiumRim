@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
-using Verse;
+using System.Text;
 using RimWorld;
+using Verse;
+using Verse.AI;
 
 
 namespace TiberiumRim
@@ -13,6 +14,8 @@ namespace TiberiumRim
         private const float ThreshDesire = 0.01f;
 
         private const float ThreshSatisfied = 0.3f;
+
+        private float messageTick;
 
         public override int GUIChangeArrow
         {
@@ -36,6 +39,15 @@ namespace TiberiumRim
                 }
                 return TiberiumNeedCategory.Urgent;
             }
+        }
+
+        private bool canMessage
+        {
+            get
+            {
+                return messageTick > 25;
+            }
+
         }
 
         public override float CurLevel
@@ -94,6 +106,27 @@ namespace TiberiumRim
                         }
                         this.CurLevel -= this.TiberiumNeedFallPerTick * 350f;
                     }
+                }
+            }
+
+            messageTick += 1;
+
+            if (this.CurLevel < this.MaxLevel * 0.3)
+            {
+                JobDef job = DefDatabase<JobDef>.GetNamed("TiberiumBath");
+                Thing targetA = this.pawn.Map.listerThings.AllThings.Find((Thing x) => x.def.defName.Contains("Tiberium"));
+                if (targetA != null && targetA.def.plant != null)
+                {
+                    if (pawn.CanReach(targetA, PathEndMode.OnCell, Danger.Deadly, false))
+                    {
+                        this.pawn.jobs.TryTakeOrderedJob(new Job(job, targetA));
+                        return;
+                    }                   
+                }
+                if (canMessage)
+                {
+                    Messages.Message("CannotReachTiberium".Translate(), new TargetInfo(pawn.Position, pawn.Map, false), MessageSound.Standard);
+                    messageTick = 0;
                 }
             }
         }

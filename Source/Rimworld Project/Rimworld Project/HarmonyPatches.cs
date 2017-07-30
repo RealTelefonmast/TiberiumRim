@@ -21,8 +21,8 @@ namespace TiberiumRim
                 List<Thing> thingList = c.GetThingList(map);
                 for (int i = 0; i < thingList.Count; i++)
                 {
-                    Thing thing = thingList[i];
-                    if (thing.def.defName.Contains("Tiberium"))
+                    Plant p = thingList[i] as Plant;
+                    if (p.def.defName.Contains("Tiberium"))
                     {
                         return false;
                     }
@@ -70,13 +70,24 @@ namespace TiberiumRim
 
             if (!c.Roofed(map) && c.Impassable(map) && RoofCollapseUtility.WithinRangeOfRoofHolder(c, map))
             {
-                Building b = c.GetFirstBuilding(map);
-                Plant p = c.GetPlant(map);
-                if (b != null | p != null)
+                for (int i = 0; i < 9; i++)
                 {
-                    if (b.def.defName.Contains("TBNS") | p.def.defName.Contains("Tiberium"))
+                    IntVec3 loc = c + GenRadial.RadialPattern[i];
+                    Room room = loc.GetRoom(map, RegionType.Set_Passable);
+                    if (room != null)
                     {
-                        return false;
+                        var things = room.ContainedAndAdjacentThings;
+                        var count = things.Count;
+                        foreach (Thing thing in things)
+                        {
+                            if (thing != null)
+                            {
+                                if (thing.def.defName.Contains("Tiberium") || count <= 9)
+                                {
+                                    return false;
+                                }
+                            }
+                        }                       
                     }
                 }
                 return true;

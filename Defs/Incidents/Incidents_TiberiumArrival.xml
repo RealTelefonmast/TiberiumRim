@@ -109,7 +109,7 @@
 		<targetType>MapPlayerHome</targetType>
 		<workerClass>TiberiumRim.IncidentWorker_BlossomTree</workerClass>
 		<letterLabel>Fiends arrive!</letterLabel>
-		<letterText>A group of fiends arrived on your map. They will rest at a nearby blossom tree.</letterText>
+		<letterText>A group of Tiberium fiends arrived on your map. They will rest at a nearby blossom tree.</letterText>
 		<letterDef>BadNonUrgent</letterDef>
 		<baseChance>0.75</baseChance>
 		<category>ThreatSmall</category>

@@ -160,22 +160,28 @@ namespace TiberiumRim
 
             //Murder. Doing this on the longtick should give a bit of an element of randomness to crossing a tiberium field. Its not instantly infectious, anyhow.
             //Build a list of every item occupying the same space as the tiberium.
-            List<Thing> thingList = base.Position.GetThingList(base.Map);
-            for (int i = 0; i < thingList.Count; i++)
+            var c = GenAdjFast.AdjacentCells8Way(this.Position);
+                c.Add(this.Position);
+            foreach (IntVec3 v in c)
             {
-                //Going through the list. If the item is a pawn, then it won't null out in the latter check, and will be able to be added to the list if its not already in it.
-                Pawn pawn = thingList[i] as Pawn;
-                if (pawn != null && !this.touchingPawns.Contains(pawn))
+                if (v.InBounds(Map))
                 {
-                    this.touchingPawns.Add(pawn);
-                    //Small Tiberium Growths won't infect, to prevent micro'd pawns from getting infected by newly spawned formations
-                    if (growthInt > 0.5)
+                    List<Thing> thingList = v.GetThingList(Map);
+                    for (int i = 0; i < thingList.Count; i++)
                     {
-                        infect(pawn);
+                        //Going through the list. If the item is a pawn, then it won't null out in the latter check, and will be able to be added to the list if its not already in it.
+                        Pawn pawn = thingList[i] as Pawn;
+                        if (pawn != null && !this.touchingPawns.Contains(pawn))
+                        {
+                            this.touchingPawns.Add(pawn);
+                            if (growthInt > 0.5)
+                            {
+                                infect(pawn);
+                            }
+                        }
                     }
                 }
             }
-            
 
             for (int j = 0; j < this.touchingPawns.Count; j++)
             {
@@ -337,6 +343,14 @@ namespace TiberiumRim
                     {
                         p.Destroy(DestroyMode.Deconstruct);
                     }
+
+                    if(p.def.defName.Contains("SteamGeyser"))
+                    {
+                        ThingDef tibG = DefDatabase<ThingDef>.GetNamed("TiberiumGeyser");
+                        IntVec3 loc = p.Position;
+                        p.DeSpawn();
+                        GenSpawn.Spawn(tibG, loc, Map);
+                    }
                 }
                 else
                 {
@@ -364,7 +378,7 @@ namespace TiberiumRim
                     if (p.def.IsCorpse)
                     {
                         Corpse body = (Corpse)p;
-                        if (Rand.Chance(0.75f) && !body.InnerPawn.def.defName.Contains("_TBI"))
+                        if (Rand.Chance(0.75f) && !body.InnerPawn.def.defName.Contains("_TBI") || !body.InnerPawn.RaceProps.IsMechanoid)
                         {
                             if (body.AnythingToStrip())
                             {
@@ -885,30 +899,26 @@ namespace TiberiumRim
                 {
                     var c = new IntVec3(x, 0, z);
                     var p = c.GetPlant(map);
-                    //If we do find a plant here, lets mess around a bit.
+                    //If we do find a plant here, let's mess around a bit.
                     if (p != null)
                     {
-                        //If Tiberium shouldn't compete, then we check against the list of Tiberium Crystal Varieties, and if the 
-                        if (!TiberiumBase.Instance.TiberiumCompetes)
+                        if (!friendlyTo.Contains(p.def))
                         {
-                            if (!friendlyTo.Contains(p.def))
+                            if (Rand.Chance(0.05f))
                             {
-                                if (Rand.Chance(0.05f))
-                                {
-                                    ThingDef flora = DefDatabase<ThingDef>.GetNamed("TiberiumPlant", true);
-                                    TerrainDef setTerrain = DefDatabase<TerrainDef>.GetNamed("TiberiumSoilGreen", true);
-                                    IntVec3 loc = p.Position;
+                                ThingDef flora = DefDatabase<ThingDef>.GetNamed("TiberiumPlant", true);
+                                TerrainDef setTerrain = DefDatabase<TerrainDef>.GetNamed("TiberiumSoilGreen", true);
+                                IntVec3 loc = p.Position;
 
-                                    p.Destroy(DestroyMode.Vanish);
+                                p.Destroy(DestroyMode.Vanish);
 
-                                    GenSpawn.Spawn(flora, loc, map);
-                                    changeTerrain(loc, map, setTerrain);
+                                GenSpawn.Spawn(flora, loc, map);
+                                changeTerrain(loc, map, setTerrain);
 
-                                }
-                                else
-                                {
-                                    p.Destroy(DestroyMode.Vanish);
-                                }
+                            }
+                            else
+                            {
+                                p.Destroy(DestroyMode.Vanish);
                             }
                         }
                         //Otherwise, regular behavior to avoid self-killing
@@ -921,8 +931,8 @@ namespace TiberiumRim
                                 ThingDef flora = DefDatabase<ThingDef>.GetNamed("TiberiumPlant", true);
                                 IntVec3 loc = p.Position;
 
-                                    p.Destroy(DestroyMode.Vanish);
-                                    GenSpawn.Spawn(flora, loc, map);
+                                p.Destroy(DestroyMode.Vanish);
+                                GenSpawn.Spawn(flora, loc, map);
                             }
                             else
                             {

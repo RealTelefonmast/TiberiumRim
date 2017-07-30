@@ -173,5 +173,68 @@
 			<TiberiumRed>3</TiberiumRed>
         </killedLeavings>
 	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>TiberiumSpike</defName>
+		<label>Tiberium spike</label>
+		<thingClass>Building</thingClass>
+		<graphicData>
+			<texPath>Building/Tiberium/TibSpike</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,15)</drawSize>
+			<damageData>
+			<rect>(0.3,0,5.4,6)</rect>
+			</damageData>
+		</graphicData>
+		<uiIconPath>Building/Tiberium/TibSpike_Icon</uiIconPath>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<passability>Impassable</passability>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<scatterableOnMapGen>false</scatterableOnMapGen>
+		<fillPercent>1</fillPercent>
+		<blockLight>true</blockLight>
+		<canOverlapZones>false</canOverlapZones>
+		<statBases>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>6000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+			<Beauty>-30</Beauty>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<description>Slowly produces raw Tiberium.</description>
+		<size>(2,2)</size>
+		<costList>
+			<Steel>425</Steel>
+			<Plasteel>75</Plasteel>
+			<Component>30</Component>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>2250</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+			<li Class="TiberiumRim.CompProperties_TiberiumSpike"/>
+		</comps>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Production</designationCategory>
+		<staticSunShadowHeight>1.0</staticSunShadowHeight>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_OnTiberiumGeyser</li>
+		</placeWorkers>
+		<building>
+			<ai_chillDestination>false</ai_chillDestination>
+			<soundAmbient>GeothermalPlant_Ambience</soundAmbient>
+			<ignoreNeedsPower>true</ignoreNeedsPower>
+		</building>
+		<constructEffect>ConstructMetal</constructEffect>
+		<researchPrerequisites>
+			<li>TiberiumResearchRefining</li>
+			<li>TiberiumPower</li>
+		</researchPrerequisites>
+	</ThingDef>
 
 </ThingDefs>

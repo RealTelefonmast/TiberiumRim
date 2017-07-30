@@ -14,40 +14,7 @@ namespace TiberiumRim
         //Veins shouldn't infect pawns directly
         public override void infect(Pawn p)
         {
-            if (this.def.defName.Contains("Vein"))
-            {
-                hurt(p);
-
-                //If Pawn is close to the center it gets 'attacked with poison'
-                var c = this.RandomAdjacentCell8Way();
-                if (c.InBounds(this.Map))
-                {
-                    var t = c.GetFirstBuilding(Map);
-                    if (t != null)
-                    {
-                        if (t.def.defName.Contains("Veinhole_TBNS") && Rand.Chance(0.2f))
-                        {
-                            base.infect(p);
-                        }
-                    }
-                }
-            }
-        }
-
-        //Though they still do attack if a pawn comes too close
-        public void hurt(Pawn p)
-        {
-            int amt = 3;
-            if (p.apparel == null)
-            {
-                amt = amt * 3;
-            }
-            DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, amt);
-
-            if (Rand.Chance(0.1f) && !p.def.defName.Contains("Veinmonster") && p.Position.InBounds(this.Map))
-            {
-                p.TakeDamage(damage);
-            }
+            return;
         }
 
         //For aesthetics and the fact that Veins are a living being, let's make it bleed

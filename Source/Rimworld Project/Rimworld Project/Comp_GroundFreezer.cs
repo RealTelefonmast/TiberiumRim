@@ -103,7 +103,6 @@ namespace TiberiumRim
                 {
                     if (!terrain.Removable)
                     {
-
                         this.parent.Map.snowGrid.AddDepth(c, 0.095f);
                         TerrainDef Postterrain = null;
                         if (terrain.defName.Contains("Water") | terrain.defName.Contains("Marsh"))
@@ -112,7 +111,7 @@ namespace TiberiumRim
                             this.parent.Map.terrainGrid.SetTerrain(c, Postterrain);
                         }
                         Plant p = c.GetPlant(this.parent.Map);
-                        if (p != null)
+                        if (p != null && !p.def.defName.Contains("Tiberium"))
                         {
                             p.Destroy(DestroyMode.Vanish);
                         }

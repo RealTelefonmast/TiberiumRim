@@ -464,7 +464,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<selectable>true</selectable>
-		<pathCost>100</pathCost>
+		<pathCost>200</pathCost>
 		<passability>PassThroughOnly</passability>
 		<plant>
 			<dieIfLeafless>false</dieIfLeafless>
@@ -510,7 +510,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 		</graphicData>
 		<selectable>true</selectable>
-		<pathCost>100</pathCost>
+		<pathCost>75</pathCost>
 		<plant>
 			<reproduces>true</reproduces>
 			<dieIfLeafless>false</dieIfLeafless>

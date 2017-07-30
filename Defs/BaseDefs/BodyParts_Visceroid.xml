@@ -4,7 +4,7 @@
 	<BodyPartDef>
 		<defName>VisceroidBody</defName>
 		<label>visceroid body</label>
-		<hitPoints>165</hitPoints>
+		<hitPoints>465</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
 		<frostbiteVulnerability>0.4</frostbiteVulnerability>

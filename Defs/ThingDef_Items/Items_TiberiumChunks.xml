@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef Name="TiberiumChunkBase" Abstract="True">
-    <category>Item</category>
-    <thingClass>Thing</thingClass>
-    <altitudeLayer>Item</altitudeLayer>
-    <passability>PassThroughOnly</passability>
-    <fillPercent>0.50</fillPercent>
-    <statBases>
-      <MaxHitPoints>300</MaxHitPoints>
-      <Flammability>0</Flammability>
-      <Beauty>-8</Beauty>
-      <Cleanliness>-12</Cleanliness>
-    </statBases>
-	<thingCategories>
-      <li>Chunks</li>	
-	  <li>TiberiumMisc</li>
-    </thingCategories>
-    <selectable>true</selectable>
-    <pathCost>55</pathCost>
-    <pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
-    <drawerType>MapMeshOnly</drawerType>
-    <randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
-    <designateHaulable>true</designateHaulable>
-    <saveCompressible>true</saveCompressible>
-    <stackLimit>1</stackLimit>
-    <tradeability>Never</tradeability>
-  </ThingDef>
+	<ThingDef Name="TiberiumChunkBase" Abstract="True">
+		<category>Item</category>
+		<thingClass>TiberiumRim.Thing_TiberiumChunk</thingClass>
+		<description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</description>
+		<altitudeLayer>Item</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<fillPercent>0.50</fillPercent>
+		<statBases>
+			<MaxHitPoints>300</MaxHitPoints>
+			<Flammability>0</Flammability>
+			<Beauty>-8</Beauty>
+			<Cleanliness>-12</Cleanliness>
+		</statBases>
+		<thingCategories>
+			<li>Chunks</li>	
+			<li>TiberiumMisc</li>
+		</thingCategories>
+		<selectable>true</selectable>
+		<pathCost>55</pathCost>
+		<pathCostIgnoreRepeat>true</pathCostIgnoreRepeat>
+		<drawerType>MapMeshOnly</drawerType>
+		<randomizeRotationOnSpawn>true</randomizeRotationOnSpawn>
+		<designateHaulable>true</designateHaulable>
+		<saveCompressible>true</saveCompressible>
+		<stackLimit>1</stackLimit>
+		<tradeability>Never</tradeability>
+	</ThingDef>
   
 	<ThingDef ParentName="TiberiumChunkBase">
 		<defName>GreenTiberiumChunk</defName>
 		<label>green tiberium chunk</label>
-		<description></description>
 		<statBases>
 		  <MaxHitPoints>600</MaxHitPoints>
 		</statBases>
@@ -48,7 +48,6 @@
 	<ThingDef ParentName="TiberiumChunkBase">
 		<defName>BlueTiberiumChunk</defName>
 		<label>blue tiberium chunk</label>
-		<description></description>
 		<statBases>
 		  <MaxHitPoints>900</MaxHitPoints>
 		</statBases>
@@ -65,7 +64,6 @@
 	<ThingDef ParentName="TiberiumChunkBase">
 		<defName>RedTiberiumChunk</defName>
 		<label>red tiberium chunk</label>
-		<description></description>
 		<statBases>
 		  <MaxHitPoints>1200</MaxHitPoints>
 		</statBases>

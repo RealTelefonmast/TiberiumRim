@@ -57,10 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsteroidDef.cs" />
+    <Compile Include="Building_GasCrack.cs" />
+    <Compile Include="Building_TibGeyser.cs" />
     <Compile Include="Building_Veinhole.cs" />
+    <Compile Include="Building_VeinTentacle.cs" />
     <Compile Include="CheckLists.cs" />
+    <Compile Include="CompTiberiumSpike.cs" />
     <Compile Include="Comp_GroundFreezer.cs" />
     <Compile Include="Comp_TiberiumProducer.cs" />
+    <Compile Include="Gas_Tiberium.cs" />
     <Compile Include="HarmonyPatches.cs" />
     <Compile Include="HediffComp_Mutation.cs" />
     <Compile Include="HediffComp_Tiberium.cs" />
@@ -69,7 +74,9 @@
     <Compile Include="IncidentWorker_BlossomTree.cs" />
     <Compile Include="IncidentWorker_GreenAsteroid.cs" />
     <Compile Include="IncidentWorker_IonStorm.cs" />
+    <Compile Include="JobDriver_TiberiumBath.cs" />
     <Compile Include="Need_Tiberium.cs" />
+    <Compile Include="Thing_TiberiumChunk.cs" />
     <Compile Include="TiberiumBase.cs" />
     <Compile Include="TiberiumDef.cs" />
     <Compile Include="TiberiumCategories.cs" />

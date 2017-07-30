@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LanguageData>
-
-  <IonStorm.label>Ионный шторм</IonStorm.label>
-  <IonStorm.description>На вашей карте был запущен ионный шторм! Будьте осторожны, нехватка электроэнергии может привести к нежелательным осложнениям.</IonStorm.description>
-  <IonStorm.endMessage>Ионный шторм заканчивается.</IonStorm.endMessage>
-
-
-</LanguageData>

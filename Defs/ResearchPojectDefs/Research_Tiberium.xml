@@ -25,7 +25,7 @@
 	<ResearchProjectDef>
 		<defName>TiberiumKnowledge</defName>
 		<label>tiberium knowledge</label>
-		<description>Allows the understanding of Tiberium:\n\n -Craft Tiberium (lore) books\n\n -Craft Tiberium Protection Suits.</description>
+		<description>Allows the understanding of Tiberium:\n\n -Construction of the Tiberium Research Crafting Adapter(TRCA) \n\n -Craft Tiberium (lore) books at the TRCA\n\n -Craft Tiberium Protection Suits at the TRCA</description>
 		<baseCost>500</baseCost>
 		<techLevel>Industrial</techLevel>
 		<tab>Tiberium</tab>
