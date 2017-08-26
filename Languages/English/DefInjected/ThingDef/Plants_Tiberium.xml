@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <TiberiumGreen.label>Green Tiberium</TiberiumGreen.label>
+  <TiberiumGreen.description>A glowy green crystal. Looks strangely appealing. Interaction might be dangerous.</TiberiumGreen.description>
+
+  <TiberiumPod.label>Green Tiberium pod</TiberiumPod.label>
+  <TiberiumPod.description>A glowy green crystal, growing from a pod connected to the ground. Looks strangely appealing. Interaction might be dangerous.</TiberiumPod.description>
+
+  <TiberiumBlue.label>Blue Tiberium</TiberiumBlue.label>
+  <TiberiumBlue.description>A glowy blue crystal. Beautiful to the eye but of unknown properties.</TiberiumBlue.description>
+
+  <TiberiumRed.label>red Tiberium</TiberiumRed.label>
+  <TiberiumRed.description>A glowy red crystal. Beautiful to the eye but of unknown properties. Unusual.</TiberiumRed.description>
+
+
+  <!-- Desert Tiberium -->
+
+  <TiberiumDesertGreen.label>Green Tiberium shards</TiberiumDesertGreen.label>
+  <TiberiumDesertGreen.description>Green shards growing out of the sand, they seem to be instable.</TiberiumDesertGreen.description>
+
+  <TiberiumDesertBlue.label>Blue Tiberium shards</TiberiumDesertBlue.label>
+  <TiberiumDesertBlue.description>Blue shards growing out of the sand, they seem to be instable.</TiberiumDesertBlue.description>
+
+  <TiberiumDesertRed.label>Red Tiberium shards</TiberiumDesertRed.label>
+  <TiberiumDesertRed.description>Red shards growing out of the sand, they seem to be instable.</TiberiumDesertRed.description>
+
+
+  <!-- Tiberium Moss -->
+
+  <TiberiumMossGreen.label>Green Tiberium moss</TiberiumMossGreen.label>
+  <TiberiumMossGreen.description>A mossy mass is covering this tile. It seems to be highly toxic.</TiberiumMossGreen.description>
+
+  <TiberiumMossBlue.label>Blue Tiberium moss</TiberiumMossBlue.label>
+  <TiberiumMossBlue.description>A mossy mass is covering this tile. It seems to be highly toxic.</TiberiumMossBlue.description>
+
+  <TiberiumGlacier.label>Tiberium Glacier</TiberiumGlacier.label>
+  <TiberiumGlacier.description>Huge formations of crystalized water.</TiberiumGlacier.description>
+
+  <TiberiumVein.label>Vein</TiberiumVein.label>
+  <TiberiumVein.description>A stringy, throbbing brown-reddish vein. It grows out of a veinhole.</TiberiumVein.description>
+
+
+  <!-- Decorative -->
+
+  <PlantGreenTiberium.label>Tiberium</PlantGreenTiberium.label>
+  <PlantGreenTiberium.description>A beautiful green crystal, it feels warm when you hold your face close to it.</PlantGreenTiberium.description>
+
+  <PlantBlueTiberium.label>Blue Tiberium</PlantBlueTiberium.label>
+  <PlantBlueTiberium.description>A beautiful blue crystal, it feels warm when you hold your face close to it.</PlantBlueTiberium.description>
+
+  <PlantRedTiberium.label>Red Tiberium</PlantRedTiberium.label>
+  <PlantRedTiberium.description>A beautiful red crystal, it feels warm when you hold your face close to it.</PlantRedTiberium.description>
+
+
+</LanguageData>

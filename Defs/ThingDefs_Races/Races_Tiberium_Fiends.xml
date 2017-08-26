@@ -1255,6 +1255,7 @@
       <leatherInsulation>1.0</leatherInsulation>
       <gestationPeriodDays>25</gestationPeriodDays>
       <wildness>0.5</wildness>
+	  <packAnimal>true</packAnimal>
       <lifeExpectancy>15</lifeExpectancy>
       <lifeStageAges>
         <li>

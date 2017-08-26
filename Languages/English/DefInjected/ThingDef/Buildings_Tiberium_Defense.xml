@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GroundFreezer.label>Deep ground freezer</GroundFreezer.label>
+  <GroundFreezer.description>This device freezes the ground from inside out. The frost and snow inhibit the growth of crystals. But beware of high temperatures!</GroundFreezer.description>
+  <GroundFreezer_Blueprint.label>Deep ground freezer (blueprint)</GroundFreezer_Blueprint.label>
+  <GroundFreezer_Blueprint_Install.label>Deep ground freezer (blueprint)</GroundFreezer_Blueprint_Install.label>
+  <GroundFreezer_Frame.label>Deep ground freezer (building)</GroundFreezer_Frame.label>
+
+  <GroundFreezerTribal.label>Ground freezing box</GroundFreezerTribal.label>
+  <GroundFreezerTribal.description>This advanced version of a passive cooler is strong enough to freeze the ground. Good protection against Tiberium.</GroundFreezerTribal.description>
+  <GroundFreezerTribal_Blueprint.label>Ground freezing box (blueprint)</GroundFreezerTribal_Blueprint.label>
+  <GroundFreezerTribal_Blueprint_Install.label>Ground freezing box (blueprint)</GroundFreezerTribal_Blueprint_Install.label>
+  <GroundFreezerTribal_Frame.label>Ground freezing box (building)</GroundFreezerTribal_Frame.label>
+
+
+</LanguageData>

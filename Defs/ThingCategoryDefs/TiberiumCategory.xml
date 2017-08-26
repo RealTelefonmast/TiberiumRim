@@ -4,7 +4,23 @@
   <ThingCategoryDef>
     <defName>Tiberium</defName>
     <label>Tiberium</label>
-    <parent>ResourcesRaw</parent>
+	<parent>Root</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>Icons/ThingCategories/TiberiumCategory</iconPath>
+  </ThingCategoryDef>
+  
+  <ThingCategoryDef>
+    <defName>TiberiumItems</defName>
+    <label>Tiberium Items</label>
+	<parent>Tiberium</parent>
+    <resourceReadoutRoot>true</resourceReadoutRoot>
+    <iconPath>Icons/ThingCategories/TiberiumCategory</iconPath>
+  </ThingCategoryDef>
+  
+   <ThingCategoryDef>
+	<defName>TiberiumMisc</defName>
+    <label>Tiberium Misc</label>
+	<parent>Tiberium</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
     <iconPath>Icons/ThingCategories/TiberiumCategory</iconPath>
   </ThingCategoryDef>

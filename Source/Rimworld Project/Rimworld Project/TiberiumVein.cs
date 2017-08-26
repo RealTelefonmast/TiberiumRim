@@ -14,39 +14,27 @@ namespace TiberiumRim
         //Veins shouldn't infect pawns directly
         public override void infect(Pawn p)
         {
-            if (this.def.defName.Contains("Vein"))
+            if (Rand.Chance(0.1f))
             {
-                hurt(p);
-
-                //If Pawn is close to the center it gets 'attacked with poison'
-                var c = this.RandomAdjacentCell8Way();
-                if (c.InBounds(this.Map))
+                int amt = 2;
+                if (p.apparel == null)
                 {
-                    var t = c.GetFirstBuilding(Map);
-                    if (t != null)
+                    amt = amt * 3;
+                }
+                DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, amt);
+
+                if (!p.def.defName.Contains("TBI") && p.Position.InBounds(this.Map))
+                {
+                    if (!p.Downed)
                     {
-                        if (t.def.defName.Contains("Veinhole_TBNS") && Rand.Chance(0.2f))
-                        {
-                            base.infect(p);
-                        }
+                        p.TakeDamage(damage);
                     }
                 }
-            }
-        }
-
-        //Though they still do attack if a pawn comes too close
-        public void hurt(Pawn p)
-        {
-            int amt = 3;
-            if (p.apparel == null)
-            {
-                amt = amt * 3;
-            }
-            DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, amt);
-
-            if (Rand.Chance(0.1f) && !p.def.defName.Contains("Veinmonster") && p.Position.InBounds(this.Map))
-            {
-                p.TakeDamage(damage);
+                Building b = this.Position.RandomAdjacentCell8Way().GetFirstBuilding(Map);
+                if (b != null && b.def.defName.Contains("Veinhole"))
+                {
+                    base.infect(p);
+                }
             }
         }
 
@@ -90,22 +78,8 @@ namespace TiberiumRim
         {
             base.TickLong();
             Bleed(Map);
-            spawnVeinmonster(this.Position);
         }
 
-        public virtual void spawnVeinmonster(IntVec3 pos)
-        {
-            int maximum = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinhole")).Count * 12;            
-            int Veinmonsters = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinmonster_TBI")).Count;
-
-            if (Rand.Chance(0.01f) && Veinmonsters < maximum) 
-            {
-                PawnKindDef Veinmonster = DefDatabase<PawnKindDef>.GetNamed("Veinmonster_TBI", true);
-                PawnGenerationRequest request = new PawnGenerationRequest(Veinmonster);
-                Pawn pawn = PawnGenerator.GeneratePawn(request);
-                GenSpawn.Spawn(pawn, pos, Map);
-            }
-        }
 
         //Not quite sure what to use this for. So far it would only kill Veins that are not connected to an adult Vein. This rarely happens and basically causes unnecessary checks
         /*   public void Networkcheck(Map map)

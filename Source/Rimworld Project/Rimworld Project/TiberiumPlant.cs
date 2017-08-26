@@ -160,22 +160,28 @@ namespace TiberiumRim
 
             //Murder. Doing this on the longtick should give a bit of an element of randomness to crossing a tiberium field. Its not instantly infectious, anyhow.
             //Build a list of every item occupying the same space as the tiberium.
-            List<Thing> thingList = base.Position.GetThingList(base.Map);
-            for (int i = 0; i < thingList.Count; i++)
+            var c = GenAdjFast.AdjacentCells8Way(this.Position);
+                c.Add(this.Position);
+            foreach (IntVec3 v in c)
             {
-                //Going through the list. If the item is a pawn, then it won't null out in the latter check, and will be able to be added to the list if its not already in it.
-                Pawn pawn = thingList[i] as Pawn;
-                if (pawn != null && !this.touchingPawns.Contains(pawn))
+                if (v.InBounds(Map))
                 {
-                    this.touchingPawns.Add(pawn);
-                    //Small Tiberium Growths won't infect, to prevent micro'd pawns from getting infected by newly spawned formations
-                    if (growthInt > 0.5)
+                    List<Thing> thingList = v.GetThingList(Map);
+                    for (int i = 0; i < thingList.Count; i++)
                     {
-                        infect(pawn);
+                        //Going through the list. If the item is a pawn, then it won't null out in the latter check, and will be able to be added to the list if its not already in it.
+                        Pawn pawn = thingList[i] as Pawn;
+                        if (pawn != null && !this.touchingPawns.Contains(pawn))
+                        {
+                            this.touchingPawns.Add(pawn);
+                            if (growthInt > 0.5)
+                            {
+                                infect(pawn);
+                            }
+                        }
                     }
                 }
             }
-            
 
             for (int j = 0; j < this.touchingPawns.Count; j++)
             {
@@ -225,107 +231,98 @@ namespace TiberiumRim
             HediffDef Stage1 = DefDatabase<HediffDef>.GetNamed("TiberiumStage1", true);
             HediffDef Stage2 = DefDatabase<HediffDef>.GetNamed("TiberiumStage2", true);
             HediffDef Stage3 = DefDatabase<HediffDef>.GetNamed("TiberiumContactPoison", true);
+            HediffDef Immunity = DefDatabase<HediffDef>.GetNamed("TiberiumInfusionImmunity", false);
 
-            if (p.health.hediffSet.HasHediff(Stage1) | p.health.hediffSet.HasHediff(Stage2) | p.health.hediffSet.HasHediff(addiction))
-            {
-                return;
-            }
-
-            if (p.RaceProps.IsMechanoid)
-            {
-                return;
-            }
-
-            if (p.def.defName.Contains("_TBI"))
-            {
-                return;
-            }
-
-            if (p.Position.InBounds(this.Map))
-            {
-                List<BodyPartRecord> list = new List<BodyPartRecord>();
-
-                foreach (BodyPartRecord i in p.RaceProps.body.AllParts)
+            if (p != null)
+            {               
+                if (Immunity != null)
                 {
-                    if (i.depth == BodyPartDepth.Outside && !p.health.hediffSet.PartIsMissing(i))
+                    if (p.health.hediffSet.HasHediff(Immunity))
                     {
-                        list.Add(i);
-                    }
-                }
-                bool search = true;
-
-                BodyPartRecord target = null;
-
-                while (search)
-                {
-                    //TiberiumBase.Instance.logMessage("Rerolling for target body part");
-                    target = list.RandomElement();
-
-                    if (target.height == BodyPartHeight.Bottom && Rand.Chance(0.8f))
-                    {
-                        //TiberiumBase.Instance.logMessage("Selected a body part with height of Bottom");
-                        search = false;
-                    }
-                    else if (target.height == BodyPartHeight.Middle && Rand.Chance(0.5f))
-                    {
-                        //TiberiumBase.Instance.logMessage("Selected a body part with height of Middle");
-                        search = false;
-                    }
-                    else if (target.height == BodyPartHeight.Top && Rand.Chance(0.2f))
-                    {
-                        //TiberiumBase.Instance.logMessage("Selected a body part with height of Top");
-                        search = false;
+                        return;
                     }
                 }
 
-                List<BodyPartGroupDef> groups = target.groups;
-
-                if (p.apparel == null)
+                if (p.health.hediffSet.HasHediff(Stage1) | p.health.hediffSet.HasHediff(Stage2) | p.health.hediffSet.HasHediff(addiction))
                 {
-                    HealthUtility.AdjustSeverity(p, tiberium, +0.3f);
                     return;
                 }
 
-                List<Apparel> Clothing = p.apparel.WornApparel;
-
-                float protection = 0;
-
-                for (int j = 0; j < Clothing.Count; j++)
+                if (p.RaceProps.IsMechanoid)
                 {
-                    List<BodyPartGroupDef> covered = Clothing[j].def.apparel.bodyPartGroups;
+                    return;
+                }
 
-                    if (covered.Count > 0)
+                if (p.def.defName.Contains("_TBI"))
+                {
+                    return;
+                }               
+
+                if (p.Position.InBounds(this.Map))
+                {
+                    List<BodyPartRecord> list = new List<BodyPartRecord>();
+
+                    foreach (BodyPartRecord i in p.RaceProps.body.AllParts)
                     {
-                        for (int k = 0; k < covered.Count; k++)
+                        if (i.depth == BodyPartDepth.Outside && !p.health.hediffSet.PartIsMissing(i))
                         {
-                            if (groups.Contains(covered[k]))
+                            list.Add(i);
+                        }
+                    }
+
+                    if (p.apparel == null)
+                    {
+                        HealthUtility.AdjustSeverity(p, tiberium, +0.2f);
+                        return;
+                    }
+
+                    List<Apparel> Clothing = p.apparel.WornApparel;
+
+                    float protection = 0;
+
+                    int parts = 0;
+
+                    foreach (Apparel a in Clothing)
+                    {
+                        List<BodyPartGroupDef> covered = a.def.apparel.bodyPartGroups;
+                        if (covered.Count > 0)
+                        {
+                            foreach (BodyPartGroupDef b in covered)
                             {
-                                if (Clothing[j].def.defName.Contains("TBP"))
-                                {
-                                    return;
-                                }
-                                if (Clothing[j] != null)
-                                {
-                                    if (protection < Clothing[j].GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp")))
+                                if (p.apparel.BodyPartGroupIsCovered(b))
+                                {                                  
+                                    if (a.def.defName.Contains("_TBP"))
                                     {
-                                        protection = protection + Clothing[j].GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp"));
+                                        if (a.HitPoints < a.MaxHitPoints * 0.35)
+                                        {
+                                            HealthUtility.AdjustSeverity(p, tiberium, +0.015f);
+                                            Messages.Message("MessageTiberiumSuitLeak".Translate(), new TargetInfo(p.Position, Map, false), MessageSound.Standard);
+                                            return;
+                                        }
+                                        parts = parts + 1;
+                                        return;
                                     }
 
-                                    if (Clothing[j].def.label.Contains("Tiberium"))
+                                    if (protection < a.GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp")))
                                     {
-                                        protection = protection + 0.2f;
+                                        protection = protection + a.GetStatValue(DefDatabase<StatDef>.GetNamed("ArmorRating_Sharp"));
                                     }
                                 }
                             }
                         }
                     }
-                }
 
-                if (protection >= 0.6)
-                {
-                    return;
+                    if (protection >= 0.6)
+                    {
+                        return;
+                    }
+
+                    if (parts < 2)
+                    {
+                        HealthUtility.AdjustSeverity(p, tiberium, +0.025f);
+                        return;
+                    }
                 }
-                HealthUtility.AdjustSeverity(p, tiberium, +0.025f);
             }
         }
 
@@ -355,6 +352,14 @@ namespace TiberiumRim
                     {
                         p.Destroy(DestroyMode.Deconstruct);
                     }
+
+                    if(p.def.defName.Contains("SteamGeyser"))
+                    {
+                        ThingDef tibG = DefDatabase<ThingDef>.GetNamed("TiberiumGeyser");
+                        IntVec3 loc = p.Position;
+                        p.DeSpawn();
+                        GenSpawn.Spawn(tibG, loc, Map);
+                    }
                 }
                 else
                 {
@@ -382,7 +387,7 @@ namespace TiberiumRim
                     if (p.def.IsCorpse)
                     {
                         Corpse body = (Corpse)p;
-                        if (Rand.Chance(0.75f) && !body.InnerPawn.def.defName.Contains("_TBI"))
+                        if (Rand.Chance(0.75f) && !body.InnerPawn.def.defName.Contains("_TBI") && !body.InnerPawn.RaceProps.IsMechanoid)
                         {
                             if (body.AnythingToStrip())
                             {
@@ -651,15 +656,17 @@ namespace TiberiumRim
                         creature = DefDatabase<PawnKindDef>.GetNamed("Visceroid_TBI", true);
                         break;
                 }
-
                 PawnGenerationRequest request = new PawnGenerationRequest(creature);
                 pawn = PawnGenerator.GeneratePawn(request);
             }
             else
             {
-                PawnKindDef Visceroid = DefDatabase<PawnKindDef>.GetNamed("Visceroid_TBI", true);
+                PawnKindDef Visceroid = DefDatabase<PawnKindDef>.GetNamed("Visceroid_TBI", true);               
                 PawnGenerationRequest request = new PawnGenerationRequest(Visceroid);
                 pawn = PawnGenerator.GeneratePawn(request);
+                pawn.def.label = p.Label;
+                pawn.ageTracker = p.ageTracker;
+                pawn.health = p.health;                       
             }
             GenSpawn.Spawn(pawn, pos, Map);
         }
@@ -708,14 +715,17 @@ namespace TiberiumRim
             if (!GenPlant.SnowAllowsPlanting(dest, map))
                 return null;
 
-
-
-            if (CompSonicEmitter.ProtectedCells != null)
+            if(TiberiumBase.Instance.UseSpreadRadius)
             {
-                if (CompSonicEmitter.ProtectedCells.Contains(dest))
+                if(!CheckLists.AllowedCells.Contains(dest))
                 {
                     return null;
                 }
+            }
+
+            if(CheckLists.ProtectedCells.Contains(dest) || CheckLists.SuppressedCells.Contains(dest))
+            {
+                return null;
             }
 
             var t = dest.GetTerrain(map);
@@ -908,11 +918,10 @@ namespace TiberiumRim
                 {
                     var c = new IntVec3(x, 0, z);
                     var p = c.GetPlant(map);
-                    //If we do find a plant here, lets mess around a bit.
+                    //If we do find a plant here, let's mess around a bit.
                     if (p != null)
                     {
-                        //If Tiberium shouldn't compete, then we check against the list of Tiberium Crystal Varieties, and if the 
-                        if (!TiberiumBase.Instance.TiberiumCompetes)
+                        if(true)
                         {
                             if (!friendlyTo.Contains(p.def))
                             {
@@ -932,24 +941,6 @@ namespace TiberiumRim
                                 {
                                     p.Destroy(DestroyMode.Vanish);
                                 }
-                            }
-                        }
-                        //Otherwise, regular behavior to avoid self-killing
-                        else if (p.def != plantDef)
-                        {
-
-                            //Kill the plant. Later, we'll consider a piece of tiberium infected plantlife in its place.
-                            if (Rand.Chance(0.05f))
-                            {
-                                ThingDef flora = DefDatabase<ThingDef>.GetNamed("TiberiumPlant", true);
-                                IntVec3 loc = p.Position;
-
-                                    p.Destroy(DestroyMode.Vanish);
-                                    GenSpawn.Spawn(flora, loc, map);
-                            }
-                            else
-                            {
-                                p.Destroy(DestroyMode.Vanish);
                             }
                         }
                     }

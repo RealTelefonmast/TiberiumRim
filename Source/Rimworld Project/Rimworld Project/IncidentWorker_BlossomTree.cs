@@ -43,7 +43,7 @@ namespace TiberiumRim
                 IntVec3 pos = map.listerThings.AllThings.Find((Thing x) => x.def.defName.Contains("BlossomTree")).Position;
                 IntVec3 pos2 = pos.RandomAdjacentCell8Way();
 
-                if (Rand.Chance(0.3f))
+                if (Rand.Chance(0.15f))
                 {
                     pawn.mindState.mentalStateHandler.TryStartMentalState(MentalStateDefOf.ManhunterPermanent, null, true, false, null);
                 }

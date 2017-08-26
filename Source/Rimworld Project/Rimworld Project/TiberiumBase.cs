@@ -1,9 +1,12 @@
-﻿using HugsLib;
+﻿using Harmony;
+using HugsLib;
 using HugsLib.Settings;
+using HugsLib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Reflection;
+using UnityEngine;
 using Verse;
 
 namespace TiberiumRim
@@ -36,14 +39,24 @@ namespace TiberiumRim
         }
 
         public SettingHandle<bool> BuildingDamage;
-        public SettingHandle<bool> TiberiumCompetes;
         public SettingHandle<bool> EntityDamage;
+        public SettingHandle<bool> UseProducerCap;
+
+        internal SettingHandle<int> TiberiumProducersAmt
+        {
+            get;
+            private set;
+        }
+        public SettingHandle<bool> UseSpreadRadius;
 
         public override void DefsLoaded()
         {
             BuildingDamage = Settings.GetHandle<bool>("BuildingDamage", "Tiberium_Damages_Structures".Translate(), "Tiberium_Damages_Structures_Desc".Translate(), true);
-            TiberiumCompetes = Settings.GetHandle<bool>("TiberiumCompetes", "Tiberium_Competes".Translate(), "Tiberium_Competes_Desc".Translate(), false);
             EntityDamage = Settings.GetHandle<bool>("EntityDamage", "Tiberium_Damages_Items".Translate(), "Tiberium_Damages_Items_Desc".Translate(), true);
+            UseProducerCap = Settings.GetHandle<bool>("UseProducerCap", "UseProducerCapLabel".Translate(), "UseProducerCapDesc".Translate(), false);
+            UseSpreadRadius = Settings.GetHandle<bool>("UseSpreadRadius", "UseSpreadRadiusLabel".Translate(), "UseSpreadRadiusDesc".Translate(), false);
+            TiberiumProducersAmt = Settings.GetHandle<int>("TiberiumProducersAmt", Translator.Translate("TiberiumProducersAmtLabel"), Translator.Translate("TiberiumProducersAmtDesc"), 6, Validators.IntRangeValidator(0, 100), null);
+            TiberiumProducersAmt.SpinnerIncrement = 1;
         }
     }
 }

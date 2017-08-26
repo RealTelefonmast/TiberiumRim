@@ -19,6 +19,13 @@ namespace TiberiumRim
                 //Added Check to ensure that that no producer lands in an already occupied field.
                 Predicate<IntVec3> validator = delegate (IntVec3 c)
                 {
+                    if(TiberiumBase.Instance.UseProducerCap)
+                    {
+                        if (CheckLists.producerAmt == TiberiumBase.Instance.TiberiumProducersAmt)
+                        {
+                            return false;
+                        }
+                    }
                     Plant plant = c.GetPlant(map);
                     TerrainDef terrain = c.GetTerrain(map);
 

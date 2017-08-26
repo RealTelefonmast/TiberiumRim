@@ -55,7 +55,6 @@ namespace TiberiumRim
 
     }
 
-
     public class HediffCompProperties_Tiberium : HediffCompProperties
     {
         public HediffCompProperties_Tiberium()

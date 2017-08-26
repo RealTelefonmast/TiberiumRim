@@ -13,7 +13,11 @@
 <TiberiumPower.label>타이베리움 응용기술</TiberiumPower.label>
 <TiberiumPower.description>타이베리움 발전소를 건설할 수 있습니다.</TiberiumPower.description>
 	
-<TiberiumSonicInhibition.label>타이베리움 억제기술</TiberiumSonicInhibition.label>
-<TiberiumSonicInhibition.description>음파 억제기 및 관련 건물들을 만들 수 있습니다. 억제기는 음파 공명을 통해 타이베리움 결정의 분자 결합을 파괴합니다.</TiberiumSonicInhibition.description>
-	
+<TiberiumInhibition.label>타이베리움 억제기술</TiberiumInhibition.label>
+<TiberiumInhibition.description>타이베리움 생장을 억제하는 복잡한 냉동장치를 제작할 수 있습니다.</TiberiumInhibition.description>
+
+<TiberiumInhibitionTribal.label>타이베리움 지연기술</TiberiumInhibitionTribal.label>
+<TiberiumInhibitionTribal.description>타이베리움 생장을 지연시키는 간단한 냉동기를 제작할 수 있습니다. 고통받는 부족민들을 위한 좋은 선택입니다.</TiberiumInhibitionTribal.description>
+
+
 </LanguageData>

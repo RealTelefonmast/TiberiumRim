@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <GreenTiberiumChunk.label>green tiberium chunk</GreenTiberiumChunk.label>
+  <GreenTiberiumChunk.description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</GreenTiberiumChunk.description>
+
+  <BlueTiberiumChunk.label>blue tiberium chunk</BlueTiberiumChunk.label>
+  <BlueTiberiumChunk.description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</BlueTiberiumChunk.description>
+
+  <RedTiberiumChunk.label>red tiberium chunk</RedTiberiumChunk.label>
+  <RedTiberiumChunk.description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</RedTiberiumChunk.description>
+
+
+</LanguageData>

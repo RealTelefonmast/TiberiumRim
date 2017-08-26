@@ -25,12 +25,5 @@
 	<BookRutila.label>적색 타이베리움 취급서</BookRutila.label>
 	<BookRutila.description>타이베리움 루틸라.\n\n붉은 색을 띠는 타이베리움이며, 매우 희귀하게 발견된다.\n\n이것에는 다른 타입들보다 더 가치있는 자원이 포함되어 있다.\n\n첫번째 관찰에서, 이 종의 확장 속도는 매우 느리게 진행되는 것으로 밝혀졌다.\n\n붉은 타이베리움이 충분히 성숙하게 되면 ---[DATA LOST]---/---\n\n§)§$%?!%%##$%---</BookRutila.description>
 	
-	<GreenTiberiumChunk.label>녹색 타이배리움 덩어리</GreenTiberiumChunk.label>
-	<GreenTiberiumChunk.description>녹색 타이배리움 덩어리</GreenTiberiumChunk.description>
-	
-	<BlueTiberiumChunk.label>청색 타이베리움 덩어리</BlueTiberiumChunk.label>
-	<BlueTiberiumChunk.description>청색 타이베리움 덩어리</BlueTiberiumChunk.description>
 
-	<RedTiberiumChunk.label>적색 타이베리움 덩어리</RedTiberiumChunk.label>
-	<RedTiberiumChunk.description>적색 타이베리움 덩어리</RedTiberiumChunk.description>
 </LanguageData>

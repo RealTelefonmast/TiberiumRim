@@ -28,4 +28,8 @@
 	<IonStormIncident.letterLabel>이온 폭풍</IonStormIncident.letterLabel>
 	<IonStormIncident.letterText>이온 폭풍이 시작되었습니다.\n\n강렬한 방사선이 모든 전자장비에 장애를 일으킬 것입니다.\n\n오염물질 확산에 주의하십시오.</IonStormIncident.letterText>
 
+	<BlossomTreeFiends.label>이주하는 타이베리움 야수들</BlossomTreeFiends.label>
+	<BlossomTreeFiends.letterLabel>야수 출현</BlossomTreeFiends.letterLabel>
+	<BlossomTreeFiends.letterText>한 무리의 타이베리움 야수들이 거주지 근처에 나타났습니다.\n\n포자식물 근처에서 배를 불리고 휴식을 취할 것입니다.</BlossomTreeFiends.letterText>
+
 </LanguageData>
