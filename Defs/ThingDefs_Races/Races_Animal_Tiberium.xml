@@ -105,6 +105,7 @@
 			</li>
 		</verbs>
     <race>
+		<hasGenders>false</hasGenders>
 		<herdAnimal>true</herdAnimal>
 		<body>Visceroid</body>
 		<predator>true</predator>
@@ -220,6 +221,7 @@
 		</verbs>
     <race>
 		<herdAnimal>true</herdAnimal>
+		<hasGenders>false</hasGenders>
 		<body>Veinmonster</body>
 		<predator>true</predator>
 		<maxPreyBodySize>1.0</maxPreyBodySize>
@@ -289,7 +291,7 @@
 					<drawSize>0.6</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Pawn/Animals/Visceroid/VisceroidDessicated</texPath>
+					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
 					<drawSize>0.6</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
@@ -299,7 +301,7 @@
 					<drawSize>0.8</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
-					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
+					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
 					<drawSize>0.8</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>

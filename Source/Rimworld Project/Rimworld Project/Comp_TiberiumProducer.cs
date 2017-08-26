@@ -7,16 +7,25 @@ using RimWorld;
 namespace TiberiumRim
 {
     public class Comp_TiberiumProducer : ThingComp
-    {
+    {     
         private CompProperties_TiberiumProducer def;
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             this.def = (CompProperties_TiberiumProducer)this.props;
 
+            setGrowthRadius();
             removeGrass();
             spawnTerrain(def.corruptsInto);
+            CheckLists.producerAmt += 1;
             base.PostSpawnSetup(respawningAfterLoad);
+        }
+
+        public override void PostExposeData()
+        {
+            CheckLists.producerAmt = 0;
+            CheckLists.AllowedCells.Clear();
+            base.PostExposeData();
         }
 
         public override void CompTickRare()
@@ -24,6 +33,16 @@ namespace TiberiumRim
             SnowUtility.AddSnowRadial(this.parent.OccupiedRect().RandomCell, this.parent.Map, 14f, -0.08f);
             DestroyWalls();
             base.CompTickRare();
+        }
+
+        public void setGrowthRadius()
+        {
+            int num = GenRadial.NumCellsInRadius(this.def.radius);
+            for (int i = 0; i < num; i++)
+            {
+                IntVec3 positionToCheck = this.parent.Position + GenRadial.RadialPattern[i];
+                CheckLists.AllowedCells.Add(positionToCheck);
+            }
         }
 
         public void DestroyWalls()
@@ -79,6 +98,7 @@ namespace TiberiumRim
 
     class CompProperties_TiberiumProducer : CompProperties
     {
+        public int radius;
 
         public TerrainDef corruptsInto;
              

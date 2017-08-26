@@ -3,18 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Verse;
-using RimWorld;
+using Verse.Noise;
 
 namespace TiberiumRim
 {
-    class Building_Veinhole : Building
+    public class Building_Veinhole : Building
     {
-        List<Thing> plantsChecked = new List<Thing>();
+        private int radius = 30;
 
-        private int radius = 14;
+        private int hubsInt;
+
+        private int spawnTicks;
+
+        private List<Thing> hubs = new List<Thing>();
 
         //Once a Veinhole dies, all the Veins die with it, for convience and the sake of the players' PCs it just does it instantly. If this starts to cause lags on bigger fields of Veins this will just be left out
         //until a better method is found.
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look<int>(ref this.hubsInt, "progressTicks", 0, false);
+            Scribe_Values.Look<List<Thing>>(ref this.hubs, "hubs", null, false);
+        }     
+
         public static void destroyVeins(List<IntVec3> checkCoords)
         {
             checkCoords.ForEach(i =>
@@ -29,41 +41,73 @@ namespace TiberiumRim
                         destroyVeins(new List<IntVec3>() { i + cells[0], i + cells[1], i + cells[2], i + cells[3], i + cells[4], i + cells[5], i + cells[6], i + cells[7] });
                     }
                 }
-            });
+            });           
+        }
+
+        public void killHubs()
+        {
+            foreach (Thing t in hubs)
+            {
+                if (t != null)
+                {
+                    t.Destroy();
+                }
+            }
+        }
+
+        public bool canSpawnHubNow
+        {
+            get
+            {
+                return spawnTicks > 260;
+            }
         }
 
         public override void TickRare()
         {
-            int num = GenRadial.NumCellsInRadius(this.radius);
-            for (int i = 0; i < num; i++)
+            spawnTicks += 1;
+            growHub();
+            spawnVeinmonster();
+            base.TickRare();
+        }
+
+        private void growHub()
+        {
+            if (canSpawnHubNow)
             {
-                IntVec3 positionToCheck = this.Position + GenRadial.RadialPattern[i];
-                if (positionToCheck.InBounds(Map))
+                spawnTicks = 0;
+                if (hubsInt < 6)
                 {
-                    if (!positionToCheck.GetTerrain(Map).MadeFromStuff)
+                    int num = GenRadial.NumCellsInRadius(this.radius);
+
+                    int rand = Rand.Range(1, num);
+                    IntVec3 pos = this.Position + GenRadial.RadialPattern[rand];                    
+                    if (pos.InBounds(Map))
                     {
-                        this.TryAttack(positionToCheck);
-                        TerrainDef t = DefDatabase<TerrainDef>.GetNamed("VeinSoilRed");
-                        TerrainDef t2 = DefDatabase<TerrainDef>.GetNamed("TiberiumSoilRed");
-                        TerrainDef tt = positionToCheck.GetTerrain(Map);
-                        if (tt.defName.Contains("Water") || tt.defName.Contains("Ice") || tt.defName.Contains("Marsh"))
-                        {
-                            Map.terrainGrid.SetTerrain(positionToCheck, tt);
-                        }
-                        else if (tt.defName.Contains("Sand"))
-                        {
-                            Map.terrainGrid.SetTerrain(positionToCheck, t2);
-                        }
-                        else
-                        {
-                            Map.terrainGrid.SetTerrain(positionToCheck, t);
+                        List<Thing> thinglist = pos.GetThingList(Map);
+                        Thing hub = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("VeinholeHub_TBNS"), null);
+                        foreach(Thing t in thinglist)
+                        {                                             
+                            if(t.def != hub.def)
+                            {
+                                if(t.def.passability == Traversability.Standable)
+                                {
+                                    if (!pos.GetTerrain(Map).defName.Contains("Water") || !pos.GetTerrain(Map).defName.Contains("Marsh"))
+                                    {
+                                        GenSpawn.Spawn(hub, pos, Map);
+                                        hubsInt += 1;
+                                        hubs.Add(hub);
+                                        Messages.Message("VeinHubSpawned".Translate(), new TargetInfo(hub.Position, Map, false), MessageSound.Standard);
+                                        return;
+                                    }
+                                }
+                                growHub();
+                                return;
+                            }
                         }
                     }
                 }
             }
-
-            spawnVeinmonster();
-            base.TickRare();
         }
 
         private void spawnVeinmonster()
@@ -80,6 +124,70 @@ namespace TiberiumRim
                 Pawn pawn = PawnGenerator.GeneratePawn(request);
                 GenSpawn.Spawn(pawn, pos, Map);
             }
+        }
+
+        private void EatPawn()
+        {
+            List<IntVec3> list = GenAdj.OccupiedRect(this).ExpandedBy(1).EdgeCells.ToList();
+            IntVec3 c = list[Rand.Range(0, list.Count)];
+            List<Thing> thingList = c.GetThingList(this.Map);
+
+            foreach(Pawn p in thingList)
+            {
+                if(Rand.Chance(0.05f))
+                {
+                    Messages.Message("MessagePawnEaten".Translate(), new TargetInfo(p.Position, Map, false), MessageSound.Standard);
+                    p.Destroy(DestroyMode.Vanish);
+                }
+            }
+        }
+
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            destroyVeins(GenAdjFast.AdjacentCells8Way(this));
+            killHubs();
+            base.Destroy(mode);
+        }
+    }
+
+    public class Building_Veinhub : Building
+    {
+        private int radius = 7;
+
+        private bool floorNotSet = true;
+        public override void TickRare()
+        {
+            int num = GenRadial.NumCellsInRadius(this.radius);
+            for (int i = 0; i < num; i++)
+            {
+                IntVec3 positionToCheck = this.Position + GenRadial.RadialPattern[i];
+                if (positionToCheck.InBounds(Map))
+                {
+                    if (!positionToCheck.GetTerrain(Map).Removable)
+                    {
+                        this.TryAttack(positionToCheck);
+                        if (floorNotSet)
+                        {
+                            TerrainDef t = DefDatabase<TerrainDef>.GetNamed("VeinSoilRed");
+                            TerrainDef t2 = DefDatabase<TerrainDef>.GetNamed("TiberiumSoilRed");
+                            TerrainDef tt = positionToCheck.GetTerrain(Map);
+                            if (tt.defName.Contains("Water") || tt.defName.Contains("Ice") || tt.defName.Contains("Marsh"))
+                            {
+                                Map.terrainGrid.SetTerrain(positionToCheck, tt);
+                            }
+                            else if (tt.defName.Contains("Sand"))
+                            {
+                                Map.terrainGrid.SetTerrain(positionToCheck, t2);
+                            }
+                            else
+                            {
+                                Map.terrainGrid.SetTerrain(positionToCheck, t);
+                            }                           
+                        }
+                    }
+                }
+            }
+            floorNotSet = false;
         }
 
         private void TryAttack(IntVec3 c)
@@ -99,24 +207,6 @@ namespace TiberiumRim
                     }
                 }
             }
-        }
-
-        private void EatPawn()
-        {
-            List<IntVec3> list = GenAdj.OccupiedRect(this).ExpandedBy(1).EdgeCells.ToList();
-            IntVec3 c = list[Rand.Range(0, list.Count)];
-            List<Thing> thingList = c.GetThingList(this.Map);
-
-            foreach(Pawn p in thingList)
-            {
-
-            }
-        }
-
-        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
-        {
-            destroyVeins(GenAdjFast.AdjacentCells8Way(this));
-            base.Destroy(mode);
         }
     }
 }

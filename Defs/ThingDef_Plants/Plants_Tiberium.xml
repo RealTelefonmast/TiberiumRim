@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Plants>
+<Plants>	
 
 	<ThingDef ParentName="TiberiumBase" Class="TiberiumRim.TiberiumDef">
 		<defName>TiberiumGreen</defName>
@@ -548,6 +548,119 @@
 		</friendlyTo>
 		<buildingDamage>0</buildingDamage>
 		<entityDamage>5</entityDamage>
+	</ThingDef>
+	
+	<!-- Decorative -->
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantGreenTiberium</defName>
+		<label>Tiberium</label>
+		<description>A beautiful green crystal, it feels warm when you hold your face close to it.</description>
+		<statBases>
+			<MaxHitPoints>125</MaxHitPoints>
+			<Beauty>75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Pot/Green</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<ingestible>
+				<nutrition>0.01</nutrition>
+		</ingestible>
+		<altitudeLayer>Item</altitudeLayer>
+		<selectable>true</selectable>
+		<plant>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduces>false</reproduces>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>750</sowWork>			
+			<sowTags>
+				<li>Tiberium</li>
+			</sowTags>
+			<growMinGlow>0</growMinGlow>
+			<topWindExposure>0</topWindExposure>
+			<growDays>3</growDays>
+			<lifespanFraction>10000</lifespanFraction>
+			<visualSizeRange>
+				<min>2</min>
+				<max>2</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantBlueTiberium</defName>
+		<label>Blue Tiberium</label>
+		<description>A beautiful blue crystal, it feels warm when you hold your face close to it.</description>
+		<statBases>
+			<MaxHitPoints>125</MaxHitPoints>
+			<Beauty>75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Pot/Blue</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<ingestible>
+				<nutrition>0.01</nutrition>
+		</ingestible>
+		<altitudeLayer>Item</altitudeLayer>
+		<selectable>true</selectable>
+		<plant>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduces>false</reproduces>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>750</sowWork>
+			<sowTags>
+				<li>Tiberium</li>
+			</sowTags>
+			<growMinGlow>0</growMinGlow>
+			<topWindExposure>0</topWindExposure>
+			<growDays>3</growDays>
+			<lifespanFraction>10000</lifespanFraction>
+			<visualSizeRange>
+				<min>2</min>
+				<max>2</max>
+			</visualSizeRange>
+		</plant>
+	</ThingDef>
+	
+	<ThingDef ParentName="PlantBase">
+		<defName>PlantRedTiberium</defName>
+		<label>Red Tiberium</label>
+		<description>A beautiful red crystal, it feels warm when you hold your face close to it.</description>
+		<statBases>
+			<MaxHitPoints>125</MaxHitPoints>
+			<Beauty>75</Beauty>
+		</statBases>
+		<graphicData>
+			<texPath>Plant/Tiberium/Pot/Red</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+		</graphicData>
+		<ingestible>
+				<nutrition>0.01</nutrition>
+		</ingestible>
+		<altitudeLayer>Item</altitudeLayer>
+		<selectable>true</selectable>
+		<plant>
+			<fertilitySensitivity>0</fertilitySensitivity>
+			<dieIfLeafless>false</dieIfLeafless>
+			<reproduces>false</reproduces>
+			<harvestTag>Standard</harvestTag>
+			<sowWork>750</sowWork>
+			<sowTags>
+				<li>Tiberium</li>
+			</sowTags>
+			<growMinGlow>0</growMinGlow>
+			<topWindExposure>0</topWindExposure>
+			<growDays>3</growDays>
+			<lifespanFraction>10000</lifespanFraction>
+			<visualSizeRange>
+				<min>2</min>
+				<max>2</max>
+			</visualSizeRange>
+		</plant>
 	</ThingDef>
   
 </Plants>

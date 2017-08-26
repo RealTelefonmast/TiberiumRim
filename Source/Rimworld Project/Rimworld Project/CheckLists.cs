@@ -12,5 +12,10 @@ namespace TiberiumRim
         public static List<IntVec3> ProtectedCells = new List<IntVec3>();
 
         public static List<IntVec3> SuppressedCells = new List<IntVec3>();
+
+        public static List<IntVec3> AllowedCells = new List<IntVec3>();
+
+        public static int producerAmt = new int();
+
     }
 }

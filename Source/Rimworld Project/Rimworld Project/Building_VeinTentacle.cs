@@ -21,7 +21,15 @@ namespace TiberiumRim
         {
             get
             {
-                return progressTicks > 50;
+                return progressTicks > 60;
+            }
+        }
+
+        private bool canAttack
+        {
+            get
+            {
+                return (progressTicks % 20 == 0);
             }
         }
 
@@ -52,20 +60,23 @@ namespace TiberiumRim
 
         public void hurt(Pawn p)
         {
+            if (canAttack)
+            {
                 int amt = 2;
-            if (p.apparel == null)
-            {
-                amt = amt * 3;
-            }
-            DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, amt);
-
-            if (Rand.Chance(0.1f) && !p.def.defName.Contains("Veinmonster") && p.Position.InBounds(this.Map))
-            {
-                if (!p.Downed)
+                if (p.apparel == null)
                 {
-                    p.TakeDamage(damage);
+                    amt = amt * 3;
                 }
-            }            
+                DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, amt);
+
+                if (Rand.Chance(0.1f) && !p.def.defName.Contains("TBI") && p.Position.InBounds(this.Map))
+                {
+                    if (!p.Downed)
+                    {
+                        p.TakeDamage(damage);
+                    }
+                }
+            }
         }
     }
 }

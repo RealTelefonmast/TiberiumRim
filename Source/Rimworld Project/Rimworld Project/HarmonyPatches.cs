@@ -21,17 +21,21 @@ namespace TiberiumRim
                 List<Thing> thingList = c.GetThingList(map);
                 for (int i = 0; i < thingList.Count; i++)
                 {
-                    Plant p = thingList[i] as Plant;
-                    if (p.def.defName.Contains("Tiberium"))
+                    if (thingList[i] != null)
                     {
-                        return false;
+                        if (thingList[i] is Plant)
+                        {
+                            if (thingList[i].def.defName.Contains("Tiberium"))
+                            {
+                                return false;
+                            }
+                            return true;
+                        }
                     }
-                    return true;
                 }
             }
             return false;
         }
-
     }
 
     [HarmonyPatch(typeof(AutoBuildRoofAreaSetter))]
@@ -42,19 +46,18 @@ namespace TiberiumRim
         [HarmonyPrefix]
         static bool PrefixMethod(Room room)
         {
-            var things = room.ContainedAndAdjacentThings;
-            var count = things.Count;
-            foreach (Thing thing in things)
+            foreach(Thing t in room.ContainedAndAdjacentThings)
             {
-                if (thing != null)
+                if(t != null)
                 {
-                    if (thing.def.defName.Contains("Tiberium") || count <= 9)
+                    if (t.def.defName.Contains("Tiberium"))
                     {
                         return false;
                     }
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
     }
 
@@ -73,21 +76,24 @@ namespace TiberiumRim
                 for (int i = 0; i < 9; i++)
                 {
                     IntVec3 loc = c + GenRadial.RadialPattern[i];
-                    Room room = loc.GetRoom(map, RegionType.Set_Passable);
-                    if (room != null)
+                    if (loc != null)
                     {
-                        var things = room.ContainedAndAdjacentThings;
-                        var count = things.Count;
-                        foreach (Thing thing in things)
+                        Room room = loc.GetRoom(map, RegionType.Set_Passable);
+                        if (room != null && !room.TouchesMapEdge)
                         {
-                            if (thing != null)
+                            var things = room.ContainedAndAdjacentThings;
+                            var count = things.Count;
+                            foreach (Thing thing in things)
                             {
-                                if (thing.def.defName.Contains("Tiberium") || count <= 9)
+                                if (thing != null)
                                 {
-                                    return false;
+                                    if (thing.def.defName.Contains("Tiberium") || count <= 9)
+                                    {
+                                        return false;
+                                    }
                                 }
                             }
-                        }                       
+                        }
                     }
                 }
                 return true;

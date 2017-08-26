@@ -231,9 +231,18 @@ namespace TiberiumRim
             HediffDef Stage1 = DefDatabase<HediffDef>.GetNamed("TiberiumStage1", true);
             HediffDef Stage2 = DefDatabase<HediffDef>.GetNamed("TiberiumStage2", true);
             HediffDef Stage3 = DefDatabase<HediffDef>.GetNamed("TiberiumContactPoison", true);
+            HediffDef Immunity = DefDatabase<HediffDef>.GetNamed("TiberiumInfusionImmunity", false);
 
             if (p != null)
-            {
+            {               
+                if (Immunity != null)
+                {
+                    if (p.health.hediffSet.HasHediff(Immunity))
+                    {
+                        return;
+                    }
+                }
+
                 if (p.health.hediffSet.HasHediff(Stage1) | p.health.hediffSet.HasHediff(Stage2) | p.health.hediffSet.HasHediff(addiction))
                 {
                     return;
@@ -378,7 +387,7 @@ namespace TiberiumRim
                     if (p.def.IsCorpse)
                     {
                         Corpse body = (Corpse)p;
-                        if (Rand.Chance(0.75f) && !body.InnerPawn.def.defName.Contains("_TBI") || !body.InnerPawn.RaceProps.IsMechanoid)
+                        if (Rand.Chance(0.75f) && !body.InnerPawn.def.defName.Contains("_TBI") && !body.InnerPawn.RaceProps.IsMechanoid)
                         {
                             if (body.AnythingToStrip())
                             {
@@ -647,15 +656,17 @@ namespace TiberiumRim
                         creature = DefDatabase<PawnKindDef>.GetNamed("Visceroid_TBI", true);
                         break;
                 }
-
                 PawnGenerationRequest request = new PawnGenerationRequest(creature);
                 pawn = PawnGenerator.GeneratePawn(request);
             }
             else
             {
-                PawnKindDef Visceroid = DefDatabase<PawnKindDef>.GetNamed("Visceroid_TBI", true);
+                PawnKindDef Visceroid = DefDatabase<PawnKindDef>.GetNamed("Visceroid_TBI", true);               
                 PawnGenerationRequest request = new PawnGenerationRequest(Visceroid);
                 pawn = PawnGenerator.GeneratePawn(request);
+                pawn.def.label = p.Label;
+                pawn.ageTracker = p.ageTracker;
+                pawn.health = p.health;                       
             }
             GenSpawn.Spawn(pawn, pos, Map);
         }
@@ -703,6 +714,14 @@ namespace TiberiumRim
 
             if (!GenPlant.SnowAllowsPlanting(dest, map))
                 return null;
+
+            if(TiberiumBase.Instance.UseSpreadRadius)
+            {
+                if(!CheckLists.AllowedCells.Contains(dest))
+                {
+                    return null;
+                }
+            }
 
             if(CheckLists.ProtectedCells.Contains(dest) || CheckLists.SuppressedCells.Contains(dest))
             {
@@ -902,41 +921,26 @@ namespace TiberiumRim
                     //If we do find a plant here, let's mess around a bit.
                     if (p != null)
                     {
-                        if (!friendlyTo.Contains(p.def))
+                        if(true)
                         {
-                            if (Rand.Chance(0.05f))
+                            if (!friendlyTo.Contains(p.def))
                             {
-                                ThingDef flora = DefDatabase<ThingDef>.GetNamed("TiberiumPlant", true);
-                                TerrainDef setTerrain = DefDatabase<TerrainDef>.GetNamed("TiberiumSoilGreen", true);
-                                IntVec3 loc = p.Position;
+                                if (Rand.Chance(0.05f))
+                                {
+                                    ThingDef flora = DefDatabase<ThingDef>.GetNamed("TiberiumPlant", true);
+                                    TerrainDef setTerrain = DefDatabase<TerrainDef>.GetNamed("TiberiumSoilGreen", true);
+                                    IntVec3 loc = p.Position;
 
-                                p.Destroy(DestroyMode.Vanish);
+                                    p.Destroy(DestroyMode.Vanish);
 
-                                GenSpawn.Spawn(flora, loc, map);
-                                changeTerrain(loc, map, setTerrain);
+                                    GenSpawn.Spawn(flora, loc, map);
+                                    changeTerrain(loc, map, setTerrain);
 
-                            }
-                            else
-                            {
-                                p.Destroy(DestroyMode.Vanish);
-                            }
-                        }
-                        //Otherwise, regular behavior to avoid self-killing
-                        else if (p.def != plantDef)
-                        {
-
-                            //Kill the plant. Later, we'll consider a piece of tiberium infected plantlife in its place.
-                            if (Rand.Chance(0.05f))
-                            {
-                                ThingDef flora = DefDatabase<ThingDef>.GetNamed("TiberiumPlant", true);
-                                IntVec3 loc = p.Position;
-
-                                p.Destroy(DestroyMode.Vanish);
-                                GenSpawn.Spawn(flora, loc, map);
-                            }
-                            else
-                            {
-                                p.Destroy(DestroyMode.Vanish);
+                                }
+                                else
+                                {
+                                    p.Destroy(DestroyMode.Vanish);
+                                }
                             }
                         }
                     }

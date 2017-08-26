@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+
+	<Tiberium_Damages_Structures>타이베리움에 의한 구조물 침식</Tiberium_Damages_Structures>
+	<Tiberium_Damages_Structures_Desc>타이베리움이 주변 구조물을 침식하여 파괴합니다.</Tiberium_Damages_Structures_Desc>
+	<Tiberium_Damages_Items>타이베리움에 의한 아이템 침식</Tiberium_Damages_Items>
+	<Tiberium_Damages_Items_Desc>타이베리움이 주변 아이템을 침식하여 파괴합니다.</Tiberium_Damages_Items_Desc>
+	
+  <MessageTiberiumSuitLeak>낡은 보호복에서 누출이 발생하고 있습니다! 장비를 신속히 교체하십시오.</MessageTiberiumSuitLeak>
+  <MustPlaceOnTiberiumGeyser>이 건물은 오염된 간헐천 위에만 건설할 수 있습니다.</MustPlaceOnTiberiumGeyser>
+  <CannotReachTiberium>변이된 정착민이 타이베리움을 갈망합니다!</CannotReachTiberium>
+
+</LanguageData>

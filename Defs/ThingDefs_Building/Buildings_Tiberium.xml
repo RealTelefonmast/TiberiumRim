@@ -53,6 +53,7 @@
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<radius>30</radius>
 				<corruptsInto>TiberiumSoilGreen</corruptsInto>
 			</li>
 			<li Class="CompProperties_Glower">
@@ -100,6 +101,7 @@
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+				<radius>20</radius>
 				<corruptsInto>TiberiumSoilBlue</corruptsInto>
 			</li>
 			<li Class="CompProperties_HeatPusher">
@@ -213,7 +215,8 @@
 		</building>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
-			<corruptsInto>TiberiumSoilBlue</corruptsInto>
+				<radius>8</radius>
+				<corruptsInto>TiberiumSoilBlue</corruptsInto>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>20</heatPerSecond>
@@ -261,7 +264,8 @@
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
-			<corruptsInto>TiberiumSoilPod</corruptsInto>
+				<radius>20</radius>
+				<corruptsInto>TiberiumSoilPod</corruptsInto>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>7</glowRadius>
@@ -305,7 +309,8 @@
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
-			<corruptsInto>TiberiumSoilRed</corruptsInto>
+				<radius>8</radius>
+				<corruptsInto>TiberiumSoilRed</corruptsInto>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>8</glowRadius>
@@ -351,11 +356,22 @@
 		<blockPlants>true</blockPlants>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
-			<corruptsInto>VeinSoilRed</corruptsInto>
+				<radius>12</radius>
+				<corruptsInto>VeinSoilRed</corruptsInto>
 			</li>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>47</heatPerSecond>
 				<heatPushMaxTemperature>207</heatPushMaxTemperature>
+			</li>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumVein</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>50600</min>
+					<max>60000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>8</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
 			</li>
 		</comps>
 	</ThingDef>
@@ -436,7 +452,7 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<shaderType>Transparent</shaderType>
 			<drawSize>(1,1)</drawSize>
-		</graphicData>
+		</graphicData>		
 		<altitudeLayer>Floor</altitudeLayer>
 		<rotatable>false</rotatable>
 		<destroyable>false</destroyable>
@@ -453,30 +469,32 @@
 		</building>
 	</ThingDef>
 	
-	<ThingDef ParentName="BuildingNaturalBase">
-		<defName>VeinholeExit</defName>
-		<thingClass>Building</thingClass>
-		<label>Veinhole exit</label>
+	<ThingDef ParentName="TiberiumBuildingBase">
+		<defName>VeinholeHub_TBNS</defName>
+		<description></description>
+		<label>Veinhole hub</label>
+		<thingClass>TiberiumRim.Building_Veinhub</thingClass>
+		<size>(1,1)</size>
 		<graphicData>
 			<texPath>Building/Natural/Veinhole/Veinexit</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
 			<shaderType>Transparent</shaderType>
-			<drawSize>(4,4)</drawSize>
+			<drawSize>(2,2)</drawSize>
 		</graphicData>
+		<statBases>
+			<MaxHitPoints>450</MaxHitPoints>
+			<Beauty>-125</Beauty>
+		</statBases>
 		<altitudeLayer>Floor</altitudeLayer>
-		<rotatable>false</rotatable>
-		<destroyable>false</destroyable>
-		<useHitPoints>false</useHitPoints>
-		<tickerType>Long</tickerType>
+		<tickerType>Rare</tickerType>
 		<selectable>true</selectable>
-		<size>(2,2)</size>
 		<neverOverlapFloors>true</neverOverlapFloors>
 		<blockPlants>true</blockPlants>
-		<building>
-			<isEdifice>false</isEdifice>
-			<claimable>false</claimable>
-			<deconstructible>false</deconstructible>
-		</building>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
+			<corruptsInto>VeinSoilRed</corruptsInto>
+			</li>
+		</comps>
 	</ThingDef>
 	
 	<ThingDef ParentName="BuildingNaturalBase">

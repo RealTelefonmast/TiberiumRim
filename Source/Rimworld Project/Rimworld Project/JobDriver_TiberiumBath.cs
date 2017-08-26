@@ -11,13 +11,9 @@ namespace TiberiumRim
     {
         protected override Job TryGiveJob(Pawn pawn)
         {
-            Thing targetA = pawn.Map.listerThings.AllThings.Find((Thing x) => x.def.defName.Contains("Tiberium"));
-            if (targetA.def.plant != null)
-            {
-                JobDef job = DefDatabase<JobDef>.GetNamed("TiberiumBath");
-                return new Job(job, targetA);
-            }
-            return null;
+            Thing targetA = pawn.Map.listerThings.AllThings.Find((Thing x) => x.def.defName.Contains("Tiberium") && x is Plant);
+            JobDef job = DefDatabase<JobDef>.GetNamed("TiberiumBath");
+            return new Job(job, targetA);
         }
     }
 
@@ -40,7 +36,10 @@ namespace TiberiumRim
             this.bath = new Toil();
             this.bath.tickAction = delegate
             {
-                JoyUtility.JoyTickCheckEnd(this.pawn, JoyTickFullJoyAction.EndJob, 1f);
+                if (this.pawn.needs.joy != null)
+                {
+                    JoyUtility.JoyTickCheckEnd(this.pawn, JoyTickFullJoyAction.EndJob, 1f);
+                }
             };
             this.bath.defaultCompleteMode = ToilCompleteMode.Delay;
             this.bath.defaultDuration = base.CurJob.def.joyDuration;

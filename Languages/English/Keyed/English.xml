@@ -8,5 +8,15 @@
   <MessageTiberiumSuitLeak>Tiberium protection suit is leaking!</MessageTiberiumSuitLeak>
   <MustPlaceOnTiberiumGeyser>This must be placed on a Tiberium geyser.</MustPlaceOnTiberiumGeyser>
   <CannotReachTiberium>Tiberium addicted pawn cannot reach Tiberium!</CannotReachTiberium>
+  <VeinHubSpawned>A veinhub has been spawned by a Veinhole!</VeinHubSpawned>
+  <MessagePawnEaten>A pawn has been eaten by a Veinhole, should've been more careful!</MessagePawnEaten>
+  <VisceroidUsedToBeLabel>This Visceroid used to be </VisceroidUsedToBeLabel>
+
+  <UseProducerCapLabel>Tiberium Producer-Cap</UseProducerCapLabel>
+  <UseProducerCapDesc>Allow the amount of Tiberium Producers to be limited.</UseProducerCapDesc>
+  <TiberiumProducersAmtLabel>Tiberium Producer Amount</TiberiumProducersAmtLabel>
+  <TiberiumProducersAmtDesc>Set the amount of Tiberium Producers that can spawn.</TiberiumProducersAmtDesc>
+  <UseSpreadRadiusLabel>Use Spread Radius</UseSpreadRadiusLabel>
+  <UseSpreadRadiusDesc>Allow Tiberium to only spread in a certain radius around producers.</UseSpreadRadiusDesc>
   
 </LanguageData>

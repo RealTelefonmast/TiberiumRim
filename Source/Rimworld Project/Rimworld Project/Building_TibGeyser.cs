@@ -18,12 +18,7 @@ namespace TiberiumRim
 
         private int radius = 12;
 
-        private int progressTicks;
-
         private int spraySustainerStartTick = -999;
-
-        private int maxCracks = 24;
-        private int currentCracks = 0;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -54,17 +49,15 @@ namespace TiberiumRim
             if (this.harvester == null)
             {
                 this.steamSprayer.SteamSprayerTick();
-                this.progressTicks += 1;
-                if (maxCracks > currentCracks)
-                {
-                    int num = GenRadial.NumCellsInRadius(this.radius);
 
-                    for (int i = 0; i < num; i++)
-                    {
-                        IntVec3 positionToCheck = this.Position + GenRadial.RadialPattern[i];
-                        this.GasAttack(positionToCheck);
-                    }
+                int num = GenRadial.NumCellsInRadius(this.radius);
+
+                for (int i = 0; i < num; i++)
+                {
+                    IntVec3 positionToCheck = this.Position + GenRadial.RadialPattern[i];
+                    this.GasAttack(positionToCheck);
                 }
+
             }
             if (this.spraySustainer != null && Find.TickManager.TicksGame > this.spraySustainerStartTick + 1000)
             {
@@ -86,7 +79,6 @@ namespace TiberiumRim
                         if (c.GetFirstThing(Map, crack) == null)
                         {
                             GenSpawn.Spawn(crack, c, Map);
-                            currentCracks++;
                         }
                     }
                 }

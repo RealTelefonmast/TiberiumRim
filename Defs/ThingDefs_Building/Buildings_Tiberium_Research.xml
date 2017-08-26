@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ThingDefs>
 
-
 	<ThingDef ParentName="BenchBase">
 		<defName>TiberiumResearchBench</defName>
 		<label>tiberium research station</label>

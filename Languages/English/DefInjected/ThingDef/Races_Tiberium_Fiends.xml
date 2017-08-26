@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Thrimbo_TBI.label>Thrimbo</Thrimbo_TBI.label>
+  <Thrimbo_TBI.description>A gigantic creature of unknown origin. The Thrumbo, but this one seems to have an Tiberium infection. Be careful, it might be easily enraged.</Thrimbo_TBI.description>
+  <Thrimbo_TBI_Leather.label>Thrimbo Tiberium Fur</Thrimbo_TBI_Leather.label>
+  <Thrimbo_TBI_Leather.description>Thrimbo Tiberium Fur</Thrimbo_TBI_Leather.description>
+  <Thrimbo_TBI_Leather.stuffProps.stuffAdjective>Thrimbo Tiberium Fur</Thrimbo_TBI_Leather.stuffProps.stuffAdjective>
+  <Thrimbo_TBI_Meat.label>Thrimbo meat</Thrimbo_TBI_Meat.label>
+  <Thrimbo_TBI_Meat.description>Thrimbo meat</Thrimbo_TBI_Meat.description>
+  <Thrimbo_TBI_Corpse.label>Thrimbo corpse</Thrimbo_TBI_Corpse.label>
+  <Thrimbo_TBI_Corpse.description>Thrimbo corpse</Thrimbo_TBI_Corpse.description>
+
+  <TiberiumTerror_TBI.label>Tiberium terror</TiberiumTerror_TBI.label>
+  <TiberiumTerror_TBI.description>A gigantic creature of unknown origin. It's black and blue appearance shows great danger in this creature.</TiberiumTerror_TBI.description>
+  <TiberiumTerror_TBI_Leather.label>Tiberium Terror Fur</TiberiumTerror_TBI_Leather.label>
+  <TiberiumTerror_TBI_Leather.description>Tiberium Terror Fur</TiberiumTerror_TBI_Leather.description>
+  <TiberiumTerror_TBI_Leather.stuffProps.stuffAdjective>Tiberium Terror Fur</TiberiumTerror_TBI_Leather.stuffProps.stuffAdjective>
+  <TiberiumTerror_TBI_Meat.label>Tiberium terror meat</TiberiumTerror_TBI_Meat.label>
+  <TiberiumTerror_TBI_Meat.description>Tiberium terror meat</TiberiumTerror_TBI_Meat.description>
+  <TiberiumTerror_TBI_Corpse.label>Tiberium terror corpse</TiberiumTerror_TBI_Corpse.label>
+  <TiberiumTerror_TBI_Corpse.description>Tiberium terror corpse</TiberiumTerror_TBI_Corpse.description>
+
+  <BigTiberiumFiend_TBI.label>big Tiberium fiend</BigTiberiumFiend_TBI.label>
+  <BigTiberiumFiend_TBI.description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</BigTiberiumFiend_TBI.description>
+  <BigTiberiumFiend_TBI_Leather.label>Tiberium bearskin</BigTiberiumFiend_TBI_Leather.label>
+  <BigTiberiumFiend_TBI_Leather.description>Tiberium bearskin</BigTiberiumFiend_TBI_Leather.description>
+  <BigTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>Tiberium bearskin</BigTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>
+  <BigTiberiumFiend_TBI_Meat.label>Tiberium bear meat</BigTiberiumFiend_TBI_Meat.label>
+  <BigTiberiumFiend_TBI_Meat.description>Tiberium bear meat</BigTiberiumFiend_TBI_Meat.description>
+  <BigTiberiumFiend_TBI_Corpse.label>big Tiberium fiend corpse</BigTiberiumFiend_TBI_Corpse.label>
+  <BigTiberiumFiend_TBI_Corpse.description>big Tiberium fiend corpse</BigTiberiumFiend_TBI_Corpse.description>
+
+  <Tibscarab_TBI.label>Tibscarab</Tibscarab_TBI.label>
+  <Tibscarab_TBI.description>A large, genetically-engineered beetle that has come in contact with Tiberium.</Tibscarab_TBI.description>
+  <!-- Leather Amount: 0 -->
+  <!-- Use Meat From: Megaspider -->
+  <Tibscarab_TBI_Corpse.label>Tibscarab corpse</Tibscarab_TBI_Corpse.label>
+  <Tibscarab_TBI_Corpse.description>Tibscarab corpse</Tibscarab_TBI_Corpse.description>
+
+  <TiberiumFiend_TBI.label>tiberium fiend</TiberiumFiend_TBI.label>
+  <TiberiumFiend_TBI.description>A classic Tiberium predator. The Tiberium Fiend is the most common and rather dangerous Tiberium creature. They are tameable, but only accept those worthy of their trust.</TiberiumFiend_TBI.description>
+  <TiberiumFiend_TBI_Leather.label>Tiberium fiend skin</TiberiumFiend_TBI_Leather.label>
+  <TiberiumFiend_TBI_Leather.description>Tiberium fiend skin</TiberiumFiend_TBI_Leather.description>
+  <TiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>Tiberium fiend skin</TiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>
+  <TiberiumFiend_TBI_Meat.label>Tiberium fiend meat</TiberiumFiend_TBI_Meat.label>
+  <TiberiumFiend_TBI_Meat.description>Tiberium fiend meat</TiberiumFiend_TBI_Meat.description>
+  <TiberiumFiend_TBI_Corpse.label>tiberium fiend corpse</TiberiumFiend_TBI_Corpse.label>
+  <TiberiumFiend_TBI_Corpse.description>tiberium fiend corpse</TiberiumFiend_TBI_Corpse.description>
+
+  <SmallTiberiumFiend_TBI.label>small tiberium fiend</SmallTiberiumFiend_TBI.label>
+  <SmallTiberiumFiend_TBI.description>A small solitary canine infected with Tiberium.</SmallTiberiumFiend_TBI.description>
+  <SmallTiberiumFiend_TBI_Leather.label>Small Tiberium fiend skin</SmallTiberiumFiend_TBI_Leather.label>
+  <SmallTiberiumFiend_TBI_Leather.description>Small Tiberium fiend skin</SmallTiberiumFiend_TBI_Leather.description>
+  <SmallTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>Small Tiberium fiend skin</SmallTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>
+  <!-- Use Meat From: FoxFennec -->
+  <SmallTiberiumFiend_TBI_Corpse.label>small tiberium fiend corpse</SmallTiberiumFiend_TBI_Corpse.label>
+  <SmallTiberiumFiend_TBI_Corpse.description>small tiberium fiend corpse</SmallTiberiumFiend_TBI_Corpse.description>
+
+  <Crawler_TBI.label>crawler</Crawler_TBI.label>
+  <Crawler_TBI.description>A large snake. This one seems to be infected with Tiberium.</Crawler_TBI.description>
+  <Crawler_TBI_Leather.label>Crawler Tiberium skin</Crawler_TBI_Leather.label>
+  <Crawler_TBI_Leather.description>Crawler Tiberium skin</Crawler_TBI_Leather.description>
+  <Crawler_TBI_Leather.stuffProps.stuffAdjective>Crawler Tiberium skin</Crawler_TBI_Leather.stuffProps.stuffAdjective>
+  <Crawler_TBI_Meat.label>crawler flesh</Crawler_TBI_Meat.label>
+  <Crawler_TBI_Meat.description>crawler flesh</Crawler_TBI_Meat.description>
+  <Crawler_TBI_Corpse.label>crawler corpse</Crawler_TBI_Corpse.label>
+  <Crawler_TBI_Corpse.description>crawler corpse</Crawler_TBI_Corpse.description>
+
+  <Boomfiend_TBI.label>boomfiend</Boomfiend_TBI.label>
+  <Boomfiend_TBI.description>When boomrats come into contact with Tiberium, beware of these creatures.</Boomfiend_TBI.description>
+  <Boomfiend_TBI_Leather.label>boomfiend leather</Boomfiend_TBI_Leather.label>
+  <Boomfiend_TBI_Leather.description>boomfiend leather</Boomfiend_TBI_Leather.description>
+  <Boomfiend_TBI_Leather.stuffProps.stuffAdjective>boomfiend leather</Boomfiend_TBI_Leather.stuffProps.stuffAdjective>
+  <Boomfiend_TBI_Meat.label>boomfiend meat</Boomfiend_TBI_Meat.label>
+  <Boomfiend_TBI_Meat.description>boomfiend meat</Boomfiend_TBI_Meat.description>
+  <Boomfiend_TBI_Corpse.label>boomfiend corpse</Boomfiend_TBI_Corpse.label>
+  <Boomfiend_TBI_Corpse.description>boomfiend corpse</Boomfiend_TBI_Corpse.description>
+
+  <Spiner_TBI.label>spiner</Spiner_TBI.label>
+  <Spiner_TBI.description>Heavily-muscled wolf-like creatures, iinfused with Tiberium. These "Spiners" are very dangerous and should be avoided.</Spiner_TBI.description>
+  <Spiner_TBI_Leather.label>Spiner Tiberium fur</Spiner_TBI_Leather.label>
+  <Spiner_TBI_Leather.description>Spiner Tiberium fur</Spiner_TBI_Leather.description>
+  <Spiner_TBI_Leather.stuffProps.stuffAdjective>Spiner Tiberium fur</Spiner_TBI_Leather.stuffProps.stuffAdjective>
+  <Spiner_TBI_Meat.label>spiner meat</Spiner_TBI_Meat.label>
+  <Spiner_TBI_Meat.description>spiner meat</Spiner_TBI_Meat.description>
+  <Spiner_TBI_Corpse.label>spiner corpse</Spiner_TBI_Corpse.label>
+  <Spiner_TBI_Corpse.description>spiner corpse</Spiner_TBI_Corpse.description>
+
+  <Tiffalo_TBI.label>tiffalo</Tiffalo_TBI.label>
+  <Tiffalo_TBI.description>These creatures have lost all their fluffiness to a crystaline structure, they also seem less friendly.</Tiffalo_TBI.description>
+  <Tiffalo_TBI_Leather.label>tiffalo leather</Tiffalo_TBI_Leather.label>
+  <Tiffalo_TBI_Leather.description>tiffalo leather</Tiffalo_TBI_Leather.description>
+  <Tiffalo_TBI_Leather.stuffProps.stuffAdjective>tiffalo leather</Tiffalo_TBI_Leather.stuffProps.stuffAdjective>
+  <Tiffalo_TBI_Meat.label>tiffalo meat</Tiffalo_TBI_Meat.label>
+  <Tiffalo_TBI_Meat.description>tiffalo meat</Tiffalo_TBI_Meat.description>
+  <Tiffalo_TBI_Corpse.label>tiffalo corpse</Tiffalo_TBI_Corpse.label>
+  <Tiffalo_TBI_Corpse.description>tiffalo corpse</Tiffalo_TBI_Corpse.description>
+
+
+</LanguageData>

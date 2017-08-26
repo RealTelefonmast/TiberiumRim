@@ -14,6 +14,8 @@ namespace TiberiumRim
 
         private CompPowerTrader powerComp;
 
+        private int spawnTicks;
+
         private bool spawnForbidden = false;
 
         public override void PostSpawnSetup(bool respawningAfterLoad)
@@ -22,9 +24,17 @@ namespace TiberiumRim
             this.powerComp = this.parent.GetComp<CompPowerTrader>();
         }
 
+        private bool canSpawn
+        {
+            get
+            {
+                return this.spawnTicks % 60 == 0;
+            }
+        }
+
         public override void CompTickRare()
         {
-            base.CompTickRare();
+            spawnTicks += 1;
             if (this.geyser == null)
             {
                 ThingDef tibgeyser = DefDatabase<ThingDef>.GetNamed("TiberiumGeyser");
@@ -36,7 +46,10 @@ namespace TiberiumRim
 
                 if (powerComp.PowerOn)
                 {
-                    SpawnCrystals();
+                    if (canSpawn)
+                    {
+                        SpawnCrystals();
+                    }
                 }
             }
         }
@@ -71,7 +84,7 @@ namespace TiberiumRim
             if (c.GetFirstHaulable(this.parent.Map) == null || c.GetFirstHaulable(this.parent.Map).def == t)
             {
                 Thing thing = ThingMaker.MakeThing(t, null);
-                thing.stackCount = 1;
+                thing.stackCount = 25;
                 Thing d;
                 GenPlace.TryPlaceThing(thing, c, this.parent.Map, ThingPlaceMode.Direct, out d, null);
                 if (spawnForbidden)
@@ -121,5 +134,4 @@ namespace TiberiumRim
             this.compClass = typeof(CompTiberiumSpike);
         }
     }
-
 }

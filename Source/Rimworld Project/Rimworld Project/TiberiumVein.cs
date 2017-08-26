@@ -14,7 +14,28 @@ namespace TiberiumRim
         //Veins shouldn't infect pawns directly
         public override void infect(Pawn p)
         {
-            return;
+            if (Rand.Chance(0.1f))
+            {
+                int amt = 2;
+                if (p.apparel == null)
+                {
+                    amt = amt * 3;
+                }
+                DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, amt);
+
+                if (!p.def.defName.Contains("TBI") && p.Position.InBounds(this.Map))
+                {
+                    if (!p.Downed)
+                    {
+                        p.TakeDamage(damage);
+                    }
+                }
+                Building b = this.Position.RandomAdjacentCell8Way().GetFirstBuilding(Map);
+                if (b != null && b.def.defName.Contains("Veinhole"))
+                {
+                    base.infect(p);
+                }
+            }
         }
 
         //For aesthetics and the fact that Veins are a living being, let's make it bleed

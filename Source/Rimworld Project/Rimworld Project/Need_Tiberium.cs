@@ -72,7 +72,7 @@ namespace TiberiumRim
         }
 
         public Need_Tiberium(Pawn pawn) : base(pawn)
-		{
+        {
             this.threshPercents = new List<float>();
             this.threshPercents.Add(0.3f);
         }
@@ -84,7 +84,7 @@ namespace TiberiumRim
 
         public override void NeedInterval()
         {
-            if (this.pawn != null && this.pawn.Map != null)
+            if (this.pawn?.Map != null)
             {
                 if (this.pawn.Position.InBounds(this.pawn.Map))
                 {
@@ -92,13 +92,13 @@ namespace TiberiumRim
                     {
                         return;
                     }
-                    var c = this.pawn.RandomAdjacentCell8Way();
+                    IntVec3 c = this.pawn.RandomAdjacentCell8Way();
                     if (c.InBounds(this.pawn.Map))
                     {
-                        var t = c.GetPlant(this.pawn.Map);
-                        if (t != null)
+                        Plant p = c.GetPlant(this.pawn.Map);
+                        if (p != null)
                         {
-                            if (t.def.defName.Contains("Tiberium"))
+                            if (p.def.defName.Contains("Tiberium"))
                             {
                                 this.CurLevel += 0.05f;
                                 return;
@@ -106,29 +106,29 @@ namespace TiberiumRim
                         }
                         this.CurLevel -= this.TiberiumNeedFallPerTick * 350f;
                     }
-                }
-            }
 
-            messageTick += 1;
-
-            if (this.CurLevel < this.MaxLevel * 0.3)
-            {
-                JobDef job = DefDatabase<JobDef>.GetNamed("TiberiumBath");
-                Thing targetA = this.pawn.Map.listerThings.AllThings.Find((Thing x) => x.def.defName.Contains("Tiberium"));
-                if (targetA != null && targetA.def.plant != null)
-                {
-                    if (pawn.CanReach(targetA, PathEndMode.OnCell, Danger.Deadly, false))
+                    messageTick += 1;
+                    if (this.CurLevel < this.MaxLevel * 0.3)
                     {
-                        this.pawn.jobs.TryTakeOrderedJob(new Job(job, targetA));
-                        return;
-                    }                   
-                }
-                if (canMessage)
-                {
-                    Messages.Message("CannotReachTiberium".Translate(), new TargetInfo(pawn.Position, pawn.Map, false), MessageSound.Standard);
-                    messageTick = 0;
+                        JobDef job = DefDatabase<JobDef>.GetNamed("TiberiumBath");
+                        Thing targetA = this.pawn.Map.listerThings.AllThings.Find((Thing x) => x.def.defName.Contains("Tiberium") && x is Plant);
+                        if (targetA != null)
+                        {
+                            if (pawn.CanReach(targetA, PathEndMode.OnCell, Danger.Deadly, false))
+                            {
+                                this.pawn.jobs.TryTakeOrderedJob(new Job(job, targetA));
+                                return;
+                            }
+                        }
+                        if (canMessage && this.pawn.Faction.IsPlayer)
+                        {
+                            Messages.Message("CannotReachTiberium".Translate(), new TargetInfo(pawn.Position, pawn.Map, false), MessageSound.Standard);
+                            messageTick = 0;
+                        }
+                    }
                 }
             }
         }
     }
 }
+
