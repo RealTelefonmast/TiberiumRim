@@ -3,7 +3,7 @@
 
 	<ThingDef Name="TiberiumChunkBase" Abstract="True">
 		<category>Item</category>
-		<thingClass>TiberiumRim.Thing_TiberiumChunk</thingClass>
+		<thingClass>TiberiumRim.ThingDef_TiberiumChunk</thingClass>
 		<description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</description>
 		<altitudeLayer>Item</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -41,6 +41,18 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumGreen</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>60000</min>
+					<max>120000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>1</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
 		<killedLeavings>
             <TiberiumGreen>1</TiberiumGreen>
         </killedLeavings>
@@ -57,6 +69,18 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumBlue</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>60000</min>
+					<max>120000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>1</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
 		<killedLeavings>
             <TiberiumBlue>1</TiberiumBlue>
         </killedLeavings>
@@ -73,6 +97,18 @@
 			<graphicClass>Graphic_Random</graphicClass>
 			<flipExtraRotation>80</flipExtraRotation>
 		</graphicData>
+		<comps>
+			<li Class="CompProperties_Spawner">
+				<thingToSpawn>TiberiumRed</thingToSpawn>
+				<spawnCount>1</spawnCount>
+				<spawnIntervalRange>
+					<min>90000</min>
+					<max>120000</max>
+				</spawnIntervalRange>
+				<spawnMaxAdjacent>1</spawnMaxAdjacent>
+				<spawnForbidden>false</spawnForbidden>
+			</li>
+		</comps>
 		<killedLeavings>
             <TiberiumRed>1</TiberiumRed>
         </killedLeavings>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 	<ThingDef Name="ApparelBase" Abstract="True">
 		<thingClass>Apparel</thingClass>
@@ -87,7 +87,7 @@
 				<li>Hands</li>
 				<li>Feet</li>
 			</bodyPartGroups>
-			<worngraphicPath>Pawn/Humanlike/Apparel/TiberiumSuitParts/TiberiumSuit</worngraphicPath>
+			<wornGraphicPath>Pawn/Humanlike/Apparel/TiberiumSuitParts/TiberiumSuit</wornGraphicPath>
 			<layers>
 			<li>Shell</li>
 			</layers>
@@ -96,6 +96,5 @@
 			</defaultOutfitTags>
 		</apparel>
 	</ThingDef>
-  
-  
-</ThingDefs>
+    
+</Defs>

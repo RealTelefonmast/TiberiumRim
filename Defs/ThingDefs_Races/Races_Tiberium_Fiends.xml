@@ -65,6 +65,9 @@
 			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
 			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					<wildBiomes>
+			<TiberiumRedZone>0.05</TiberiumRedZone>
+		</wildBiomes>
 		</race>
 	</ThingDef>
 
@@ -73,7 +76,12 @@
 		<label>thrimbo</label>
 		<race>Thrimbo_TBI</race>
 		<combatPower>600</combatPower>
-		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>0.05</wildSpawn_EcoSystemWeight>
+		<wildSpawn_GroupSizeRange>
+			<min>1</min>
+			<max>3</max>
+		</wildSpawn_GroupSizeRange>
 		<lifeStages>
 			<li>
 				<label>thrimbo calf</label>
@@ -264,6 +272,9 @@
 			<leatherInsulation>1.0</leatherInsulation>
 			<leatherLabel>Tiberium bearskin</leatherLabel>
 			<meatLabel>Tiberium bear meat</meatLabel>
+			<wildBiomes>
+				<TiberiumRedZone>0.08</TiberiumRedZone>
+			</wildBiomes>
 		</race>
 	</ThingDef>
 
@@ -271,7 +282,8 @@
 		<defName>BigTiberiumFiend_TBI</defName>
 		<label>big tiberium fiend</label>
 		<race>BigTiberiumFiend_TBI</race>
-		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>0.25</wildSpawn_EcoSystemWeight>
 		<lifeStages>
 		  <li>
 			<bodyGraphicData>
@@ -369,6 +381,9 @@
 			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
 			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+			<wildBiomes>
+			<TiberiumRedZone>0.1</TiberiumRedZone>
+		</wildBiomes>
 		</race>
 		<tradeTags>
 			<li>Insectoid</li>
@@ -380,8 +395,12 @@
 		<label>Tibscarab</label>
 		<race>Tibscarab_TBI</race>
 		<combatPower>30</combatPower>
-		<wildSpawn_EcoSystemWeight>0</wildSpawn_EcoSystemWeight>
-		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>3</wildSpawn_EcoSystemWeight>
+		<wildSpawn_GroupSizeRange>
+			<min>2</min>
+			<max>6</max>
+		</wildSpawn_GroupSizeRange>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
@@ -544,6 +563,9 @@
 			<meatLabel>Tiberium fiend meat</meatLabel>
 			<leatherLabel>Tiberium fiend skin</leatherLabel>
 			<leatherInsulation>1.0</leatherInsulation>
+			<wildBiomes>
+			<TiberiumRedZone>0.2</TiberiumRedZone>
+		</wildBiomes>
 		</race>
 	</ThingDef>
 
@@ -552,6 +574,12 @@
 		<label>tiberium fiend</label>
 		<labelPlural>tiberium fiends</labelPlural>
 		<race>TiberiumFiend_TBI</race>
+		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>0.5</wildSpawn_EcoSystemWeight>
+		<wildSpawn_GroupSizeRange>
+			<min>1</min>
+			<max>6</max>
+		</wildSpawn_GroupSizeRange>
 		<lifeStages>
 			<li>
 				<label>tiberium fiend puppy</label>
@@ -716,6 +744,9 @@
 			<leatherColor>(0,51,0)</leatherColor>
 			<leatherLabel>Small Tiberium fiend skin</leatherLabel>
 			<useMeatFrom>FoxFennec</useMeatFrom>
+			<wildBiomes>
+			<TiberiumRedZone>0.1</TiberiumRedZone>
+		</wildBiomes>
 		</race>
 	</ThingDef>
 
@@ -724,6 +755,8 @@
 		<label>small tiberium fiend</label>
 		<labelPlural>small tiberium fiends</labelPlural>
 		<race>SmallTiberiumFiend_TBI</race>
+		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>0.1</wildSpawn_EcoSystemWeight>
 		<lifeStages>
 			<li>
 				<label>small tiberium fiend puppy</label>
@@ -849,6 +882,9 @@
 			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
 			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+			<wildBiomes>
+			<TiberiumRedZone>0.1</TiberiumRedZone>
+		</wildBiomes>
 		</race>
 		<tradeTags>
 			<li>StandardAnimal</li>
@@ -861,7 +897,8 @@
 		<label>crawler</label>
 		<race>Crawler_TBI</race>
 		<combatPower>65</combatPower>
-		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>2</wildSpawn_EcoSystemWeight>
 		<lifeStages>
 			<li>
 				<bodyGraphicData>
@@ -982,6 +1019,9 @@
       <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
       <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+	  <wildBiomes>
+			<TiberiumRedZone>0.25</TiberiumRedZone>
+		</wildBiomes>
     </race>
     <tradeTags>
       <li>StandardAnimal</li>
@@ -994,8 +1034,12 @@
     <label>boomfiend</label>
     <race>Boomfiend_TBI</race>
     <combatPower>50</combatPower>
-    <wildSpawn_EcoSystemWeight>0.25</wildSpawn_EcoSystemWeight>
-    <wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>0.25</wildSpawn_EcoSystemWeight>
+		<wildSpawn_GroupSizeRange>
+			<min>1</min>
+			<max>3</max>
+		</wildSpawn_GroupSizeRange>		
     <lifeStages>
       <li>
         <bodyGraphicData>
@@ -1153,6 +1197,9 @@
       <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
       <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+	  <wildBiomes>
+			<TiberiumRedZone>0.2</TiberiumRedZone>
+		</wildBiomes>
     </race>
     <tradeTags>
       <li>StandardAnimal</li>
@@ -1165,6 +1212,12 @@
     <label>spiner</label>
     <race>Spiner_TBI</race>
     <combatPower>75</combatPower>
+	<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>0.2</wildSpawn_EcoSystemWeight>
+		<wildSpawn_GroupSizeRange>
+			<min>1</min>
+			<max>4</max>
+		</wildSpawn_GroupSizeRange>	
     <lifeStages>
       <li>
         <label>spiner puppy</label>
@@ -1207,8 +1260,6 @@
         </dessicatedBodyGraphicData>
       </li>
     </lifeStages>
-    <wildSpawn_spawnWild>false</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0</wildSpawn_EcoSystemWeight>
   </PawnKindDef>
   
    <ThingDef ParentName="AnimalThingBase">
@@ -1217,7 +1268,7 @@
     <description>These creatures have lost all their fluffiness to a crystaline structure, they also seem less friendly.</description>
     <statBases>
       <MoveSpeed>4</MoveSpeed>
-      <ComfyTemperatureMin>-60</ComfyTemperatureMin>
+      <ComfyTemperatureMin>-75</ComfyTemperatureMin>
       <MarketValue>700</MarketValue>
     </statBases>
     <verbs>
@@ -1229,22 +1280,8 @@
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
       </li>
     </verbs>
-	<!--
-    <comps>
-      <li Class="CompProperties_Milkable">
-        <milkDef>Milk</milkDef>
-        <milkIntervalDays>2</milkIntervalDays>
-        <milkAmount>12</milkAmount>
-      </li>
-      <li Class="CompProperties_Shearable">
-        <woolDef>WoolMuffalo</woolDef>
-        <shearIntervalDays>25</shearIntervalDays>
-        <woolAmount>100</woolAmount>
-      </li>
-    </comps>
-	-->
     <race>
-	  <predator>true</predator>
+	<predator>true</predator>
       <herdAnimal>true</herdAnimal>
       <body>QuadrupedAnimalWithHooves</body>
       <baseBodySize>2.1</baseBodySize>
@@ -1255,8 +1292,9 @@
       <leatherInsulation>1.0</leatherInsulation>
       <gestationPeriodDays>25</gestationPeriodDays>
       <wildness>0.5</wildness>
+      <nuzzleMtbHours>220</nuzzleMtbHours>
 	  <packAnimal>true</packAnimal>
-      <lifeExpectancy>15</lifeExpectancy>
+      <lifeExpectancy>21</lifeExpectancy>
       <lifeStageAges>
         <li>
           <def>AnimalBaby</def>
@@ -1278,19 +1316,26 @@
       <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+	  <wildBiomes>
+			<TiberiumRedZone>0.03</TiberiumRedZone>
+       </wildBiomes>
     </race>
     <tradeTags>
       <li>StandardAnimal</li>
     </tradeTags>
   </ThingDef>
   
-  <PawnKindDef Name="Muffalo" ParentName="AnimalKindBase">
+  <PawnKindDef Name="Tiffalo_TBI" ParentName="AnimalKindBase">
     <defName>Tiffalo_TBI</defName>
     <label>tiffalo</label>
     <race>Tiffalo_TBI</race>
     <combatPower>90</combatPower>
-    <wildSpawn_spawnWild>false</wildSpawn_spawnWild>
-    <wildSpawn_EcoSystemWeight>0</wildSpawn_EcoSystemWeight>
+    <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>0.1</wildSpawn_EcoSystemWeight>
+		<wildSpawn_GroupSizeRange>
+			<min>1</min>
+			<max>5</max>
+		</wildSpawn_GroupSizeRange>		
     <lifeStages>
       <li>
         <label>tiffalo calf</label>

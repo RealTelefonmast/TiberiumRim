@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <Tiberium_Damages_Structures>Tiberium Damages Structures</Tiberium_Damages_Structures>
-  <Tiberium_Damages_Structures_Desc>Determines if Tiberium will damage structures.</Tiberium_Damages_Structures_Desc>
-  <Tiberium_Damages_Items>Tiberium Damages Items</Tiberium_Damages_Items>
-  <Tiberium_Damages_Items_Desc>Determines if Tiberium will damage items.</Tiberium_Damages_Items_Desc>
   <MessageTiberiumSuitLeak>Tiberium protection suit is leaking!</MessageTiberiumSuitLeak>
   <MustPlaceOnTiberiumGeyser>This must be placed on a Tiberium geyser.</MustPlaceOnTiberiumGeyser>
   <CannotReachTiberium>Tiberium addicted pawn cannot reach Tiberium!</CannotReachTiberium>
@@ -13,10 +9,18 @@
   <VisceroidUsedToBeLabel>This Visceroid used to be </VisceroidUsedToBeLabel>
 
   <UseProducerCapLabel>Tiberium Producer-Cap</UseProducerCapLabel>
-  <UseProducerCapDesc>Allow the amount of Tiberium Producers to be limited.</UseProducerCapDesc>
+  <UseProducerCapDesc>Limit the amount of Tiberium Producers that can spawn by event.</UseProducerCapDesc>
   <TiberiumProducersAmtLabel>Tiberium Producer Amount</TiberiumProducersAmtLabel>
   <TiberiumProducersAmtDesc>Set the amount of Tiberium Producers that can spawn.</TiberiumProducersAmtDesc>
   <UseSpreadRadiusLabel>Use Spread Radius</UseSpreadRadiusLabel>
-  <UseSpreadRadiusDesc>Allow Tiberium to only spread in a certain radius around producers.</UseSpreadRadiusDesc>
+  <UseSpreadRadiusDesc>This makes Tiberium only spread in a certain radius around producers.</UseSpreadRadiusDesc>
+
   
+  <BuildingDamage>Tiberium Damages Structures:</BuildingDamage>
+  <BuildingDamageDesc>Activate this to let Tiberium damage any structure.</BuildingDamageDesc>
+  <EntityDamage>Tiberium Damages Entities:</EntityDamage>
+  <EntityDamageDesc>Activate this to let Tiberium damage any item or object.</EntityDamageDesc>
+  <TiberiumTileInfestation>Tiberium Infestation at: </TiberiumTileInfestation>
+  <TiberiumTileInfestationFull>Tiberium Infestation at: 100%</TiberiumTileInfestationFull>
+
 </LanguageData>

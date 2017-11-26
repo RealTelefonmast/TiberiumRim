@@ -1,13 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<FleshTypeDefs>
+<Defs>
 
-  <FleshTypeDef>
-  
+  <FleshTypeDef> 
     <defName>Tiberium</defName>
 	<ateDirect>AteTiberiumMeatDirect</ateDirect>
 	<ateAsIngredient>AteTiberiumMeatAsIngredient</ateAsIngredient>
     <corpseCategory>CorpsesAnimal</corpseCategory>
+	<wounds>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshA</texture>
+      </li>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshB</texture>
+      </li>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshC</texture>
+      </li>
+    </wounds>
   </FleshTypeDef>
   
-</FleshTypeDefs>
+</Defs>

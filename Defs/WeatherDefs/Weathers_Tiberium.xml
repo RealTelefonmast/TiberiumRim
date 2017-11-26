@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<WeatherDefs>
+<Defs>
 
   <WeatherDef>
     <defName>IonStormWeather</defName>
@@ -50,8 +50,44 @@
       </li>
     </eventMakers>
   </WeatherDef>
+  
+	<WeatherDef>
+		<defName>TiberiumClear</defName>
+		<label>tiberian sky</label>
+		<description>A normal day, darkened by the nature of this biome.</description>
+		<repeatable>true</repeatable>
+		<favorability>Good</favorability>
+		<ambientSounds>
+			<li>AmbientWind_Clear</li>
+		</ambientSounds>   
+		<!-- Colors are Clear -->
+		<skyColorsDay>
+			<sky>(175,250,175)</sky>
+			<shadow>(0.718,0.745,0.757)</shadow>
+			<overlay>(0.85,0.85,0.85)</overlay>
+			<saturation>1.0</saturation>
+		</skyColorsDay>
+		<skyColorsDusk>
+			<sky>(250,230,175)</sky>
+			<shadow>(0.955,0.886,0.914)</shadow>
+			<overlay>(0.8,0.8,0.8)</overlay>
+			<saturation>1.0</saturation>
+		</skyColorsDusk>
+		<skyColorsNightEdge>
+			<sky>(185,200,185)</sky>
+			<shadow>(0.92,0.92,0.92)</shadow>
+			<overlay>(0.6,0.6,0.6)</overlay>
+			<saturation>1.0</saturation>
+		</skyColorsNightEdge>
+		<skyColorsNightMid>
+			<sky>(185,200,185)</sky>
+		<shadow>(0.85, 0.85, 0.85)</shadow>
+		<overlay>(0.6,0.6,0.6)</overlay>
+		<saturation>1.0</saturation>
+		</skyColorsNightMid>
+	</WeatherDef>
 
-</WeatherDefs>
+</Defs>
 
 
 

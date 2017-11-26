@@ -86,7 +86,7 @@
 		</statBases>
 		<comps>
 			<li Class="CompProperties_Hatcher">
-				<hatcherDaysToHatch>28</hatcherDaysToHatch>
+				<hatcherDaystoHatch>28</hatcherDaystoHatch>
 				<hatcherPawn>Crawler_TBI</hatcherPawn>
 			</li>
 		</comps>

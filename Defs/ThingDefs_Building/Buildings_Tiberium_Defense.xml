@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Buildings>
+<Defs>
 
 	<ThingDef ParentName="BuildingBase">
 		<defName>GroundFreezer</defName>
@@ -7,7 +7,7 @@
 		<description>This device freezes the ground from inside out. The frost and snow inhibit the growth of crystals. But beware of high temperatures!</description>
 		<thingClass>Building</thingClass>
 		<category>Building</category>
-		<designationCategory>Security</designationCategory>
+		<designationCategory>Tiberium</designationCategory>
 		<graphicData>
 			<texPath>Building/Defense/GroundFreezer</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
@@ -32,6 +32,7 @@
 			<Steel>175</Steel>
 			<Component>10</Component>
 		</costList>
+		<specialDisplayRadius>10.5</specialDisplayRadius>
 		<comps>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>-200</heatPerSecond>
@@ -98,10 +99,11 @@
 			<li>PlaceWorker_CoolerSimple</li>
 		</placeWorkers>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<specialDisplayRadius>4.5</specialDisplayRadius>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_GroundFreezer">
 				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
-				<radius>3.5</radius>
+				<radius>4.5</radius>
 				<daysToRadius>1.5</daysToRadius>
 				<requiresElectricity>false</requiresElectricity>
 			</li>
@@ -109,15 +111,14 @@
 				<heatPerSecond>-25</heatPerSecond>
 			</li>
 			<li Class="CompProperties_Lifespan">
-				<lifeSpanTicks>900000</lifeSpanTicks>
+				<lifespanTicks>900000</lifespanTicks>
 			</li>
 		</comps>	
-		<designationCategory>Security</designationCategory>
-		<designationHotKey>Misc2</designationHotKey>
+		<designationCategory>Tiberium</designationCategory>
 		<researchPrerequisites>
 			<li>TiberiumInhibitionTribal</li>
 		</researchPrerequisites>
 	</ThingDef>
 	
 
-</Buildings>
+</Defs>

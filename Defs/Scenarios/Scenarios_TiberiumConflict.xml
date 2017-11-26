@@ -72,7 +72,7 @@
         </li>
         <li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
-          <thingDef>Gun_Pistol</thingDef>
+          <thingDef>Gun_Autopistol</thingDef>
 		  <count>2</count>
         </li>
         <li Class="ScenPart_StartingThing_Defined">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 	<ThingDef Name="HatBase" ParentName="ApparelBase" Abstract="True">
 		<thingCategories>
@@ -51,7 +51,7 @@
 			<bodyPartGroups>
 				<li>FullHead</li>
 			</bodyPartGroups>
-				<worngraphicPath>Pawn/Humanlike/Apparel/TiberiumSuitParts/TiberiumSuitMask</worngraphicPath>
+				<wornGraphicPath>Pawn/Humanlike/Apparel/TiberiumSuitParts/TiberiumSuitMask</wornGraphicPath>
 			<layers>
 				<li>Overhead</li>
 			</layers>
@@ -61,5 +61,4 @@
 		</apparel>
 	</ThingDef>
   
-  
-</ThingDefs>
+</Defs>

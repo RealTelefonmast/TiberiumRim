@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 
 	<ThingDef Name="BuildingBase" Abstract="True">
@@ -22,6 +22,7 @@
 			<claimable>false</claimable>
 			<isEdifice>false</isEdifice>
 			<deconstructible>false</deconstructible>
+			<allowAutoroof>false</allowAutoroof>
 		</building>
 		<altitudeLayer>Building</altitudeLayer>
 		<rotatable>false</rotatable>
@@ -32,7 +33,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>TiberiumCraterGreen_TBNS</defName>
-		<description>A green Tiberium field.</description>
+		<description>A green Tiberium field, as the name suggests it is the producer of green Tiberium.</description>
 		<label>Green Tiberium Field</label>
 		<thingClass>Building</thingClass>
 		<size>(3,3)</size>
@@ -80,7 +81,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>TiberiumCraterBlue_TBNS</defName>
-		<description>A beautiful field of blue Tiberium</description>
+		<description>A beautiful field of blue Tiberium, as the name suggests it’s the producer of blue Tiberium.</description>
 		<label>Blue Tiberium Field</label>
 		<thingClass>Building</thingClass>
 		<size>(3,3)</size>
@@ -132,7 +133,7 @@
 	
 	<ThingDef ParentName="BuildingBase">
 		<defName>TiberiumMeteor_TBNS</defName>
-		<description>An extraterrestrial meteor. Contains glowing crystal of all sorts.</description>
+		<description>An extraterrestrial meteor. Contains glowing crystal of all sorts.\n\nWhile it is often mistaken for a producer, it is in fact not. It does not have an “extremely” low spawn-rate because it never spawns any crystals on its own. It can be deconstructed like crashed ship part and will give you a bit of each Tiberium type (red/green/blue). It is extremely harmless.</description>
 		<label>Tiberium Meteor</label>
 		<category>Building</category>
 		<graphicData>
@@ -190,7 +191,7 @@
 
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>TiberiumMonolith_TBNS</defName>
-		<description>A blue monolith growing out of the ground.</description>
+		<description>A blue monolith growing out of the ground, acts as a blue Tiberium producer.</description>
 		<label>blue Tiberium monolith</label>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
@@ -245,7 +246,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>BlossomTree_TBNS</defName>
-		<description>A strange tree with alien properties. It seems to grow green crystals.</description>
+		<description>A strange tree with alien properties. It is the only producer of Tiberium Pods.</description>
 		<label>blossom tree</label>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
@@ -290,7 +291,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>TiberiumShard_TBNS</defName>
-		<description>An extraterrestrial shard. Looks unusual.</description>
+		<description>An extraterrestrial shard and rare phenomenon, it’s the producer of red Tiberium.</description>
 		<label>tiberium shard</label>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
@@ -335,7 +336,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>Veinhole_TBNS</defName>
-		<description>A veinhole. A strange lifeform developed by Tiberium. It produces veins around itself that can be harvested. Be aware of blunt damage. Coming too close to the center might cause infection by poisonous gases.</description>
+		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters from itself and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground. Killing the Veinhole kills all adjacent Veins and spawned Vein Hubs. The Veinhole has a chance to eat a pawn that comes too close. This basically removes a colonist from your colony.\n\nAlso be aware of blunt damage. Coming too close to the center might cause infection by poisonous gases.</description>
 		<label>Veinhole</label>
 		<thingClass>TiberiumRim.Building_Veinhole</thingClass>
 		<size>(2,2)</size>
@@ -378,7 +379,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>TiberiumTower_TBNS</defName>
-		<description>A green tower rising from the ground. These structures normally take years to form.</description>
+		<description>A green tower rising from the ground. These structures normally take years to form.\n\nIt is similar to the monolith but for green Tiberium except it does not spawn any Tiberium on its own, basically a decorative structure.</description>
 		<label>green Tiberium tower</label>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
@@ -471,7 +472,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>VeinholeHub_TBNS</defName>
-		<description></description>
+		<description>This part of a nearby veinhole will attack any living being in its' area of effect visiualized by the veiny terrain circle around it.</description>
 		<label>Veinhole hub</label>
 		<thingClass>TiberiumRim.Building_Veinhub</thingClass>
 		<size>(1,1)</size>
@@ -523,4 +524,4 @@
 		</building>
 	</ThingDef>
 	
-</ThingDefs>
+</Defs>

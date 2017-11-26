@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
-
+<Defs>
 
 	<ThingDef Name="BenchBase" ParentName="BuildingBase" Abstract="True">
 		<castEdgeShadows>true</castEdgeShadows>
@@ -87,7 +86,7 @@
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>Tiberium</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
 			<li>TiberiumResearchRefining</li>
@@ -122,9 +121,6 @@
 		<tickerType>Normal</tickerType>
 		<description>Produces power by consuming Tiberium fuel. Must be fueled by hand.</description>
 		<size>(4,4)</size>
-		<building>
-			<ignoreNeedsPower>true</ignoreNeedsPower>
-		</building>
 		<costList>
 			<Steel>250</Steel>
 			<Uranium>25</Uranium>
@@ -160,9 +156,8 @@
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Power</designationCategory>
+		<designationCategory>Tiberium</designationCategory>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
-		<designationHotkey>Misc3</designationHotkey>
 		<constructEffect>ConstructMetal</constructEffect>
 		<researchPrerequisites>
 			<li>TiberiumPower</li>
@@ -220,7 +215,7 @@
 		</comps>
 		<rotatable>false</rotatable>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>Tiberium</designationCategory>
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnTiberiumGeyser</li>
@@ -228,7 +223,6 @@
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
 			<soundAmbient>GeothermalPlant_Ambience</soundAmbient>
-			<ignoreNeedsPower>true</ignoreNeedsPower>
 		</building>
 		<constructEffect>ConstructMetal</constructEffect>
 		<researchPrerequisites>
@@ -237,4 +231,4 @@
 		</researchPrerequisites>
 	</ThingDef>
 
-</ThingDefs>
+</Defs>

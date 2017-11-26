@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 	<ThingDef ParentName="BenchBase">
 		<defName>TiberiumResearchBench</defName>
@@ -51,7 +51,7 @@
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>Tiberium</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
@@ -109,7 +109,7 @@
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Production</designationCategory>
+		<designationCategory>Tiberium</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
 			<li>TiberiumKnowledge</li>
@@ -133,4 +133,4 @@
 		</placeWorkers>
 	</ThingDef>
     
-</ThingDefs>
+</Defs>

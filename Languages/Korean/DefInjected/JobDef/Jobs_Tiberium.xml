@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-<TiberiumBath.reportString>타이베리움 위에서 휴식 중</TiberiumBath.reportString>
-  
+  <!-- Meditative -->
+
+  <TiberiumBath.reportString>타이베리움 위에서 뒹구는 중.</TiberiumBath.reportString>
+
+
 </LanguageData>

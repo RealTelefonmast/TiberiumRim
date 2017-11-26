@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ThingDefs>
+<Defs>
 
 	<ThingDef ParentName="BaseGas">
 		<defName>Gas_Tiberium</defName>
@@ -21,4 +21,4 @@
 		</gas>
 	</ThingDef>
   
-</ThingDefs>
+</Defs>
