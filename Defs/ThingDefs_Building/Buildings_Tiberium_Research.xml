@@ -123,7 +123,7 @@
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Facility">
 				<statOffsets>
-					<ResearchSpeedFactor>0</ResearchSpeedFactor>
+					<ResearchSpeedFactor>5</ResearchSpeedFactor>
 				</statOffsets>
 				<maxSimultaneous>1</maxSimultaneous>
 			</li>

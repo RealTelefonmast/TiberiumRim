@@ -92,7 +92,7 @@
 			<drawSize>(5,5)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>6500</MaxHitPoints>
+			<MaxHitPoints>7500</MaxHitPoints>
 			<Beauty>125</Beauty>
 		</statBases>
 		<altitudeLayer>Floor</altitudeLayer>
@@ -193,8 +193,9 @@
 		<defName>TiberiumMonolith_TBNS</defName>
 		<description>A blue monolith growing out of the ground, acts as a blue Tiberium producer.</description>
 		<label>blue Tiberium monolith</label>
-		<thingClass>Building</thingClass>
+		<thingClass>Mineable</thingClass>
 		<size>(1,1)</size>
+		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
 			<texPath>Building/Natural/TiberiumMonolith</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -202,7 +203,7 @@
 			<drawSize>(2,6)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>6000</MaxHitPoints>
+			<MaxHitPoints>15000</MaxHitPoints>
 			<Beauty>240</Beauty>
 		</statBases>
 		<rotatable>false</rotatable>
@@ -225,7 +226,7 @@
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>10</glowRadius>
-				<glowColor>(120,150,255,0)</glowColor>
+				<glowColor>(120,150,200,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Spawner">
 				<thingToSpawn>TiberiumBlue</thingToSpawn>
@@ -240,16 +241,19 @@
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
         <killedLeavings>
+			<BlueTiberiumRaw>25</BlueTiberiumRaw>
             <TiberiumBlue>9</TiberiumBlue>
 		</killedLeavings>
+		<mineable>true</mineable>
 	</ThingDef>
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>BlossomTree_TBNS</defName>
 		<description>A strange tree with alien properties. It is the only producer of Tiberium Pods.</description>
 		<label>blossom tree</label>
-		<thingClass>Building</thingClass>
+		<thingClass>Mineable</thingClass>
 		<size>(1,1)</size>
+		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
 			<texPath>Building/Natural/BlossomTree</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -257,7 +261,7 @@
 			<drawSize>(2,6)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>2500</MaxHitPoints>
+			<MaxHitPoints>15000</MaxHitPoints>
 			<Beauty>-75</Beauty>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -270,7 +274,7 @@
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>7</glowRadius>
-				<glowColor>(120,255,120,0)</glowColor>
+				<glowColor>(120,200,120,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Spawner">
 				<thingToSpawn>TiberiumPod</thingToSpawn>
@@ -285,16 +289,19 @@
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
         <killedLeavings>
+			<GreenTiberiumRaw>25</GreenTiberiumRaw>
             <TiberiumPod>9</TiberiumPod>
         </killedLeavings>
+		<mineable>true</mineable>
     </ThingDef>
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>TiberiumShard_TBNS</defName>
 		<description>An extraterrestrial shard and rare phenomenon, it’s the producer of red Tiberium.</description>
 		<label>tiberium shard</label>
-		<thingClass>Building</thingClass>
+		<thingClass>Mineable</thingClass>
 		<size>(1,1)</size>
+		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
 			<texPath>Building/Natural/RedTiberiumShard</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -302,7 +309,7 @@
 			<drawSize>(2,6)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>10000</MaxHitPoints>
+			<MaxHitPoints>15000</MaxHitPoints>
 			<Beauty>380</Beauty>
 		</statBases>
 		<tickerType>Rare</tickerType>
@@ -315,7 +322,7 @@
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>8</glowRadius>
-				<glowColor>(255,120,120,0)</glowColor>
+				<glowColor>(110,25,35,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Spawner">
 				<thingToSpawn>TiberiumRed</thingToSpawn>
@@ -330,8 +337,10 @@
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
         <killedLeavings>
-            <TiberiumRed>3</TiberiumRed>
+			<RedTiberiumRaw>25</RedTiberiumRaw>
+            <TiberiumGreen>8</TiberiumGreen>
         </killedLeavings>
+		<mineable>true</mineable>
     </ThingDef>
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
@@ -375,14 +384,16 @@
 				<spawnForbidden>false</spawnForbidden>
 			</li>
 		</comps>
+		<mineable>true</mineable>
 	</ThingDef>
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>TiberiumTower_TBNS</defName>
 		<description>A green tower rising from the ground. These structures normally take years to form.\n\nIt is similar to the monolith but for green Tiberium except it does not spawn any Tiberium on its own, basically a decorative structure.</description>
 		<label>green Tiberium tower</label>
-		<thingClass>Building</thingClass>
+		<thingClass>Mineable</thingClass>
 		<size>(1,1)</size>
+		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
 			<texPath>Building/Natural/TiberiumTower</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -390,7 +401,7 @@
 			<drawSize>(2,6)</drawSize>
 		</graphicData>
 		<statBases>
-			<MaxHitPoints>1500</MaxHitPoints>
+			<MaxHitPoints>15000</MaxHitPoints>
 			<Beauty>360</Beauty>
 		</statBases>
 		<rotatable>false</rotatable>
@@ -407,14 +418,15 @@
 				<heatPushMaxTemperature>207</heatPushMaxTemperature>
 			</li>
 			<li Class="CompProperties_Glower">
-				<glowRadius>4</glowRadius>
-				<glowColor>(120,255,120,0)</glowColor>
+				<glowRadius>3</glowRadius>
+				<glowColor>(80,175,90,0)</glowColor>
 			</li>
 		</comps>
         <killedLeavings>
-			<GreenTiberiumRaw>75</GreenTiberiumRaw>
+			<GreenTiberiumRaw>25</GreenTiberiumRaw>
             <TiberiumGreen>8</TiberiumGreen>
         </killedLeavings>
+		<mineable>true</mineable>
 	</ThingDef>
 	
 	<ThingDef ParentName="BuildingNaturalBase">
