@@ -25,8 +25,7 @@
 		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
 		<thingClass>Building_WorkTable</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<pathCost>70</pathCost>
+		<passability>Impassable</passability>
 		<statBases>
 			<MaxHitPoints>350</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
@@ -107,8 +106,7 @@
 			<drawSize>(5,5)</drawSize>
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
-		<passability>PassThroughOnly</passability>
-		<pathCost>150</pathCost>
+		<passability>Impassable</passability>
 		<blockWind>true</blockWind>
 		<fillPercent>1.0</fillPercent>
 		<castEdgeShadows>false</castEdgeShadows>

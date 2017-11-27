@@ -802,15 +802,15 @@
 		<label>crawler</label>
 		<description>A large snake. This one seems to be infected with Tiberium.</description>
 		<statBases>
-			<MoveSpeed>5.85</MoveSpeed>
-			<ComfyTemperatureMin>-25</ComfyTemperatureMin>
+			<MoveSpeed>4.85</MoveSpeed>
+			<ComfyTemperatureMin>-5</ComfyTemperatureMin>
 			<MarketValue>600</MarketValue>
 		</statBases>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<defaultCooldownTime>1.65</defaultCooldownTime>
-				<meleeDamageBaseAmount>13</meleeDamageBaseAmount>
+				<meleeDamageBaseAmount>130</meleeDamageBaseAmount>
 				<meleeDamageDef>ToxicBite</meleeDamageDef>
 				<linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
 				<surpriseAttack>
@@ -896,7 +896,7 @@
 		<defName>Crawler_TBI</defName>
 		<label>crawler</label>
 		<race>Crawler_TBI</race>
-		<combatPower>65</combatPower>
+		<combatPower>165</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<wildSpawn_EcoSystemWeight>2</wildSpawn_EcoSystemWeight>
 		<lifeStages>
@@ -913,21 +913,21 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
-					<drawSize>1.25</drawSize>
+					<drawSize>1.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
-					<drawSize>1.25</drawSize>
+					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
-					<drawSize>1.5</drawSize>
+					<drawSize>2</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
-					<drawSize>1.5</drawSize>
+					<drawSize>2</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -940,7 +940,7 @@
     <description>When boomrats come into contact with Tiberium, beware of these creatures.</description>
     <statBases>
       <MoveSpeed>6</MoveSpeed>
-      <ComfyTemperatureMin>-60</ComfyTemperatureMin>
+      <ComfyTemperatureMin>-40</ComfyTemperatureMin>
       <MarketValue>230</MarketValue>
     </statBases>
     <verbs>
@@ -1329,7 +1329,7 @@
     <defName>Tiffalo_TBI</defName>
     <label>tiffalo</label>
     <race>Tiffalo_TBI</race>
-    <combatPower>90</combatPower>
+    <combatPower>110</combatPower>
     <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<wildSpawn_EcoSystemWeight>0.1</wildSpawn_EcoSystemWeight>
 		<wildSpawn_GroupSizeRange>

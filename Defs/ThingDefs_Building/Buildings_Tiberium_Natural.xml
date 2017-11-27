@@ -71,8 +71,8 @@
 		</building>
 		<comps>
 			<li Class="CompProperties_Glower">
-				<glowRadius>3</glowRadius>
-				<glowColor>(120,255,120,0)</glowColor>
+				<glowRadius>2</glowRadius>
+				<glowColor>(75,155,75,0)</glowColor>
 			</li>
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
@@ -107,8 +107,8 @@
 		</building>
 		<comps>
 			<li Class="CompProperties_Glower">
-				<glowRadius>3</glowRadius>
-				<glowColor>(120,150,255,0)</glowColor>
+				<glowRadius>2</glowRadius>
+				<glowColor>(75,85,155,0)</glowColor>
 			</li>
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
@@ -143,8 +143,8 @@
 		</building>
 		<comps>
 			<li Class="CompProperties_Glower">
-				<glowRadius>3</glowRadius>
-				<glowColor>(255,120,120,0)</glowColor>
+				<glowRadius>2</glowRadius>
+				<glowColor>(155,75,75,0)</glowColor>
 			</li>
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
