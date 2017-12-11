@@ -24,8 +24,9 @@
 		<race>
 			<body>QuadrupedAnimalWithHoovesAndHorn</body>
 			<herdAnimal>true</herdAnimal>
+			<predator>true</predator>
 			<baseBodySize>3.5</baseBodySize>
-			<baseHungerRate>4.5</baseHungerRate>
+			<baseHungerRate>1.5</baseHungerRate>
 			<baseHealthScale>13.0</baseHealthScale>
 			<leatherColor>(204,255,204)</leatherColor>
 			<leatherInsulation>1.35</leatherInsulation>
@@ -116,7 +117,7 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Thrimbo/Thrimbo</texPath>
-					<drawSize>4.8</drawSize>
+					<drawSize>5</drawSize>
 					<shadowData>
 						<volume>(1, 0.8, 0.5)</volume>
 						<offset>(0,0,-0.5)</offset>
@@ -158,8 +159,9 @@
 		<race>
 			<body>QuadrupedAnimalWithHoovesAndHorn</body>
 			<herdAnimal>true</herdAnimal>
+			<predator>true</predator>
 			<baseBodySize>4.0</baseBodySize>
-			<baseHungerRate>4.5</baseHungerRate>
+			<baseHungerRate>1.5</baseHungerRate>
 			<baseHealthScale>13.0</baseHealthScale>
 			<foodType>CarnivoreAnimalStrict</foodType>
 			<leatherColor>(0,128,255)</leatherColor>
@@ -242,7 +244,7 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/TiberiumTerror/TiberiumTerror</texPath>
-					<drawSize>4.8</drawSize>
+					<drawSize>5</drawSize>
 					<shadowData>
 						<volume>(1, 0.8, 0.5)</volume>
 						<offset>(0,0,-0.5)</offset>
@@ -267,10 +269,11 @@
 		<description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
 		<race>
 			<wildness>0.9</wildness>
-			<leatherColor>(0,0,0)</leatherColor>
+			<leatherColor>(10,10,10)</leatherColor>
 			<foodType>CarnivoreAnimalStrict</foodType>
 			<leatherInsulation>1.0</leatherInsulation>
 			<leatherLabel>Tiberium bearskin</leatherLabel>
+			<baseHealthScale>3</baseHealthScale>
 			<meatLabel>Tiberium bear meat</meatLabel>
 			<wildBiomes>
 				<TiberiumRedZone>0.08</TiberiumRedZone>
@@ -316,7 +319,7 @@
 		  <li>
 			<bodyGraphicData>
 			  <texPath>Pawn/Animals/BigFiend/BigTiberiumFiend</texPath>
-			  <drawSize>2.7</drawSize>
+			  <drawSize>3</drawSize>
 			  <shadowData>
 				<volume>(0.8, 0.6, 0.6)</volume>
 				<offset>(0,0,-0.3)</offset>
@@ -324,7 +327,7 @@
 			</bodyGraphicData>
 			<dessicatedBodyGraphicData>
 			  <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-			  <drawSize>2.7</drawSize>
+			  <drawSize>3</drawSize>
 			</dessicatedBodyGraphicData>
 		  </li>
 		</lifeStages>
@@ -405,7 +408,7 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Tibscarab/TibScarab</texPath>
-					<drawSize>1</drawSize>
+					<drawSize>0.75</drawSize>
 				</bodyGraphicData>
 					<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
@@ -415,7 +418,7 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Tibscarab/TibScarab</texPath>
-					<drawSize>1.25</drawSize>
+					<drawSize>1</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
@@ -558,11 +561,12 @@
 		<label>tiberium fiend</label>
 		<description>A classic Tiberium predator. The Tiberium Fiend is the most common and rather dangerous Tiberium creature. They are tameable, but only accept those worthy of their trust.</description>
 		<race>
-			<leatherColor>(0,0,0)</leatherColor>
+			<leatherColor>(10,10,10)</leatherColor>
 			<foodType>CarnivoreAnimalStrict</foodType>
 			<meatLabel>Tiberium fiend meat</meatLabel>
 			<leatherLabel>Tiberium fiend skin</leatherLabel>
 			<leatherInsulation>1.0</leatherInsulation>
+			<baseHealthScale>1.5</baseHealthScale>
 			<wildBiomes>
 			<TiberiumRedZone>0.2</TiberiumRedZone>
 		</wildBiomes>
@@ -586,17 +590,17 @@
 				<labelPlural>tiberium fiend puppies</labelPlural>
 				<bodyGraphicData>
 				<texPath>Pawn/Animals/Fiend/TiberiumFiend</texPath>
-				<drawSize>1.05</drawSize>
+				<drawSize>1.25</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 				<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-				<drawSize>1</drawSize>
+				<drawSize>1.25</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Fiend/TiberiumFiend</texPath>
-					<drawSize>1.5</drawSize>
+					<drawSize>2</drawSize>
 					<shadowData>
 						<volume>(0.25, 0.3, 0.25)</volume>
 						<offset>(0,0,-0.15)</offset>
@@ -604,13 +608,13 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-					<drawSize>1.5</drawSize>
+					<drawSize>2</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Fiend/TiberiumFiend</texPath>
-					<drawSize>1.95</drawSize>
+					<drawSize>2.25</drawSize>
 					<shadowData>
 						<volume>(0.3, 0.4, 0.3)</volume>
 						<offset>(0,0,-0.15)</offset>
@@ -618,7 +622,7 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-					<drawSize>1.95</drawSize>
+					<drawSize>2.25</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -630,7 +634,7 @@
 			<MoveSpeed>6.00</MoveSpeed>
 			<ComfyTemperatureMin>-75</ComfyTemperatureMin>
 			<MarketValue>360</MarketValue>
-		</statBases>
+			</statBases>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -684,7 +688,7 @@
 			<petness>0.1</petness>
 			<baseBodySize>0.55</baseBodySize>
 			<baseHungerRate>0.12</baseHungerRate>
-			<baseHealthScale>0.70</baseHealthScale>
+			<baseHealthScale>1</baseHealthScale>
 			<foodType>CarnivoreAnimal</foodType>
 			<leatherInsulation>1.0</leatherInsulation>
 			<gestationPeriodDays>18</gestationPeriodDays>
@@ -741,7 +745,7 @@
 		<description>A small solitary canine infected with Tiberium.</description>
 		<race>
 		<foodType>CarnivoreAnimalStrict</foodType>
-			<leatherColor>(0,51,0)</leatherColor>
+			<leatherColor>(10,10,10)</leatherColor>
 			<leatherLabel>Small Tiberium fiend skin</leatherLabel>
 			<useMeatFrom>FoxFennec</useMeatFrom>
 			<wildBiomes>
@@ -767,13 +771,13 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-					<drawSize>1</drawSize>
+					<drawSize>1.0</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 				<texPath>Pawn/Animals/SmallFiend/SmallTiberiumFiend</texPath>
-				<drawSize>1.2</drawSize>
+				<drawSize>1.5</drawSize>
 				<shadowData>
 					<volume>(0.25, 0.3, 0.25)</volume>
 					<offset>(0,0,-0.15)</offset>
@@ -781,17 +785,17 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-					<drawSize>1.2</drawSize>
+					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/SmallFiend/SmallTiberiumFiend</texPath>
-					<drawSize>1.68</drawSize>
+					<drawSize>2</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-					<drawSize>1.68</drawSize>
+					<drawSize>2</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -800,24 +804,24 @@
 	<ThingDef ParentName="AnimalThingBase">
 		<defName>Crawler_TBI</defName>
 		<label>crawler</label>
-		<description>A large snake. This one seems to be infected with Tiberium.</description>
+		<description>A huge snake. This one seems to be infected with Tiberium.</description>
 		<statBases>
 			<MoveSpeed>4.85</MoveSpeed>
 			<ComfyTemperatureMin>-5</ComfyTemperatureMin>
-			<MarketValue>600</MarketValue>
+			<MarketValue>1200</MarketValue>
 		</statBases>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<defaultCooldownTime>1.65</defaultCooldownTime>
-				<meleeDamageBaseAmount>130</meleeDamageBaseAmount>
+				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
 				<meleeDamageDef>ToxicBite</meleeDamageDef>
 				<linkedBodyPartsGroup>Mouth</linkedBodyPartsGroup>
 				<surpriseAttack>
 					<extraMeleeDamages>
 						<li>
 							<def>Stun</def>
-							<amount>26</amount>
+							<amount>100</amount>
 						</li>
 					</extraMeleeDamages>
 				</surpriseAttack>
@@ -838,17 +842,17 @@
 		<race>
 			<body>Snake</body>
 			<predator>true</predator>
-			<maxPreyBodySize>0.35</maxPreyBodySize>
-			<baseBodySize>0.25</baseBodySize>
-			<baseHungerRate>0.07</baseHungerRate>
-			<baseHealthScale>0.5</baseHealthScale>
+			<maxPreyBodySize>1</maxPreyBodySize>
+			<baseBodySize>1</baseBodySize>
+			<baseHungerRate>0.25</baseHungerRate>
+			<baseHealthScale>2</baseHealthScale>
 			<foodType>CarnivoreAnimalStrict</foodType>
 			<leatherColor>(32,32,32)</leatherColor>
 			<leatherLabel>Crawler Tiberium skin</leatherLabel>
 			<leatherInsulation>0.5</leatherInsulation>
 			<meatLabel>crawler flesh</meatLabel>
 			<wildness>0.9</wildness>
-			<manhunterOnTameFailChance>0.3</manhunterOnTameFailChance>
+			<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
 			<manhunterOnDamageChance>1</manhunterOnDamageChance>
 			<gestationPeriodDays>17.5</gestationPeriodDays>
 			<nameOnTameChance>1</nameOnTameChance>
@@ -896,7 +900,7 @@
 		<defName>Crawler_TBI</defName>
 		<label>crawler</label>
 		<race>Crawler_TBI</race>
-		<combatPower>165</combatPower>
+		<combatPower>50</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<wildSpawn_EcoSystemWeight>2</wildSpawn_EcoSystemWeight>
 		<lifeStages>
@@ -913,21 +917,21 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.75</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
-					<drawSize>1.5</drawSize>
+					<drawSize>1.75</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
-					<drawSize>2</drawSize>
+					<drawSize>2.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
-					<drawSize>2</drawSize>
+					<drawSize>2.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -976,10 +980,11 @@
     </verbs>
     <race>
       <body>QuadrupedAnimalWithPaws</body>
+      <predator>true</predator>
       <deathActionWorkerClass>DeathActionWorker_SmallExplosion</deathActionWorkerClass>
       <baseBodySize>0.2</baseBodySize>
       <baseHungerRate>0.35</baseHungerRate>
-      <baseHealthScale>0.4</baseHealthScale>
+      <baseHealthScale>0.75</baseHealthScale>
       <foodType>OmnivoreRoughAnimal</foodType>
       <leatherColor>(115,37,28)</leatherColor>
       <leatherInsulation>0.7</leatherInsulation>
@@ -1045,7 +1050,19 @@
         <bodyGraphicData>
           <texPath>Pawn/Animals/BoomFiend/BoomFiend</texPath>
           <color>(176,150,106)</color>
-          <drawSize>0.80</drawSize>
+          <drawSize>0.75</drawSize>
+          <shaderType>CutoutComplex</shaderType>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
+          <drawSize>0.75</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Pawn/Animals/BoomFiend/BoomFiend</texPath>
+          <color>(176,150,106)</color>
+          <drawSize>1</drawSize>
           <shaderType>CutoutComplex</shaderType>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
@@ -1057,19 +1074,7 @@
         <bodyGraphicData>
           <texPath>Pawn/Animals/BoomFiend/BoomFiend</texPath>
           <color>(176,150,106)</color>
-          <drawSize>1.0</drawSize>
-          <shaderType>CutoutComplex</shaderType>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
           <drawSize>1.25</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Pawn/Animals/BoomFiend/BoomFiend</texPath>
-          <color>(176,150,106)</color>
-          <drawSize>1.15</drawSize>
           <shaderType>CutoutComplex</shaderType>
           <shadowData>
             <volume>(0.25, 0.3, 0.25)</volume>
@@ -1078,7 +1083,7 @@
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
           <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSmall</texPath>
-          <drawSize>1.5</drawSize>
+          <drawSize>1.25</drawSize>
         </dessicatedBodyGraphicData>
       </li>
     </lifeStages>
@@ -1087,7 +1092,7 @@
   <ThingDef ParentName="AnimalThingBase">
     <defName>Spiner_TBI</defName>
     <label>spiner</label>
-    <description>Heavily-muscled wolf-like creatures, iinfused with Tiberium. These "Spiners" are very dangerous and should be avoided.</description>
+    <description>Heavily-muscled Pig-like creatures, iinfused with Tiberium. These "Spiners" are very dangerous and should be avoided.</description>
     <statBases>
       <MoveSpeed>6.00</MoveSpeed>
       <ComfyTemperatureMin>-65</ComfyTemperatureMin>
@@ -1152,7 +1157,7 @@
       <body>QuadrupedAnimalWithPawsAndTail</body>
       <predator>true</predator>
       <petness>0.5</petness>
-      <baseBodySize>1.0</baseBodySize>
+      <baseBodySize>1.5</baseBodySize>
       <baseHungerRate>0.25</baseHungerRate>
       <baseHealthScale>1.15</baseHealthScale>
       <foodType>CarnivoreAnimalStrict</foodType>
@@ -1188,15 +1193,15 @@
         <li>
           <def>AnimalAdult</def>
           <minAge>0.45</minAge>
-          <soundWounded>Pawn_Warg_Wounded</soundWounded>
-          <soundDeath>Pawn_Warg_Death</soundDeath>
-          <soundCall>Pawn_Warg_Call</soundCall>
-          <soundAngry>Pawn_Warg_Angry</soundAngry>
+          <soundWounded>Pawn_Bear_Injured</soundWounded>
+          <soundDeath>Pawn_Bear_Death</soundDeath>
+          <soundCall>Pawn_Bear_Call</soundCall>
+          <soundAngry>Pawn_Bear_Angry</soundAngry>
         </li>
       </lifeStageAges>
-      <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
-      <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
-      <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+      <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
 	  <wildBiomes>
 			<TiberiumRedZone>0.2</TiberiumRedZone>
 		</wildBiomes>
@@ -1224,7 +1229,21 @@
         <labelPlural>spiner puppies</labelPlural>
         <bodyGraphicData>
           <texPath>Pawn/Animals/Spiner/Spiner</texPath>
-          <drawSize>1.05</drawSize>
+          <drawSize>0.75</drawSize>
+        </bodyGraphicData>
+        <dessicatedBodyGraphicData>
+          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
+          <drawSize>0.75</drawSize>
+        </dessicatedBodyGraphicData>
+      </li>
+      <li>
+        <bodyGraphicData>
+          <texPath>Pawn/Animals/Spiner/Spiner</texPath>
+          <drawSize>1</drawSize>
+          <shadowData>
+            <volume>(0.25, 0.3, 0.25)</volume>
+            <offset>(0,0,-0.15)</offset>
+          </shadowData>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
           <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
@@ -1234,21 +1253,7 @@
       <li>
         <bodyGraphicData>
           <texPath>Pawn/Animals/Spiner/Spiner</texPath>
-          <drawSize>1.7</drawSize>
-          <shadowData>
-            <volume>(0.25, 0.3, 0.25)</volume>
-            <offset>(0,0,-0.15)</offset>
-          </shadowData>
-        </bodyGraphicData>
-        <dessicatedBodyGraphicData>
-          <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.4</drawSize>
-        </dessicatedBodyGraphicData>
-      </li>
-      <li>
-        <bodyGraphicData>
-          <texPath>Pawn/Animals/Spiner/Spiner</texPath>
-          <drawSize>2.05</drawSize>
+          <drawSize>1.5</drawSize>
           <shadowData>
             <volume>(0.3, 0.4, 0.3)</volume>
             <offset>(0,0,-0.15)</offset>
@@ -1256,7 +1261,7 @@
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
           <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.7</drawSize>
+          <drawSize>1.5</drawSize>
         </dessicatedBodyGraphicData>
       </li>
     </lifeStages>
@@ -1281,7 +1286,7 @@
       </li>
     </verbs>
     <race>
-	<predator>true</predator>
+	  <predator>true</predator>
       <herdAnimal>true</herdAnimal>
       <body>QuadrupedAnimalWithHooves</body>
       <baseBodySize>2.1</baseBodySize>

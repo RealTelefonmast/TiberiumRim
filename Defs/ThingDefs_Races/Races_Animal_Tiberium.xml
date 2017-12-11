@@ -182,11 +182,11 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Visceroid/visceroid</texPath>
-					<drawSize>1.4</drawSize>
+					<drawSize>1.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawn/Animals/Visceroid/VisceroidDessicated</texPath>
-					<drawSize>1.4</drawSize>
+					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -278,31 +278,31 @@
 				<label>baby Veinmonster</label>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
-					<drawSize>0.4</drawSize>
+					<drawSize>0.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
-					<drawSize>0.4</drawSize>
+					<drawSize>0.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
-					<drawSize>0.6</drawSize>
+					<drawSize>0.75</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
-					<drawSize>0.6</drawSize>
+					<drawSize>0.75</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
-					<drawSize>0.8</drawSize>
+					<drawSize>1</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
-					<drawSize>0.8</drawSize>
+					<drawSize>1</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
