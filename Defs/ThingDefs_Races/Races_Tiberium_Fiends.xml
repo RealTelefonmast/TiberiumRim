@@ -917,21 +917,21 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
-					<drawSize>1.75</drawSize>
+					<drawSize>1.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
-					<drawSize>1.75</drawSize>
+					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
-					<drawSize>2.5</drawSize>
+					<drawSize>2</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
-					<drawSize>2.5</drawSize>
+					<drawSize>2</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -1229,17 +1229,17 @@
         <labelPlural>spiner puppies</labelPlural>
         <bodyGraphicData>
           <texPath>Pawn/Animals/Spiner/Spiner</texPath>
-          <drawSize>0.75</drawSize>
+          <drawSize>1</drawSize>
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
           <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>0.75</drawSize>
+          <drawSize>1</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
           <texPath>Pawn/Animals/Spiner/Spiner</texPath>
-          <drawSize>1</drawSize>
+          <drawSize>1.5</drawSize>
           <shadowData>
             <volume>(0.25, 0.3, 0.25)</volume>
             <offset>(0,0,-0.15)</offset>
@@ -1247,13 +1247,13 @@
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
           <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1</drawSize>
+          <drawSize>1.5</drawSize>
         </dessicatedBodyGraphicData>
       </li>
       <li>
         <bodyGraphicData>
           <texPath>Pawn/Animals/Spiner/Spiner</texPath>
-          <drawSize>1.5</drawSize>
+          <drawSize>2</drawSize>
           <shadowData>
             <volume>(0.3, 0.4, 0.3)</volume>
             <offset>(0,0,-0.15)</offset>
@@ -1261,7 +1261,7 @@
         </bodyGraphicData>
         <dessicatedBodyGraphicData>
           <texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-          <drawSize>1.5</drawSize>
+          <drawSize>2</drawSize>
         </dessicatedBodyGraphicData>
       </li>
     </lifeStages>
