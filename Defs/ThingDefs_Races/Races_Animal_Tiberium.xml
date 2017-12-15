@@ -69,8 +69,8 @@
     </statBases>
     <race>
       <fleshType>Tiberium</fleshType>
-      <bloodDef>FilthBloodInsect</bloodDef>
-      <meatColor>(0,255,0)</meatColor>
+      <bloodDef>FilthTiberiumGreen</bloodDef>
+      <meatColor>(0,255,20)</meatColor>
       <foodType>OmnivoreAnimal, AnimalProduct</foodType>
       <manhunterOnDamageChance>1</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.8</manhunterOnTameFailChance>
@@ -118,7 +118,7 @@
 		<leatherLabel>Visceroid Skin</leatherLabel>
 		<leatherInsulation>0.2</leatherInsulation>
 		<meatLabel>Visceroid Matter</meatLabel>
-		<wildness>0.75</wildness>
+		<wildness>1</wildness>
 		<gestationPeriodDays>25</gestationPeriodDays>
 		<nameOnTameChance>1</nameOnTameChance>
 		<lifeExpectancy>300</lifeExpectancy>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
+
+
 	<ThingDef ParentName="AnimalThingBase">
 		<defName>Thrimbo_TBI</defName>
 		<label>Thrimbo</label>
@@ -23,6 +25,7 @@
 		</verbs>
 		<race>
 			<body>QuadrupedAnimalWithHoovesAndHorn</body>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<herdAnimal>true</herdAnimal>
 			<predator>true</predator>
 			<baseBodySize>3.5</baseBodySize>
@@ -158,6 +161,7 @@
 		</verbs>
 		<race>
 			<body>QuadrupedAnimalWithHoovesAndHorn</body>
+			<bloodDef>FilthTiberiumBlue</bloodDef>
 			<herdAnimal>true</herdAnimal>
 			<predator>true</predator>
 			<baseBodySize>4.0</baseBodySize>
@@ -268,6 +272,7 @@
 		<label>big Tiberium fiend</label>
 		<description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
 		<race>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<wildness>0.9</wildness>
 			<leatherColor>(10,10,10)</leatherColor>
 			<foodType>CarnivoreAnimalStrict</foodType>
@@ -355,6 +360,7 @@
 			</li>
 		</verbs>
 		<race>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<body>BeetleLike</body>
 			<baseBodySize>0.2</baseBodySize>
 			<baseHungerRate>0.10</baseHungerRate>
@@ -498,6 +504,7 @@
 		</verbs>
 		<race>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<predator>true</predator>
 			<petness>0.1</petness>
 			<baseBodySize>0.85</baseBodySize>
@@ -684,6 +691,7 @@
 		</verbs>
 		<race>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<predator>true</predator>
 			<petness>0.1</petness>
 			<baseBodySize>0.55</baseBodySize>
@@ -744,7 +752,8 @@
 		<label>small tiberium fiend</label>
 		<description>A small solitary canine infected with Tiberium.</description>
 		<race>
-		<foodType>CarnivoreAnimalStrict</foodType>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
+			<foodType>CarnivoreAnimalStrict</foodType>
 			<leatherColor>(10,10,10)</leatherColor>
 			<leatherLabel>Small Tiberium fiend skin</leatherLabel>
 			<useMeatFrom>FoxFennec</useMeatFrom>
@@ -842,6 +851,7 @@
 		<race>
 			<body>Snake</body>
 			<predator>true</predator>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<maxPreyBodySize>1</maxPreyBodySize>
 			<baseBodySize>1</baseBodySize>
 			<baseHungerRate>0.25</baseHungerRate>
@@ -979,22 +989,23 @@
       </li>
     </verbs>
     <race>
-      <body>QuadrupedAnimalWithPaws</body>
-      <predator>true</predator>
-      <deathActionWorkerClass>DeathActionWorker_SmallExplosion</deathActionWorkerClass>
-      <baseBodySize>0.2</baseBodySize>
-      <baseHungerRate>0.35</baseHungerRate>
-      <baseHealthScale>0.75</baseHealthScale>
-      <foodType>OmnivoreRoughAnimal</foodType>
-      <leatherColor>(115,37,28)</leatherColor>
-      <leatherInsulation>0.7</leatherInsulation>
-      <executionRange>4</executionRange>
-      <wildness>0.75</wildness>
-      <mateMtbHours>8</mateMtbHours>
-      <nuzzleMtbHours>120</nuzzleMtbHours>
-      <canBePredatorPrey>false</canBePredatorPrey>
-      <gestationPeriodDays>12.5</gestationPeriodDays>
-      <litterSizeCurve>
+		<bloodDef>FilthTiberiumBlue</bloodDef>
+		<body>QuadrupedAnimalWithPaws</body>
+		<predator>true</predator>
+		<deathActionWorkerClass>DeathActionWorker_BigExplosion</deathActionWorkerClass>
+		<baseBodySize>0.2</baseBodySize>
+		<baseHungerRate>0.35</baseHungerRate>
+		<baseHealthScale>0.75</baseHealthScale>
+		<foodType>OmnivoreRoughAnimal</foodType>
+		<leatherColor>(115,37,28)</leatherColor>
+		<leatherInsulation>0.7</leatherInsulation>
+		<executionRange>4</executionRange>
+		<wildness>0.75</wildness>
+		<mateMtbHours>8</mateMtbHours>
+		<nuzzleMtbHours>120</nuzzleMtbHours>
+		<canBePredatorPrey>false</canBePredatorPrey>
+		<gestationPeriodDays>12.5</gestationPeriodDays>
+		<litterSizeCurve>
         <points>
           <li>(0.5, 0)</li>
           <li>(1, 1)</li>
@@ -1154,6 +1165,7 @@
       </li>
     </verbs>
     <race>
+	  <bloodDef>FilthTiberiumGreen</bloodDef>
       <body>QuadrupedAnimalWithPawsAndTail</body>
       <predator>true</predator>
       <petness>0.5</petness>
@@ -1287,6 +1299,7 @@
     </verbs>
     <race>
 	  <predator>true</predator>
+	  <bloodDef>FilthTiberiumBlue</bloodDef>
       <herdAnimal>true</herdAnimal>
       <body>QuadrupedAnimalWithHooves</body>
       <baseBodySize>2.1</baseBodySize>
