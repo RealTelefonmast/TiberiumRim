@@ -9,7 +9,7 @@
       <Cleanliness>-55</Cleanliness>
     </statBases>
     <graphicData>
-      <texPath>things/filth/TibDustA</texPath>
+      <texPath>filth/TibDustA</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
     <filth>
@@ -27,7 +27,7 @@
       <Cleanliness>-55</Cleanliness>
     </statBases>
     <graphicData>
-      <texPath>things/filth/TibDustB</texPath>
+      <texPath>filth/TibDustB</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
     <filth>
@@ -45,7 +45,7 @@
       <Cleanliness>-55</Cleanliness>
     </statBases>
     <graphicData>
-      <texPath>things/filth/TibDustC</texPath>
+      <texPath>filth/TibDustC</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
     <filth>
