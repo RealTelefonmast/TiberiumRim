@@ -386,6 +386,7 @@
 				<spawnForbidden>false</spawnForbidden>
 			</li>
 		</comps>
+		<filthLeaving>FilthBlood</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
@@ -509,6 +510,7 @@
 			<corruptsInto>VeinSoilRed</corruptsInto>
 			</li>
 		</comps>
+		<filthLeaving>FilthBlood</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="BuildingNaturalBase">
