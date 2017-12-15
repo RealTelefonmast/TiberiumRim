@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <ThingDef ParentName="BaseFilth">
+    <defName>FilthTiberiumGreen</defName>
+    <label>Tiberium dust</label>
+    <statBases>
+      <Beauty>-10</Beauty>
+      <Cleanliness>-55</Cleanliness>
+    </statBases>
+    <graphicData>
+      <texPath>things/filth/TibDustA</texPath>
+      <color>(255, 255, 255, 255)</color>
+    </graphicData>
+    <filth>
+      <rainWashes>true</rainWashes>
+      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
+      <canFilthAttach>true</canFilthAttach>
+    </filth>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseFilth">
+    <defName>FilthTiberiumBlue</defName>
+    <label>Tiberium dust</label>
+    <statBases>
+      <Beauty>-10</Beauty>
+      <Cleanliness>-55</Cleanliness>
+    </statBases>
+    <graphicData>
+      <texPath>things/filth/TibDustB</texPath>
+      <color>(255, 255, 255, 255)</color>
+    </graphicData>
+    <filth>
+      <rainWashes>true</rainWashes>
+      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
+      <canFilthAttach>true</canFilthAttach>
+    </filth>
+  </ThingDef>
+  
+  <ThingDef ParentName="BaseFilth">
+    <defName>FilthTiberiumRed</defName>
+    <label>Tiberium dust</label>
+    <statBases>
+      <Beauty>-10</Beauty>
+      <Cleanliness>-55</Cleanliness>
+    </statBases>
+    <graphicData>
+      <texPath>things/filth/TibDustC</texPath>
+      <color>(255, 255, 255, 255)</color>
+    </graphicData>
+    <filth>
+      <rainWashes>true</rainWashes>
+      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
+      <canFilthAttach>true</canFilthAttach>
+    </filth>
+  </ThingDef>
+
+</Defs>
