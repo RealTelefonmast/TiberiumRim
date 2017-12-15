@@ -5,7 +5,6 @@
 		<category>Building</category>
 		<selectable>true</selectable>
 		<drawerType>MapMeshOnly</drawerType>
-		<filthLeaving>RockRubble</filthLeaving>
 		<scatterableOnMapGen>false</scatterableOnMapGen>
 	</ThingDef>
 
@@ -79,6 +78,7 @@
         <killedLeavings>
             <TiberiumGreen>3</TiberiumGreen>
         </killedLeavings>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="TibRockBase">
@@ -115,6 +115,7 @@
         <killedLeavings>
             <TiberiumBlue>2</TiberiumBlue>
         </killedLeavings>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="TibRockBase">
@@ -151,6 +152,7 @@
         <killedLeavings>
             <TiberiumRed>1</TiberiumRed>
         </killedLeavings>
+		<filthLeaving>FilthTiberiumRed</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="TibRockBase">
@@ -181,6 +183,7 @@
         <killedLeavings>
             <TiberiumVein>1</TiberiumVein>
         </killedLeavings>
+		<filthLeaving>FilthBlood</filthLeaving>
 	</ThingDef>
 	
 </Defs>

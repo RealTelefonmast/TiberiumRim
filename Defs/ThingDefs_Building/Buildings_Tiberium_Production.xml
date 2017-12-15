@@ -94,6 +94,7 @@
         <killedLeavings>
             <TiberiumGreen>3</TiberiumGreen>
         </killedLeavings>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="BuildingBase">
@@ -165,6 +166,7 @@
             <TiberiumGreen>2</TiberiumGreen>
 			<TiberiumRed>3</TiberiumRed>
         </killedLeavings>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="BuildingBase">
@@ -227,6 +229,7 @@
 			<li>TiberiumResearchRefining</li>
 			<li>TiberiumPower</li>
 		</researchPrerequisites>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 
 </Defs>
