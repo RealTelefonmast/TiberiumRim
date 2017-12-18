@@ -212,7 +212,7 @@
 		<defName>TiberiumTerror_TBI</defName>
 		<label>tiberium terror</label>
 		<race>TiberiumTerror_TBI</race>
-		<combatPower>600</combatPower>
+		<combatPower>500</combatPower>
 		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
 		<lifeStages>
 			<li>
@@ -267,13 +267,12 @@
 	</PawnKindDef>
 
 	
-	<ThingDef ParentName="BaseBear">
+	<ThingDef ParentName="ThingBaseWolf">
 		<defName>BigTiberiumFiend_TBI</defName>
 		<label>big Tiberium fiend</label>
 		<description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
 		<race>
 			<bloodDef>FilthTiberiumGreen</bloodDef>
-			<wildness>0.9</wildness>
 			<leatherColor>(10,10,10)</leatherColor>
 			<foodType>CarnivoreAnimalStrict</foodType>
 			<leatherInsulation>1.0</leatherInsulation>
@@ -284,12 +283,60 @@
 				<TiberiumRedZone>0.08</TiberiumRedZone>
 			</wildBiomes>
 		</race>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTime>2.5</defaultCooldownTime>
+				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
+				<meleeDamageDef>Scratch</meleeDamageDef>
+				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>26</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTime>2.5</defaultCooldownTime>
+				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
+				<meleeDamageDef>Scratch</meleeDamageDef>
+				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>26</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTime>2.5</defaultCooldownTime>
+				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
+				<meleeDamageDef>Bite</meleeDamageDef>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>30</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+		</verbs>
 	</ThingDef>
 
-	<PawnKindDef ParentName="BearBase">
+	<PawnKindDef ParentName="AnimalKindBaseWolf">
 		<defName>BigTiberiumFiend_TBI</defName>
 		<label>big tiberium fiend</label>
 		<race>BigTiberiumFiend_TBI</race>
+		<combatPower>200</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<wildSpawn_EcoSystemWeight>0.25</wildSpawn_EcoSystemWeight>
 		<lifeStages>
@@ -585,6 +632,7 @@
 		<label>tiberium fiend</label>
 		<labelPlural>tiberium fiends</labelPlural>
 		<race>TiberiumFiend_TBI</race>
+		<combatPower>150</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<wildSpawn_EcoSystemWeight>0.5</wildSpawn_EcoSystemWeight>
 		<wildSpawn_GroupSizeRange>
