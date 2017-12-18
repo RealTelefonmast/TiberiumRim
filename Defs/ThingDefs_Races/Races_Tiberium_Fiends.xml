@@ -12,6 +12,7 @@
 			<ComfyTemperatureMin>-40</ComfyTemperatureMin>
 			<MarketValue>6400</MarketValue>
 			<MeatAmount>180</MeatAmount>
+			<Mass>1500</Mass>
 			<!-- more than implied by body size -->
 		</statBases>
 		<verbs>
@@ -148,7 +149,7 @@
 			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
 			<MarketValue>8080</MarketValue>
 			<MeatAmount>330</MeatAmount>
-			<!-- more than implied by body size -->
+			<Mass>2000</Mass>
 		</statBases>
 		<verbs>
 			<li>
@@ -271,6 +272,9 @@
 		<defName>BigTiberiumFiend_TBI</defName>
 		<label>big Tiberium fiend</label>
 		<description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
+		<statBases>
+			<Mass>250</Mass>
+		</statBases>
 		<race>
 			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<leatherColor>(10,10,10)</leatherColor>
@@ -396,6 +400,7 @@
 			<ComfyTemperatureMin>-25</ComfyTemperatureMin>
 			<MarketValue>235</MarketValue>
 			<LeatherAmount>0</LeatherAmount>
+			<Mass>25</Mass>
 		</statBases>
 			<verbs>
 			<li>
@@ -501,6 +506,7 @@
 			<MoveSpeed>7</MoveSpeed>
 			<ComfyTemperatureMin>-70</ComfyTemperatureMin>
 			<MarketValue>550</MarketValue>
+			<Mass>75</Mass>
 		</statBases>
 		<verbs>
 			<li>
@@ -689,7 +695,7 @@
 			<MoveSpeed>6.00</MoveSpeed>
 			<ComfyTemperatureMin>-75</ComfyTemperatureMin>
 			<MarketValue>360</MarketValue>
-			</statBases>
+		</statBases>
 		<verbs>
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
@@ -799,6 +805,9 @@
 		<defName>SmallTiberiumFiend_TBI</defName>
 		<label>small tiberium fiend</label>
 		<description>A small solitary canine infected with Tiberium.</description>
+		<statBases>
+			<Mass>50</Mass>
+		</statBases>
 		<race>
 			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<foodType>CarnivoreAnimalStrict</foodType>
@@ -866,6 +875,7 @@
 			<MoveSpeed>4.85</MoveSpeed>
 			<ComfyTemperatureMin>-5</ComfyTemperatureMin>
 			<MarketValue>1200</MarketValue>
+			<Mass>100</Mass>
 		</statBases>
 		<verbs>
 			<li>
@@ -1004,6 +1014,7 @@
       <MoveSpeed>6</MoveSpeed>
       <ComfyTemperatureMin>-40</ComfyTemperatureMin>
       <MarketValue>230</MarketValue>
+	  <Mass>50</Mass>
     </statBases>
     <verbs>
       <li>
@@ -1156,6 +1167,7 @@
       <MoveSpeed>6.00</MoveSpeed>
       <ComfyTemperatureMin>-65</ComfyTemperatureMin>
       <MarketValue>450</MarketValue>
+	  <Mass>100</Mass>
     </statBases>
     <verbs>
       <li>
@@ -1335,6 +1347,7 @@
       <MoveSpeed>4</MoveSpeed>
       <ComfyTemperatureMin>-75</ComfyTemperatureMin>
       <MarketValue>700</MarketValue>
+	  <Mass>200</Mass>
     </statBases>
     <verbs>
       <li>
