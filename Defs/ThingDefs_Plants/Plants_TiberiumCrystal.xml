@@ -615,7 +615,7 @@ They do not spread anything else but themselves.
 		</friendlyTo>
 		<EntityDamage>4</EntityDamage>
 		<BuildingDamage>6</BuildingDamage>
-		<isFlesh>True</isFlesh>
+		<isFlesh></isFlesh>
 	</ThingDef>
 	
 	<!-- Decorative -->

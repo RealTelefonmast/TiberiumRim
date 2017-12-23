@@ -7,7 +7,7 @@
 		<label>Tiberium gas</label>
 		<graphicData>
 			<texPath>Gas/Tiberium</texPath>
-			<drawSize>1.2</drawSize>
+			<drawSize>2</drawSize>
 			<color>(1.0,1.0,1.0,0.5)</color>
 		</graphicData>
 		<gas>
@@ -17,7 +17,7 @@
 			</expireSeconds>
 			<blockTurretTracking>true</blockTurretTracking>
 			<accuracyPenalty>0.4</accuracyPenalty>
-			<rotationSpeed>14</rotationSpeed>
+			<rotationSpeed>15</rotationSpeed>
 		</gas>
 	</ThingDef>
   

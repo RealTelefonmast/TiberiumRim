@@ -25,9 +25,9 @@
 		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
 		<thingClass>Building_WorkTable</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
-		<passability>Impassable</passability>
+		<passability>PassThroughOnly</passability>
 		<statBases>
-			<MaxHitPoints>350</MaxHitPoints>
+			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
@@ -107,13 +107,13 @@
 			<drawSize>(5,5)</drawSize>
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
-		<passability>Impassable</passability>
+		<passability>PassThroughOnly</passability>
 		<blockWind>true</blockWind>
 		<fillPercent>1.0</fillPercent>
 		<castEdgeShadows>false</castEdgeShadows>
 		<rotatable>false</rotatable>
 		<statBases>
-			<MaxHitPoints>400</MaxHitPoints>
+			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>3222</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
@@ -174,11 +174,21 @@
 		<label>Tiberium spike</label>
 		<thingClass>Building</thingClass>
 		<graphicData>
-			<texPath>Building/Tiberium/TibSpike</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(3,15)</drawSize>
+			<texPath>things/building/GDI/Defense/Firestorm/Wall_Firestorm_on</texPath>
+			<graphicClass>Graphic_single</graphicClass>
+			<linkType>CornerFiller</linkType>
+			<linkFlags>
+				<li>Custom6</li>
+			</linkFlags>
 			<damageData>
-			<rect>(0.3,0,5.4,6)</rect>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+				<edgeTop>Damage/Edge</edgeTop>
+				<edgeBot>Damage/Edge</edgeBot>
+				<edgeLeft>Damage/Edge</edgeLeft>
+				<edgeRight>Damage/Edge</edgeRight>
 			</damageData>
 		</graphicData>
 		<uiIconPath>Building/Tiberium/TibSpike_Icon</uiIconPath>

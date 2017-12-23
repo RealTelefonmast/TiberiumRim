@@ -3,7 +3,7 @@
   
   <ThingDef ParentName="BaseFilth">
     <defName>FilthTiberiumGreen</defName>
-    <label>Tiberium dust</label>
+    <label>Green tiberium dust</label>
     <statBases>
       <Beauty>-10</Beauty>
       <Cleanliness>-55</Cleanliness>
@@ -21,7 +21,7 @@
   
   <ThingDef ParentName="BaseFilth">
     <defName>FilthTiberiumBlue</defName>
-    <label>Tiberium dust</label>
+    <label>Blue tiberium dust</label>
     <statBases>
       <Beauty>-10</Beauty>
       <Cleanliness>-55</Cleanliness>
@@ -39,7 +39,7 @@
   
   <ThingDef ParentName="BaseFilth">
     <defName>FilthTiberiumRed</defName>
-    <label>Tiberium dust</label>
+    <label>Red tiberium dust</label>
     <statBases>
       <Beauty>-10</Beauty>
       <Cleanliness>-55</Cleanliness>
