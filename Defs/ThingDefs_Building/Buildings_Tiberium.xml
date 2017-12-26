@@ -218,6 +218,19 @@
 			<deconstructible>false</deconstructible>
 		</building>
 		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>6</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBombBlue</explosiveDamageType>
+				<postExplosionSpawnThingDef>TiberiumBlue</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			</li>
+			<li Class="CompProperties_TemperatureDamaged">
+				<safeTemperatureRange>
+				<min>9000</min>
+				<max>9500</max>
+				</safeTemperatureRange>
+				<damagePerTickRare>25</damagePerTickRare>
+			</li>
 			<li Class="TiberiumRim.CompProperties_TiberiumProducer">
 				<radius>8</radius>
 				<corruptsInto>TiberiumSoilBlue</corruptsInto>
@@ -230,22 +243,7 @@
 				<glowRadius>10</glowRadius>
 				<glowColor>(120,150,200,0)</glowColor>
 			</li>
-			<li Class="CompProperties_Spawner">
-				<thingToSpawn>TiberiumBlue</thingToSpawn>
-				<spawnCount>1</spawnCount>
-				<spawnIntervalRange>
-					<min>50600</min>
-					<max>60000</max>
-				</spawnIntervalRange>
-				<spawnMaxAdjacent>8</spawnMaxAdjacent>
-				<spawnForbidden>false</spawnForbidden>
-			</li>
 		</comps>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-        <killedLeavings>
-			<BlueTiberiumRaw>25</BlueTiberiumRaw>
-            <TiberiumBlue>9</TiberiumBlue>
-		</killedLeavings>
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 	</ThingDef>
 	

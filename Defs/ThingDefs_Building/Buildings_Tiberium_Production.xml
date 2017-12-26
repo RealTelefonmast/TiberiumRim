@@ -43,6 +43,12 @@
  			<BookRutila>1</BookRutila>
 		</costList>
 		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
 				<glowColor>(120,255,150,0)</glowColor>
@@ -90,10 +96,6 @@
 		<researchPrerequisites>
 			<li>TiberiumResearchRefining</li>
 		</researchPrerequisites>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-        <killedLeavings>
-            <TiberiumGreen>3</TiberiumGreen>
-        </killedLeavings>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 	
@@ -129,6 +131,12 @@
 			<BookRiparius>1</BookRiparius>
 		</costList>
 		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerPlant</compClass>
 				<basePowerConsumption>-2250</basePowerConsumption>
@@ -161,11 +169,6 @@
 		<researchPrerequisites>
 			<li>TiberiumPower</li>
 		</researchPrerequisites>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-        <killedLeavings>
-            <TiberiumGreen>2</TiberiumGreen>
-			<TiberiumRed>3</TiberiumRed>
-        </killedLeavings>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 	
@@ -215,6 +218,12 @@
 			<Component>30</Component>
 		</costList>
 		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>5</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>1</postExplosionSpawnChance>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>2250</basePowerConsumption>
