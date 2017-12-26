@@ -155,7 +155,7 @@
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Tiberium</designationCategory>
+		<designationCategory>Power</designationCategory>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<researchPrerequisites>

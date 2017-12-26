@@ -51,7 +51,7 @@
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Tiberium</designationCategory>
+		<designationCategory>Production</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
@@ -109,7 +109,7 @@
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Tiberium</designationCategory>
+		<designationCategory>Production</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
 			<li>TiberiumKnowledge</li>

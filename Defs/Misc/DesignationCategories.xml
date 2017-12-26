@@ -3,7 +3,7 @@
 
   <DesignationCategoryDef>
     <defName>Tiberium</defName>
-    <label>tiberium</label>
+    <label>Tiberium</label>
     <description>Tiberium structures.</description>
     <order>1</order>
     <specialDesignatorClasses>
