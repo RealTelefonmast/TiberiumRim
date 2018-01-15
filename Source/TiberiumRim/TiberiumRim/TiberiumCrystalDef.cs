@@ -13,8 +13,6 @@ namespace TiberiumRim
 
         public int BuildingDamage;
 
-        public bool isFlesh;
-
         public List<ThingDef> friendlyTo = new List<ThingDef>();
     }
 }

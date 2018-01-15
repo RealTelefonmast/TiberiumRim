@@ -20,4 +20,22 @@
     </wounds>
   </FleshTypeDef>
   
+  <FleshTypeDef> 
+    <defName>Mutated</defName>
+	<ateDirect>AteMutatedMeatDirect</ateDirect>
+	<ateAsIngredient>AteMutatedMeatAsIngredient</ateAsIngredient>
+    <corpseCategory>CorpsesAnimal</corpseCategory>
+	<wounds>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshA</texture>
+      </li>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshB</texture>
+      </li>
+      <li>
+        <texture>Pawn/WoundTibFlesh/WoundTibFleshC</texture>
+      </li>
+    </wounds>
+  </FleshTypeDef>
+  
 </Defs>

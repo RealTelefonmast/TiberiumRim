@@ -7,5 +7,11 @@
   <AteTiberiumMeatAsIngredient.stages.0.label>오염된 음식 섭취</AteTiberiumMeatAsIngredient.stages.0.label>
   <AteTiberiumMeatAsIngredient.stages.0.description>녹색빛이 감도는 요리를 먹다가 작은 결정 조각에 혀를 찔렸어. 상처가 타들어가는 느낌이야.</AteTiberiumMeatAsIngredient.stages.0.description>
 
+  <AteMutatedMeatDirect.stages.0.label>ate mutated meat</AteMutatedMeatDirect.stages.0.label>
+  <AteMutatedMeatDirect.stages.0.description>I ate some glowing, tough meat. this meat tastes terrible.</AteMutatedMeatDirect.stages.0.description>
+
+  <AteMutatedMeatAsIngredient.stages.0.label>ate cooked mutated meat</AteMutatedMeatAsIngredient.stages.0.label>
+  <AteMutatedMeatAsIngredient.stages.0.description>I ate a meal cooked from glowing meat. The seasoning partly covered the taste, but a terrible taste is covering my tongue yet.</AteMutatedMeatAsIngredient.stages.0.description>
+
 
 </LanguageData>

@@ -5,7 +5,7 @@
   <MustPlaceOnTiberiumGeyser>이 건물은 오염된 간헐천 위에만 건설할 수 있습니다.</MustPlaceOnTiberiumGeyser>
   <CannotReachTiberium>변이된 정착민이 타이베리움을 필요로 합니다!</CannotReachTiberium>
   <VeinHubSpawned>침식 구덩이가 주둥이 하나를 뻗어냈습니다.</VeinHubSpawned>
-  <MessagePawnEaten>정착민이 침식 구덩이에게 잡아먹혔습니다! 좀 더 주의해야 했습니다!</MessagePawnEaten>
+  <MessagePawnEaten>정착민이 침식 구덩이에게 잡아먹혔습니다! 주의해야 했습니다!</MessagePawnEaten>
   <VisceroidUsedToBeLabel>이 비세로이드는 </VisceroidUsedToBeLabel>
 
   <UseProducerCapLabel>타이베리움 모체 수량 제한</UseProducerCapLabel>
@@ -20,7 +20,7 @@
   <BuildingDamageDesc>타이베리움이 주변 구조물을 침식하여 파괴합니다.</BuildingDamageDesc>
   <EntityDamage>타이베리움에 의한 아이템 침식:</EntityDamage>
   <EntityDamageDesc>타이베리움이 주변 아이템을 침식하여 파괴합니다.</EntityDamageDesc>
-  <TiberiumTileInfestation>타이베리움 오염도: </TiberiumTileInfestation>
-  <TiberiumTileInfestationFull>타이베리움 오염도: 100%</TiberiumTileInfestationFull>
+  <TiberiumTileInfestation>타이베리움 잠식율: </TiberiumTileInfestation>
+  <TiberiumTileInfestationFull>타이베리움 잠식율: 100%</TiberiumTileInfestationFull>
 
 </LanguageData>

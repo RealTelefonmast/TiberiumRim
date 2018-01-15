@@ -23,9 +23,6 @@
 
   <BigTiberiumFiend_TBI.label>타이베리움 야수</BigTiberiumFiend_TBI.label>
   <BigTiberiumFiend_TBI.description>타이베리움 환경에 적응한 대형 잡식성 포유류입니다. 단독으로 움직이지만 매우 강인하며, 모피와 발톱은 대부분 결정화되어 있습니다.\n\n평소에는 얌전한 먹이를 선호하지만, 굶주리게 되면 적극적으로 사냥에 나설 것입니다.</BigTiberiumFiend_TBI.description>
-  <BigTiberiumFiend_TBI.tools.0.label>결정질 발톱</BigTiberiumFiend_TBI.tools.0.label>
-  <BigTiberiumFiend_TBI.tools.1.label>결정질 발톱</BigTiberiumFiend_TBI.tools.1.label>
-  <BigTiberiumFiend_TBI.tools.3.label>머리</BigTiberiumFiend_TBI.tools.3.label>
   <BigTiberiumFiend_TBI_Leather.label>오염된 곰 모피</BigTiberiumFiend_TBI_Leather.label>
   <BigTiberiumFiend_TBI_Leather.description>오염된 곰 모피</BigTiberiumFiend_TBI_Leather.description>
   <BigTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>오염된 곰 모피</BigTiberiumFiend_TBI_Leather.stuffProps.stuffAdjective>
@@ -100,5 +97,9 @@
   <Tiffalo_TBI_Corpse.label>티팔로 시체</Tiffalo_TBI_Corpse.label>
   <Tiffalo_TBI_Corpse.description>티팔로 시체</Tiffalo_TBI_Corpse.description>
 
+
+  <!--<BigTiberiumFiend_TBI.tools.0.label>left claw</BigTiberiumFiend_TBI.tools.0.label>-->
+  <!--<BigTiberiumFiend_TBI.tools.1.label>right claw</BigTiberiumFiend_TBI.tools.1.label>-->
+  <!--<BigTiberiumFiend_TBI.tools.3.label>head</BigTiberiumFiend_TBI.tools.3.label>-->
 
 </LanguageData>

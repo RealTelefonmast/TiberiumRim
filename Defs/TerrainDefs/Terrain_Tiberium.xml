@@ -7,7 +7,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumRockGreen</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>320</renderPrecedence>
-		<pathCost>2</pathCost>
+		<pathCost>0</pathCost>
 		<statBases>
 		  <Beauty>-12</Beauty>
 		  <Cleanliness>-1</Cleanliness>
@@ -30,7 +30,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumRockBlue</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>320</renderPrecedence>
-		<pathCost>2</pathCost>
+		<pathCost>0</pathCost>
 		<statBases>
 		  <Beauty>-12</Beauty>
 		  <Cleanliness>-1</Cleanliness>
@@ -53,7 +53,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumMossGreen</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>315</renderPrecedence>
-		<pathCost>5</pathCost>
+		<pathCost>0</pathCost>
 		<statBases>
 		<Beauty>-15</Beauty>
 		<Cleanliness>-5</Cleanliness>
@@ -76,7 +76,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumMossBlue</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>315</renderPrecedence>
-		<pathCost>5</pathCost>
+		<pathCost>0</pathCost>
 		<statBases>
 		<Beauty>-15</Beauty>
 		<Cleanliness>-5</Cleanliness>
@@ -99,7 +99,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumSoilDesertGreen</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>350</renderPrecedence>
-		<pathCost>17</pathCost>
+		<pathCost>15</pathCost>
 		<statBases>
 			<Beauty>-1</Beauty>
 			<Cleanliness>-1</Cleanliness>
@@ -110,7 +110,7 @@
 			<li>Heavy</li>
 			<li>Diggable</li>
 		</affordances>
-		<fertility>0</fertility>
+		<fertility>0.025</fertility>
 		<terrainFilthDef>FilthSand</terrainFilthDef>
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
@@ -121,7 +121,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumSoilDesertBlue</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>350</renderPrecedence>
-		<pathCost>17</pathCost>
+		<pathCost>15</pathCost>
 		<statBases>
 		  <Beauty>-1</Beauty>
 		  <Cleanliness>-1</Cleanliness>
@@ -132,7 +132,7 @@
 		  <li>Heavy</li>
 		  <li>Diggable</li>
 		</affordances>
-		<fertility>0</fertility>
+		<fertility>0.025</fertility>
 		<terrainFilthDef>FilthSand</terrainFilthDef>
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
@@ -143,7 +143,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumSoilDesertRed</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>350</renderPrecedence>
-		<pathCost>17</pathCost>
+		<pathCost>15</pathCost>
 		<statBases>
 		  <Beauty>-1</Beauty>
 		  <Cleanliness>-1</Cleanliness>
@@ -154,7 +154,7 @@
 		  <li>Heavy</li>
 		  <li>Diggable</li>
 		</affordances>
-		<fertility>0</fertility>
+		<fertility>0.025</fertility>
 		<terrainFilthDef>FilthSand</terrainFilthDef>
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
@@ -165,7 +165,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumSoilGreen</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
-		<pathCost>2</pathCost>
+		<pathCost>5</pathCost>
 		<statBases>
 			<Beauty>-10</Beauty>
 			<Cleanliness>-100</Cleanliness>
@@ -177,7 +177,7 @@
 		</affordances>
 		<holdSnow>false</holdSnow>
 		<terrainFilthDef>FilthDirt</terrainFilthDef>
-		<fertility>0</fertility>
+		<fertility>0.025</fertility>
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
 	
@@ -187,7 +187,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumSoilPod</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
-		<pathCost>15</pathCost>
+		<pathCost>5</pathCost>
 		<statBases>
 			<Beauty>-15</Beauty>
 			<Cleanliness>-100</Cleanliness>
@@ -199,7 +199,7 @@
 		</affordances>
 		<holdSnow>false</holdSnow>
 		<terrainFilthDef>FilthDirt</terrainFilthDef>
-		<fertility>0</fertility>
+		<fertility>0.025</fertility>
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
 	
@@ -209,7 +209,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumSoilBlue</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
-		<pathCost>15</pathCost>
+		<pathCost>5</pathCost>
 		<statBases>
 			<Beauty>-5</Beauty>
 			<Cleanliness>-100</Cleanliness>
@@ -221,7 +221,7 @@
 		</affordances>
 		<holdSnow>false</holdSnow>
 		<terrainFilthDef>FilthDirt</terrainFilthDef>
-		<fertility>0</fertility>
+		<fertility>0.025</fertility>
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
 
@@ -231,7 +231,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumSoilRed</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
-		<pathCost>15</pathCost>
+		<pathCost>5</pathCost>
 		<statBases>
 			<Beauty>-2</Beauty>
 			<Cleanliness>-100</Cleanliness>
@@ -243,7 +243,7 @@
 		</affordances>
 		<holdSnow>false</holdSnow>
 		<terrainFilthDef>FilthDirt</terrainFilthDef>
-		<fertility>0</fertility>
+		<fertility>0.025</fertility>
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
 	
@@ -253,7 +253,7 @@
 		<texturePath>Terrain/Surfaces/VeinSoilRed</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
-		<pathCost>55</pathCost>
+		<pathCost>25</pathCost>
 		<statBases>
 			<Beauty>-6</Beauty>
 			<Cleanliness>-100</Cleanliness>
@@ -265,7 +265,7 @@
 		</affordances>
 		<holdSnow>false</holdSnow>
 		<terrainFilthDef>FilthDirt</terrainFilthDef>
-		<fertility>0</fertility>
+		<fertility>0.025</fertility>
 		<takeFootprints>True</takeFootprints>
 	</TerrainDef>
 	
@@ -296,7 +296,7 @@
 		<texturePath>Terrain/Surfaces/DecrystallizedSoil</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
-		<pathCost>7</pathCost>
+		<pathCost>5</pathCost>
 		<statBases>
 			<Beauty>-2</Beauty>
 			<Cleanliness>-1.5</Cleanliness>
@@ -319,7 +319,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumSandDecrystallized</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>340</renderPrecedence>
-		<pathCost>3</pathCost>
+		<pathCost>15</pathCost>
 		<statBases>
 			<Beauty>-2</Beauty>
 			<Cleanliness>-1.5</Cleanliness>
@@ -341,7 +341,7 @@
 		<texturePath>Terrain/Surfaces/TiberiumIce</texturePath>
 		<edgeType>FadeRough</edgeType>
 		<renderPrecedence>350</renderPrecedence>
-		<pathCost>12</pathCost>
+		<pathCost>30</pathCost>
 		<statBases>
 			<Beauty>5</Beauty>
 		</statBases>
@@ -351,7 +351,7 @@
 			<li>Heavy</li>
 		</affordances>
 		<terrainFilthDef>FilthDirt</terrainFilthDef>
-		<fertility>0.00</fertility>
+		<fertility>0</fertility>
 		<takeFootprints>False</takeFootprints>
 	</TerrainDef>
 	

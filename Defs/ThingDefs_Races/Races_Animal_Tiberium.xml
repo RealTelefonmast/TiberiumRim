@@ -69,8 +69,8 @@
     </statBases>
     <race>
       <fleshType>Tiberium</fleshType>
-      <bloodDef>FilthBloodInsect</bloodDef>
-      <meatColor>(0,255,0)</meatColor>
+      <bloodDef>FilthTibBloodG</bloodDef>
+      <meatColor>(0,255,20)</meatColor>
       <foodType>OmnivoreAnimal, AnimalProduct</foodType>
       <manhunterOnDamageChance>1</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.8</manhunterOnTameFailChance>
@@ -112,13 +112,13 @@
 		<maxPreyBodySize>1.0</maxPreyBodySize>
 		<baseBodySize>1.2</baseBodySize>
 		<baseHungerRate>0.4</baseHungerRate>
-		<baseHealthScale>0.5</baseHealthScale>
+		<baseHealthScale>1</baseHealthScale>
 		<trainableIntelligence>Simple</trainableIntelligence>
 		<leatherColor>(204,102,0)</leatherColor>
 		<leatherLabel>Visceroid Skin</leatherLabel>
 		<leatherInsulation>0.2</leatherInsulation>
 		<meatLabel>Visceroid Matter</meatLabel>
-		<wildness>0.75</wildness>
+		<wildness>1</wildness>
 		<gestationPeriodDays>25</gestationPeriodDays>
 		<nameOnTameChance>1</nameOnTameChance>
 		<lifeExpectancy>300</lifeExpectancy>
@@ -182,11 +182,11 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Visceroid/visceroid</texPath>
-					<drawSize>1.4</drawSize>
+					<drawSize>1.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawn/Animals/Visceroid/VisceroidDessicated</texPath>
-					<drawSize>1.4</drawSize>
+					<drawSize>1.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
@@ -278,31 +278,31 @@
 				<label>baby Veinmonster</label>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
-					<drawSize>0.4</drawSize>
+					<drawSize>0.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
-					<drawSize>0.4</drawSize>
+					<drawSize>0.5</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
-					<drawSize>0.6</drawSize>
+					<drawSize>0.75</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
-					<drawSize>0.6</drawSize>
+					<drawSize>0.75</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/Veinmonster</texPath>
-					<drawSize>0.8</drawSize>
+					<drawSize>1</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Pawn/Animals/Veinmonster/VeinmonsterDessicated</texPath>
-					<drawSize>0.8</drawSize>
+					<drawSize>1</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>

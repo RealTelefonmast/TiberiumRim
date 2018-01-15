@@ -2,36 +2,6 @@
 <Defs>
 
 	<ThingDef ParentName="TiberiumFloraBase">
-		<defName>TiberiumPlant</defName>
-		<label>Tiberium plant</label>
-		<description>A strange-looking lifeform. Looks infested with Tiberium.</description>
-		<statBases>
-			<MaxHitPoints>250</MaxHitPoints>
-			<Beauty>-26</Beauty>
-		</statBases>
-		<graphicData>
-			<texPath>Plant/Tiberium/Flora/Grass</texPath>
-			<graphicClass>Graphic_Random</graphicClass>
-		</graphicData>
-		<selectable>true</selectable>
-		<pathCost>12</pathCost>
-		<plant>
-			<dieIfLeafless>false</dieIfLeafless>
-			<growDays>4</growDays>
-			<lifespanFraction>269</lifespanFraction>
-			<visualSizeRange>
-				<min>2.0</min>
-				<max>3.0</max>
-			</visualSizeRange>
-			<reproduces>false</reproduces>
-			<fertilitySensitivity>0</fertilitySensitivity>
-			<growMinGlow>0</growMinGlow>
-			<maxMeshCount>1</maxMeshCount>
-			<topWindExposure>0.2</topWindExposure>
-		</plant>
-	</ThingDef> 
-	
-	<ThingDef ParentName="TiberiumFloraBase">
 		<defName>TiberiumGrass</defName>
 		<label>tiberium grass</label>
 		<description>A strange type of grass-like flora.</description>
@@ -60,9 +30,6 @@
 			</visualSizeRange>
 			<topWindExposure>0.4</topWindExposure>
 			<reproduceMtbDays>3</reproduceMtbDays>
-			<wildBiomes>
-				<TiberiumRedZone>1</TiberiumRedZone>
-			</wildBiomes>
 			<maxMeshCount>4</maxMeshCount>
 		</plant>
 	</ThingDef>
@@ -104,9 +71,6 @@
 			<max>2</max>
 		</visualSizeRange>
 		<topWindExposure>0.3</topWindExposure>
-		<wildBiomes>
-			<TiberiumRedZone>0.3</TiberiumRedZone>
-		</wildBiomes>
 		<maxMeshCount>4</maxMeshCount>
     </plant>
   </ThingDef>
@@ -145,9 +109,6 @@
 			<max>2</max>
 		</wildClusterSizeRange>
 		<wildClusterRadius>4</wildClusterRadius>
-		<wildBiomes>
-			<TiberiumRedZone>0.3</TiberiumRedZone>
-		</wildBiomes>
 		<maxMeshCount>4</maxMeshCount>
     </plant>
   </ThingDef>
@@ -174,9 +135,6 @@
 			<min>1</min>
 			<max>2</max>
 			</visualSizeRange>
-			<wildBiomes>
-				<TiberiumRedZone>0.3</TiberiumRedZone>
-			</wildBiomes>
 		</plant>
 	</ThingDef>
 

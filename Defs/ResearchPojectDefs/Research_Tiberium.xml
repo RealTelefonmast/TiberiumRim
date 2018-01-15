@@ -5,7 +5,8 @@
 		<defName>Tiberium</defName>
 		<label>Tiberium</label>
 	</ResearchTabDef>
-	
+<!--tier0-->
+
 	<ResearchProjectDef>
 		<defName>TiberiumResearch</defName>
 		<label>tiberium base research</label>
@@ -17,44 +18,10 @@
 			<li>MicroelectronicsBasics</li>
 		</prerequisites>
 		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
-		<researchViewX>0.25</researchViewX>
-		<researchViewY>0.25</researchViewY>
+		<researchViewX>0</researchViewX>
+		<researchViewY>2.5</researchViewY>
 	</ResearchProjectDef>
 	
-	
-	<ResearchProjectDef>
-		<defName>TiberiumKnowledge</defName>
-		<label>tiberium knowledge</label>
-		<description>Allows the understanding of Tiberium:\n\n -Construction of the Tiberium Research Crafting Adapter(TRCA) \n\n -Craft Tiberium (lore) books at the TRCA\n\n -Craft Tiberium Protection Suits at the TRCA</description>
-		<baseCost>500</baseCost>
-		<techLevel>Industrial</techLevel>
-		<tab>Tiberium</tab>
-		<prerequisites>
-			<li>TiberiumResearch</li>
-		</prerequisites>
-		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
-		<researchViewX>1.25</researchViewX>
-		<researchViewY>0.75</researchViewY>
-	</ResearchProjectDef>
-	
-	
-	<ResearchProjectDef>
-		<defName>TiberiumResearchRefining</defName>
-		<label>tiberium Refining</label>
-		<description>Allows Tiberium to be refined.\n\n -Construction of the Tiberium refinery</description>
-		<baseCost>750</baseCost>
-		<techLevel>Industrial</techLevel>
-		<tab>Tiberium</tab>
-		<prerequisites>
-			<li>TiberiumKnowledge</li>
-		</prerequisites>
-		<requiredResearchFacilities>
-			<li>TiberiumResearchCraftingBench</li>
-		</requiredResearchFacilities>
-		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
-		<researchViewX>1.25</researchViewX>
-		<researchViewY>1.75</researchViewY>
-	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
 		<defName>TiberiumPower</defName>
@@ -71,8 +38,41 @@
 			<li>TiberiumResearchCraftingBench</li>
 		</requiredResearchFacilities>
 		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
-		<researchViewX>1.25</researchViewX>
-		<researchViewY>2.75</researchViewY>
+		<researchViewX>1</researchViewX>
+		<researchViewY>0.5</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TiberiumResearchRefining</defName>
+		<label>tiberium Refining</label>
+		<description>Allows Tiberium to be refined.\n\n -Construction of the Tiberium refinery</description>
+		<baseCost>750</baseCost>
+		<techLevel>Industrial</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>TiberiumKnowledge</li>
+		</prerequisites>
+		<requiredResearchFacilities>
+			<li>TiberiumResearchCraftingBench</li>
+		</requiredResearchFacilities>
+		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
+		<researchViewX>1</researchViewX>
+		<researchViewY>1.25</researchViewY>
+	</ResearchProjectDef>
+	
+	<ResearchProjectDef>
+		<defName>TiberiumKnowledge</defName>
+		<label>tiberium knowledge</label>
+		<description>Allows the understanding of Tiberium:\n\n -Construction of the Tiberium Research Crafting Adapter(TRCA) \n\n -Craft Tiberium (lore) books at the TRCA\n\n -Craft Tiberium Protection Suits at the TRCA</description>
+		<baseCost>500</baseCost>
+		<techLevel>Industrial</techLevel>
+		<tab>Tiberium</tab>
+		<prerequisites>
+			<li>TiberiumResearch</li>
+		</prerequisites>
+		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
+		<researchViewX>1</researchViewX>
+		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
@@ -90,8 +90,8 @@
 			<li>TiberiumResearchCraftingBench</li>
 		</requiredResearchFacilities>
 		<requiredResearchBuilding>TiberiumResearchBench</requiredResearchBuilding>
-		<researchViewX>1.25</researchViewX>
-		<researchViewY>3.75</researchViewY>
+		<researchViewX>1</researchViewX>
+		<researchViewY>3</researchViewY>
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
@@ -104,8 +104,8 @@
 		<prerequisites>
 			<li>PassiveCooler</li>
 		</prerequisites>
-		<researchViewX>1.25</researchViewX>
-		<researchViewY>4.75</researchViewY>
+		<researchViewX>1</researchViewX>
+		<researchViewY>3.75</researchViewY>
 	</ResearchProjectDef>
 	
 </Defs>
