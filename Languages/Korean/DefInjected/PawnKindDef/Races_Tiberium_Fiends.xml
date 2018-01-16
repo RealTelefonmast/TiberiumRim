@@ -51,31 +51,6 @@
   <TiberiumTerror_TBI.labelFemale>타이베리움 괴수</TiberiumTerror_TBI.labelFemale>
   <TiberiumTerror_TBI.labelFemalePlural>타이베리움 괴수</TiberiumTerror_TBI.labelFemalePlural>
 
-  <BigTiberiumFiend_TBI.label>타이베리움 야수</BigTiberiumFiend_TBI.label>
-  <BigTiberiumFiend_TBI.labelPlural>타이베리움 야수</BigTiberiumFiend_TBI.labelPlural>
-  <BigTiberiumFiend_TBI.lifeStages.0.label>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.label>
-  <BigTiberiumFiend_TBI.lifeStages.0.labelPlural>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelPlural>
-  <BigTiberiumFiend_TBI.lifeStages.0.labelMale>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelMale>
-  <BigTiberiumFiend_TBI.lifeStages.0.labelMalePlural>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelMalePlural>
-  <BigTiberiumFiend_TBI.lifeStages.0.labelFemale>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelFemale>
-  <BigTiberiumFiend_TBI.lifeStages.0.labelFemalePlural>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelFemalePlural>
-  <BigTiberiumFiend_TBI.lifeStages.1.label>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.label>
-  <BigTiberiumFiend_TBI.lifeStages.1.labelPlural>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelPlural>
-  <BigTiberiumFiend_TBI.lifeStages.1.labelMale>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelMale>
-  <BigTiberiumFiend_TBI.lifeStages.1.labelMalePlural>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelMalePlural>
-  <BigTiberiumFiend_TBI.lifeStages.1.labelFemale>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelFemale>
-  <BigTiberiumFiend_TBI.lifeStages.1.labelFemalePlural>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelFemalePlural>
-  <BigTiberiumFiend_TBI.lifeStages.2.label>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.label>
-  <BigTiberiumFiend_TBI.lifeStages.2.labelPlural>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelPlural>
-  <BigTiberiumFiend_TBI.lifeStages.2.labelMale>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelMale>
-  <BigTiberiumFiend_TBI.lifeStages.2.labelMalePlural>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelMalePlural>
-  <BigTiberiumFiend_TBI.lifeStages.2.labelFemale>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelFemale>
-  <BigTiberiumFiend_TBI.lifeStages.2.labelFemalePlural>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelFemalePlural>
-  <BigTiberiumFiend_TBI.labelMale>타이베리움 야수</BigTiberiumFiend_TBI.labelMale>
-  <BigTiberiumFiend_TBI.labelMalePlural>타이베리움 야수</BigTiberiumFiend_TBI.labelMalePlural>
-  <BigTiberiumFiend_TBI.labelFemale>타이베리움 야수</BigTiberiumFiend_TBI.labelFemale>
-  <BigTiberiumFiend_TBI.labelFemalePlural>타이베리움 야수</BigTiberiumFiend_TBI.labelFemalePlural>
-
   <Tibscarab_TBI.label>티브스캐럽</Tibscarab_TBI.label>
   <Tibscarab_TBI.labelPlural>티브스캐럽</Tibscarab_TBI.labelPlural>
   <Tibscarab_TBI.lifeStages.0.label>티브스캐럽 유충</Tibscarab_TBI.lifeStages.0.label>
@@ -100,6 +75,31 @@
   <Tibscarab_TBI.labelMalePlural>티브스캐럽</Tibscarab_TBI.labelMalePlural>
   <Tibscarab_TBI.labelFemale>티브스캐럽</Tibscarab_TBI.labelFemale>
   <Tibscarab_TBI.labelFemalePlural>티브스캐럽</Tibscarab_TBI.labelFemalePlural>
+
+  <BigTiberiumFiend_TBI.label>타이베리움 야수</BigTiberiumFiend_TBI.label>
+  <BigTiberiumFiend_TBI.labelPlural>타이베리움 야수</BigTiberiumFiend_TBI.labelPlural>
+  <BigTiberiumFiend_TBI.lifeStages.0.label>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.label>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelPlural>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelPlural>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelMale>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelMale>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelMalePlural>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelMalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelFemale>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelFemale>
+  <BigTiberiumFiend_TBI.lifeStages.0.labelFemalePlural>어린 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.0.labelFemalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.1.label>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.label>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelPlural>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelPlural>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelMale>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelMale>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelMalePlural>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelMalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelFemale>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelFemale>
+  <BigTiberiumFiend_TBI.lifeStages.1.labelFemalePlural>성장기 타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.1.labelFemalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.2.label>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.label>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelPlural>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelPlural>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelMale>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelMale>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelMalePlural>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelMalePlural>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelFemale>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelFemale>
+  <BigTiberiumFiend_TBI.lifeStages.2.labelFemalePlural>타이베리움 야수</BigTiberiumFiend_TBI.lifeStages.2.labelFemalePlural>
+  <BigTiberiumFiend_TBI.labelMale>타이베리움 야수</BigTiberiumFiend_TBI.labelMale>
+  <BigTiberiumFiend_TBI.labelMalePlural>타이베리움 야수</BigTiberiumFiend_TBI.labelMalePlural>
+  <BigTiberiumFiend_TBI.labelFemale>타이베리움 야수</BigTiberiumFiend_TBI.labelFemale>
+  <BigTiberiumFiend_TBI.labelFemalePlural>타이베리움 야수</BigTiberiumFiend_TBI.labelFemalePlural>
 
   <TiberiumFiend_TBI.label>타이베리움 야수</TiberiumFiend_TBI.label>
   <TiberiumFiend_TBI.labelPlural>타이베리움 야수</TiberiumFiend_TBI.labelPlural>

@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
-  <TRRailgun.label>레일건 탄환</TRRailgun.label>
-  <TRRailgun.deathMessage>{0}(이)가 총에 맞아 죽었습니다.</TRRailgun.deathMessage>
+  <TRRailgun.label>Railgun Bullet</TRRailgun.label>
+  <TRRailgun.deathMessage>{0} has been shot to death.</TRRailgun.deathMessage>
 
-  <TRLaser.label>레이저 빔</TRLaser.label>
-  <TRLaser.deathMessage>{0}(이)가 총에 맞아 죽었습니다.</TRLaser.deathMessage>
+  <TRLaser.label>Laser beam</TRLaser.label>
+  <TRLaser.deathMessage>{0} has been shot to death.</TRLaser.deathMessage>
 
   <TRSound.label>음파</TRSound.label>
   <TRSound.deathMessage>{0}(이)가 음파 공명에 휘말려 죽었습니다.</TRSound.deathMessage>
@@ -29,5 +29,7 @@
   <TRSiege.deathMessage>{0}(이)가 격렬한 진동에 휘말려 죽었습니다.</TRSiege.deathMessage>
 
 
+  <!--<Railgun.label>레일건 탄두</Railgun.label>-->
+  <!--<Railgun.deathMessage>{0}(이)가 관통당해 죽었습니다.</Railgun.deathMessage>-->
 
 </LanguageData>
