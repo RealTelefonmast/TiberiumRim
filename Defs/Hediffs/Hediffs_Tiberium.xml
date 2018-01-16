@@ -601,10 +601,7 @@
 		<defaultLabelColor>(106, 7, 0)</defaultLabelColor>
 		<label>Tiberium Mutation (Bad)</label>
 		<comps>
-			<li Class="HediffCompProperties_Discoverable">
-				<sendLetterWhenDiscovered>true</sendLetterWhenDiscovered>
 			<li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
-			</li>
 		</comps>
 		<stages>
 		  <li>
@@ -733,7 +730,7 @@
 	
 	<HediffDef>
 		<defName>TiberiumInfusionImmunityNPC</defName>
-		<label>Tiberium Immunity</label>
+		<label>Tiberium vaccine</label>
 		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(0.65, 0.3, 0.9)</defaultLabelColor>
 		<isBad>false</isBad>
