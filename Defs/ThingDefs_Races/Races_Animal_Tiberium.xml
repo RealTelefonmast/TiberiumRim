@@ -116,7 +116,8 @@
 		<trainableIntelligence>Simple</trainableIntelligence>
 		<leatherColor>(204,102,0)</leatherColor>
 		<leatherLabel>Visceroid Skin</leatherLabel>
-		<leatherInsulation>0.2</leatherInsulation>
+		<leatherInsulation>0.5</leatherInsulation>
+		<leatherMarketValueFactor>0.5</leatherMarketValueFactor>
 		<meatLabel>Visceroid Matter</meatLabel>
 		<wildness>1</wildness>
 		<gestationPeriodDays>25</gestationPeriodDays>
@@ -229,10 +230,8 @@
 		<baseHungerRate>0.8</baseHungerRate>
 		<baseHealthScale>1</baseHealthScale>
 		<trainableIntelligence>Simple</trainableIntelligence>
-		<leatherColor>(204,102,0)</leatherColor>
-		<leatherLabel>Veinmonster skin</leatherLabel>
-		<leatherInsulation>0.5</leatherInsulation>
-		<meatLabel>Veinmonster flesh</meatLabel>
+		<useMeatFrom>Visceroid_TBI</useMeatFrom>
+		<useLeatherFrom>Visceroid_TBI</useLeatherFrom>
 		<wildness>1</wildness>
 		<gestationPeriodDays>25</gestationPeriodDays>
 		<nameOnTameChance>1</nameOnTameChance>
