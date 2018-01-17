@@ -215,7 +215,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>2250</basePowerConsumption>
+				<basePowerConsumption>2500</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
@@ -227,6 +227,7 @@
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnTiberiumGeyser</li>
+			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
