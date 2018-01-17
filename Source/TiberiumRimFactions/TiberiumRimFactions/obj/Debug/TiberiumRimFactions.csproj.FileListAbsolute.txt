@@ -1,0 +1,17 @@
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\TiberiumRimFactions.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\TiberiumRimFactions.pdb
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\0Harmony.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\Assembly-CSharp-firstpass.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\Assembly-CSharp.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\Mono.Posix.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\Mono.Security.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\TiberiumRim.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\UnityEngine.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\TextMeshPro-1.0.55.56.0b11.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\NAudio.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\NVorbis.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\bin\Debug\UnityEngine.UI.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\obj\Debug\TiberiumRimFactions.csprojResolveAssemblyReference.cache
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\obj\Debug\TiberiumRimFactions.csproj.CoreCompileInputs.cache
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\obj\Debug\TiberiumRimFactions.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRimFactions\Source\TiberiumRimFactions\TiberiumRimFactions\obj\Debug\TiberiumRimFactions.pdb
