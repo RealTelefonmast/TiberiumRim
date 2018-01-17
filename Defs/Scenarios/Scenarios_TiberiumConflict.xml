@@ -141,17 +141,17 @@
         <li Class="ScenPart_ScatterThingsAnywhere">
           <def>ScatterThingsAnywhere</def>
           <thingDef>MealSurvivalPack</thingDef>
-          <count>17</count>
+          <count>20</count>
         </li>
 		<li Class="ScenPart_ScatterThingsAnywhere">
           <def>ScatterThingsAnywhere</def>
           <thingDef>TiberiumCraterGreen_TBNS</thingDef>
-          <count>4</count>
+          <count>2</count>
         </li>
 		<li Class="ScenPart_ScatterThingsAnywhere">
           <def>ScatterThingsAnywhere</def>
           <thingDef>BlossomTree_TBNS</thingDef>
-          <count>2</count>
+          <count>4</count>
         </li>
 		<li Class="ScenPart_ScatterThingsAnywhere">
           <def>ScatterThingsAnywhere</def>
@@ -173,7 +173,7 @@
           <def>ScatterThingsAnywhere</def>
           <thingDef>TiberiumRefinery</thingDef>
           <count>1</count>
-        </li>  
+        </li>
       </parts>
     </scenario>
   </ScenarioDef>
