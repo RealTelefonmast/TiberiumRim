@@ -10,7 +10,7 @@
 		<allowRoads>false</allowRoads>
 		<allowRivers>false</allowRivers>
 		<hasVirtualPlants>false</hasVirtualPlants>
-		<texture>world/biomes/TiberiumGlacier</texture>
+		<texture>World/Biomes/TiberiumGlacier</texture>
 		<impassable>true</impassable>
 	</BiomeDef>
 
@@ -25,7 +25,7 @@
     <pathCost_summer>1650</pathCost_summer>
     <pathCost_fall>1650</pathCost_fall>
     <pathCost_winter>1650</pathCost_winter>
-    <texture>world/biomes/TiberiumRedZone</texture>
+    <texture>World/Biomes/TiberiumRedZone</texture>
     <soundsAmbient>
       <li>AmbientNight_Tiberium</li>
       <li>AmbientDay_Tiberium</li>
