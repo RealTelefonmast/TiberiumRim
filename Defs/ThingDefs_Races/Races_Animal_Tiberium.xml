@@ -70,7 +70,7 @@
     <race>
       <fleshType>Tiberium</fleshType>
       <bloodDef>FilthTibBloodG</bloodDef>
-      <meatColor>(0,255,20)</meatColor>
+      <meatColor>(80,80,30)</meatColor>
       <foodType>OmnivoreAnimal, AnimalProduct</foodType>
       <manhunterOnDamageChance>1</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.8</manhunterOnTameFailChance>

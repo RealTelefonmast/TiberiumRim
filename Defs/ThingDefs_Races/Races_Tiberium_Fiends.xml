@@ -34,6 +34,7 @@
 			<leatherInsulation>1.35</leatherInsulation>
 			<foodType>CarnivoreAnimalStrict</foodType>
 			<meatLabel>Mutated Green Meat</meatLabel>
+			<meatColor>(20,150,50)</meatColor>
 			<leatherCommonalityFactor>0.1</leatherCommonalityFactor>
 			<leatherMarketValueFactor>5</leatherMarketValueFactor>
 			<leatherLabel>Thrimbo Fur</leatherLabel>
@@ -167,6 +168,7 @@
 			<baseHealthScale>20.0</baseHealthScale>
 			<foodType>CarnivoreAnimalStrict</foodType>
 			<meatLabel>Mutated Blue Meat</meatLabel>
+			<meatColor>(50,85,100)</meatColor>
 			<leatherColor>(30,30,55)</leatherColor>
 			<leatherInsulation>1.35</leatherInsulation>
 			<leatherCommonalityFactor>0.1</leatherCommonalityFactor>
