@@ -182,21 +182,11 @@
 		<label>Tiberium spike</label>
 		<thingClass>Building</thingClass>
 		<graphicData>
-			<texPath>things/building/GDI/Defense/Firestorm/Wall_Firestorm_on</texPath>
-			<graphicClass>Graphic_single</graphicClass>
-			<linkType>CornerFiller</linkType>
-			<linkFlags>
-				<li>Custom6</li>
-			</linkFlags>
+			<texPath>Building/Tiberium/TibSpike</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3,15)</drawSize>
 			<damageData>
-				<cornerTL>Damage/Corner</cornerTL>
-				<cornerTR>Damage/Corner</cornerTR>
-				<cornerBL>Damage/Corner</cornerBL>
-				<cornerBR>Damage/Corner</cornerBR>
-				<edgeTop>Damage/Edge</edgeTop>
-				<edgeBot>Damage/Edge</edgeBot>
-				<edgeLeft>Damage/Edge</edgeLeft>
-				<edgeRight>Damage/Edge</edgeRight>
+			<rect>(0.3,0,5.4,6)</rect>
 			</damageData>
 		</graphicData>
 		<uiIconPath>Building/Tiberium/TibSpike_Icon</uiIconPath>
@@ -209,12 +199,12 @@
 		<blockLight>true</blockLight>
 		<canOverlapZones>false</canOverlapZones>
 		<statBases>
-			<MaxHitPoints>1000</MaxHitPoints>
+			<MaxHitPoints>1500</MaxHitPoints>
 			<WorkToBuild>6000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 			<Beauty>-30</Beauty>
 		</statBases>
-		<tickerType>Normal</tickerType>
+		<tickerType>Rare</tickerType>
 		<description>Slowly produces raw Tiberium.</description>
 		<size>(2,2)</size>
 		<costList>
@@ -223,12 +213,6 @@
 			<Component>30</Component>
 		</costList>
 		<comps>
-			<li Class="CompProperties_Explosive">
-				<explosiveRadius>5</explosiveRadius>
-				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
-				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
-				<postExplosionSpawnChance>1</postExplosionSpawnChance>
-			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>2250</basePowerConsumption>
