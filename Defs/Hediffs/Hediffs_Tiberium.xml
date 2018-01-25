@@ -560,7 +560,7 @@
 	<HediffDef>
 		<defName>TiberiumMutationGood</defName>
 		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(92, 106, 0)</defaultLabelColor>
+		<defaultLabelColor>(140, 156, 50)</defaultLabelColor>
 		<label>Tiberium Mutation (Good)</label>
 		<comps>
 		  <li Class="HediffCompProperties_VerbGiver">
@@ -568,25 +568,23 @@
 			  <li>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<defaultCooldownTime>1.65</defaultCooldownTime>
-				<meleeDamageBaseAmount>9</meleeDamageBaseAmount>
+				<meleeDamageBaseAmount>10</meleeDamageBaseAmount>
 				<meleeDamageDef>Blunt</meleeDamageDef>
 			  </li>
 			</verbs>  
 		  </li>
-		  <li Class="HediffCompProperties_Discoverable">
-				<sendLetterWhenDiscovered>true</sendLetterWhenDiscovered>
-		  </li>
+		  <li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
 		</comps>
 		<stages>
 		  <li>
 			  <capMods>
 				<li>
 				  <capacity>Manipulation</capacity>
-				  <offset>0.2</offset>
+				  <offset>0.1</offset>
 				</li>
 				<li>
 					<capacity>Moving</capacity>
-					<offset>0.20</offset>
+					<offset>0.25</offset>
 				</li>
 				<li>
 					<capacity>Consciousness</capacity>
@@ -600,23 +598,21 @@
 	<HediffDef>
 		<defName>TiberiumMutationBad</defName>
 		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(106, 7, 0)</defaultLabelColor>
+		<defaultLabelColor>(106, 50, 50)</defaultLabelColor>
 		<label>Tiberium Mutation (Bad)</label>
 		<comps>
-			<li Class="HediffCompProperties_Discoverable">
-				<sendLetterWhenDiscovered>true</sendLetterWhenDiscovered>
-			</li>
+			<li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
 		</comps>
 		<stages>
 		  <li>
 			  <capMods>
 				<li>
 				  <capacity>Manipulation</capacity>
-				  <offset>-0.3</offset>
+				  <offset>-0.25</offset>
 				</li>
 								<li>
 					<capacity>Moving</capacity>
-					<offset>-0.05</offset>
+					<offset>-0.1</offset>
 				</li>
 				<li>
 					<capacity>Consciousness</capacity>
@@ -731,5 +727,23 @@
 		  <li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
 		</comps>
 	</HediffDef>
+	
+	<HediffDef>
+		<defName>TiberiumInfusionImmunityNPC</defName>
+		<label>Tiberium vaccine</label>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0.65, 0.3, 0.9)</defaultLabelColor>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>
+					<min>150000</min>
+					<max>250000</max>
+				</disappearsAfterTicks>
+			</li>
+		  <li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
+		</comps>
+	</HediffDef>
+
 		
 </Defs>

@@ -10,7 +10,7 @@
 		<allowRoads>false</allowRoads>
 		<allowRivers>false</allowRivers>
 		<hasVirtualPlants>false</hasVirtualPlants>
-		<texture>world/biomes/TiberiumGlacier</texture>
+		<texture>World/Biomes/TiberiumGlacier</texture>
 		<impassable>true</impassable>
 	</BiomeDef>
 
@@ -19,50 +19,50 @@
     <label>Tiberium Red Zone</label>
     <description>This biome has been under such terraforming influence that it barely supports any usual life forms. Tiberium has covered most of it's surface and Fiends roam the crystalline fields.</description>
     <workerClass>TiberiumRim.BiomeWorker_TiberiumRedZone</workerClass>
-    <animalDensity>0.75</animalDensity>
+    <animalDensity>1.25</animalDensity>
     <plantDensity>0.5</plantDensity>
     <pathCost_spring>1650</pathCost_spring>
     <pathCost_summer>1650</pathCost_summer>
     <pathCost_fall>1650</pathCost_fall>
-    <pathCost_winter>27500</pathCost_winter>
-    <texture>world/biomes/TiberiumRedZone</texture>
+    <pathCost_winter>1650</pathCost_winter>
+    <texture>World/Biomes/TiberiumRedZone</texture>
     <soundsAmbient>
-      <li>AmbientNightInsects_Jungle</li>
-      <li>AmbientDayInsects_Jungle</li>
+      <li>AmbientNight_Tiberium</li>
+      <li>AmbientDay_Tiberium</li>
     </soundsAmbient>
-    <diseaseMtbDays>30</diseaseMtbDays>
+    <diseaseMtbDays>45</diseaseMtbDays>
     <diseases>
       <li>
         <diseaseInc>Disease_Flu</diseaseInc>
-        <commonality>10</commonality>
+        <commonality>100</commonality>
       </li>
       <li>
         <diseaseInc>Disease_Plague</diseaseInc>
-        <commonality>10</commonality>
+        <commonality>100</commonality>
       </li>
       <li>
         <diseaseInc>Disease_Malaria</diseaseInc>
-        <commonality>160</commonality>
+        <commonality>25</commonality>
       </li>
       <li>
         <diseaseInc>Disease_SleepingSickness</diseaseInc>
-        <commonality>140</commonality>
+        <commonality>25</commonality>
       </li>
       <li>
         <diseaseInc>Disease_FibrousMechanites</diseaseInc>
-        <commonality>30</commonality>
+        <commonality>50</commonality>
       </li>
       <li>
         <diseaseInc>Disease_SensoryMechanites</diseaseInc>
-        <commonality>30</commonality>
+        <commonality>50</commonality>
       </li>
       <li>
         <diseaseInc>Disease_GutWorms</diseaseInc>
-        <commonality>80</commonality>
+        <commonality>50</commonality>
       </li>
       <li>
         <diseaseInc>Disease_MuscleParasites</diseaseInc>
-        <commonality>80</commonality>
+        <commonality>50</commonality>
       </li>
     </diseases>
     <terrainsByFertility>
@@ -86,7 +86,7 @@
             <min>25</min>
             <max>125</max>
           </li>
-<li>
+		  <li>
             <terrain>TiberiumSoilBlue</terrain>
             <min>25</min>
             <max>125</max>
@@ -140,15 +140,16 @@
     <wildAnimals>
 			<Visceroid_TBI>1</Visceroid_TBI>
 			<Tiffalo_TBI>0.3</Tiffalo_TBI>
-			<Spiner_TBI>0.3</Spiner_TBI>
+			<Spiner_TBI>0.5</Spiner_TBI>
 			<Boomfiend_TBI>0.5</Boomfiend_TBI>
-			<TiberiumFiend_TBI>0.3</TiberiumFiend_TBI>
+			<TiberiumFiend_TBI>0.5</TiberiumFiend_TBI>
 			<Tibscarab_TBI>1</Tibscarab_TBI>
-			<SmallTiberiumFiend_TBI>0.3</SmallTiberiumFiend_TBI>
-			<Crawler_TBI>0.3</Crawler_TBI>
-			<BigTiberiumFiend_TBI>0.15</BigTiberiumFiend_TBI>
-			<Thrimbo_TBI>0.05</Thrimbo_TBI>
-			<TiberiumTerror_TBI>0.025</TiberiumTerror_TBI>
+			<SmallTiberiumFiend_TBI>0.5</SmallTiberiumFiend_TBI>
+			<Crawler_TBI>0.25</Crawler_TBI>
+			<BigTiberiumFiend_TBI>0.25</BigTiberiumFiend_TBI>
+			<Thrimbo_TBI>0.03</Thrimbo_TBI>
+			<TiberiumTerror_TBI>0.015</TiberiumTerror_TBI>
+			<Amalgamation_TBI>0.015</Amalgamation_TBI>
 		</wildAnimals>
    <allowedPackAnimals>
       <li>Tiffalo_TBI</li>

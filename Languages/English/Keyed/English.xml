@@ -14,7 +14,8 @@
   <TiberiumProducersAmtDesc>Set the amount of Tiberium Producers that can spawn.</TiberiumProducersAmtDesc>
   <UseSpreadRadiusLabel>Use Spread Radius</UseSpreadRadiusLabel>
   <UseSpreadRadiusDesc>This makes Tiberium only spread in a certain radius around producers.</UseSpreadRadiusDesc>
-
+<UseCustomBackgroundLabel>Show custom background</UseCustomBackgroundLabel>
+  <UseCustomBackgroundDesc>Displays the custom TiberiumRim background instead of the the vanilla one.</UseCustomBackgroundDesc>
   
   <BuildingDamage>Tiberium Damages Structures:</BuildingDamage>
   <BuildingDamageDesc>Activate this to let Tiberium damage any structure.</BuildingDamageDesc>

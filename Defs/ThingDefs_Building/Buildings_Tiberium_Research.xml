@@ -27,6 +27,8 @@
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<pathCost>70</pathCost>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<statBases>
 			<MaxHitPoints>750</MaxHitPoints>
 			<WorkToBuild>8000</WorkToBuild>
@@ -51,7 +53,7 @@
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Tiberium</designationCategory>
+		<designationCategory>Production</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<placeWorkers>
 			<li>PlaceWorker_ShowFacilitiesConnections</li>
@@ -109,7 +111,7 @@
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Tiberium</designationCategory>
+		<designationCategory>Production</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
 			<li>TiberiumKnowledge</li>
@@ -119,11 +121,12 @@
 				<compClass>CompPowerTrader</compClass>
 				<startElectricalFires>true</startElectricalFires>
 				<basePowerConsumption>125</basePowerConsumption>
+				<shortCircuitInRain>false</shortCircuitInRain>
 			</li>
 			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Facility">
 				<statOffsets>
-					<ResearchSpeedFactor>0</ResearchSpeedFactor>
+					<ResearchSpeedFactor>0.1</ResearchSpeedFactor>
 				</statOffsets>
 				<maxSimultaneous>1</maxSimultaneous>
 			</li>

@@ -156,6 +156,7 @@
 		  <min>0.1</min>
 		  <max>1</max>
 		</durationDays>
+		<pointsScaleable>true</pointsScaleable>
 		<minThreatPoints>400</minThreatPoints>
 	</IncidentDef>
 

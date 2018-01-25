@@ -26,12 +26,12 @@
 		<thingClass>Building_WorkTable</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
-		<pathCost>70</pathCost>
 		<statBases>
-			<MaxHitPoints>350</MaxHitPoints>
+			<MaxHitPoints>500</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
+		<tickerType>Normal</tickerType>
 		<size>(3,4)</size>
 		<costList>
 			<Uranium>5</Uranium>
@@ -44,6 +44,14 @@
  			<BookRutila>1</BookRutila>
 		</costList>
 		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<preExplosionSpawnThingDef>Gas_Tiberium</preExplosionSpawnThingDef>
+				<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
+				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.5</postExplosionSpawnChance>
+			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
 				<glowColor>(120,255,150,0)</glowColor>
@@ -91,10 +99,7 @@
 		<researchPrerequisites>
 			<li>TiberiumResearchRefining</li>
 		</researchPrerequisites>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-        <killedLeavings>
-            <TiberiumGreen>3</TiberiumGreen>
-        </killedLeavings>
+		<filthLeaving>FilthTibLiquid</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="BuildingBase">
@@ -108,13 +113,12 @@
 		</graphicData>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
-		<pathCost>150</pathCost>
 		<blockWind>true</blockWind>
 		<fillPercent>1.0</fillPercent>
 		<castEdgeShadows>false</castEdgeShadows>
 		<rotatable>false</rotatable>
 		<statBases>
-			<MaxHitPoints>400</MaxHitPoints>
+			<MaxHitPoints>500</MaxHitPoints>
 			<WorkToBuild>3222</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
@@ -130,6 +134,14 @@
 			<BookRiparius>1</BookRiparius>
 		</costList>
 		<comps>
+			<li Class="CompProperties_Explosive">
+				<explosiveRadius>3</explosiveRadius>
+				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
+				<preExplosionSpawnThingDef>Gas_Tiberium</preExplosionSpawnThingDef>
+				<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
+				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
+				<postExplosionSpawnChance>0.5</postExplosionSpawnChance>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerPlant</compClass>
 				<basePowerConsumption>-2250</basePowerConsumption>
@@ -156,17 +168,13 @@
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Tiberium</designationCategory>
+		<designationCategory>Power</designationCategory>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
 		<researchPrerequisites>
 			<li>TiberiumPower</li>
 		</researchPrerequisites>
-		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
-        <killedLeavings>
-            <TiberiumGreen>2</TiberiumGreen>
-			<TiberiumRed>3</TiberiumRed>
-        </killedLeavings>
+		<filthLeaving>FilthTibLiquid</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="BuildingBase">
@@ -191,7 +199,7 @@
 		<blockLight>true</blockLight>
 		<canOverlapZones>false</canOverlapZones>
 		<statBases>
-			<MaxHitPoints>1000</MaxHitPoints>
+			<MaxHitPoints>1500</MaxHitPoints>
 			<WorkToBuild>6000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 			<Beauty>-30</Beauty>
@@ -207,7 +215,7 @@
 		<comps>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
-				<basePowerConsumption>2250</basePowerConsumption>
+				<basePowerConsumption>2500</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
@@ -219,6 +227,7 @@
 		<staticSunShadowHeight>1.0</staticSunShadowHeight>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnTiberiumGeyser</li>
+			<li>PlaceWorker_NotUnderRoof</li>
 		</placeWorkers>
 		<building>
 			<ai_chillDestination>false</ai_chillDestination>
@@ -229,6 +238,7 @@
 			<li>TiberiumResearchRefining</li>
 			<li>TiberiumPower</li>
 		</researchPrerequisites>
+		<filthLeaving>FilthTibLiquid</filthLeaving>
 	</ThingDef>
 
 </Defs>
