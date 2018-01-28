@@ -12,9 +12,18 @@
     <deathMessage>{0} has been shot to death.</deathMessage>
     <hediff>Shredded</hediff>
     <makesBlood>true</makesBlood>
-    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
     <impactSoundType>Bullet</impactSoundType>
     <armorCategory>Sharp</armorCategory>
+    <spreadOut>false</spreadOut>
+    <explosionDamage>1</explosionDamage>
+    <explosionBuildingDamageFactor>1</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+    <explosionColorCenter>(0.75, 0.75, 0.75)</explosionColorCenter>
+    <explosionColorEdge>(0.25, 0.25, 0.25)</explosionColorEdge>
+    <soundExplosion>Blast_Rail</soundExplosion>
   </DamageDef>
   
   <DamageDef ParentName="LocalInjuryBase">
@@ -24,9 +33,18 @@
     <deathMessage>{0} has been shot to death.</deathMessage>
     <hediff>Burn</hediff>
     <makesBlood>true</makesBlood>
-    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <harmAllLayersUntilOutside>false</harmAllLayersUntilOutside>
     <impactSoundType>Bullet</impactSoundType>
     <armorCategory>Heat</armorCategory>
+    <spreadOut>false</spreadOut>
+    <explosionDamage>1</explosionDamage>
+    <explosionBuildingDamageFactor>1</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>1</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_TiberiumGas</explosionCellMote>
+    <explosionColorCenter>(1, 0.25, 0.25)</explosionColorCenter>
+    <explosionColorEdge>(0.75, 0.1, 0.1)</explosionColorEdge>
+    <soundExplosion>Blast_Rail</soundExplosion>
   </DamageDef>
   
   <DamageDef ParentName="LocalInjuryBase">
@@ -40,7 +58,7 @@
     <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
     <impactSoundType>Blunt</impactSoundType>
     <armorCategory>Blunt</armorCategory>
-    <spreadOut>true</spreadOut>
+    <spreadOut>false</spreadOut>
     <explosionDamage>5</explosionDamage>
     <explosionBuildingDamageFactor>1.5</explosionBuildingDamageFactor>
     <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
@@ -88,7 +106,7 @@
     <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
     <impactSoundType>Blunt</impactSoundType>
     <armorCategory>Blunt</armorCategory>
-    <spreadOut>true</spreadOut>
+    <spreadOut>false</spreadOut>
     <explosionDamage>5</explosionDamage>
     <explosionBuildingDamageFactor>2</explosionBuildingDamageFactor>
     <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
@@ -112,7 +130,7 @@
     <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
     <impactSoundType>Blunt</impactSoundType>
     <armorCategory>Blunt</armorCategory>
-    <spreadOut>true</spreadOut>
+    <spreadOut>false</spreadOut>
     <explosionDamage>5</explosionDamage>
     <explosionBuildingDamageFactor>2</explosionBuildingDamageFactor>
     <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
@@ -161,7 +179,7 @@
     <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
     <impactSoundType>Blunt</impactSoundType>
     <armorCategory>Blunt</armorCategory>
-    <spreadOut>true</spreadOut>
+    <spreadOut>false</spreadOut>
     <explosionDamage>5</explosionDamage>
     <explosionBuildingDamageFactor>25</explosionBuildingDamageFactor>
     <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
