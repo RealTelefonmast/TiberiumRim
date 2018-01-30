@@ -44,6 +44,7 @@
     <explosionCellMote>Mote_TiberiumGas</explosionCellMote>
     <explosionColorCenter>(1, 0.25, 0.25)</explosionColorCenter>
     <explosionColorEdge>(0.75, 0.1, 0.1)</explosionColorEdge>
+	<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
     <soundExplosion>Blast_Rail</soundExplosion>
   </DamageDef>
   
@@ -90,6 +91,7 @@
     <explosionCellMote>Mote_Nuke</explosionCellMote>
     <explosionColorCenter>(0.25, 1, 0.25)</explosionColorCenter>
     <explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
+	<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
     <combatLogRules>Damage_Bomb</combatLogRules>
     <soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
   </DamageDef>
@@ -163,8 +165,34 @@
     <explosionColorCenter>(1, 1, 0.1)</explosionColorCenter>
     <explosionColorEdge>(0.9, 0.1, 0.1)</explosionColorEdge>
 	<explosionInteriorMote></explosionInteriorMote>
+	<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
     <combatLogRules>Damage_Bomb</combatLogRules>
     <soundExplosion>Shot_Nod_Nuke</soundExplosion>
+  </DamageDef>
+  
+	<DamageDef ParentName="StunBase">
+    <defName>TRShock</defName>
+    <label>Shock</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in the shockwave.</deathMessage>
+    <hediff>Crush</hediff>
+    <hediffSolid>Crack</hediffSolid>
+	<harmsHealth>true</harmsHealth>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <spreadOut>false</spreadOut>
+    <explosionDamage>5</explosionDamage>
+    <explosionBuildingDamageFactor>1.5</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>0</explosionHeatEnergyPerCell>
+ 	<explosionCellMote>Mote_BlastEMP</explosionCellMote>
+    <explosionColorCenter>(1, 1, 1, 1)</explosionColorCenter>
+	<explosionColorEdge>(0.65, 0.65, 0.65, 1)</explosionColorEdge>
+	<explosionInteriorMote>Mote_ElectricalSpark</explosionInteriorMote>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_GDI_Sonic</soundExplosion>
   </DamageDef>
   
   <!--only specialized siege attack-->
@@ -173,7 +201,7 @@
     <label>Seismic Wave</label>
     <externalViolence>true</externalViolence>
     <isExplosive>true</isExplosive>
-    <deathMessage>{0} has died in the seismic wave.</deathMessage>
+    <deathMessage>{0} has died in the shockwave.</deathMessage>
     <hediff>Crush</hediff>
     <hediffSolid>Crack</hediffSolid>
     <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
