@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiberiumRim", "TiberiumRim\TiberiumRim.csproj", "{EE2AC518-51C3-4AD7-8775-7B8CB8C45122}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiberiumRim", "TiberiumRim\TiberiumRim.csproj", "{78109E3C-6332-4BF3-8875-CDA9CBCE70DE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{EE2AC518-51C3-4AD7-8775-7B8CB8C45122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE2AC518-51C3-4AD7-8775-7B8CB8C45122}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE2AC518-51C3-4AD7-8775-7B8CB8C45122}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EE2AC518-51C3-4AD7-8775-7B8CB8C45122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78109E3C-6332-4BF3-8875-CDA9CBCE70DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78109E3C-6332-4BF3-8875-CDA9CBCE70DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78109E3C-6332-4BF3-8875-CDA9CBCE70DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78109E3C-6332-4BF3-8875-CDA9CBCE70DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FEAAF52C-FB2F-4454-9566-CF5237FAD9D0}
+		SolutionGuid = {07F29543-BC31-414C-B695-B4DE6DDFE5BF}
 	EndGlobalSection
 EndGlobal

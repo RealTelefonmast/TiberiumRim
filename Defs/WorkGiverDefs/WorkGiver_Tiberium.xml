@@ -8,7 +8,7 @@
 		<workType>Crafting</workType>
 		<priorityInType>97</priorityInType>
 		<fixedBillGiverDefs>
-			<li>TiberiumRefinery</li>
+			<li>TiberiumCrafter</li>
 		</fixedBillGiverDefs>
 		<verb>refine Tiberium</verb>
 		<gerund>refining Tiberium at</gerund>

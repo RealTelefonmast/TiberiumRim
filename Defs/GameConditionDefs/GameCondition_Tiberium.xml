@@ -6,7 +6,7 @@
     <label>Ion storm</label>
     <description>An Ion Storm has been triggered on your map! Be careful, the power shortage might bring unwanted complications.</description>
     <endMessage>The Ion Storm is ending.</endMessage>
-    <canBePermanent>true</canBePermanent>
+    <canBePermanent>false</canBePermanent>
   </GameConditionDef>
   
 </Defs>

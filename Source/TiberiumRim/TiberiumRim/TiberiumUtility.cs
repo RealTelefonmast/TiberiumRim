@@ -1,19 +1,402 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 using RimWorld;
+using Verse.AI;
 using Verse;
+using System.Reflection;
 
 namespace TiberiumRim
 {
-    public class TiberiumUtility
+    [StaticConstructorOnStartup]
+    public static class TiberiumUtility
     {
-        public static void AffectPawn(Pawn pawn, TiberiumCrystalDef def, Plant parent, Map map)
+        public static bool IsFarAwayEnoughFromAny(this IntVec3 pos, ThingDef def, Map map, int minDist)
         {
-            if (!def.isFlesh)
+            List<Thing> thingList = map.listerThings.AllThings.FindAll((Thing x) => x.def == def);
+            foreach(Thing t in thingList)
             {
-                Infect(pawn, 0.25f, map, false);
+                if(t.Position.DistanceTo(pos) < minDist)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public static MethodInfo NewBlueprint;
+        public static MethodInfo NewFrame;
+
+        static TiberiumUtility()
+        {
+            Type type1 = typeof(ThingDefGenerator_Buildings);
+            NewBlueprint = type1.GetMethod("NewBlueprintDef_Thing", BindingFlags.NonPublic | BindingFlags.Static);
+            NewFrame = type1.GetMethod("NewFrameDef_Thing", BindingFlags.NonPublic | BindingFlags.Static);
+        }
+
+        public static void MakeNewBluePrint(ThingDef def, bool isInstallBlueprint, ThingDef normalBlueprint = null)
+        {
+            NewBlueprint.Invoke(null, new object[] {def, isInstallBlueprint, normalBlueprint});
+        }
+
+        public static void MakeNewFrame(ThingDef def)
+        {
+            NewFrame.Invoke(null, new object[] {def});
+        }
+
+        public static Building GetBuilding(this CellRect cells, ThingDef def, Map map)
+        {
+            foreach(IntVec3 c in cells.Cells)
+            {
+                if (c.InBounds(map))
+                {
+                    Building building = (Building)c.GetFirstThing(map, def);
+                    if(building != null)
+                    {
+                        return building;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static bool Contains(this CellRect cells, ThingDef def, Map map)
+        {
+            foreach(IntVec3 c in cells.Cells)
+            {
+                if (c.InBounds(map))
+                {
+                    if (c.GetFirstThing(map, def) != null)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool FindValueFor(this Dictionary<StringWrapper, bool> dict, Predicate<StringWrapper> match)
+        {
+            bool result = false;
+            foreach(StringWrapper sw in dict.Keys)
+            {
+                if(match(sw))
+                {
+                    dict.TryGetValue(sw, out result);
+                }
+            }
+            return result;
+        }
+
+        public static IEnumerable<IntVec3> CellsAdjacent8Way(this IntVec3 loc)
+        {
+            IntVec3 center = loc;
+            int minX = center.x - (1 - 1) / 2 - 1;
+            int minZ = center.z - (1 - 1) / 2 - 1;
+            int maxX = minX + 1 + 1;
+            int maxZ = minZ + 1 + 1;
+            for (int i = minX; i <= maxX; i++)
+            {
+                for (int j = minZ; j <= maxZ; j++)
+                {
+                    yield return new IntVec3(i, 0, j);
+                }
+            }
+            yield break;
+        }
+
+        public static Thing AnyThingAt(this ThingGrid grid, IntVec3 loc, Map map, Type type)
+        {
+            if (loc.InBounds(map))
+            {
+                List<Thing> list = grid.ThingsListAt(loc);
+                for(int i = 0; i < list.Count; i++)
+                {
+                    if(list[i].def.GetType() == type)
+                    {
+                        return list[i];
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static TiberiumCrystalDef Named(this string def)
+        {
+            return DefDatabase<ThingDef>.GetNamed(def) as TiberiumCrystalDef;
+        }
+
+        public static IEnumerable<TiberiumCrystalDef> AllTiberiumTypesForHarvesters()
+        {
+            using (IEnumerator<ThingDef> enumerator = (from def in DefDatabase<ThingDef>.AllDefs
+                                                       where def.thingClass == typeof(TiberiumCrystal)
+                                                       select def).GetEnumerator())
+            {
+                while (enumerator.MoveNext())
+                {
+                    TiberiumCrystalDef tibDef = (TiberiumCrystalDef)enumerator.Current;
+                    yield return tibDef;
+
+                }
+            }
+            yield break;
+        }
+
+        public static bool CanBeFound(this ThingDef thingDef, Map map)
+        {
+            Thing thing = null;
+            thing = map.listerThings.AllThings.Find((Thing x) => x.def == thingDef);
+            if (thing != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static List<Thing> AllTiberiumCrystalsInList(this ListerThings things, bool getOnlyTypes = false)
+        {
+            List<Thing> returnList = new List<Thing>();
+            foreach (Thing thing in things.AllThings)
+            {
+                if (thing != null)
+                {
+                    if (getOnlyTypes)
+                    {
+                        if (!returnList.ContainsDef(thing.def))
+                        {
+                            returnList.Add(thing);
+                        }
+                    }
+                    else
+                    if (thing.def.thingClass == typeof(TiberiumCrystal))
+                    {
+                        returnList.Add(thing);
+                    }
+                }
+            }
+            return returnList;
+        }
+
+        public static TiberiumCrystal ClosestPreferableReachableAndReservableTiberiumForHarvester(Harvester harvester, IntVec3 root, Map map, TiberiumCrystalDef preferableDef, TraverseParms traverseParms, PathEndMode peMode)
+        {
+            TiberiumCrystal result = null;           
+            float maxValue = -1f;
+            List<TiberiumCrystal> valueCheckList = new List<TiberiumCrystal>();
+            valueCheckList.AddRange((preferableDef?.CanBeFound(map) == true ? map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => x.def == preferableDef && harvester.CanReserve(x)) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => harvester.CanReserve(x) && x.def.tiberium.harvestable)));
+            if (!harvester.harvestModeBool)
+            {
+                foreach (TiberiumCrystal crystal in valueCheckList)
+                {
+                    if (crystal.HarvestValue > maxValue)
+                    {
+                        maxValue = crystal.HarvestValue;
+                    }
+                }
+                for (int i = 0; i < valueCheckList.Count; i++)
+                {
+                    TiberiumCrystal crystal = valueCheckList[i] as TiberiumCrystal;
+                    if (crystal.HarvestValue < maxValue)
+                    {
+                        valueCheckList.Remove(crystal);
+                    }
+                }
+            }
+
+            RegionEntryPredicate entryCondition = (Region from, Region to) => to.Allows(traverseParms, false);
+            Region region = root.GetRegion(map, RegionType.Set_Passable);
+            if (region == null)
+            {
+                return null;
+            }
+            float maxDistSquared = 99980001f;
+            float closestDistSquared = 9999999f;
+            float bestPrio = float.MinValue;
+            RegionProcessor regionProcessor = delegate (Region r)
+            {
+                if(r.portal == null && !r.Allows(traverseParms, true))
+                {
+                    return false;
+                }
+                if (!r.IsForbiddenEntirely(harvester))
+                {
+                    for(int i = 0; i < valueCheckList.Count; i++)
+                    {
+                        TiberiumCrystal listThing = valueCheckList[i];
+                        if (ReachabilityWithinRegion.ThingFromRegionListerReachable(listThing, r, peMode, harvester))
+                        {
+                            float num = 0f;
+                            if (num >= bestPrio)
+                            {
+                                float num2 = (float)(listThing.Position - root).LengthHorizontalSquared;
+                                if ((num > bestPrio || num2 < closestDistSquared) && num2 < maxDistSquared)
+                                {
+                                    result = listThing;
+                                    closestDistSquared = num2;
+                                    bestPrio = num;
+                                }
+                            }
+                        }
+                    }
+                }
+                return result != null;
+            };
+            RegionTraverser.BreadthFirstTraverse(region, entryCondition, regionProcessor, 30, RegionType.Set_Passable);           
+            return result;
+        }
+
+        public static Hediff GetMutation(Pawn p)
+        {
+            if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumMutationBad))
+            {
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumMutationBad");
+            }
+            else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumMutationGood))
+            {
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumMutationGood");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static Hediff TibSickness(Pawn p)
+        {
+            if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumBuildupHediff))
+            {
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumBuildupHediff");
+            }
+            else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumStage1))
+            {
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumStage1");
+            }
+            else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumStage2))
+            {
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumStage2");
+            }
+            else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumContactPoison))
+            {
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumContactPoison");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static bool NextTo(this Thing thing, Thing closeThing)
+        {
+            List<Thing> thingList = new List<Thing>();
+            foreach(IntVec3 cell in thing.CellsAdjacent8WayAndInside())
+            {
+                foreach(Thing thing2 in cell.GetThingList(thing.Map))
+                {
+                    if(thing2 == closeThing)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static TiberiumCrystal GetTiberium(this IntVec3 c, Map map)
+        {
+            List<Thing> list = map.thingGrid.ThingsListAt(c);
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].def.thingClass == typeof(TiberiumCrystal))
+                {
+                    return (TiberiumCrystal)list[i];
+                }
+            }
+            return null;
+        }
+
+        public static HashSet<TiberiumCrystalDef> AllTiberiumProducerTypesOnMap(Map map)
+        {
+            HashSet<TiberiumCrystalDef> result = new HashSet<TiberiumCrystalDef>();
+            foreach(Thing thing in map.listerThings.AllThings.Where(x=> x.def.thingClass == typeof(Building_TiberiumProducer)))
+            {
+                TiberiumCrystalDef def = ((TiberiumProducerDef)thing.def).crystalDef;
+                result.Add(def);
+            }
+            return result;
+        }
+
+        public static HashSet<TiberiumCrystalDef> AllTiberiumCrystalTypesOnMap(Map map)
+        {
+            HashSet<TiberiumCrystalDef> returnHash = new HashSet<TiberiumCrystalDef>();
+            foreach(TiberiumCrystal crystal in map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals)
+            {
+                if (crystal != null)
+                {
+                    if (!returnHash.Contains(crystal.def))
+                    {
+                        returnHash.Add(crystal.def);
+                    }
+                }
+            }
+            return returnHash;
+        }
+
+        public static HashSet<TiberiumProducerDef> AllTiberiumProducers()
+        {
+            HashSet<TiberiumProducerDef> defHash = new HashSet<TiberiumProducerDef>();
+            foreach(Def def in DefDatabase<Def>.AllDefs)
+            {
+                if(def is TiberiumProducerDef)
+                {
+                    defHash.Add(def as TiberiumProducerDef);
+                }
+            }
+            return defHash;
+        }
+
+        public static bool ContainsDef(this HashSet<Thing> thingHash, ThingDef def)
+        {
+            foreach (Thing thing in thingHash)
+            {
+                if (thing.def == def)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool ContainsDef(this List<Thing> thingList, ThingDef def)
+        {
+            foreach(Thing thing in thingList)
+            {
+                if(thing.def == def)
+                {
+                    return true;
+                }              
+            }
+            return false;
+        }
+
+        public static TiberiumCrystal GetOneThing(this List<TiberiumCrystal> thingList)
+        {
+            foreach(TiberiumCrystal t in thingList)
+            {
+                if (t != null)
+                {
+                    return t;
+                }
+            }
+            return null;
+        }
+
+        public static void AffectPawn(Pawn pawn, TiberiumCrystalDef def, TiberiumCrystal parent, Map map)
+        {
+            if (!def.tiberium.isFlesh)
+            {
+                Infect(pawn, parent.ctrlDef.TouchInfectionFlt, map, false);
             }
             else
             {
@@ -21,14 +404,14 @@ namespace TiberiumRim
             }
         }
 
-        public static void Infect(Pawn pawn, float amt, Map map, bool isGas)
+        public static void Infect(Pawn pawn, float amt, Map map, bool isGas = false)
         {
             HediffDef tiberium = TiberiumHediffDefOf.TiberiumBuildupHediff;
             HediffDef addiction = TiberiumHediffDefOf.TiberiumAddiction;
             HediffDef Stage1 = TiberiumHediffDefOf.TiberiumStage1;
             HediffDef Stage2 = TiberiumHediffDefOf.TiberiumStage2;
             HediffDef Stage3 = TiberiumHediffDefOf.TiberiumContactPoison;
-            HediffDef Immunity = TiberiumHediffDefOf.TiberiumInfusionImmunity;            
+            HediffDef Immunity = TiberiumHediffDefOf.TiberiumInfusionImmunity;
 
             if (Immunity != null)
             {
@@ -83,7 +466,7 @@ namespace TiberiumRim
                     {
                         if (a.HitPoints < a.MaxHitPoints * 0.15)
                         {
-                            HealthUtility.AdjustSeverity(pawn, tiberium, +amt/2);
+                            HealthUtility.AdjustSeverity(pawn, tiberium, +amt / 2);
                             if (Current.Game.tickManager.TicksGame % 1250 == 0)
                             {
                                 Messages.Message("MessageTiberiumSuitLeak".Translate(), new TargetInfo(pawn.Position, map, false), MessageTypeDefOf.CautionInput);
@@ -106,11 +489,11 @@ namespace TiberiumRim
 
                 if (parts < 2)
                 {
-                    if(isGas)
+                    if (isGas)
                     {
                         if (apparel != null)
                         {
-                            if (apparel.def.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.FullHead))
+                            if (!apparel.def.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.FullHead))
                             {
                                 HealthUtility.AdjustSeverity(pawn, tiberium, +amt);
                                 return;
@@ -121,33 +504,32 @@ namespace TiberiumRim
                     return;
                 }
             }
-        }
+        }      
 
-        public static void Hurt(Pawn pawn, Plant parent, Map map)
+        public static void Hurt(Pawn pawn, TiberiumCrystal parent, Map map)
         {
             if (Rand.Chance(0.75f))
             {
-                int amt = 2;
+                float amt = MainTCD.MainTiberiumControlDef.VeinHitDamage;
                 if (pawn.apparel == null)
                 {
                     amt = amt * 3;
                 }
-                DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, amt);
+                DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, (int)amt);
 
                 if (!pawn.def.defName.Contains("TBI") && pawn.Position.InBounds(map))
                 {
                     if (!pawn.Downed)
                     {
-                        Log.Message("Hurt: 2 - Should Take Damage");
                         pawn.TakeDamage(damage);
                     }
                 }
                 if (parent.Position.InBounds(map))
                 {
                     Building b = parent.Position.RandomAdjacentCell8Way().GetFirstBuilding(map);
-                    if (b != null && b.def.defName.Contains("Veinhole"))
+                    if (b != null && b.def == TiberiumDefOf.Veinhole_TBNS)
                     {
-                        Infect(pawn, 0.25f, map, true);
+                        Infect(pawn, parent.ctrlDef.TouchInfectionFlt, map, true);
                     }
                 }
             }

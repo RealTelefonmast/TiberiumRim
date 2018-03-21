@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<Def Class="TiberiumRim.TiberiumControlDef">
+		<defName>MainTiberiumControlDef</defName>
+		<TouchInfectionFlt>0.1</TouchInfectionFlt>
+		<GasInfectionFlt>0.01</GasInfectionFlt>
+		<VeinHitDamage>6</VeinHitDamage>
+		<TiberiumGrowthRate>1</TiberiumGrowthRate>
+	</Def>
+  
+</Defs>

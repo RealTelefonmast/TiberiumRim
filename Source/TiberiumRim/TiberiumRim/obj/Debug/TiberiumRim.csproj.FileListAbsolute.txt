@@ -1,4 +1,30 @@
-F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csproj.CoreCompileInputs.cache
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\TiberiumRim.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\TiberiumRim.pdb
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\Assembly-CSharp.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\UnityEngine.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\TextMeshPro-1.0.55.56.0b11.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\Assembly-CSharp-firstpass.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\NAudio.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\NVorbis.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\UnityEngine.UI.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csprojResolveAssemblyReference.cache
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csproj.CoreCompileInputs.cache
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.dll
+C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.pdb
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csproj.CoreCompileInputs.cache
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.pdb
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\TiberiumRim.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\TiberiumRim.pdb
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\Assembly-CSharp.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\UnityEngine.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\TextMeshPro-1.0.55.56.0b11.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\Assembly-CSharp-firstpass.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\NAudio.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\NVorbis.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\UnityEngine.UI.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\bin\Debug\0Harmony.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim - Kopie\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csprojResolveAssemblyReference.cache
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\TiberiumRim.dll
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\TiberiumRim.pdb
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\0Harmony.dll
@@ -9,17 +35,7 @@ F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumR
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\NAudio.dll
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\NVorbis.dll
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\UnityEngine.UI.dll
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csprojResolveAssemblyReference.cache
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csproj.CoreCompileInputs.cache
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.dll
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.pdb
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\TiberiumRim.dll
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\TiberiumRim.pdb
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\0Harmony.dll
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\TextMeshPro-1.0.55.56.0b11.dll
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\Assembly-CSharp-firstpass.dll
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\NAudio.dll
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\NVorbis.dll
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\UnityEngine.UI.dll
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csprojResolveAssemblyReference.cache
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csproj.CoreCompileInputs.cache
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.dll
-C:\Users\Max\Documents\GitHub\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.pdb

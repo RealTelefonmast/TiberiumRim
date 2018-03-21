@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef ParentName="AnimalThingBase">
+
+	<ThingDef ParentName="AnimalThingBase_TR">
 		<defName>Thrimbo_TBI</defName>
 		<label>Thrimbo</label>
 		<description>A gigantic creature of unknown origin. The Thrumbo, but this one seems to have an Tiberium infection. Be careful, it might be easily enraged.</description>
@@ -8,7 +9,7 @@
 			<MoveSpeed>5.25</MoveSpeed>
 			<ComfyTemperatureMin>-40</ComfyTemperatureMin>
 			<MarketValue>6400</MarketValue>
-			<MeatAmount>150</MeatAmount>
+			<MeatAmount>180</MeatAmount>
 			<Mass>1500</Mass>
 			<!-- more than implied by body size -->
 		</statBases>
@@ -23,25 +24,22 @@
 		</verbs>
 		<race>
 			<body>QuadrupedAnimalWithHoovesAndHorn</body>
-			<fleshType>Mutated</fleshType>
-			<bloodDef>FilthTibBloodG</bloodDef>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<herdAnimal>true</herdAnimal>
 			<predator>true</predator>
 			<baseBodySize>3.5</baseBodySize>
 			<baseHungerRate>1.5</baseHungerRate>
-			<baseHealthScale>15.0</baseHealthScale>
-			<leatherColor>(200,255,200)</leatherColor>
+			<baseHealthScale>13.0</baseHealthScale>
+			<leatherColor>(204,255,204)</leatherColor>
 			<leatherInsulation>1.35</leatherInsulation>
 			<foodType>CarnivoreAnimalStrict</foodType>
-			<meatLabel>Mutated Green Meat</meatLabel>
-			<meatColor>(20,150,50)</meatColor>
 			<leatherCommonalityFactor>0.1</leatherCommonalityFactor>
-			<leatherMarketValueFactor>5</leatherMarketValueFactor>
-			<leatherLabel>Thrimbo Fur</leatherLabel>
+			<leatherMarketValueFactor>7</leatherMarketValueFactor>
+			<leatherLabel>Thrimbo Tiberium Fur</leatherLabel>
 			<leatherStatFactors>
 				<ArmorRating_Blunt>1.5</ArmorRating_Blunt>
-				<ArmorRating_Sharp>4.0</ArmorRating_Sharp>
-				<ArmorRating_Heat>6.0</ArmorRating_Heat>
+				<ArmorRating_Sharp>6.0</ArmorRating_Sharp>
+				<ArmorRating_Heat>7.4</ArmorRating_Heat>
 			</leatherStatFactors>
 			<trainableIntelligence>Advanced</trainableIntelligence>
 			<gestationPeriodDays>80</gestationPeriodDays>
@@ -70,6 +68,9 @@
 			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
 			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+					<wildBiomes>
+			<TiberiumRedZone>0.05</TiberiumRedZone>
+		</wildBiomes>
 		</race>
 	</ThingDef>
 
@@ -77,7 +78,7 @@
 		<defName>Thrimbo_TBI</defName>
 		<label>thrimbo</label>
 		<race>Thrimbo_TBI</race>
-		<combatPower>250</combatPower>
+		<combatPower>600</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<wildSpawn_EcoSystemWeight>0.05</wildSpawn_EcoSystemWeight>
 		<wildSpawn_GroupSizeRange>
@@ -137,7 +138,7 @@
 	</PawnKindDef>
 	
 	
-		<ThingDef ParentName="AnimalThingBase">
+	<ThingDef ParentName="AnimalThingBase_TR">
 		<defName>TiberiumTerror_TBI</defName>
 		<label>Tiberium terror</label>
 		<description>A gigantic creature of unknown origin. It's black and blue appearance shows great danger in this creature.</description>
@@ -145,7 +146,7 @@
 			<MoveSpeed>7</MoveSpeed>
 			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
 			<MarketValue>8080</MarketValue>
-			<MeatAmount>250</MeatAmount>
+			<MeatAmount>330</MeatAmount>
 			<Mass>2000</Mass>
 		</statBases>
 		<verbs>
@@ -159,25 +160,22 @@
 		</verbs>
 		<race>
 			<body>QuadrupedAnimalWithHoovesAndHorn</body>
-			<fleshType>Mutated</fleshType>
-			<bloodDef>FilthTibBloodG</bloodDef>
+			<bloodDef>FilthTiberiumBlue</bloodDef>
 			<herdAnimal>true</herdAnimal>
 			<predator>true</predator>
 			<baseBodySize>4.0</baseBodySize>
 			<baseHungerRate>1.5</baseHungerRate>
-			<baseHealthScale>20.0</baseHealthScale>
+			<baseHealthScale>13.0</baseHealthScale>
 			<foodType>CarnivoreAnimalStrict</foodType>
-			<meatLabel>Mutated Blue Meat</meatLabel>
-			<meatColor>(50,85,100)</meatColor>
-			<leatherColor>(30,30,55)</leatherColor>
+			<leatherColor>(0,128,255)</leatherColor>
 			<leatherInsulation>1.35</leatherInsulation>
 			<leatherCommonalityFactor>0.1</leatherCommonalityFactor>
-			<leatherMarketValueFactor>5</leatherMarketValueFactor>
-			<leatherLabel>Terror Fur</leatherLabel>
+			<leatherMarketValueFactor>7</leatherMarketValueFactor>
+			<leatherLabel>Tiberium Terror Fur</leatherLabel>
 			<leatherStatFactors>
-				<ArmorRating_Blunt>3</ArmorRating_Blunt>
-				<ArmorRating_Sharp>5.0</ArmorRating_Sharp>
-				<ArmorRating_Heat>7.5</ArmorRating_Heat>
+				<ArmorRating_Blunt>5</ArmorRating_Blunt>
+				<ArmorRating_Sharp>8</ArmorRating_Sharp>
+				<ArmorRating_Heat>10</ArmorRating_Heat>
 			</leatherStatFactors>
 			<trainableIntelligence>Advanced</trainableIntelligence>
 			<gestationPeriodDays>80</gestationPeriodDays>
@@ -213,7 +211,7 @@
 		<defName>TiberiumTerror_TBI</defName>
 		<label>tiberium terror</label>
 		<race>TiberiumTerror_TBI</race>
-		<combatPower>300</combatPower>
+		<combatPower>500</combatPower>
 		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
 		<lifeStages>
 			<li>
@@ -266,6 +264,134 @@
 			</li>
 		</lifeStages>
 	</PawnKindDef>
+
+	
+	<ThingDef ParentName="BaseBear">
+		<defName>BigTiberiumFiend_TBI</defName>
+		<label>big Tiberium fiend</label>
+		<description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
+		<statBases>
+			<MoveSpeed>4.3</MoveSpeed>
+			<ComfyTemperatureMin>-40</ComfyTemperatureMin>
+			<MarketValue>1500</MarketValue>
+			<Mass>250</Mass>
+		</statBases>
+		<race>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
+			<leatherColor>(10,10,10)</leatherColor>
+			<foodType>CarnivoreAnimalStrict</foodType>
+			<leatherInsulation>1.0</leatherInsulation>
+			<leatherLabel>Tiberium bearskin</leatherLabel>
+			<baseHealthScale>3</baseHealthScale>
+			<meatLabel>Tiberium bear meat</meatLabel>
+			<wildBiomes>
+				<TiberiumRedZone>0.08</TiberiumRedZone>
+			</wildBiomes>
+			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
+			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
+			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+		</race>
+		<verbs>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTime>2.5</defaultCooldownTime>
+				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
+				<meleeDamageDef>Scratch</meleeDamageDef>
+				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>26</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTime>2.5</defaultCooldownTime>
+				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
+				<meleeDamageDef>Scratch</meleeDamageDef>
+				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>26</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+			<li>
+				<verbClass>Verb_MeleeAttack</verbClass>
+				<defaultCooldownTime>2.5</defaultCooldownTime>
+				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
+				<meleeDamageDef>Bite</meleeDamageDef>
+				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
+				<surpriseAttack>
+					<extraMeleeDamages>
+						<li>
+							<def>Stun</def>
+							<amount>30</amount>
+						</li>
+					</extraMeleeDamages>
+				</surpriseAttack>
+			</li>
+		</verbs>
+	</ThingDef>
+
+	<PawnKindDef ParentName="BearBase">
+		<defName>BigTiberiumFiend_TBI</defName>
+		<label>big tiberium fiend</label>
+		<race>BigTiberiumFiend_TBI</race>
+		<combatPower>200</combatPower>
+		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
+		<wildSpawn_EcoSystemWeight>0.25</wildSpawn_EcoSystemWeight>
+		<lifeStages>
+		  <li>
+			<bodyGraphicData>
+			  <texPath>Pawn/Animals/BigFiend/BigTiberiumFiend</texPath>
+			  <drawSize>1.4</drawSize>
+			  <shadowData>
+				<volume>(0.4, 0.3, 0.3)</volume>
+				<offset>(0,0,-0.2)</offset>
+			  </shadowData>
+			</bodyGraphicData>
+			<dessicatedBodyGraphicData>
+			  <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
+			  <drawSize>1.4</drawSize>
+			</dessicatedBodyGraphicData>
+		  </li>
+		  <li>
+			<bodyGraphicData>
+			  <texPath>Pawn/Animals/BigFiend/BigTiberiumFiend</texPath>
+			  <drawSize>2</drawSize>
+			  <shadowData>
+				<volume>(0.6, 0.45, 0.45)</volume>
+				<offset>(0,0,-0.25)</offset>
+			  </shadowData>
+			</bodyGraphicData>
+			<dessicatedBodyGraphicData>
+			  <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
+			  <drawSize>2</drawSize>
+			</dessicatedBodyGraphicData>
+		  </li>
+		  <li>
+			<bodyGraphicData>
+			  <texPath>Pawn/Animals/BigFiend/BigTiberiumFiend</texPath>
+			  <drawSize>3</drawSize>
+			  <shadowData>
+				<volume>(0.8, 0.6, 0.6)</volume>
+				<offset>(0,0,-0.3)</offset>
+			  </shadowData>
+			</bodyGraphicData>
+			<dessicatedBodyGraphicData>
+			  <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
+			  <drawSize>3</drawSize>
+			</dessicatedBodyGraphicData>
+		  </li>
+		</lifeStages>
+	</PawnKindDef>
 	
 	<ThingDef ParentName="BaseInsect">
 		<defName>Tibscarab_TBI</defName>
@@ -290,14 +416,12 @@
 			</li>
 		</verbs>
 		<race>
-			<fleshType>Tiberium</fleshType>
-			<bloodDef>FilthTibBloodG</bloodDef>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<body>BeetleLike</body>
 			<baseBodySize>0.2</baseBodySize>
 			<baseHungerRate>0.10</baseHungerRate>
-			<baseHealthScale>0.5</baseHealthScale>
-			<useMeatFrom>Visceroid_TBI</useMeatFrom>
-			<useLeatherFrom>Visceroid_TBI</useLeatherFrom>
+			<baseHealthScale>0.4</baseHealthScale>
+			<useMeatFrom>Megaspider</useMeatFrom>
 			<foodType>CarnivoreAnimalStrict</foodType>
 			<wildness>0.95</wildness>
 			<lifeExpectancy>18</lifeExpectancy>
@@ -322,6 +446,9 @@
 			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
 			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+			<wildBiomes>
+			<TiberiumRedZone>0.1</TiberiumRedZone>
+		</wildBiomes>
 		</race>
 		<tradeTags>
 			<li>Insectoid</li>
@@ -377,10 +504,8 @@
 		</lifeStages>
 	</PawnKindDef>
 	
-	<ThingDef ParentName="AnimalThingBase">
-		<defName>TiberiumFiend_TBI</defName>
-		<label>tiberium fiend</label>
-		<description>A classic Tiberium predator. The Tiberium Fiend is the most common and rather dangerous Tiberium creature. They are tameable, but only accept those worthy of their trust.</description>
+	
+	<ThingDef Name="ThingBaseWolf_TR" ParentName="AnimalThingBase_TR" Abstract="True">
 		<statBases>
 			<MoveSpeed>7</MoveSpeed>
 			<ComfyTemperatureMin>-70</ComfyTemperatureMin>
@@ -436,25 +561,14 @@
 		</verbs>
 		<race>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
-			<fleshType>Mutated</fleshType>
-			<bloodDef>FilthTibBloodG</bloodDef>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<predator>true</predator>
 			<petness>0.1</petness>
-			<foodType>CarnivoreAnimalStrict</foodType>
-			<useMeatFrom>Thrimbo_TBI</useMeatFrom>
-			<leatherColor>(30,30,30)</leatherColor>
-			<leatherCommonalityFactor>0.25</leatherCommonalityFactor>
-			<leatherMarketValueFactor>1.5</leatherMarketValueFactor>
-			<leatherStatFactors>
-				<ArmorRating_Blunt>1.25</ArmorRating_Blunt>
-				<ArmorRating_Sharp>2.5</ArmorRating_Sharp>
-				<ArmorRating_Heat>2.5</ArmorRating_Heat>
-			</leatherStatFactors>
-			<leatherLabel>Fiend Skin</leatherLabel>
-			<leatherInsulation>1.25</leatherInsulation>
-			<baseHealthScale>1.75</baseHealthScale>
 			<baseBodySize>0.85</baseBodySize>
 			<baseHungerRate>0.18</baseHungerRate>
+			<baseHealthScale>0.99</baseHealthScale>
+			<foodType>CarnivoreAnimal</foodType>
+			<leatherInsulation>1.0</leatherInsulation>
 			<gestationPeriodDays>22.5</gestationPeriodDays>
 			<nameOnTameChance>1</nameOnTameChance>
 			<trainableIntelligence>Advanced</trainableIntelligence>
@@ -499,183 +613,36 @@
 			<li>BadassAnimal</li>
 		</tradeTags>
 	</ThingDef>
-	
 
-	<ThingDef ParentName="AnimalThingBase">
-		<defName>BigTiberiumFiend_TBI</defName>
-		<label>big Tiberium fiend</label>
-		<description>Huge omnivorous mammals adapted for Tiberium. Their skin and fur has been crystalized.\n\nWhile their usual diet consists of fish, berries, honey, and scavenged meat, this Fiend is capable of using its massive strength and deadly claws to kill live prey. They are startlingly quick for such lumbering creatures.</description>
-		<statBases>
-			<MoveSpeed>4.5</MoveSpeed>
-			<ComfyTemperatureMin>-45</ComfyTemperatureMin>
-			<MarketValue>1500</MarketValue>
-			<Mass>500</Mass>
-		</statBases>
-		<verbs>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<defaultCooldownTime>2.5</defaultCooldownTime>
-				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
-				<meleeDamageDef>Scratch</meleeDamageDef>
-				<linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
-				<surpriseAttack>
-					<extraMeleeDamages>
-						<li>
-							<def>Stun</def>
-							<amount>30</amount>
-						</li>
-					</extraMeleeDamages>
-				</surpriseAttack>
-			</li>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<defaultCooldownTime>2.5</defaultCooldownTime>
-				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
-				<meleeDamageDef>Scratch</meleeDamageDef>
-				<linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
-				<surpriseAttack>
-					<extraMeleeDamages>
-						<li>
-							<def>Stun</def>
-							<amount>30</amount>
-						</li>
-					</extraMeleeDamages>
-				</surpriseAttack>
-			</li>
-			<li>
-				<verbClass>Verb_MeleeAttack</verbClass>
-				<defaultCooldownTime>2.5</defaultCooldownTime>
-				<meleeDamageBaseAmount>25</meleeDamageBaseAmount>
-				<meleeDamageDef>Bite</meleeDamageDef>
-				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
-				<surpriseAttack>
-					<extraMeleeDamages>
-						<li>
-							<def>Stun</def>
-							<amount>30</amount>
-						</li>
-					</extraMeleeDamages>
-				</surpriseAttack>
-			</li>
-		</verbs>
+	<PawnKindDef ParentName="AnimalKindBase" Name="AnimalKindBaseWolf_TR" Abstract="True">
+		<combatPower>75</combatPower>
+		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+	</PawnKindDef>
+	
+	
+	<ThingDef ParentName="ThingBaseWolf_TR">
+		<defName>TiberiumFiend_TBI</defName>
+		<label>tiberium fiend</label>
+		<description>A classic Tiberium predator. The Tiberium Fiend is the most common and rather dangerous Tiberium creature. They are tameable, but only accept those worthy of their trust.</description>
 		<race>
-			<body>QuadrupedAnimalWithPawsAndTail</body>
-			<fleshType>Mutated</fleshType>
-			<bloodDef>FilthTibBloodG</bloodDef>
+			<leatherColor>(10,10,10)</leatherColor>
 			<foodType>CarnivoreAnimalStrict</foodType>
-			<predator>true</predator>
-			<petness>0.1</petness>
-			<baseBodySize>2</baseBodySize>
-			<baseHealthScale>3.5</baseHealthScale>
-			<baseHungerRate>0.25</baseHungerRate>
-			<useMeatFrom>Thrimbo_TBI</useMeatFrom>
-			<useLeatherFrom>TiberiumFiend_TBI</useLeatherFrom>
-			<gestationPeriodDays>22.5</gestationPeriodDays>
-			<nameOnTameChance>1</nameOnTameChance>
-			<trainableIntelligence>Advanced</trainableIntelligence>
-			<wildness>0.9</wildness>
-			<nuzzleMtbHours>120</nuzzleMtbHours>
-			<manhunterOnDamageChance>1</manhunterOnDamageChance>
-			<manhunterOnTameFailChance>0.3</manhunterOnTameFailChance>
-			<litterSizeCurve>
-				<points>
-					<li>(0.5, 0)</li>
-					<li>(1, 1)</li>
-					<li>(2, 1.7)</li>
-					<li>(3, 0.7)</li>
-					<li>(3.5, 0)</li>
-				</points>
-			</litterSizeCurve>
-			<lifeExpectancy>15</lifeExpectancy>
-			<lifeStageAges>
-				<li>
-					<def>AnimalBaby</def>
-					<minAge>0</minAge>
-				</li>
-				<li>
-					<def>AnimalJuvenile</def>
-					<minAge>0.4</minAge>
-				</li>
-				<li>
-					<def>AnimalAdult</def>
-					<minAge>0.8</minAge>
-					<soundWounded>Pawn_Bear_Injured</soundWounded>
-					<soundDeath>Pawn_Bear_Death</soundDeath>
-					<soundCall>Pawn_Bear_Call</soundCall>
-					<soundAngry>Pawn_Bear_Angry</soundAngry>
-				</li>
-			</lifeStageAges>
-			<soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
-			<soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
-			<soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+			<meatLabel>Tiberium fiend meat</meatLabel>
+			<leatherLabel>Tiberium fiend skin</leatherLabel>
+			<leatherInsulation>1.0</leatherInsulation>
+			<baseHealthScale>1.5</baseHealthScale>
+			<wildBiomes>
+			<TiberiumRedZone>0.2</TiberiumRedZone>
+		</wildBiomes>
 		</race>
-		<tradeTags>
-			<li>StandardAnimal</li>
-			<li>BadassAnimal</li>
-		</tradeTags>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase">
-		<defName>BigTiberiumFiend_TBI</defName>
-		<label>big tiberium fiend</label>
-		<race>BigTiberiumFiend_TBI</race>
-		<combatPower>150</combatPower>
-		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-		<wildSpawn_EcoSystemWeight>0.25</wildSpawn_EcoSystemWeight>
-		<lifeStages>
-		  <li>
-			<label>Fiend puppy</label>
-			<labelPlural>Fiend puppies</labelPlural>
-			<bodyGraphicData>
-			  <texPath>Pawn/Animals/BigFiend/BigTiberiumFiend</texPath>
-			  <drawSize>1.5</drawSize>
-			  <shadowData>
-				<volume>(0.4, 0.3, 0.3)</volume>
-				<offset>(0,0,-0.2)</offset>
-			  </shadowData>
-			</bodyGraphicData>
-			<dessicatedBodyGraphicData>
-			  <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-			  <drawSize>1.5</drawSize>
-			</dessicatedBodyGraphicData>
-		  </li>
-		  <li>
-			<bodyGraphicData>
-			  <texPath>Pawn/Animals/BigFiend/BigTiberiumFiend</texPath>
-			  <drawSize>2</drawSize>
-			  <shadowData>
-				<volume>(0.6, 0.45, 0.45)</volume>
-				<offset>(0,0,-0.25)</offset>
-			  </shadowData>
-			</bodyGraphicData>
-			<dessicatedBodyGraphicData>
-			  <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-			  <drawSize>2</drawSize>
-			</dessicatedBodyGraphicData>
-		  </li>
-		  <li>
-			<bodyGraphicData>
-			  <texPath>Pawn/Animals/BigFiend/BigTiberiumFiend</texPath>
-			  <drawSize>3</drawSize>
-			  <shadowData>
-				<volume>(0.8, 0.6, 0.6)</volume>
-				<offset>(0,0,-0.3)</offset>
-			  </shadowData>
-			</bodyGraphicData>
-			<dessicatedBodyGraphicData>
-			  <texPath>Things/Pawn/Animal/Muffalo/MuffaloDessicated</texPath>
-			  <drawSize>3</drawSize>
-			</dessicatedBodyGraphicData>
-		  </li>
-		</lifeStages>
-	</PawnKindDef>
-
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBaseWolf_TR">
 		<defName>TiberiumFiend_TBI</defName>
 		<label>tiberium fiend</label>
 		<labelPlural>tiberium fiends</labelPlural>
 		<race>TiberiumFiend_TBI</race>
-		<combatPower>100</combatPower>
+		<combatPower>150</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<wildSpawn_EcoSystemWeight>0.5</wildSpawn_EcoSystemWeight>
 		<wildSpawn_GroupSizeRange>
@@ -712,7 +679,7 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Fiend/TiberiumFiend</texPath>
-					<drawSize>2.5</drawSize>
+					<drawSize>2.25</drawSize>
 					<shadowData>
 						<volume>(0.3, 0.4, 0.3)</volume>
 						<offset>(0,0,-0.15)</offset>
@@ -720,21 +687,18 @@
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedMedium</texPath>
-					<drawSize>2.5</drawSize>
+					<drawSize>2.25</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
 	</PawnKindDef>
   
-	<ThingDef ParentName="AnimalThingBase">
-		<defName>SmallTiberiumFiend_TBI</defName>
-		<label>small tiberium fiend</label>
-		<description>A small solitary canine infected with Tiberium.</description>
+  
+	<ThingDef Name="ThingBaseFox_TR" ParentName="AnimalThingBase_TR" Abstract="True">
 		<statBases>
 			<MoveSpeed>6.00</MoveSpeed>
 			<ComfyTemperatureMin>-75</ComfyTemperatureMin>
-			<MarketValue>400</MarketValue>
-			<Mass>50</Mass>
+			<MarketValue>360</MarketValue>
 		</statBases>
 		<verbs>
 			<li>
@@ -770,7 +734,7 @@
 			<li>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<defaultCooldownTime>2.1</defaultCooldownTime>
-				<meleeDamageBaseAmount>15</meleeDamageBaseAmount>
+				<meleeDamageBaseAmount>18</meleeDamageBaseAmount>
 				<meleeDamageDef>Bite</meleeDamageDef>
 				<linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
 				<surpriseAttack>
@@ -784,25 +748,22 @@
 			</li>
 		</verbs>
 		<race>
-			<fleshType>Mutated</fleshType>
-			<bloodDef>FilthTibBloodG</bloodDef>
-			<foodType>CarnivoreAnimalStrict</foodType>
-			<useMeatFrom>Thrimbo_TBI</useMeatFrom>
-			<useLeatherFrom>TiberiumFiend_TBI</useLeatherFrom>
 			<body>QuadrupedAnimalWithPawsAndTail</body>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<predator>true</predator>
-			<petness>0.25</petness>
+			<petness>0.1</petness>
 			<baseBodySize>0.55</baseBodySize>
 			<baseHungerRate>0.12</baseHungerRate>
-			<baseHealthScale>1.25</baseHealthScale>
+			<baseHealthScale>1</baseHealthScale>
+			<foodType>CarnivoreAnimal</foodType>
 			<leatherInsulation>1.0</leatherInsulation>
 			<gestationPeriodDays>18</gestationPeriodDays>
 			<nameOnTameChance>1</nameOnTameChance>
 			<trainableIntelligence>Advanced</trainableIntelligence>
-			<wildness>0.75</wildness>
+			<wildness>0.9</wildness>
 			<nuzzleMtbHours>120</nuzzleMtbHours>
 			<manhunterOnDamageChance>1</manhunterOnDamageChance>
-			<manhunterOnTameFailChance>0.2</manhunterOnTameFailChance>
+			<manhunterOnTameFailChance>0.3</manhunterOnTameFailChance>
 			<litterSizeCurve>
 				<points>
 					<li>(0.5, 0)</li>
@@ -838,14 +799,38 @@
 		</tradeTags>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBase" Name="AnimalKindBaseFox_TR" Abstract="True">
+		<combatPower>45</combatPower>
+		<wildSpawn_spawnWild>false</wildSpawn_spawnWild>
+	</PawnKindDef>
+  
+  
+	<ThingDef ParentName="ThingBaseFox_TR">
+		<defName>SmallTiberiumFiend_TBI</defName>
+		<label>small tiberium fiend</label>
+		<description>A small solitary canine infected with Tiberium.</description>
+		<statBases>
+			<Mass>50</Mass>
+		</statBases>
+		<race>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
+			<foodType>CarnivoreAnimalStrict</foodType>
+			<leatherColor>(10,10,10)</leatherColor>
+			<leatherLabel>Small Tiberium fiend skin</leatherLabel>
+			<useMeatFrom>FoxFennec</useMeatFrom>
+			<wildBiomes>
+			<TiberiumRedZone>0.1</TiberiumRedZone>
+		</wildBiomes>
+		</race>
+	</ThingDef>
+
+	<PawnKindDef ParentName="AnimalKindBaseFox_TR">
 		<defName>SmallTiberiumFiend_TBI</defName>
 		<label>small tiberium fiend</label>
 		<labelPlural>small tiberium fiends</labelPlural>
 		<race>SmallTiberiumFiend_TBI</race>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<wildSpawn_EcoSystemWeight>0.1</wildSpawn_EcoSystemWeight>
-		<combatPower>75</combatPower>
 		<lifeStages>
 			<li>
 				<label>small tiberium fiend puppy</label>
@@ -886,7 +871,7 @@
 		</lifeStages>
 	</PawnKindDef>
 	
-	<ThingDef ParentName="AnimalThingBase">
+	<ThingDef ParentName="AnimalThingBase_TR">
 		<defName>Crawler_TBI</defName>
 		<label>crawler</label>
 		<description>A huge snake. This one seems to be infected with Tiberium.</description>
@@ -928,15 +913,16 @@
 		<race>
 			<body>Snake</body>
 			<predator>true</predator>
-			<fleshType>Mutated</fleshType>
-			<bloodDef>FilthTibBloodG</bloodDef>
+			<bloodDef>FilthTiberiumGreen</bloodDef>
 			<maxPreyBodySize>1</maxPreyBodySize>
-			<baseBodySize>1</baseBodySize>
+			<baseBodySize>1.2</baseBodySize>
 			<baseHungerRate>0.25</baseHungerRate>
 			<baseHealthScale>2</baseHealthScale>
 			<foodType>CarnivoreAnimalStrict</foodType>
-			<useMeatFrom>TiberiumTerror_TBI</useMeatFrom>
-			<useLeatherFrom>TiberiumFiend_TBI</useLeatherFrom>
+			<leatherColor>(32,32,32)</leatherColor>
+			<leatherLabel>Crawler Tiberium skin</leatherLabel>
+			<leatherInsulation>0.3</leatherInsulation>
+			<meatLabel>crawler flesh</meatLabel>
 			<wildness>0.9</wildness>
 			<manhunterOnTameFailChance>1</manhunterOnTameFailChance>
 			<manhunterOnDamageChance>1</manhunterOnDamageChance>
@@ -972,6 +958,9 @@
 			<soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
 			<soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
 			<soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+			<wildBiomes>
+			<TiberiumRedZone>0.1</TiberiumRedZone>
+		</wildBiomes>
 		</race>
 		<tradeTags>
 			<li>StandardAnimal</li>
@@ -990,16 +979,6 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
-					<drawSize>1</drawSize>
-				</bodyGraphicData>
-				<dessicatedBodyGraphicData>
-					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
-					<drawSize>1</drawSize>
-				</dessicatedBodyGraphicData>
-			</li>
-			<li>
-				<bodyGraphicData>
-					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
 					<drawSize>1.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
@@ -1010,18 +989,28 @@
 			<li>
 				<bodyGraphicData>
 					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
-					<drawSize>2</drawSize>
+					<drawSize>2.5</drawSize>
 				</bodyGraphicData>
 				<dessicatedBodyGraphicData>
 					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
-					<drawSize>2</drawSize>
+					<drawSize>2.5</drawSize>
+				</dessicatedBodyGraphicData>
+			</li>
+			<li>
+				<bodyGraphicData>
+					<texPath>Pawn/Animals/Crawler/Crawler</texPath>
+					<drawSize>3</drawSize>
+				</bodyGraphicData>
+				<dessicatedBodyGraphicData>
+					<texPath>Things/Pawn/Animal/Dessicated/CritterDessicatedSnake</texPath>
+					<drawSize>3</drawSize>
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
 	</PawnKindDef>
 	
 	
-	<ThingDef ParentName="AnimalThingBase">
+	<ThingDef ParentName="AnimalThingBase_TR">
     <defName>Boomfiend_TBI</defName>
     <label>boomfiend</label>
     <description>When boomrats come into contact with Tiberium, beware of these creatures.</description>
@@ -1034,50 +1023,50 @@
     <verbs>
       <li>
         <verbClass>Verb_MeleeAttack</verbClass>
-        <defaultCooldownTime>2</defaultCooldownTime>
-        <meleeDamageBaseAmount>4</meleeDamageBaseAmount>
+        <defaultCooldownTime>1.65</defaultCooldownTime>
+        <meleeDamageBaseAmount>5</meleeDamageBaseAmount>
         <meleeDamageDef>Scratch</meleeDamageDef>
         <linkedBodyPartsGroup>FrontLeftPaw</linkedBodyPartsGroup>
       </li>
       <li>
         <verbClass>Verb_MeleeAttack</verbClass>
-        <defaultCooldownTime>2</defaultCooldownTime>
-        <meleeDamageBaseAmount>4</meleeDamageBaseAmount>
+        <defaultCooldownTime>1.65</defaultCooldownTime>
+        <meleeDamageBaseAmount>5</meleeDamageBaseAmount>
         <meleeDamageDef>Scratch</meleeDamageDef>
         <linkedBodyPartsGroup>FrontRightPaw</linkedBodyPartsGroup>
       </li>
       <li>
         <verbClass>Verb_MeleeAttack</verbClass>
-        <defaultCooldownTime>2</defaultCooldownTime>
-        <meleeDamageBaseAmount>3</meleeDamageBaseAmount>
+        <defaultCooldownTime>1.65</defaultCooldownTime>
+        <meleeDamageBaseAmount>4</meleeDamageBaseAmount>
         <meleeDamageDef>Bite</meleeDamageDef>
         <linkedBodyPartsGroup>Teeth</linkedBodyPartsGroup>
       </li>
       <li>
         <verbClass>Verb_MeleeAttack</verbClass>
-        <defaultCooldownTime>2</defaultCooldownTime>
-        <meleeDamageBaseAmount>4</meleeDamageBaseAmount>
+        <defaultCooldownTime>1.65</defaultCooldownTime>
+        <meleeDamageBaseAmount>1</meleeDamageBaseAmount>
         <meleeDamageDef>Blunt</meleeDamageDef>
         <commonality>0.01</commonality>
         <linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
       </li>
     </verbs>
     <race>
-		<fleshType>Tiberium</fleshType>
-		<bloodDef>FilthTibBloodB</bloodDef>
+		<bloodDef>FilthTiberiumBlue</bloodDef>
 		<body>QuadrupedAnimalWithPaws</body>
 		<predator>true</predator>
-		<deathActionWorkerClass>DeathActionWorker_BigExplosion</deathActionWorkerClass>
+		<deathActionWorkerClass>TiberiumRim.DeathActionWorker_TiberiumExplosion</deathActionWorkerClass>
 		<baseBodySize>0.2</baseBodySize>
 		<baseHungerRate>0.35</baseHungerRate>
 		<baseHealthScale>0.75</baseHealthScale>
-		<foodType>OmnivoreAnimal, AnimalProduct</foodType>
-		<useMeatFrom>Visceroid_TBI</useMeatFrom>
-		<useLeatherFrom>Visceroid_TBI</useLeatherFrom>
+		<foodType>OmnivoreRoughAnimal</foodType>
+		<leatherColor>(115,37,28)</leatherColor>
+		<leatherInsulation>0.7</leatherInsulation>
 		<executionRange>4</executionRange>
 		<wildness>0.75</wildness>
 		<mateMtbHours>8</mateMtbHours>
 		<nuzzleMtbHours>120</nuzzleMtbHours>
+		<canBePredatorPrey>false</canBePredatorPrey>
 		<gestationPeriodDays>12.5</gestationPeriodDays>
 		<litterSizeCurve>
         <points>
@@ -1109,6 +1098,9 @@
       <soundMeleeHitPawn>Pawn_Melee_SmallScratch_HitPawn</soundMeleeHitPawn>
       <soundMeleeHitBuilding>Pawn_Melee_SmallScratch_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_SmallScratch_Miss</soundMeleeMiss>
+	  <wildBiomes>
+			<TiberiumRedZone>0.25</TiberiumRedZone>
+		</wildBiomes>
     </race>
     <tradeTags>
       <li>StandardAnimal</li>
@@ -1171,7 +1163,7 @@
     </lifeStages>
   </PawnKindDef>
   
-  <ThingDef ParentName="AnimalThingBase">
+  <ThingDef ParentName="AnimalThingBase_TR">
     <defName>Spiner_TBI</defName>
     <label>spiner</label>
     <description>Heavily-muscled Pig-like creatures, iinfused with Tiberium. These "Spiners" are very dangerous and should be avoided.</description>
@@ -1237,17 +1229,17 @@
       </li>
     </verbs>
     <race>
-	  <fleshType>Mutated</fleshType>
-	  <bloodDef>FilthTibBloodG</bloodDef>
+	  <bloodDef>FilthTiberiumGreen</bloodDef>
       <body>QuadrupedAnimalWithPawsAndTail</body>
       <predator>true</predator>
       <petness>0.5</petness>
       <baseBodySize>1.5</baseBodySize>
       <baseHungerRate>0.25</baseHungerRate>
-      <baseHealthScale>1.25</baseHealthScale>
+      <baseHealthScale>1.15</baseHealthScale>
       <foodType>CarnivoreAnimalStrict</foodType>
-	  <useMeatFrom>Thrimbo_TBI</useMeatFrom>
-	  <useLeatherFrom>TiberiumFiend_TBI</useLeatherFrom>
+      <leatherColor>(123,104,89)</leatherColor>
+      <leatherLabel>Spiner Tiberium fur</leatherLabel>
+      <leatherInsulation>1.1</leatherInsulation>
       <gestationPeriodDays>22.5</gestationPeriodDays>
       <nameOnTameChance>1</nameOnTameChance>
       <trainableIntelligence>Advanced</trainableIntelligence>
@@ -1286,6 +1278,9 @@
       <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+	  <wildBiomes>
+			<TiberiumRedZone>0.2</TiberiumRedZone>
+		</wildBiomes>
     </race>
     <tradeTags>
       <li>StandardAnimal</li>
@@ -1348,7 +1343,7 @@
     </lifeStages>
   </PawnKindDef>
   
-   <ThingDef ParentName="AnimalThingBase">
+   <ThingDef ParentName="AnimalThingBase_TR">
     <defName>Tiffalo_TBI</defName>
     <label>tiffalo</label>
     <description>These creatures have lost all their fluffiness to a crystaline structure, they also seem less friendly.</description>
@@ -1369,16 +1364,16 @@
     </verbs>
     <race>
 	  <predator>true</predator>
-	  <fleshType>Mutated</fleshType>
-	  <bloodDef>FilthTibBloodB</bloodDef>
+	  <bloodDef>FilthTiberiumBlue</bloodDef>
       <herdAnimal>true</herdAnimal>
       <body>QuadrupedAnimalWithHooves</body>
       <baseBodySize>2.1</baseBodySize>
-      <baseHealthScale>2</baseHealthScale>
+      <baseHealthScale>1.75</baseHealthScale>
 	  <baseHungerRate>0.85</baseHungerRate>
       <foodType>CarnivoreAnimalStrict</foodType>
-	  <useMeatFrom>TiberiumTerror_TBI</useMeatFrom>
-	  <useLeatherFrom>TiberiumFiend_TBI</useLeatherFrom>
+      <leatherColor>(152,170,174)</leatherColor>
+      <leatherInsulation>1.0</leatherInsulation>
+      <gestationPeriodDays>25</gestationPeriodDays>
       <wildness>0.5</wildness>
       <nuzzleMtbHours>220</nuzzleMtbHours>
 	  <packAnimal>true</packAnimal>
@@ -1404,6 +1399,9 @@
       <soundMeleeHitPawn>Pawn_Melee_BigBash_HitPawn</soundMeleeHitPawn>
       <soundMeleeHitBuilding>Pawn_Melee_BigBash_HitBuilding</soundMeleeHitBuilding>
       <soundMeleeMiss>Pawn_Melee_BigBash_Miss</soundMeleeMiss>
+	  <wildBiomes>
+			<TiberiumRedZone>0.03</TiberiumRedZone>
+       </wildBiomes>
     </race>
     <tradeTags>
       <li>StandardAnimal</li>

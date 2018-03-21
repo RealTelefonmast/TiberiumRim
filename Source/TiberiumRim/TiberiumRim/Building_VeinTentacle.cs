@@ -44,26 +44,25 @@ namespace TiberiumRim
                 List<Thing> thinglist = c.GetThingList(Map);
                 for (int i = 0; i < thinglist.Count; i++)
                 {
-                    Pawn p = thinglist[i] as Pawn;
-                    if (p != null)
+                    if (thinglist[i] is Pawn p)
                     {
-                        hurt(p);
+                        Hurt(p);
                     }
                 }
             }
             base.Tick();
         }
 
-        public void hurt(Pawn p)
+        public void Hurt(Pawn p)
         {
             if (canAttack)
             {
-                int amt = 2;
+                float amt = MainTCD.MainTiberiumControlDef.VeinHitDamage;
                 if (p.apparel == null)
                 {
                     amt = amt * 3;
                 }
-                DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, amt);
+                DamageInfo damage = new DamageInfo(DamageDefOf.Blunt, (int)amt);
 
                 if (Rand.Chance(0.1f) && !p.def.defName.Contains("TBI") && p.Position.InBounds(this.Map))
                 {

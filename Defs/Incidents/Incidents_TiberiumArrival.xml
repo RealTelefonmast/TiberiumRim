@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<IncidentDef Class="TiberiumRim.AsteroidDef">
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
 		<defName>AsteroidGreen</defName>
 		<label>green tiberium asteroid</label>
 		<targetTypes>
 			<li>MapPlayerHome</li>
 		</targetTypes>
-		<workerClass>TiberiumRim.IncidentWorker_AsteroidDrop</workerClass>
+		<workerClass>TiberiumRim.IncidentWorker_ProducerSpawn</workerClass>
 		<baseChance>2.0</baseChance>
 		<letterLabel>Green Tiberium Asteroid</letterLabel>
 		<letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</letterText>
@@ -20,13 +20,13 @@
 		<minThreatPoints>500</minThreatPoints>
 	</IncidentDef>
 	
-	<IncidentDef Class="TiberiumRim.AsteroidDef">
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
 		<defName>AsteroidBlue</defName>
 		<label>blue tiberium asteroid</label>
 		<targetTypes>
 			<li>MapPlayerHome</li>
 		</targetTypes>
-		<workerClass>TiberiumRim.IncidentWorker_AsteroidDrop</workerClass>
+		<workerClass>TiberiumRim.IncidentWorker_ProducerSpawn</workerClass>
 		<baseChance>2.0</baseChance>
 		<letterLabel>Blue Tiberium Asteroid</letterLabel>
 		<letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</letterText>
@@ -39,13 +39,13 @@
 		<minThreatPoints>500</minThreatPoints>
 	</IncidentDef>
 	
-	<IncidentDef Class="TiberiumRim.AsteroidDef">
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
 		<defName>AsteroidMeteor</defName>
 		<label>tiberium meteor</label>
 		<targetTypes>
 			<li>MapPlayerHome</li>
 		</targetTypes>
-		<workerClass>TiberiumRim.IncidentWorker_AsteroidDrop</workerClass>
+		<workerClass>TiberiumRim.IncidentWorker_ProducerSpawn</workerClass>
 		<baseChance>1</baseChance>
 		<letterLabel>Tiberium Meteor Drop</letterLabel>
 		<letterText>An unusual meteorite has crashed nearby.\n\nThere seems to be some strange crystals poking out of it.\n\nBe careful, the substance could be dangerous!</letterText>
@@ -57,13 +57,13 @@
 		<pointsScaleable>true</pointsScaleable>
 	</IncidentDef>
 
-	<IncidentDef Class="TiberiumRim.AsteroidDef">
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
 		<defName>TiberiumShard</defName>
 		<label>tiberium shard</label>
 		<targetTypes>
 			<li>MapPlayerHome</li>
 		</targetTypes>
-		<workerClass>TiberiumRim.IncidentWorker_AsteroidDrop</workerClass>
+		<workerClass>TiberiumRim.IncidentWorker_ProducerSpawn</workerClass>
 		<baseChance>2.0</baseChance>
 		<letterLabel>Tiberium shard</letterLabel>
 		<letterText>An unusual type of shard has dropped. It's spreading red crystals around itself.\n\nBe careful, the substance could be dangerous!</letterText>
@@ -76,13 +76,13 @@
 		<minThreatPoints>450</minThreatPoints>
 	</IncidentDef>
 	
-	<IncidentDef Class="TiberiumRim.AsteroidDef">
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
 		<defName>BlossomTree</defName>
 		<label>blossom tree</label>
 		<targetTypes>
 			<li>MapPlayerHome</li>
 		</targetTypes>
-		<workerClass>TiberiumRim.IncidentWorker_TiberiumAppear</workerClass>
+		<workerClass>TiberiumRim.IncidentWorker_ProducerSpawn</workerClass>
 		<baseChance>2.0</baseChance>
 		<letterLabel>Unknown gas!</letterLabel>
 		<letterText>A cloud of unknown gas has passed the map and mutated a tree. Be careful around it!</letterText>
@@ -90,6 +90,7 @@
 		<minRefireDays>180</minRefireDays>
 		<category>ThreatBig</category>
 		<asteroidType>BlossomTree_TBNS</asteroidType>
+		<appears>true</appears>
 		<sourceThing>Tree</sourceThing>
 		<spawnCrystals>true</spawnCrystals>
 		<tiberiumType>TiberiumPod</tiberiumType>
@@ -97,13 +98,13 @@
 		<minThreatPoints>400</minThreatPoints>
 	</IncidentDef>
 	
-	<IncidentDef Class="TiberiumRim.AsteroidDef">
+	<IncidentDef Class="TiberiumRim.TiberiumIncidentDef">
 		<defName>VeinholeArrival</defName>
 		<label>Veinhole Arrival</label>
 		<targetTypes>
 			<li>MapPlayerHome</li>
 		</targetTypes>
-		<workerClass>TiberiumRim.IncidentWorker_TiberiumAppear</workerClass>
+		<workerClass>TiberiumRim.IncidentWorker_ProducerSpawn</workerClass>
 		<baseChance>2.0</baseChance>
 		<letterLabel>Veinhole!</letterLabel>
 		<letterText>A veinhole monster appeared on your map!</letterText>
@@ -111,6 +112,7 @@
 		<minRefireDays>680</minRefireDays>
 		<category>ThreatBig</category>
 		<asteroidType>Veinhole_TBNS</asteroidType>
+		<appears>true</appears>
 		<spawnCrystals>true</spawnCrystals>
 		<tiberiumType>TiberiumVein</tiberiumType>
 		<pointsScaleable>true</pointsScaleable>
@@ -145,7 +147,7 @@
 		<targetTypes>
 			<li>MapPlayerHome</li>
 		</targetTypes>
-		<workerClass>TiberiumRim.IncidentWorker_BlossomTree</workerClass>
+		<workerClass>TiberiumRim.IncidentWorker_FiendsArrive</workerClass>
 		<letterLabel>Fiends arrive!</letterLabel>
 		<letterText>A group of Tiberium fiends arrived on your map. They will rest at a nearby blossom tree.</letterText>
 		<letterDef>NegativeEvent</letterDef>

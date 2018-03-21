@@ -1,57 +1,148 @@
 ﻿using System;
-using System.Threading;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 using UnityEngine;
-using RimWorld;
 using Verse;
+using RimWorld;
 
 namespace TiberiumRim
 {
     [StaticConstructorOnStartup]
-    public class TiberiumCrystal : Plant
-    { 
+    public class TiberiumCrystal : ThingWithComps
+    {
+        public new TiberiumCrystalDef def;
+
+        public TiberiumControlDef ctrlDef = MainTCD.MainTiberiumControlDef;
+
+        private MapComponent_TiberiumHandler mapComp;
+
+        public Building_TiberiumProducer boundProducer = null;
+
+        //Properties
+        public float MinGrowthTemperature = -12; //MainTCD.MainTiberiumControlDef.TiberiumMinTemp;
+
+        private const float GridPosRandomnessFactor = 0.3f;
+
+        private static readonly FloatRange DyingDamagePerTickBecauseInhibited = new FloatRange(0.0001f, 0.001f);
+
+        public const float BaseGrowthPercent = 0.05f;
+
+        private static Color32[] workingColors = new Color32[4];
+
+        protected int ageInt;
+
+        public float growthInt = 0.05f;
+
+        public int harvestTicks;
+
+        //Crystal Properties
+
         public TerrainDef corruptsTo = null;
-
-        public object cachedLabelMouseover { get; private set; }
-
-        public int DyingDamagePerTick { get; private set; }
 
         public List<IntVec3> affectedTiles = new List<IntVec3>();
 
         private int bledTimes = 0;
 
-        protected override bool Resting
+        //
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            get
+            base.SpawnSetup(map, respawningAfterLoad);
+            this.mapComp = this.Map.GetComponent<MapComponent_TiberiumHandler>();                      
+            if (!respawningAfterLoad)
             {
-                return Current.Game.VisibleMap.mapTemperature.OutdoorTemp < -50f;
+                this.def = (TiberiumCrystalDef)base.def;               
+                if (!mapComp.AllTiberiumCrystals.Contains(this))
+                {
+                    mapComp.AllTiberiumCrystals.Add(this);
+                }
+                SetTiles();
+                this.harvestTicks = GenTicks.SecondsToTicks(def.tiberium.harvestTimeSec);
+                /* TODO: Mapcomp biomechecker
+                if (!this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Contains(this.thingIDNumber))
+                {
+                    this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Add(this.thingIDNumber);
+                }
+                */
+            }            
+        }
+
+        public override void DeSpawn()
+        {
+            RemoveTiles();
+            this.Map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Remove(this);
+            /* TODO: Mapcomp biomechecker
+            if (this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Contains(this.thingIDNumber))
+            {
+                this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Remove(this.thingIDNumber);
+            }
+            */
+            base.DeSpawn();
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look<float>(ref this.growthInt, "growth", 0f, false);
+            Scribe_Values.Look<int>(ref this.ageInt, "age", 0, false);
+            Scribe_Values.Look<int>(ref harvestTicks, "harvestTicks");
+            Scribe_Defs.Look<TiberiumCrystalDef>(ref this.def, "def");
+        }
+        //
+
+        public override void TickLong()
+        {
+            if (base.Destroyed)
+            {
+                return;
+            }
+            if (def.tiberium.isFlesh)
+            {
+                if (this.HitPoints < this.MaxHitPoints)
+                {
+                    if (this.bledTimes < 6)
+                    {
+                        bledTimes++;
+                    }
+                }
+            }
+
+            float growthInt = this.growthInt;
+            bool mature = this.LifeStage == TiberiumLifeStage.Mature;
+            this.growthInt += this.GrowthPerTick * 2000f;
+            if (this.growthInt > 1f)
+            {
+                this.growthInt = 1f;
+            }
+            if (((!mature && this.LifeStage == TiberiumLifeStage.Mature) || (int)(growthInt * 10f) != (int)(this.growthInt * 10f)))
+            {
+                base.Map.mapDrawer.MapMeshDirty(base.Position, MapMeshFlag.Things);
+            }
+            if (this.CanReproduceNow && Rand.MTBEventOccurs(this.def.tiberium.reproduceMtbDays, 60000f, 2000f))
+            {
+                GenTiberiumReproduction.TryReproduceFrom(base.Position, this, SeedTargFindMode.Reproduce, base.Map, mapComp, this.def.friendlyTo);
+            }
+
+            this.ageInt += 2000;
+            if (this.Dying)
+            {
+                Map map = base.Map;
+                int amount = Mathf.CeilToInt(this.CurrentDyingDamagePerTick * 2000f);
+                base.TakeDamage(new DamageInfo(DamageDefOf.Rotting, amount, -1f, null, null, null, DamageInfo.SourceCategory.ThingOrUnknown));
             }
         }
 
-        public override float GrowthRate
+        //
+        public TiberiumLifeStage LifeStage
         {
             get
             {
-                return 1;
+                if (this.growthInt > 0.999f)
+                {
+                    return TiberiumLifeStage.Mature;
+                }
+                return TiberiumLifeStage.Growing;
             }
-        }
-
-        public override bool IngestibleNow
-        {
-            get
-            {
-                return false;
-            }
-        }
-
-        public override float CurrentDyingDamagePerTick
-        {
-            get
-            {
-                return 0f;
-            }
-        }
+        }      
 
         public void SetTiles()
         {
@@ -60,9 +151,9 @@ namespace TiberiumRim
                 IntVec3 v = GenAdjFast.AdjacentCells8Way(this.Position)[i];
                 if (v.InBounds(this.Map))
                 {
-                    if (!this.Map.GetComponent<MapComponent_Tiberium>().affectedTiles.Contains(v))
+                    if (!mapComp.AffectedTiles.Contains(v))
                     {
-                        this.Map.GetComponent<MapComponent_Tiberium>().affectedTiles.Add(v);
+                        mapComp.AffectedTiles.Add(v);
                     }
                 }
                 this.affectedTiles.Add(v);
@@ -77,7 +168,7 @@ namespace TiberiumRim
                 IntVec3 v = this.affectedTiles[i];
                 if (v.InBounds(this.Map))
                 {
-                    List<TiberiumCrystal> sources = MapComponent_Tiberium.Sources(v, this.Map);
+                    List<TiberiumCrystal> sources = MapComponent_TiberiumHandler.Sources(v, this.Map);
                     for (int ii = 0; ii < sources.Count; ii++)
                     {
                         TiberiumCrystal source2 = sources[ii];
@@ -89,465 +180,302 @@ namespace TiberiumRim
                             }
                         }
                     }
-                    if (this.Map.GetComponent<MapComponent_Tiberium>().affectedTiles.Contains(v) && !sourceAffectedTiles.Contains(v))
+                    if (mapComp.AffectedTiles.Contains(v) && !sourceAffectedTiles.Contains(v))
                     {
-                        this.Map.GetComponent<MapComponent_Tiberium>().affectedTiles.Remove(v);
+                        mapComp.AffectedTiles.Remove(v);
                     }
                 }
             }
         }
 
-        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        // Functions
+
+        public override void Print(SectionLayer layer)
         {
-            base.SpawnSetup(map, respawningAfterLoad);
-            SetTiles();
-            Plant c = this.Position.GetPlant(map);
-            if (c != null && c != this)
+            Vector3 a = this.TrueCenter();
+            Rand.PushState();
+            Rand.Seed = base.Position.GetHashCode();
+            int num = Mathf.CeilToInt(this.growthInt * (float)this.def.tiberium.maxMeshCount);
+            if (num < 1)
             {
-                if (c.def.defName.Contains("Tiberium"))
-                {
-                    this.Destroy(DestroyMode.Vanish);
-                    return;
-                }
-                else
-                {
-                    c.Destroy(DestroyMode.Vanish);
-                }
+                num = 1;
             }
-            
-            if (!this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Contains(this.thingIDNumber))
+            float num2 = this.def.tiberium.visualSizeRange.LerpThroughRange(this.growthInt);
+            float num3 = this.def.graphicData.drawSize.x * num2;
+            Vector3 vector = Vector3.zero;
+            int num4 = 0;
+            int[] positionIndices = TiberiumPosIndices.GetPositionIndices(this);
+            bool flag = false;
+            foreach (int num5 in positionIndices)
             {
-                this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Add(this.thingIDNumber);
-            } 
-        }
-
-        public override void DeSpawn()
-        {
-            RemoveTiles();
-            TiberiumCrystalDef Localdef = this.def as TiberiumCrystalDef;
-
-            if (this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Contains(this.thingIDNumber))
-            {
-                this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Remove(this.thingIDNumber);
-            }
-            base.DeSpawn();
-        }
-
-        public override void TickLong()
-        {
-            Bleed(Map);
-            if (Destroyed)
-            {
-                return;
-            }
-
-            if (def.plant.LimitedLifespan)
-            {
-                ageInt += GenTicks.TickLongInterval;
-            }         
-
-            TiberiumCrystalDef Localdef = this.def as TiberiumCrystalDef;
-
-            corruptsTo = Localdef.corruptsInto;
-
-            List<ThingDef> friendlyTo = Localdef.friendlyTo;
-
-            if (def.plant.reproduces && growthInt >= SeedShootMinGrowthPercent)
-            {
-                if (Rand.MTBEventOccurs(def.plant.reproduceMtbDays, GenDate.TicksPerDay, GenTicks.TickLongInterval))
+                if (this.def.tiberium.maxMeshCount == 1)
                 {
-                    if (!GenPlant.SnowAllowsPlanting(Position, Map))
+                    vector = a + Gen.RandomHorizontalVector(0.05f);
+                    float num6 = (float)base.Position.z;
+                    if (vector.z - num2 / 2f < num6)
                     {
-                        return;
-                    }
-                    GenPlantReproduction.TryReproduceFrom(Position, def, SeedTargFindMode.Reproduce, Map, corruptsTo, friendlyTo);
-                }
-            }
-
-            TerrainDef t = this.Position.GetTerrain(Map);
-            if (t != null && t != this.corruptsTo)
-            {
-                Map.terrainGrid.SetTerrain(this.Position, this.corruptsTo);
-            }
-
-            float prevGrowth = growthInt;
-            bool wasMature = LifeStage == PlantLifeStage.Mature;
-            growthInt += GrowthPerTick * GenTicks.TickLongInterval;
-
-            if (growthInt > 1f)
-            {
-                growthInt = 1f;
-            }
-
-            if ((!wasMature && LifeStage == PlantLifeStage.Mature) || (int)(prevGrowth * 10f) != (int)(growthInt * 10f))
-            {
-                if (CurrentlyCultivated())
-                {
-                    Map.mapDrawer.MapMeshDirty(Position, MapMeshFlag.Things);
-                }
-            }
-            cachedLabelMouseover = null;
-        }
-
-        public void Bleed(Map map)
-        {
-            if (this.HitPoints < this.MaxHitPoints && this.bledTimes < 5)
-            {
-                IntVec3 pos = this.PositionHeld;
-                FilthMaker.MakeFilth(pos, map, ThingDefOf.FilthBlood, 1);
-                bledTimes = bledTimes + 1;
-            }
-            else if(this.HitPoints >= this.MaxHitPoints)
-            {
-                this.bledTimes = 0;
-            }
-        }
-    }
-
-    public static class GenPlantReproduction
-    {
-        public static Plant TryReproduceFrom(IntVec3 source, ThingDef plantDef, SeedTargFindMode mode, Map map, TerrainDef setTerrain, List<ThingDef> friendlyTo)
-        {
-            IntVec3 dest;
-            if (!TryFindReproductionDestination(source, plantDef, mode, map, friendlyTo, out dest))
-                return null;
-
-            return TryReproduceInto(dest, plantDef, map, setTerrain, friendlyTo);
-        }
-
-        public static Plant TryReproduceInto(IntVec3 dest, ThingDef plantDef, Map map, TerrainDef setTerrain, List<ThingDef> friendlyTo)
-        {
-            if (!plantDef.CanEverPlantAt(dest, map))
-                return null;
-
-            if (!GenPlant.SnowAllowsPlanting(dest, map))
-                return null;
-
-            if (TiberiumRimSettings.settings.UseSpreadRadius)
-            {
-                if (!CheckLists.AllowedCells.Contains(dest))
-                {
-                    return null;
-                }
-            }
-
-            if (CheckLists.ProtectedCells.Contains(dest) || CheckLists.SuppressedCells.Contains(dest))
-            {
-                return null;
-            }
-
-            var t = dest.GetTerrain(map);
-
-            if (t.defName.Contains("Water") | t.defName.Contains("Marsh") && !t.defName.Contains("Marshy"))
-            {
-                if (plantDef.defName.Contains("TiberiumVein"))
-                {
-                    return null;
-                }
-                plantDef = ThingDef.Named("TiberiumGlacier");
-                setTerrain = TerrainDef.Named("TiberiumWater");
-            }
-            else 
-            if (plantDef.defName.Contains("TiberiumGlacier"))
-            {
-                return null;
-            }
-
-            if(plantDef.defName.Contains("Pod"))
-            {
-                if(!t.defName.Contains("Soil"))
-                {
-                    return null;
-                }
-            }
-            
-            if (t.defName.Contains("Sand") && !t.defName.Contains("Sandstone") && Rand.Chance(0.3f))
-            {
-                if (!plantDef.defName.Contains("Desert"))
-                {
-                    switch (plantDef.defName)
-                    {
-                        case "TiberiumGreen":
-                            plantDef = ThingDef.Named("TiberiumDesertGreen");
-                            setTerrain = TerrainDef.Named("TiberiumSandGreen");
-                            break;
-
-                        case "TiberiumBlue":
-                            plantDef = ThingDef.Named("TiberiumDesertBlue");
-                            setTerrain = TerrainDef.Named("TiberiumSandBlue");
-                            break;
-
-                        case "TiberiumRed":
-                            plantDef = ThingDef.Named("TiberiumDesertRed");
-                            setTerrain = TerrainDef.Named("TiberiumSandRed");
-                            break;
-
-                        case "TiberiumVein":
-                            plantDef = ThingDef.Named("TiberiumVein");
-                            setTerrain = TerrainDef.Named("TiberiumSandRed");
-                            break;
-
-                        case "TiberiumPod":
-                            return null;
-
-                        case "TiberiumMossGreen":
-                            return null;
-
-                        case "TiberiumMossBlue":
-                            return null;
-
-                    }
-                    ChangeTerrain(dest, map, setTerrain);
-                    return (Plant)GenSpawn.Spawn(plantDef, dest, map);
-                }
-                else
-                {
-                    ChangeTerrain(dest, map, setTerrain);
-                    return (Plant)GenSpawn.Spawn(plantDef, dest, map);
-                }
-            }
-            else if (plantDef.defName.Contains("Desert"))
-            {
-                return null;
-            }
-            
-            if (t.defName.Contains("Ice"))
-            {
-                switch (plantDef.defName)
-                {
-                    case "TiberiumGreen":
-                        setTerrain = TerrainDef.Named("TiberiumIce");
-                        break;
-
-                    case "TiberiumBlue":
-                        setTerrain = TerrainDef.Named("TiberiumIce");
-                        break;
-
-                    case "TiberiumRed":
-                        return null;
-
-                    case "TiberiumPod":
-                        return null;
-
-                    case "TiberiumVein":
-                        plantDef = ThingDef.Named("TiberiumVein");
-                        setTerrain = TerrainDef.Named("TiberiumIce");
-                        break;
-
-                    case "TiberiumDesertGreen":
-                        plantDef = ThingDef.Named("TiberiumMossGreen");
-                        setTerrain = TerrainDef.Named("TiberiumIce");
-                        break;
-
-                    case "TiberiumDesertBlue":
-                        plantDef = ThingDef.Named("TiberiumMossBlue");
-                        setTerrain = TerrainDef.Named("TiberiumIce");
-                        break;
-
-                    case "TiberiumMossGreen":
-                        setTerrain = TerrainDef.Named("TiberiumIce");
-                        break;
-
-                    case "TiberiumMossBlue":
-                        setTerrain = TerrainDef.Named("TiberiumIce");
-                        break;
-
-                    case "TiberiumDesertRed":
-                        return null;
-                }
-            }
-
-            if (t.fertility < 0.01)
-            {
-                if (!t.defName.Contains("Tiberium") || t.defName.Contains("moss"))
-                {
-                    if (plantDef.defName.Contains("Moss"))
-                    {
-                        ChangeTerrain(dest, map, setTerrain);
-                        return (Plant)GenSpawn.Spawn(plantDef, dest, map);
-                    }
-                    else
-                    {
-                        switch (plantDef.defName)
-                        {
-                            case "TiberiumGreen":
-                                plantDef = TiberiumCrystalDefOf.TiberiumMossGreen;
-                                setTerrain = TerrainDef.Named("TiberiumRockGreen");
-                                break;
-
-                            case "TiberiumBlue":
-                                plantDef = TiberiumCrystalDefOf.TiberiumMossBlue;
-                                setTerrain = TerrainDef.Named("TiberiumRockBlue");
-                                break;
-
-                            case "TiberiumRed":
-                                return null;
-
-                            case "TiberiumPod":
-                                return null;
-
-                            case "TiberiumVein":
-                                plantDef = TiberiumCrystalDefOf.TiberiumVein;
-                                setTerrain = TerrainDef.Named("TiberiumRockGreen");
-                                break;
-
-                            case "TiberiumDesertGreen":
-                                plantDef = TiberiumCrystalDefOf.TiberiumMossGreen;
-                                setTerrain = TerrainDef.Named("TiberiumRockGreen");
-                                break;
-
-                            case "TiberiumDesertBlue":
-                                plantDef = TiberiumCrystalDefOf.TiberiumMossBlue;
-                                setTerrain = TerrainDef.Named("TiberiumRockBlue");
-                                break;
-
-                            case "TiberiumDesertRed":
-                                return null;
-                        }
-                    }
-                }
-            }
-            else if (t.defName.Contains("Mossy") || t.defName.Contains("Mud"))
-            {
-                if (plantDef.defName.Contains("Moss"))
-                {
-                    switch (plantDef.defName)
-                    {
-                        case "TiberiumMossGreen":
-                            setTerrain = TerrainDef.Named("TiberiumMossyTerrainGreen");
-                            break;
-
-                        case "TiberiumMossBlue":
-                            setTerrain = TerrainDef.Named("TiberiumMossyTerrainBlue");
-                            break;
+                        vector.z = num6 + num2 / 2f;
+                        flag = true;
                     }
                 }
                 else
                 {
-                    switch (plantDef.defName)
+                    int num7 = 1;
+                    int maxMeshCount = this.def.tiberium.maxMeshCount;
+                    switch (maxMeshCount)
                     {
-                        case "TiberiumGreen":
-                            plantDef = TiberiumCrystalDefOf.TiberiumMossGreen;
-                            setTerrain = TerrainDef.Named("TiberiumMossyTerrainGreen");
+                        case 1:
+                            num7 = 1;
                             break;
-
-                        case "TiberiumBlue":
-                            plantDef = TiberiumCrystalDefOf.TiberiumMossBlue;
-                            setTerrain = TerrainDef.Named("TiberiumMossyTerrainBlue");
-                            break;
-                    }
-                }
-            }
-            else if (plantDef.defName.Contains("Moss"))
-            {
-                return null;
-            }
-
-            if (Rand.Chance(0.8f))
-            {
-                ChangeTerrain(dest, map, setTerrain);
-                return (Plant)GenSpawn.Spawn(plantDef, dest, map);
-            }
-            return null;
-        }
-
-        public static void ChangeTerrain(IntVec3 c, Map map, TerrainDef setTerrain)
-        {
-            if (c.InBounds(map))
-            {
-                TerrainDef targetTerrain = c.GetTerrain(map);
-                map.terrainGrid.SetTerrain(c, setTerrain);
-            }
-        }
-
-        public static ThingDef GetAnyPlant(String name)
-        {
-            ThingDef plant = null;
-            if (name.Contains("Tree"))
-            {
-                plant = TiberiumPlantDefOf.TiberiumTree;
-            }
-            else if (name.Contains("Bush") || Rand.Chance(0.65f))
-            {
-                if (Rand.Chance(0.45f))
-                {
-                    plant = TiberiumPlantDefOf.TiberiumBush;
-                }
-                else
-                {
-                    plant = TiberiumPlantDefOf.TiberiumShroom;
-                }
-            }
-            else
-            {
-                plant = TiberiumPlantDefOf.TiberiumGrass;
-            }
-            return plant;
-        }
-
-        public static bool TryFindReproductionDestination(IntVec3 source, ThingDef plantDef, SeedTargFindMode mode, Map map, List<ThingDef> friendlyTo, out IntVec3 foundCell)
-        {
-            float radius = -1;
-            if (mode == SeedTargFindMode.Reproduce)
-                radius = plantDef.plant.reproduceRadius;
-            else if (mode == SeedTargFindMode.MapGenCluster)
-                radius = plantDef.plant.WildClusterRadiusActual;
-            else if (mode == SeedTargFindMode.MapEdge)
-                radius = 40;
-
-            var rect = CellRect.CenteredOn(source, Mathf.RoundToInt(radius));
-            rect.ClipInsideMap(map);
-
-            for (int z = rect.minZ; z <= rect.maxZ; z++)
-            {
-                for (int x = rect.minX; x <= rect.maxX; x++)
-                {
-                    var c = new IntVec3(x, 0, z);
-                    var p = c.GetPlant(map);
-
-                    if (p != null)
-                    {
-                        if (!friendlyTo.Contains(p.def))
-                        {
-                            if (Rand.Chance(0.75f))
-                            {                              
-                                String name = p.def.defName;
-                                ThingDef flora = GetAnyPlant(name);
-                                TerrainDef setTerrain = TerrainDef.Named("TiberiumSoilGreen");
-                                IntVec3 loc = p.Position;
-
-                                p.Destroy(DestroyMode.Vanish);
-
-                                GenSpawn.Spawn(flora, loc, map);
-                                ChangeTerrain(loc, map, setTerrain);
-
+                        default:
+                            if (maxMeshCount != 9)
+                            {
+                                if (maxMeshCount != 16)
+                                {
+                                    if (maxMeshCount != 25)
+                                    {
+                                        Log.Error(this.def + " must have tiberium.MaxMeshCount that is a perfect square.");
+                                    }
+                                    else
+                                    {
+                                        num7 = 5;
+                                    }
+                                }
+                                else
+                                {
+                                    num7 = 4;
+                                }
                             }
                             else
                             {
-                                p.Destroy(DestroyMode.Vanish);
+                                num7 = 3;
                             }
-                        }
+                            break;
+                        case 4:
+                            num7 = 2;
+                            break;
                     }
+                    float num8 = 1f / (float)num7;
+                    vector = base.Position.ToVector3();
+                    vector.y = this.def.Altitude;
+                    vector.x += 0.5f * num8;
+                    vector.z += 0.5f * num8;
+                    int num9 = num5 / num7;
+                    int num10 = num5 % num7;
+                    vector.x += (float)num9 * num8;
+                    vector.z += (float)num10 * num8;
+                    float max = num8 * 0.3f;
+                    vector += Gen.RandomHorizontalVector(max);
+                }
+                bool @bool = Rand.Bool;
+                Material matSingle = this.Graphic.MatSingle;
+                GenTiberium.SetWindExposureColors(TiberiumCrystal.workingColors, this);
+                Vector2 vector2 = new Vector2(num3, num3);
+                Vector3 center = vector;
+                Vector2 size = vector2;
+                Material mat = matSingle;
+                bool flipUv = @bool;
+                Printer_Plane.PrintPlane(layer, center, size, mat, 0f, flipUv, null, TiberiumCrystal.workingColors, 0.1f);
+                num4++;
+                if (num4 >= num)
+                {
+                    break;
                 }
             }
-
-            Predicate<IntVec3> destValidator = c =>
+            if (this.def.graphicData.shadowData != null)
             {
-                if (!plantDef.CanEverPlantAt(c, map))
-                    return false;
+                Vector3 center2 = a + this.def.graphicData.shadowData.offset * num2;
+                if (flag)
+                {
+                    center2.z = base.Position.ToVector3Shifted().z + this.def.graphicData.shadowData.offset.z;
+                }
+                center2.y -= 0.046875f;
+                Vector3 volume = this.def.graphicData.shadowData.volume * num2;
+                Printer_Shadow.PrintShadow(layer, center2, volume, Rot4.North);
+            }
+            Rand.PopState();
+        }
 
-                if (!GenPlant.SnowAllowsPlanting(c, map))
-                    return false;
+        // Bools
+        public virtual bool CanReproduceNow
+        {
+            get
+            {
+                return base.Spawned && this.growthInt >= 0.6f;
+            }
+        }
 
-                if (!source.InHorDistOf(c, radius))
-                    return false;
+        public bool Dying
+        {
+            get
+            {
+                return this.CurrentDyingDamagePerTick > 0f;
+            }
+        }
 
-                if (!GenSight.LineOfSight(source, c, map, skipFirstCell: true))
-                    return false;
+        public bool DyingBecauseExposedToInhibition
+        {
+            get
+            {
+                return base.Spawned && mapComp.InhibitedCells.Contains(this.Position);
+            }
+        }
 
-                return true;
-            };
-            return CellFinder.TryFindRandomCellNear(source, map, Mathf.CeilToInt(radius), destValidator, out foundCell);
+        public bool Resting
+        {
+            get
+            {
+                return GenLocalDate.DayPercent(this) < 0.2f;
+            }
+        }
+
+        public bool CountsAsMature
+        {
+            get
+            {
+                return this.HarvestValue >= this.def.tiberium.maxHarvestValue * 0.70f;
+            }
+        }
+
+        // Values
+
+        public virtual float CurrentDyingDamagePerTick
+        {
+            get
+            {
+                float num = 0f;
+                if (this.DyingBecauseExposedToInhibition)
+                {
+                    num = Mathf.Max(num, DyingDamagePerTickBecauseInhibited.LerpThroughRange(0.1f));
+                }
+                return num;
+            }
+        }
+
+        public float Growth
+        {
+            get
+            {
+                return this.growthInt;
+            }
+            set
+            {
+                this.growthInt = Mathf.Clamp01(value);
+            }
+        }
+
+        public float HarvestValue
+        {
+            get
+            {
+                return growthInt * this.def.tiberium.maxHarvestValue;
+            }
+        }
+
+        protected float GrowthPerTick
+        {
+            get
+            {
+                if (this.LifeStage != TiberiumLifeStage.Growing || this.Resting)
+                {
+                    return 0f;
+                }
+                float num = 1f / (60000f * this.def.tiberium.growDays);
+                return num * this.GrowthRate;
+            }
+        }
+
+        public virtual float GrowthRate
+        {
+            get
+            {
+                return ctrlDef.TiberiumGrowthRate;
+            }
+        }
+
+        /*
+        public float GrowthRateFactor_Fertility
+        {
+            get
+            {
+                return base.Map.fertilityGrid.FertilityAt(base.Position) * thisDef.tiberium.fertilitySensitivity + (1f - thisDef.tiberium.fertilitySensitivity);
+            }
+        }
+        */
+
+        public float GrowthRateFactor_Temperature
+        {
+            get
+            {
+                float num;
+                if (!GenTemperature.TryGetTemperatureForCell(base.Position, base.Map, out num))
+                {
+                    return 1f;
+                }
+                if (num < 10f)
+                {
+                    return Mathf.InverseLerp(0f, 10f, num);
+                }
+                if (num > 42f)
+                {
+                    return Mathf.InverseLerp(58f, 42f, num);
+                }
+                return 1f;
+            }
+        }
+
+        public int Age
+        {
+            get
+            {
+                return this.ageInt;
+            }
+            set
+            {
+                this.ageInt = value;
+            }
+        }
+
+        protected string GrowthPercentString
+        {
+            get
+            {
+                return (this.growthInt + 0.0001f).ToStringPercent();
+            }
+        }
+
+        public override string GetInspectString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            if (this.LifeStage == TiberiumLifeStage.Growing)
+            {
+                stringBuilder.AppendLine("PercentGrowth".Translate(new object[]
+                {
+                    this.GrowthPercentString
+                }));
+                stringBuilder.AppendLine("GrowthRate".Translate() + ": " + this.GrowthRate.ToStringPercent());
+
+                if (this.Resting)
+                {
+                    stringBuilder.AppendLine("PlantResting".Translate());
+                }
+            }
+            else if (this.LifeStage == TiberiumLifeStage.Mature)
+            {
+                if (CountsAsMature && def.tiberium.harvestable)
+                {
+                    stringBuilder.AppendLine("HarvestReady".Translate());
+                }
+            }
+            if (this.def.tiberium.harvestable)
+            {
+                stringBuilder.AppendLine("HarvestValue".Translate() + ": " + Mathf.RoundToInt(HarvestValue));
+            }
+            if (DyingBecauseExposedToInhibition)
+            {
+                stringBuilder.AppendLine("DyingToInhibition".Translate());
+            }
+            return stringBuilder.ToString().TrimEndNewlines();
         }
     }
 }

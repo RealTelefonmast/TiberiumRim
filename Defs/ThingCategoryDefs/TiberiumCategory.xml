@@ -6,7 +6,7 @@
     <label>Tiberium</label>
 	<parent>Root</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
-    <iconPath>Icons/ThingCategories/TiberiumCategory</iconPath>
+    <iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
   </ThingCategoryDef>
   
   <ThingCategoryDef>
@@ -14,7 +14,7 @@
     <label>Tiberium Items</label>
 	<parent>Tiberium</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
-    <iconPath>Icons/ThingCategories/TiberiumCategory</iconPath>
+    <iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
   </ThingCategoryDef>
   
    <ThingCategoryDef>
@@ -22,7 +22,7 @@
     <label>Tiberium Misc</label>
 	<parent>Tiberium</parent>
     <resourceReadoutRoot>true</resourceReadoutRoot>
-    <iconPath>Icons/ThingCategories/TiberiumCategory</iconPath>
+    <iconPath>UI/Icons/ThingCategories/TiberiumCategory</iconPath>
   </ThingCategoryDef>
 
 </Defs>

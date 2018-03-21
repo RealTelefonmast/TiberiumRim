@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<HediffDef Name="InjuryBase" Abstract="True">
+	<HediffDef Name="InjuryBase_TB" Abstract="True">
 		<hediffClass>Hediff_Injury</hediffClass>
 		<tendable>true</tendable>
 		<displayWound>true</displayWound>
 	</HediffDef>
 	
-	<HediffDef Name="InfectionBase" Abstract="True">
+	<HediffDef Name="InfectionBase_TB" Abstract="True">
 		<hediffClass>HediffWithComps</hediffClass>
 		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
 		<initialSeverity>0.1</initialSeverity>
@@ -19,7 +19,7 @@
 
 	<!-- Treating Tiberium like a disease -->
 	
-	<HediffDef ParentName="InfectionBase">
+	<HediffDef ParentName="InfectionBase_TB">
 		<defName>TiberiumContactPoison</defName>
 		<defaultLabelColor>(10, 139, 0)</defaultLabelColor>
 		<label>Tiberium infection</label>
@@ -568,23 +568,25 @@
 			  <li>
 				<verbClass>Verb_MeleeAttack</verbClass>
 				<defaultCooldownTime>1.65</defaultCooldownTime>
-				<meleeDamageBaseAmount>10</meleeDamageBaseAmount>
+				<meleeDamageBaseAmount>9</meleeDamageBaseAmount>
 				<meleeDamageDef>Blunt</meleeDamageDef>
 			  </li>
 			</verbs>  
 		  </li>
-		  <li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
+		  <li Class="HediffCompProperties_Discoverable">
+				<sendLetterWhenDiscovered>true</sendLetterWhenDiscovered>
+		  </li>
 		</comps>
 		<stages>
 		  <li>
 			  <capMods>
 				<li>
 				  <capacity>Manipulation</capacity>
-				  <offset>0.1</offset>
+				  <offset>0.2</offset>
 				</li>
 				<li>
 					<capacity>Moving</capacity>
-					<offset>0.25</offset>
+					<offset>0.20</offset>
 				</li>
 				<li>
 					<capacity>Consciousness</capacity>
@@ -601,18 +603,20 @@
 		<defaultLabelColor>(106, 7, 0)</defaultLabelColor>
 		<label>Tiberium Mutation (Bad)</label>
 		<comps>
-			<li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
+			<li Class="HediffCompProperties_Discoverable">
+				<sendLetterWhenDiscovered>true</sendLetterWhenDiscovered>
+			</li>
 		</comps>
 		<stages>
 		  <li>
 			  <capMods>
 				<li>
 				  <capacity>Manipulation</capacity>
-				  <offset>-0.25</offset>
+				  <offset>-0.3</offset>
 				</li>
 								<li>
 					<capacity>Moving</capacity>
-					<offset>-0.1</offset>
+					<offset>-0.05</offset>
 				</li>
 				<li>
 					<capacity>Consciousness</capacity>
@@ -724,23 +728,6 @@
 		<defaultLabelColor>(0.65, 0.3, 0.9)</defaultLabelColor>
 		<isBad>false</isBad>
 		<comps>
-		  <li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
-		</comps>
-	</HediffDef>
-	
-	<HediffDef>
-		<defName>TiberiumInfusionImmunityNPC</defName>
-		<label>Tiberium vaccine</label>
-		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(0.65, 0.3, 0.9)</defaultLabelColor>
-		<isBad>false</isBad>
-		<comps>
-			<li Class="HediffCompProperties_Disappears">
-				<disappearsAfterTicks>
-					<min>150000</min>
-					<max>250000</max>
-				</disappearsAfterTicks>
-			</li>
 		  <li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
 		</comps>
 	</HediffDef>

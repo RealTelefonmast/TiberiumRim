@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
-
 <Defs>
-	<ThingDef Name="BasePawn" Abstract="True">
+	<ThingDef Name="BasePawn_TR" Abstract="True">
 		<thingClass>Pawn</thingClass>
 		<category>Pawn</category>
 		<selectable>true</selectable>
@@ -32,12 +31,13 @@
 	</ThingDef>
 
 	
-	<ThingDef ParentName="BasePawn" Name="AnimalThingBase" Abstract="True">
+	<ThingDef ParentName="BasePawn_TR" Name="AnimalThingBase_TR" Abstract="True">
 		<statBases>
 			<Flammability>0.6</Flammability>
 			<LeatherAmount>25</LeatherAmount>
 		</statBases>
 		<race>
+			<herdMigrationAllowed>false</herdMigrationAllowed>
 			<thinkTreeMain>Animal</thinkTreeMain>
 			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
 			<hasGenders>true</hasGenders>
@@ -56,12 +56,8 @@
 			<li>Euthanize</li>
 		</recipes>
 	</ThingDef>
-
 	
-	<PawnKindDef Name="AnimalKindBase" Abstract="True">
-	</PawnKindDef>
-	
-  <ThingDef Abstract="True" ParentName="AnimalThingBase" Name="TiberiumLifeform">
+  <ThingDef Abstract="True" ParentName="AnimalThingBase_TR" Name="TiberiumLifeform">
     <statBases>
       <ToxicSensitivity>0</ToxicSensitivity>
 	  <LeatherAmount>5</LeatherAmount>
@@ -69,8 +65,8 @@
     </statBases>
     <race>
       <fleshType>Tiberium</fleshType>
-      <bloodDef>FilthTibBloodG</bloodDef>
-      <meatColor>(80,80,30)</meatColor>
+      <bloodDef>FilthTiberiumGreen</bloodDef>
+      <meatColor>(0,255,20)</meatColor>
       <foodType>OmnivoreAnimal, AnimalProduct</foodType>
       <manhunterOnDamageChance>1</manhunterOnDamageChance>
       <manhunterOnTameFailChance>0.8</manhunterOnTameFailChance>
@@ -81,6 +77,7 @@
 	<ThingDef ParentName="TiberiumLifeform">
 		<defName>Visceroid_TBI</defName>
 		<label>Visceroid</label>
+		<thingClass>TiberiumRim.Visceroid</thingClass>
 		<description>A blob-like and disturbing lifeform. Formed after the death of a creature by Tiberium.</description>
 		<statBases>
 			<MoveSpeed>1</MoveSpeed>
@@ -112,12 +109,11 @@
 		<maxPreyBodySize>1.0</maxPreyBodySize>
 		<baseBodySize>1.2</baseBodySize>
 		<baseHungerRate>0.4</baseHungerRate>
-		<baseHealthScale>1</baseHealthScale>
+		<baseHealthScale>0.5</baseHealthScale>
 		<trainableIntelligence>Simple</trainableIntelligence>
 		<leatherColor>(204,102,0)</leatherColor>
 		<leatherLabel>Visceroid Skin</leatherLabel>
-		<leatherInsulation>0.5</leatherInsulation>
-		<leatherMarketValueFactor>0.5</leatherMarketValueFactor>
+		<leatherInsulation>0.2</leatherInsulation>
 		<meatLabel>Visceroid Matter</meatLabel>
 		<wildness>1</wildness>
 		<gestationPeriodDays>25</gestationPeriodDays>
@@ -230,8 +226,10 @@
 		<baseHungerRate>0.8</baseHungerRate>
 		<baseHealthScale>1</baseHealthScale>
 		<trainableIntelligence>Simple</trainableIntelligence>
-		<useMeatFrom>Visceroid_TBI</useMeatFrom>
-		<useLeatherFrom>Visceroid_TBI</useLeatherFrom>
+		<leatherColor>(204,102,0)</leatherColor>
+		<leatherLabel>Veinmonster skin</leatherLabel>
+		<leatherInsulation>0.5</leatherInsulation>
+		<meatLabel>Veinmonster flesh</meatLabel>
 		<wildness>1</wildness>
 		<gestationPeriodDays>25</gestationPeriodDays>
 		<nameOnTameChance>1</nameOnTameChance>

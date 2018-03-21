@@ -24,6 +24,6 @@ namespace TiberiumRim
 
         public static HediffDef TiberiumMutationBad = HediffDef.Named("TiberiumMutationBad");
 
-        public static HediffDef TiberAddHediff = HediffDef.Named("TiberAddHediff");        
+        public static HediffDef TiberAddHediff = HediffDef.Named("TiberAddHediff");
     }
 }

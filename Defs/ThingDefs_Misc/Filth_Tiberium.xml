@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-  
+
   <ThingDef ParentName="BaseFilth">
     <defName>FilthTiberiumGreen</defName>
     <label>Green tiberium dust</label>
@@ -9,7 +9,7 @@
       <Cleanliness>-55</Cleanliness>
     </statBases>
     <graphicData>
-      <texPath>Filth/TibDustA</texPath>
+      <texPath>Filth/TibDustGreen</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
     <filth>
@@ -27,7 +27,7 @@
       <Cleanliness>-55</Cleanliness>
     </statBases>
     <graphicData>
-      <texPath>Filth/TibDustB</texPath>
+      <texPath>Filth/TibDustBlue</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
     <filth>
@@ -45,7 +45,7 @@
       <Cleanliness>-55</Cleanliness>
     </statBases>
     <graphicData>
-      <texPath>Filth/TibDustC</texPath>
+      <texPath>Filth/TibDustRed</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
     <filth>
@@ -108,6 +108,5 @@
       <canFilthAttach>true</canFilthAttach>
     </filth>
   </ThingDef>
-
-
+  
 </Defs>

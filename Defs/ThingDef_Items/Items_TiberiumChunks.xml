@@ -3,8 +3,8 @@
 
 	<ThingDef Name="TiberiumChunkBase" Abstract="True">
 		<category>Item</category>
-		<thingClass>TiberiumRim.ThingDef_TiberiumChunk</thingClass>
-		<description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals.</description>
+		<thingClass>TiberiumRim.TiberiumChunk</thingClass>
+		<description>A Tiberium chunk, it will slowly deteriorate into Tiberium crystals. It's useless.</description>
 		<altitudeLayer>Item</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<fillPercent>0.50</fillPercent>
@@ -56,6 +56,7 @@
 		<killedLeavings>
             <TiberiumGreen>1</TiberiumGreen>
         </killedLeavings>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="TiberiumChunkBase">
@@ -84,6 +85,7 @@
 		<killedLeavings>
             <TiberiumBlue>1</TiberiumBlue>
         </killedLeavings>
+		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 	</ThingDef>
 	
 	<ThingDef ParentName="TiberiumChunkBase">
@@ -112,6 +114,7 @@
 		<killedLeavings>
             <TiberiumRed>1</TiberiumRed>
         </killedLeavings>
+		<filthLeaving>FilthTiberiumRed</filthLeaving>
 	</ThingDef>
 	
 </Defs>

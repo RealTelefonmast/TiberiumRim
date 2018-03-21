@@ -6,6 +6,7 @@ namespace TiberiumRim
 {
     public class Gas_Tiberium : Gas
     {
+        private float gasFlt = MainTCD.MainTiberiumControlDef.GasInfectionFlt / GenTicks.TickLongInterval;
 
         public override void Tick()
         {
@@ -15,10 +16,9 @@ namespace TiberiumRim
                 List<Thing> thinglist = c.GetThingList(Map);
                 foreach (Thing t in thinglist)
                 {
-                    Pawn p = t as Pawn;
-                    if (p != null)
+                    if (t is Pawn p)
                     {
-                        TiberiumUtility.Infect(p, 0.0001f, Map, true);
+                        TiberiumUtility.Infect(p, gasFlt, Map, true);
                     }
                 }
             }

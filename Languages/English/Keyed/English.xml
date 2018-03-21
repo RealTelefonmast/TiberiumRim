@@ -14,13 +14,54 @@
   <TiberiumProducersAmtDesc>Set the amount of Tiberium Producers that can spawn.</TiberiumProducersAmtDesc>
   <UseSpreadRadiusLabel>Use Spread Radius</UseSpreadRadiusLabel>
   <UseSpreadRadiusDesc>This makes Tiberium only spread in a certain radius around producers.</UseSpreadRadiusDesc>
-
+  <UseCustomBackgroundLabel>Show custom background</UseCustomBackgroundLabel>
+  <UseCustomBackgroundDesc>Displays the custom TiberiumRim background instead of the the vanilla one.</UseCustomBackgroundDesc>
+  <PawnDamage>Tiberium Infects Pawns</PawnDamage> 
+  <PawnDamageDesc>All pawns next to Tiberium will get affected by it.</PawnDamageDesc> 
+  <UseSpecifcProducersLabel>Specify Producers</UseSpecifcProducersLabel>
+  <UseSpecifcProducersDesc>Select the specific producers you want to spawn via event.</UseSpecifcProducersDesc>
   
-  <BuildingDamage>Tiberium Damages Structures:</BuildingDamage>
+  <BuildingDamage>Tiberium Damages Structures</BuildingDamage>
   <BuildingDamageDesc>Activate this to let Tiberium damage any structure.</BuildingDamageDesc>
-  <EntityDamage>Tiberium Damages Entities:</EntityDamage>
+  <EntityDamage>Tiberium Damages Entities</EntityDamage>
   <EntityDamageDesc>Activate this to let Tiberium damage any item or object.</EntityDamageDesc>
   <TiberiumTileInfestation>Tiberium Infestation at: </TiberiumTileInfestation>
   <TiberiumTileInfestationFull>Tiberium Infestation at: 100%</TiberiumTileInfestationFull>
-
+  <NewRefinerySet>New Tiberium refinery set for {0}.</NewRefinerySet>
+  <RefineryLost>Refinery Lost.</RefineryLost>
+  
+  <UsedToBeName>Used to be {0}, the {1}</UsedToBeName>
+  <UsedToBeNoName>Used to be a {0}</UsedToBeNoName>
+  <PawnConverted>{0} has been turned into a Visceroid!</PawnConverted>
+  
+  
+  <ProducerWokenIn>Fully formed in</ProducerWokenIn>
+  <ProducerWoken>Fully formed.</ProducerWoken>
+  <!-- Harvester Work -->
+  <ReturnToRefineryIdling>Idling.</ReturnToRefineryIdling>
+  <ReturnToRefineryHarvesting>Harvesting.</ReturnToRefineryHarvesting>
+  
+  <SelectRefineryLabel>Set Refinery</SelectRefineryLabel>
+  <SelectRefineryDesc>Select a new main refinery for this harvester.</SelectRefineryDesc>
+  <SelectRefinerySame>This cannot be set as the new main refinery as it is the main refinery.</SelectRefinerySame>
+  <SelectRefineryWrong>This cannot be set as a new main refinery.</SelectRefineryWrong>
+  
+  <SetTiberiumLabel>Preferred Type</SetTiberiumLabel>
+  <SetTiberiumDesc>Set a preferred Tiberium type, it will then be seeked out no matter the distance instead of the other types as long as it exists.</SetTiberiumDesc>
+  <ResetTiberium>Reset Preferred Type</ResetTiberium>
+  
+  <HarvesterModeNearest>Harvest Closest Tiberium</HarvesterModeNearest>
+  <HarvesterModeValue>Harvest Most Valuable Tiberium</HarvesterModeValue>
+  <HarvesterModeDesc>Determine whether the Harvester goes to the closest or the most valuable Tiberium on the map. Is overriden by preferred types.</HarvesterModeDesc>
+  <NA>Not Available</NA>
+  
+  
+  <!-- Tiberium -->
+  <HarvestValue>Current value</HarvestValue>
+  <HarvestReady>Ready for harvest.</HarvestReady>
+  <DyingToInhibition>Dying due to sonic waves.</DyingToInhibition>
+  
+  <TiberiumHomeAlert>Tiberium in home area!</TiberiumHomeAlert>
+  <TiberiumHomeAlertExp>Tiberium has spread to your home area, it might cause damage soon!</TiberiumHomeAlertExp>
+  
 </LanguageData>

@@ -1,47 +1,88 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Verse;
+using System.Text;
 using RimWorld;
+using Verse;
+using Verse.AI;
+using Verse.AI.Group;
 
 namespace TiberiumRim
 {
-    public class Building_Veinhole : Building
+    public class Building_Veinhole : Building_TiberiumProducer
     {
-        private int radius = 30;
+        private int hubsInt = 0;
 
-        private int hubsInt;
+        private int hubsRadius = 50;
 
-        private int spawnTicks;
+        private int ticksToSpawn = 0;
 
-        private List<Thing> hubs = new List<Thing>();
+        private Lord defenseLord;
+
+        private List<Thing> hubList = new List<Thing>();
+
+        public override void SpawnSetup(Map map, bool respawningAfterLoad)
+        {
+            base.SpawnSetup(map, respawningAfterLoad);
+            if (!respawningAfterLoad)
+            {
+                if(this.defenseLord == null)
+                {
+                    if(!CellFinder.TryFindRandomCellNear(this.Position, this.Map, this.def.terrainRadius, (IntVec3 c) => c.Standable(this.Map) && this.Map.reachability.CanReach(this.Position, this, PathEndMode.Touch, TraverseParms.For(TraverseMode.PassDoors, Danger.Deadly, false)), out IntVec3 cell))
+                    {
+                        Log.Error("No cell found for veinhub defense lord.");
+                        cell = IntVec3.Invalid;
+                    }
+                    LordJob_MechanoidsDefendShip lordJob = new LordJob_MechanoidsDefendShip(this, null, this.def.terrainRadius, cell);
+                    this.defenseLord = LordMaker.MakeNewLord(null, lordJob, this.Map, null);
+                }
+                ResetTimer();
+            }
+        }
+
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            KillHubs();
+            base.KillBoundCrystals();
+            base.Destroy(mode);
+        }
 
         public override void ExposeData()
         {
             base.ExposeData();
+            Scribe_Values.Look<int>(ref ticksToSpawn, "ticksTopSpawn");
             Scribe_Values.Look<int>(ref this.hubsInt, "progressTicks", 0, false);
-            Scribe_Collections.Look<Thing>(ref this.hubs, "hubs", LookMode.Reference);
+            Scribe_References.Look<Lord>(ref this.defenseLord, "defenseLord", false);
+            Scribe_Collections.Look<Thing>(ref this.hubList, "hubs", LookMode.Reference);         
         }
 
-        public static void destroyVeins(List<IntVec3> checkCoords)
+        public override void TickRare()
         {
-            checkCoords.ForEach(i =>
+            base.TickRare();
+            if (!base.IsResearchBound)
             {
-                if (i.InBounds(Find.VisibleMap))
+                if (ticksToSpawn <= 0)
                 {
-                    Thing thing = i.GetFirstThing(Find.VisibleMap, ThingDef.Named("TiberiumVein"));
-                    if (!thing.DestroyedOrNull())
-                    {
-                        thing.Destroy(DestroyMode.Vanish);
-                        IntVec3[] cells = GenAdj.AdjacentCells;
-                        destroyVeins(new List<IntVec3>() { i + cells[0], i + cells[1], i + cells[2], i + cells[3], i + cells[4], i + cells[5], i + cells[6], i + cells[7] });
-                    }
+                    GrowHub();
+                    ResetTimer();
                 }
-            });
+                ticksToSpawn -= GenTicks.TickRareInterval;
+                if (Rand.Chance(0.001f))
+                {
+                    SpawnVeinmonster();
+                }              
+            }
         }
 
-        public void killHubs()
+        public void ResetTimer()
         {
-            foreach (Thing t in hubs)
+            IntRange range = new IntRange(GenDate.TicksPerDay, GenDate.TicksPerQuadrum);
+            this.ticksToSpawn = range.RandomInRange;
+        }
+
+        public void KillHubs()
+        {
+            foreach (Thing t in hubList)
             {
                 if (t != null)
                 {
@@ -50,158 +91,94 @@ namespace TiberiumRim
             }
         }
 
-        public bool canSpawnHubNow
-        {
-            get
-            {
-                return spawnTicks > 260;
-            }
-        }
+        public void SpawnVeinmonster()
+        {       
+            IntVec3 pos = this.RandomAdjacentCell8Way();
 
-        public override void TickRare()
-        {
-            spawnTicks += 1;
-            growHub();
-            spawnVeinmonster();
-            base.TickRare();
-        }
-
-        private void growHub()
-        {
-            if (canSpawnHubNow)
-            {
-                spawnTicks = 0;
-                if (hubsInt < 6)
-                {
-                    int num = GenRadial.NumCellsInRadius(this.radius);
-
-                    int rand = Rand.Range(1, num);
-                    IntVec3 pos = this.Position + GenRadial.RadialPattern[rand];
-                    if (pos.InBounds(Map))
-                    {
-                        List<Thing> thinglist = pos.GetThingList(Map);
-                        Thing hub = ThingMaker.MakeThing(DefDatabase<ThingDef>.GetNamed("VeinholeHub_TBNS"), null);
-                        foreach (Thing t in thinglist)
-                        {
-                            if (t.def != hub.def)
-                            {
-                                if (t.def.passability == Traversability.Standable)
-                                {
-                                    if (!pos.GetTerrain(Map).defName.Contains("Water") || !pos.GetTerrain(Map).defName.Contains("Marsh"))
-                                    {
-                                        GenSpawn.Spawn(hub, pos, Map);
-                                        hubsInt += 1;
-                                        hubs.Add(hub);
-                                        Messages.Message("VeinHubSpawned".Translate(), new TargetInfo(hub.Position, Map, false), MessageTypeDefOf.CautionInput);
-                                        return;
-                                    }
-                                }
-                                growHub();
-                                return;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        public void spawnVeinmonster()
-        {
-            IntVec3 pos = this.Position.RandomAdjacentCell8Way();
-
-            int maximum = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinhole")).Count * 12;
+            int maximum = Map.listerThings.AllThings.FindAll((Thing x) => x.def == this.def).Count * 12;
             int Veinmonsters = Map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Veinmonster_TBI")).Count;
 
-            if (Rand.Chance(0.001f) && Veinmonsters < maximum)
+            if (Veinmonsters < maximum)
             {
                 PawnKindDef Veinmonster = PawnKindDef.Named("Veinmonster_TBI");
                 PawnGenerationRequest request = new PawnGenerationRequest(Veinmonster);
                 Pawn pawn = PawnGenerator.GeneratePawn(request);
                 GenSpawn.Spawn(pawn, pos, Map);
+                this.defenseLord.AddPawn(pawn);
             }
         }
 
-        private void EatPawn()
+        private void GrowHub()
         {
-            List<IntVec3> list = GenAdj.OccupiedRect(this).ExpandedBy(1).EdgeCells.ToList();
-            IntVec3 c = list[Rand.Range(0, list.Count)];
-            List<Thing> thingList = c.GetThingList(this.Map);
-
-            foreach (Pawn p in thingList)
+            if (hubsInt < 6)
             {
-                if (Rand.Chance(0.05f))
+                ThingDef hubDef = DefDatabase<ThingDef>.GetNamed("VeinholeHub_TBNS");
+                int num = GenRadial.NumCellsInRadius(hubsRadius);
+                IntVec3 spawnCell = IntVec3.Invalid ;
+                bool flag = true;
+                while (flag)
                 {
-                    Messages.Message("MessagePawnEaten".Translate(), new TargetInfo(p.Position, Map, false), MessageTypeDefOf.PawnDeath);
-                    p.Destroy(DestroyMode.Vanish);
-                }
-            }
-        }
-
-        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
-        {
-            destroyVeins(GenAdjFast.AdjacentCells8Way(this));
-            killHubs();
-            base.Destroy(mode);
-        }
-    }
-
-    public class Building_Veinhub : Building
-    {
-        private int radius = 7;
-
-        private bool floorNotSet = true;
-        public override void TickRare()
-        {
-            int num = GenRadial.NumCellsInRadius(this.radius);
-            for (int i = 0; i < num; i++)
-            {
-                IntVec3 positionToCheck = this.Position + GenRadial.RadialPattern[i];
-                if (positionToCheck.InBounds(Map))
-                {
-                    if (!positionToCheck.GetTerrain(Map).Removable)
+                    int rand = Rand.Range(1, num);
+                    IntVec3 pos = this.Position + GenRadial.RadialPattern[rand];
+                    if (pos.InBounds(Map))
                     {
-                        this.TryAttack(positionToCheck);
-                        if (floorNotSet)
+                        if (pos.IsFarAwayEnoughFromAny(hubDef, Map, 12))
                         {
-                            TerrainDef t = TerrainDef.Named("VeinSoilRed");
-                            TerrainDef t2 = TerrainDef.Named("TiberiumSoilRed");
-                            TerrainDef tt = positionToCheck.GetTerrain(Map);
-                            if (tt.defName.Contains("Water") || tt.defName.Contains("Ice") || tt.defName.Contains("Marsh"))
+                            List<Thing> thinglist = pos.GetThingList(Map);
+                            foreach (Thing t in thinglist)
                             {
-                                Map.terrainGrid.SetTerrain(positionToCheck, tt);
-                            }
-                            else if (tt.defName.Contains("Sand"))
-                            {
-                                Map.terrainGrid.SetTerrain(positionToCheck, t2);
-                            }
-                            else
-                            {
-                                Map.terrainGrid.SetTerrain(positionToCheck, t);
+                                if (t.def != hubDef)
+                                {
+                                    if (t.def.passability == Traversability.Standable)
+                                    {
+                                        if (!pos.GetTerrain(Map).defName.Contains("Water") || !pos.GetTerrain(Map).defName.Contains("Marsh"))
+                                        {
+                                            spawnCell = pos;
+                                            flag = !flag;
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
-            }
-            floorNotSet = false;
-        }
-
-        private void TryAttack(IntVec3 c)
-        {
-            if (c.InBounds(Map))
-            {
-                List<Thing> thinglist = c.GetThingList(this.Map);
-                for (int i = 0; i < thinglist.Count; i++)
+                if (spawnCell.IsValid)
                 {
-                    if (thinglist[i] is Pawn)
-                    {
-                        ThingDef tentacle = ThingDef.Named("VeinTentacle");
-                        if (c.GetFirstThing(Map, tentacle) == null)
-                        {
-                            GenSpawn.Spawn(tentacle, c, Map);
-                        }
-                    }
+                    Thing hub = ThingMaker.MakeThing(hubDef, null);
+                    GenSpawn.Spawn(hub, spawnCell, Map);
+                    hubsInt += 1;
+                    hubList.Add(hub);
+                    Messages.Message("VeinHubSpawned".Translate(), new TargetInfo(hub.Position, Map, false), MessageTypeDefOf.CautionInput);
                 }
             }
+        }
+
+        public override IEnumerable<Gizmo> GetGizmos()
+        {
+            base.GetGizmos();
+            if (Prefs.DevMode)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEBUG: Spawn Hub",
+                    icon = TexCommand.DesirePower,
+                    action = delegate
+                    {
+                        GrowHub();
+                    }
+                };
+                yield return new Command_Action
+                {
+                    defaultLabel = "DEBUG: Spawn Veiny",
+                    icon = TexCommand.Attack,
+                    action = delegate
+                    {
+                        Log.Message("TryingToSpawnVeinmonster");
+                        this.SpawnVeinmonster();
+                    }
+                };
+            }
+            yield break;
         }
     }
 }

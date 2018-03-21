@@ -38,7 +38,9 @@
 		<building>
 			<allowAutoroof>false</allowAutoroof>
 			<isInert>true</isInert>
-			<isNaturalRock>true</isNaturalRock>
+			<isNaturalRock>false</isNaturalRock>
+			<isResourceRock>false</isResourceRock>
+			<claimable>false</claimable>
 			<canBuildNonEdificesUnder>false</canBuildNonEdificesUnder>
 			<deconstructible>false</deconstructible>
 		</building>
@@ -61,17 +63,10 @@
 		</statBases>
 		<description>Rocks infested with green Tiberium.</description>
 		<rotatable>true</rotatable>
-		<building>
-			<isNaturalRock>false</isNaturalRock>
-			<claimable>false</claimable>
-			<isResourceRock>true</isResourceRock>
-			<mineableThing>GreenTiberiumRaw</mineableThing>
-			<mineableYield>7</mineableYield>
-		</building>
 		<comps>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
-				<glowColor>(75,155,75,0)</glowColor>
+				<glowColor>(75,155,75,75)</glowColor>
 			</li>
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
@@ -98,17 +93,10 @@
 		</statBases>
 		<description>Rocks infested with blue Tiberium.</description>
 		<rotatable>true</rotatable>
-		<building>
-			<isNaturalRock>false</isNaturalRock>
-			<claimable>false</claimable>
-			<isResourceRock>true</isResourceRock>
-			<mineableThing>BlueTiberiumRaw</mineableThing>
-			<mineableYield>5</mineableYield>
-		</building>
 		<comps>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
-				<glowColor>(75,85,155,0)</glowColor>
+				<glowColor>(75,85,155,75)</glowColor>
 			</li>
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
@@ -135,17 +123,10 @@
 		</statBases>
 		<description>Rocks infested with red Tiberium.</description>
 		<rotatable>true</rotatable>
-		<building>
-			<isNaturalRock>false</isNaturalRock>
-			<claimable>false</claimable>
-			<isResourceRock>true</isResourceRock>
-			<mineableThing>RedTiberiumRaw</mineableThing>
-			<mineableYield>3</mineableYield>
-		</building>
 		<comps>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
-				<glowColor>(155,75,75,0)</glowColor>
+				<glowColor>(155,75,75,75)</glowColor>
 			</li>
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
@@ -172,13 +153,6 @@
 		</statBases>
 		<description>Rocks infested with Tiberium veins.</description>
 		<rotatable>true</rotatable>
-		<building>
-			<isNaturalRock>false</isNaturalRock>
-			<claimable>false</claimable>
-			<isResourceRock>true</isResourceRock>
-			<mineableThing>VeinTiberiumRaw</mineableThing>
-			<mineableYield>6</mineableYield>
-		</building>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
         <killedLeavings>
             <TiberiumVein>1</TiberiumVein>

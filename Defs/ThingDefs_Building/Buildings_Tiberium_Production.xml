@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="BenchBase" ParentName="BuildingBase" Abstract="True">
+	<ThingDef Name="BenchBase_TR" ParentName="BuildingBase" Abstract="True">
 		<castEdgeShadows>true</castEdgeShadows>
 		<staticSunShadowHeight>0.20</staticSunShadowHeight>
 		<building>
@@ -17,21 +17,178 @@
 			<li>PlaceWorker_ReportWorkSpeedPenalties</li>
 		</placeWorkers>
 	</ThingDef>
-
-
-	<ThingDef ParentName="BenchBase">
-		<defName>TiberiumRefinery</defName>
-		<label>tiberium refinery</label>
-		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
-		<thingClass>Building_WorkTable</thingClass>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>TiberiumNetworkController</defName>
+		<label>Tiberium Network Controller</label>
+		<description>This structure is the main part of any Tiberium network, it is a necessary component to connect refineries to storage and production structures.</description>
+		<thingClass>TiberiumRim.Building_TNC</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<statBases>
-			<MaxHitPoints>500</MaxHitPoints>
+			<MaxHitPoints>125</MaxHitPoints>
+			<WorkToBuild>750</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<size>(4,2)</size>
+		<costList>
+			<Steel>75</Steel>
+			<Component>3</Component>
+		</costList>
+		<comps>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(120,255,150,0)</glowColor>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>125</basePowerConsumption>
+			</li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<tickerType>Normal</tickerType>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<graphicData>
+			<texPath>Building/Common/TCNnode</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(5,2.5)</drawSize>
+			<shadowData>
+				<volume>(1.5,1,1.5)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.1,2.4,1.8)</rect>
+			</damageData>
+		</graphicData>
+		<fillPercent>0.5</fillPercent>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>		
+		<designationCategory>Tiberium</designationCategory>
+		<surfaceType>Item</surfaceType>
+		<researchPrerequisites>
+			<li>TiberiumResearchRefining</li>
+		</researchPrerequisites>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase">
+		<defName>Connector_TNW</defName>
+		<label>Connector</label>
+		<description>This structure connects Tiberium consuming or producing objects to the Tiberium Network.</description>
+		<thingClass>TiberiumRim.Building_Connector</thingClass>
+		<size>(1,1)</size>
+		<costList>
+			<Steel>50</Steel>
+			<Component>1</Component>
+		</costList>
+		<graphicData>
+			<texPath>Building/Common/connector_base</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(1,1)</drawSize>
+			<shadowData>
+				<volume>(1.5,1,1.5)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.1,2.4,1.8)</rect>
+			</damageData>
+		</graphicData>
+		<passability>Standable</passability>
+		<pathCost>0</pathCost>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<building>
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
+		</building>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<fillPercent>0.5</fillPercent>
+		<rotatable>false</rotatable>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<surfaceType>Item</surfaceType>
+		<placeWorkers>
+			<li>TiberiumRim.PlaceWorker_TNW</li>
+		</placeWorkers>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase" Class="TiberiumRim.GraphicSwitchableDef">
+		<defName>TiberiumSilo_TNW</defName>
+		<label>tiberium silo</label>
+		<thingClass>TiberiumRim.Building_TiberiumSilo</thingClass>
+		<graphicData>
+			<texPath>Building/Common/silo_bin</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(3.5,3.5)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<filledGraphicPath>Building/Common/silo_filled</filledGraphicPath>
+		<overlayGraphicPath>Building/Common/silo_overlay</overlayGraphicPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>70</pathCost>
+		<blockWind>true</blockWind>
+		<castEdgeShadows>true</castEdgeShadows>
+		<fillPercent>0.40</fillPercent>
+		<tickerType>Normal</tickerType>
+		<building>
+			<isEdifice>false</isEdifice>
+		</building>
+		<statBases>
+			<MaxHitPoints>100</MaxHitPoints>
+			<WorkToBuild>800</WorkToBuild>
+			<Mass>20</Mass>
+			<Flammability>1.0</Flammability>
+			<Beauty>-18</Beauty>
+		</statBases>
+		<description>Stores Tiberium and distributes it to Tiberium structures.</description>
+		<size>(2,2)</size>
+		<costList>
+			<Steel>50</Steel>
+			<Component>2</Component>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<maxStorage>2500</maxStorage>
+				<isGlobalStorage>true</isGlobalStorage>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<canOverlapZones>false</canOverlapZones>
+		<researchPrerequisites>
+			<li>TiberiumResearchRefining</li>
+		</researchPrerequisites>
+	</ThingDef>
+
+	<ThingDef ParentName="BenchBase_TR" Class="TiberiumRim.RefineryDef">
+		<defName>TiberiumRefinery</defName>
+		<label>tiberium refinery</label>
+		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
+		<thingClass>TiberiumRim.Building_Refinery</thingClass>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<harvester>Harvester_Common</harvester>
+		<refineTime>10</refineTime>
+		<statBases>
+			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<tickerType>Normal</tickerType>
 		<size>(3,4)</size>
 		<costList>
 			<Uranium>5</Uranium>
@@ -39,18 +196,11 @@
 			<Gold>5</Gold>
 			<Steel>150</Steel>
 			<Component>6</Component>
-			<BookRiparius>1</BookRiparius>
- 			<BookVinifera>1</BookVinifera>
- 			<BookRutila>1</BookRutila>
 		</costList>
 		<comps>
-			<li Class="CompProperties_Explosive">
-				<explosiveRadius>3</explosiveRadius>
-				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
-				<preExplosionSpawnThingDef>Gas_Tiberium</preExplosionSpawnThingDef>
-				<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
-				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
-				<postExplosionSpawnChance>0.5</postExplosionSpawnChance>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<maxStorage>1000</maxStorage>
+				<isLocalStorage>true</isLocalStorage>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
@@ -61,19 +211,13 @@
 				<basePowerConsumption>425</basePowerConsumption>
 			</li>
 			<li Class="CompProperties_Flickable"/>
-			<li Class="CompProperties_Breakdownable"/>
 		</comps>
-		<recipes>
-			<li>ExtractResourcesFromGreenTiberium</li>
-			<li>ExtractResourcesFromBlueTiberium</li>
-			<li>ExtractResourcesFromRedTiberium</li>
-			<li>ExtractResourcesFromVeinTiberium</li>
-			<li>MakeTiberiumFuel</li>
-		</recipes>
+		<tickerType>Normal</tickerType>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<overlayGraphicPath>Building/Common/TibRefineryOL</overlayGraphicPath>
 		<graphicData>
-			<texPath>Building/Tiberium/TibRefinery</texPath>
+			<texPath>Building/Common/TibRefinery</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
 			<drawSize>(4,4)</drawSize>
 			<shadowData>
@@ -93,103 +237,100 @@
 		<fillPercent>0.5</fillPercent>
 		<interactionCellOffset>(0,0,3)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>		
 		<designationCategory>Tiberium</designationCategory>
 		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
 			<li>TiberiumResearchRefining</li>
 		</researchPrerequisites>
-		<filthLeaving>FilthTibLiquid</filthLeaving>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 	
-	<ThingDef ParentName="BuildingBase">
-		<defName>TiberiumPowerPlant</defName>
-		<label>Tiberium power plant</label>
-		<thingClass>Building</thingClass>
-		<graphicData>
-			<texPath>Building/Tiberium/PowerPlant</texPath>
-			<graphicClass>Graphic_Single</graphicClass>
-			<drawSize>(5,5)</drawSize>
-		</graphicData>
+	<ThingDef ParentName="BenchBase_TR" Class="TiberiumRim.RefineryDef">
+		<defName>TiberiumCrafter</defName>
+		<label>tiberium resource refinery</label>
+		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
+		<thingClass>TiberiumRim.Building_TiberiumCrafter</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
-		<blockWind>true</blockWind>
-		<fillPercent>1.0</fillPercent>
-		<castEdgeShadows>false</castEdgeShadows>
-		<rotatable>false</rotatable>
+		<harvester>Harvester_Common</harvester>
+		<refineTime>10</refineTime>
 		<statBases>
-			<MaxHitPoints>500</MaxHitPoints>
-			<WorkToBuild>3222</WorkToBuild>
+			<MaxHitPoints>250</MaxHitPoints>
+			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<tickerType>Normal</tickerType>
-		<description>Produces power by consuming Tiberium fuel. Must be fueled by hand.</description>
 		<size>(4,4)</size>
 		<costList>
-			<Steel>250</Steel>
-			<Uranium>25</Uranium>
-			<Plasteel>15</Plasteel>
-			<Component>5</Component>
-			<TiberiumFuel>5</TiberiumFuel>
-			<BookRiparius>1</BookRiparius>
+			<Uranium>5</Uranium>
+			<Plasteel>10</Plasteel>
+			<Gold>5</Gold>
+			<Steel>150</Steel>
+			<Component>6</Component>
 		</costList>
 		<comps>
-			<li Class="CompProperties_Explosive">
-				<explosiveRadius>3</explosiveRadius>
-				<explosiveDamageType>TRTiberiumBomb</explosiveDamageType>
-				<preExplosionSpawnThingDef>Gas_Tiberium</preExplosionSpawnThingDef>
-				<preExplosionSpawnChance>0.25</preExplosionSpawnChance>
-				<postExplosionSpawnThingDef>TiberiumGreen</postExplosionSpawnThingDef>
-				<postExplosionSpawnChance>0.5</postExplosionSpawnChance>
+			<li Class="TiberiumRim.CompProperties_TNW">
 			</li>
 			<li Class="CompProperties_Power">
-				<compClass>CompPowerPlant</compClass>
-				<basePowerConsumption>-2250</basePowerConsumption>
-				<transmitsPower>true</transmitsPower>
+				<compClass>CompPowerTrader</compClass>
+				<basePowerConsumption>425</basePowerConsumption>
 			</li>
-			<li Class="CompProperties_Flickable" />
-			<li Class="CompProperties_Refuelable">
-			<fuelConsumptionRate>0.75</fuelConsumptionRate>
-			<fuelCapacity>24.0</fuelCapacity>
-			<fuelFilter>
-				<thingDefs>
-					<li>TiberiumFuel</li>
-				</thingDefs>
-			</fuelFilter>
-			</li>
-			<li Class="CompProperties_Glower">
-				<glowRadius>6</glowRadius>
-				<glowColor>(120,255,150,0)</glowColor>
-			</li>
-			<li Class="CompProperties_HeatPusher">
-				<compClass>CompHeatPusherPowered</compClass>
-				<heatPerSecond>12</heatPerSecond>
-			</li>
+			<li Class="CompProperties_Flickable"/>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
-		<designationCategory>Power</designationCategory>
-		<staticSunShadowHeight>0.5</staticSunShadowHeight>
-		<constructEffect>ConstructMetal</constructEffect>
+		<recipes>
+			<li>ExtractSteel</li>
+			<li>ExtractPlasteel</li>
+			<li>ExtractGold</li>
+			<li>ExtractUranium</li>
+		</recipes>
+		<castEdgeShadows>false</castEdgeShadows>
+		<staticSunShadowHeight>0</staticSunShadowHeight>
+		<overlayGraphicPath>Building/Common/ReplantOL</overlayGraphicPath>
+		<graphicData>
+			<texPath>Building/Common/Replant</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(4,4)</drawSize>
+			<shadowData>
+				<volume>(1.5,1,1.5)</volume>
+			</shadowData>
+			<damageData>
+				<rect>(0.3,0.1,2.4,1.8)</rect>
+			</damageData>
+		</graphicData>
+		<inspectorTabs>
+			<li>ITab_Bills</li>
+		</inspectorTabs>
+		<building>
+			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
+			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
+		</building>
+		<fillPercent>0.5</fillPercent>
+		<interactionCellOffset>(0,0,3)</interactionCellOffset>
+		<hasInteractionCell>true</hasInteractionCell>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>		
+		<designationCategory>Tiberium</designationCategory>
+		<surfaceType>Item</surfaceType>
 		<researchPrerequisites>
-			<li>TiberiumPower</li>
+			<li>TiberiumResearchRefining</li>
 		</researchPrerequisites>
-		<filthLeaving>FilthTibLiquid</filthLeaving>
+		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>
 	
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="BuildingBase" Class="TiberiumRim.GraphicSwitchableDef">
 		<defName>TiberiumSpike</defName>
 		<label>Tiberium spike</label>
-		<thingClass>Building</thingClass>
+		<thingClass>TiberiumRim.Building_TiberiumSpike</thingClass>
 		<graphicData>
-			<texPath>Building/Tiberium/TibSpike</texPath>
+			<texPath>Building/Common/TibSpike</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(3,15)</drawSize>
 			<damageData>
 			<rect>(0.3,0,5.4,6)</rect>
 			</damageData>
 		</graphicData>
-		<uiIconPath>Building/Tiberium/TibSpike_Icon</uiIconPath>
+		<overlayGraphicPath>Building/Common/TibSpikeOL</overlayGraphicPath>
+		<uiIconPath>Building/Common/TibSpike_Icon</uiIconPath>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<passability>Impassable</passability>
 		<blockWind>true</blockWind>
@@ -204,7 +345,7 @@
 			<Flammability>1.0</Flammability>
 			<Beauty>-30</Beauty>
 		</statBases>
-		<tickerType>Rare</tickerType>
+		<tickerType>Normal</tickerType>
 		<description>Slowly produces raw Tiberium.</description>
 		<size>(2,2)</size>
 		<costList>
@@ -213,13 +354,20 @@
 			<Component>30</Component>
 		</costList>
 		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+			<!-- Storage must be removed when done-->
+				<maxStorage>1337</maxStorage>
+				<isLocalStorage>true</isLocalStorage>
+				<isAutoProducer>true</isAutoProducer>
+				<produceAmt>25</produceAmt>
+				<produceTime>6</produceTime>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>2500</basePowerConsumption>
 				<transmitsPower>true</transmitsPower>
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
-			<li Class="TiberiumRim.CompProperties_TiberiumSpike"/>
 		</comps>
 		<rotatable>false</rotatable>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>

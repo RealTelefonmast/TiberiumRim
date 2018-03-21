@@ -1,6 +1,7 @@
-﻿using UnityEngine;
-using Verse;
+﻿using System;
 using RimWorld;
+using UnityEngine;
+using Verse;
 
 namespace TiberiumRim
 {
@@ -9,9 +10,10 @@ namespace TiberiumRim
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            int count = map.listerThings.AllThings.FindAll((Thing x) => x.def.defName.Contains("Tiberium")).Count;
-
-            if (count > 350)
+            int count = map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Count;
+            bool flag = count > 350;
+            bool result;
+            if (flag)
             {
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
                 GameCondition cond = GameConditionMaker.MakeCondition(this.def.gameCondition, duration, 1);
@@ -20,9 +22,13 @@ namespace TiberiumRim
                 map.gameConditionManager.RegisterCondition(cond2);
                 map.weatherManager.TransitionTo(WeatherDef.Named("IonStormWeather"));
                 base.SendStandardLetter();
-                return true;
+                result = true;
             }
-            return false;
+            else
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

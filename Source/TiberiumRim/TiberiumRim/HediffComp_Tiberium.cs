@@ -30,7 +30,7 @@ namespace TiberiumRim
 
             if (!p.health.hediffSet.HasHediff(Stage1) && !p.health.hediffSet.HasHediff(Stage2) && this.parent.Severity > 0.3 && Rand.Chance(0.3f))
             {
-                if(p.AnimalOrWildMan())
+                if (p.AnimalOrWildMan())
                 {
                     HealthUtility.AdjustSeverity(p, this.parent.def, -0.5f);
                     HealthUtility.AdjustSeverity(p, Stage1Animals, 1.0f);

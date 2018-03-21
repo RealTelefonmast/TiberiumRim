@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <ThingDef ParentName="BasePawn">
+    <defName>Harvester_TBI</defName>
+    <label>Harvester</label>
+	<thingClass>TiberiumRim.Harvester</thingClass>
+    <description>A standart Tiberium harvester, it will seek out the closest most most valuable Tiberium of any type unless told otherwise.</description>
+   <statBases>
+      <PsychicSensitivity>0</PsychicSensitivity>
+      <ToxicSensitivity>0</ToxicSensitivity>
+      <Flammability>0</Flammability>
+      <ComfyTemperatureMin>-100</ComfyTemperatureMin>
+      <ComfyTemperatureMax>250</ComfyTemperatureMax>
+	  <MoveSpeed>1.33</MoveSpeed>
+      <ArmorRating_Blunt>0.2</ArmorRating_Blunt>
+      <ArmorRating_Sharp>0.7</ArmorRating_Sharp>
+      <MeatAmount>0</MeatAmount>
+    </statBases>
+    <race>
+	  <fleshType>Mechanical</fleshType>
+      <needsRest>false</needsRest>
+      <hasGenders>false</hasGenders>
+      <foodType>None</foodType>
+	  
+      <thinkTreeMain>Harvester</thinkTreeMain>
+	  <thinkTreeConstant>HarvesterConstant</thinkTreeConstant>
+      <intelligence>ToolUser</intelligence>
+      <makesFootprints>false</makesFootprints>
+      <lifeExpectancy>999</lifeExpectancy>
+      <leatherMarketValueFactor>2</leatherMarketValueFactor>
+      <body>HarvesterBody</body>
+      <baseBodySize>4</baseBodySize>
+      <baseHealthScale>1</baseHealthScale>
+      <lifeStageAges>
+        <li>
+          <def>MechanoidFullyFormed</def>
+          <minAge>0</minAge>
+        </li>
+      </lifeStageAges>
+      <soundMeleeHitPawn>Pawn_Melee_Punch_HitPawn</soundMeleeHitPawn>
+      <soundMeleeHitBuilding>Pawn_Melee_Punch_HitBuilding</soundMeleeHitBuilding>
+      <soundMeleeMiss>Pawn_Melee_Punch_Miss</soundMeleeMiss>
+    </race>
+  </ThingDef>
+  
+  <ThingDef ParentName="BuildingBase">
+		<defName>HarvesterHusk_Common</defName>
+		<label>Harvester husk</label>
+		<description>The remains of a destroyed harvester.</description>
+		<altitudeLayer>Building</altitudeLayer>
+		<graphicData>
+			<texPath>Pawn/Mechanical/Harvester/Common/HarvesterCommon_Destroyed</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(2.5,2.5)</drawSize>
+		</graphicData>
+		<rotatable>false</rotatable>
+		<destroyable>true</destroyable>
+		<useHitPoints>false</useHitPoints>
+		<tickerType>Normal</tickerType>
+		<selectable>true</selectable>
+		<size>(2,2)</size>
+		<neverOverlapFloors>false</neverOverlapFloors>
+		<blockPlants>true</blockPlants>
+		<building>
+			<isEdifice>false</isEdifice>
+			<claimable>false</claimable>
+			<deconstructible>true</deconstructible>
+		</building>
+	</ThingDef>
+
+</Defs>

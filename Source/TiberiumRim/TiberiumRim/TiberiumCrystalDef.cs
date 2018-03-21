@@ -3,18 +3,38 @@ using Verse;
 
 namespace TiberiumRim
 {
+    [StaticConstructorOnStartup]
     public class TiberiumCrystalDef : ThingDef
     {
-        public TerrainDef corruptsInto;
+        public TiberiumProperties tiberium;
 
-        public ThingDef Monolith;
+        //Corruption Options
+        public TerrainDef defaultTerrain;
 
-        public int EntityDamage;
+        public TerrainDef sandTerrain;
 
-        public int BuildingDamage;
+        public TerrainDef stoneTerrain;
 
-        public bool isFlesh;
+        public TerrainDef mossyTerrain;
+
+        public ThingDef monolithDef = new ThingDef();
+
+        public ThingDef corruptedWallDef = new ThingDef();
+
+        public ThingDef corruptedChunkDef = new ThingDef();
+
+        public TiberiumCrystalDef waterType;
+
+        public TiberiumCrystalDef sandType;
+
+        public TiberiumCrystalDef stoneType;
 
         public List<ThingDef> friendlyTo = new List<ThingDef>();
+
+
+        public new static TiberiumCrystalDef Named(string defName)
+        {
+            return DefDatabase<TiberiumCrystalDef>.GetNamed(defName, true);
+        }
     }
 }

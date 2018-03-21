@@ -41,20 +41,17 @@ namespace TiberiumRim
                 IntVec3 c = this.pawn.Position;
                 if (c.InBounds(this.pawn.Map))
                 {
-                    Plant p = c.GetPlant(this.pawn.Map);
-                    if (p != null)
+                    TiberiumCrystal crystal = c.GetTiberium(this.pawn.Map);
+                    if (crystal != null)
                     {
-                        if (p.def.defName.Contains("Tiberium"))
-                        {
-                            return true;
-                        }
+                        return true;
                     }
                 }
                 return false;
             }
         }
 
-        public bool hasTiberAdd
+        public bool HasTiberAdd
         {
             get
             {
@@ -66,7 +63,7 @@ namespace TiberiumRim
         {
             get
             {
-                if (isInTiberium || hasTiberAdd)
+                if (isInTiberium || HasTiberAdd)
                 {
                     return 1;
                 }
@@ -169,7 +166,7 @@ namespace TiberiumRim
                             return flag;
                         };
 
-                        Thing targetA = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, ThingRequest.ForGroup(ThingRequestGroup.Plant), PathEndMode.OnCell, TraverseParms.For(TraverseMode.PassDoors), 9999f, validator);
+                        Thing targetA = GenClosest.ClosestThingReachable(pawn.Position, pawn.Map, ThingRequest.ForUndefined(), PathEndMode.OnCell, TraverseParms.For(TraverseMode.PassDoors), 9999f, validator);
                         if (targetA != null)
                         {
                             if (pawn.CanReach(targetA, PathEndMode.OnCell, Danger.Deadly, false))
