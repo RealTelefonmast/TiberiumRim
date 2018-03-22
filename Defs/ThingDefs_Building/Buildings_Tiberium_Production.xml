@@ -30,7 +30,7 @@
 			<WorkToBuild>750</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<size>(4,2)</size>
+		<size>(3,2)</size>
 		<costList>
 			<Steel>75</Steel>
 			<Component>3</Component>
@@ -260,7 +260,7 @@
 			<WorkToBuild>3000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<size>(4,4)</size>
+		<size>(3,3)</size>
 		<costList>
 			<Uranium>5</Uranium>
 			<Plasteel>10</Plasteel>
@@ -306,7 +306,7 @@
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 		</building>
 		<fillPercent>0.5</fillPercent>
-		<interactionCellOffset>(0,0,3)</interactionCellOffset>
+		<interactionCellOffset>(0,0,2)</interactionCellOffset>
 		<hasInteractionCell>true</hasInteractionCell>
 		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>		
 		<designationCategory>Tiberium</designationCategory>
