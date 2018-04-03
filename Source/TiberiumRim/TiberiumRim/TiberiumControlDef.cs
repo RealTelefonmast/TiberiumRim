@@ -1,5 +1,7 @@
-﻿using Verse;
+﻿using System.Collections.Generic;
+using Verse;
 using RimWorld;
+using UnityEngine;
 
 namespace TiberiumRim
 {
@@ -14,6 +16,12 @@ namespace TiberiumRim
         public float TiberiumGrowthRate;
 
         public float TiberiumLeakScale;
+
+        public Color GreenColor;
+
+        public Color BlueColor;
+
+        public Color RedColor;
 
         public static TiberiumControlDef Named(string defName)
         {

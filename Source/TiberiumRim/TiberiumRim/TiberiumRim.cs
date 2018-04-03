@@ -250,8 +250,12 @@ namespace TiberiumRim
             {
                 Thing parent = __instance.parent;
                 Comp_TNW compTNW = parent.TryGetComp<Comp_TNW>();
-
-                __result = compTNW == null || compTNW.IsGeneratingPower || compTNW.Container.GetTotalStorage > 0;
+                Log.Message("Result1: " + __result);
+                if (compTNW != null)
+                {
+                    __result = compTNW.IsGeneratingPower || compTNW.Container.GetTotalStorage > 0;
+                }
+                Log.Message("Result2: " + __result);
             }
         }
     }

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace TiberiumRim
 {
-    public class TiberiumContainer
+    public class TiberiumContainer : IExposable
     {
         public readonly float maxStorage;
 
@@ -17,6 +17,12 @@ namespace TiberiumRim
         public TiberiumContainer(float maxStorage)
         {
             this.maxStorage = maxStorage;
+        }
+
+        public void ExposeData()
+        {
+            Scribe_Collections.Look<TiberiumType, float>(ref ContainedTiberium, "ContainedTinerium");
+            Log.Message("Scribing Container");
         }
 
         public Color Color
@@ -35,17 +41,18 @@ namespace TiberiumRim
         public Color TypeColor (TiberiumType type)
         {
             Color color = new Color();
+            TiberiumControlDef def = MainTCD.MainTiberiumControlDef;
             if(type == TiberiumType.Green)
             {
-                color = new Color(100f/255f, 200f/255f, 0f);
+                color = def.GreenColor;
             }
             if (type == TiberiumType.Blue)
             {
-                color = new Color(0f, 100f/255f, 200f/255f);
+                color = def.BlueColor;
             }
             if (type == TiberiumType.Red)
             {
-                color = new Color(200f/255f, 0f, 100f/255f);
+                color = def.RedColor;
             }
             return color;
         }

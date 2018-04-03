@@ -4,7 +4,8 @@
   <DamageDef Name="LocalInjuryBase" Abstract="True">
     <workerClass>DamageWorker_AddInjury</workerClass>
   </DamageDef>
-  
+ 
+ <!--
   <DamageDef ParentName="LocalInjuryBase">
     <defName>TRRailgun</defName>
     <label>Railgun Bullet</label>
@@ -195,7 +196,7 @@
     <soundExplosion>Shot_GDI_Sonic</soundExplosion>
   </DamageDef>
   
-  <!--only specialized siege attack-->
+  only specialized siege attack
   <DamageDef ParentName="LocalInjuryBase">
     <defName>TRSiege</defName>
     <label>Seismic Wave</label>
@@ -218,5 +219,6 @@
     <combatLogRules>Damage_Bomb</combatLogRules>
     <soundExplosion>Shot_GDI_Sonic</soundExplosion>
   </DamageDef>
+  -->
 
 </Defs>

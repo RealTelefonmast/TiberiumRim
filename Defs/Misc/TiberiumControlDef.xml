@@ -8,6 +8,9 @@
 		<VeinHitDamage>6</VeinHitDamage>
 		<TiberiumGrowthRate>1</TiberiumGrowthRate>
 		<TiberiumLeakScale>1</TiberiumLeakScale>
+		<GreenColor>(100, 200, 0)</GreenColor>
+		<BlueColor>(0, 100, 200)</BlueColor>
+		<RedColor>(200, 0, 100)</RedColor>
 	</Def>
   
 </Defs>
