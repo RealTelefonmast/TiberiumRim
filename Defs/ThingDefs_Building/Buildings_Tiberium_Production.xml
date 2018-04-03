@@ -221,9 +221,9 @@
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="CompProperties_Glower">
-				<glowRadius>4</glowRadius>
+				<glowRadius>2</glowRadius>
 				<glowColor>(120,255,150,0)</glowColor>
-			</li>			
+			</li>
 			<li Class="CompProperties_HeatPusher">
 				<compClass>CompHeatPusherPowered</compClass>
 				<heatPerSecond>12</heatPerSecond>
@@ -274,7 +274,7 @@
 				<isGlobalStorage>true</isGlobalStorage>
 			</li>
 			<li Class="CompProperties_Glower">
-				<glowRadius>4</glowRadius>
+				<glowRadius>2</glowRadius>
 				<glowColor>(120,255,150,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Power">
