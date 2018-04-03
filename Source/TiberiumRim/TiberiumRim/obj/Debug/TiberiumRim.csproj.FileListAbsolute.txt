@@ -35,7 +35,7 @@ F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumR
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\NAudio.dll
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\NVorbis.dll
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\bin\Debug\UnityEngine.UI.dll
-F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csprojResolveAssemblyReference.cache
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csproj.CoreCompileInputs.cache
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.dll
 F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.pdb
+F:\Steam\steamapps\common\RimWorld\Mods\TiberiumRim\Source\TiberiumRim\TiberiumRim\obj\Debug\TiberiumRim.csprojResolveAssemblyReference.cache

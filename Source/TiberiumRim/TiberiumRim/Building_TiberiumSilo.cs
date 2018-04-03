@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using Verse;
+using UnityEngine;
 
 namespace TiberiumRim
 {
@@ -20,46 +21,22 @@ namespace TiberiumRim
             }
         }
 
-        public override bool IsFilled
+        public Comp_TNW Network
         {
             get
             {
-                if (activatefilling)
-                {
-                    return true;
-                }
-                return false;
+                return base.GetComp<Comp_TNW>();
             }
         }
 
-        public override bool IsActivated
+        public override float FilledPct
         {
             get
             {
-                return false;
+                return Network.Container.GetTotalStorage / Network.props.maxStorage;
             }
         }
 
-        public override IEnumerable<Gizmo> GetGizmos()
-        {      
-            foreach(Gizmo g in base.GetGizmos())
-            {
-                yield return g;
-            }
-
-            if (Prefs.DevMode)
-            {
-                yield return new Command_Action
-                {
-                    defaultLabel = "DEBUG: Change Graphic",
-                    icon = TexCommand.DesirePower,
-                    action = delegate
-                    {
-                        this.activatefilling = !activatefilling;
-                        base.Notify_GraphicsUpdated();
-                    }
-                };
-            }
-        }
+        public override bool IsActivated => false;
     }
 }

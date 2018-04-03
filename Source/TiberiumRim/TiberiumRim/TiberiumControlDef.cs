@@ -13,6 +13,8 @@ namespace TiberiumRim
 
         public float TiberiumGrowthRate;
 
+        public float TiberiumLeakScale;
+
         public static TiberiumControlDef Named(string defName)
         {
             return DefDatabase<TiberiumControlDef>.GetNamed(defName, true);

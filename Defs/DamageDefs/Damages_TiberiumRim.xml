@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <DamageDef Name="LocalInjuryBase_TR" Abstract="True">
+    <workerClass>DamageWorker_AddInjury</workerClass>
+  </DamageDef>
+  
+  <!--
+  <DamageDef ParentName="LocalInjuryBase">
+    <defName>TiberiumExplosion</defName>
+    <label>tiberium explosion</label>
+    <externalViolence>true</externalViolence>
+    <isExplosive>true</isExplosive>
+    <deathMessage>{0} has died in a tiberium explosion.</deathMessage>
+    <workerClass>DamageWorker_Flame</workerClass>
+    <hediff>Burn</hediff>
+    <hediffSolid>Crack</hediffSolid>
+    <harmAllLayersUntilOutside>true</harmAllLayersUntilOutside>
+    <impactSoundType>Blunt</impactSoundType>
+    <armorCategory>Blunt</armorCategory>
+    <spreadOut>true</spreadOut>
+    <explosionDamage>10</explosionDamage>
+    <explosionBuildingDamageFactor>1</explosionBuildingDamageFactor>
+    <explosionAffectOutsidePartsOnly>false</explosionAffectOutsidePartsOnly>
+    <explosionHeatEnergyPerCell>15</explosionHeatEnergyPerCell>
+    <explosionCellMote>Mote_Nuke</explosionCellMote>
+    <explosionColorCenter>(0.25, 1, 0.25)</explosionColorCenter>
+    <explosionColorEdge>(0.1, 0.5, 0.1)</explosionColorEdge>
+	<explosionSnowMeltAmount>100</explosionSnowMeltAmount>
+    <combatLogRules>Damage_Bomb</combatLogRules>
+    <soundExplosion>Shot_Nod_ChemBomb</soundExplosion>
+  </DamageDef>
+  -->
+
+</Defs>

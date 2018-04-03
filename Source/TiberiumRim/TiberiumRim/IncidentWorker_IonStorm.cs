@@ -11,14 +11,17 @@ namespace TiberiumRim
         {
             Map map = (Map)parms.target;
             int count = map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Count;
-            bool flag = count > 350;
             bool result;
-            if (flag)
+            if (count > 350)
             {
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
                 GameCondition cond = GameConditionMaker.MakeCondition(this.def.gameCondition, duration, 1);
                 GameCondition cond2 = GameConditionMaker.MakeCondition(GameConditionDefOf.SolarFlare, duration, 1);
                 map.gameConditionManager.RegisterCondition(cond);
+                if (map.gameConditionManager.ConditionIsActive(GameConditionDefOf.SolarFlare))
+                {
+                    map.gameConditionManager.ActiveConditions.Find((GameCondition x) => x.def == GameConditionDefOf.SolarFlare).End();
+                }
                 map.gameConditionManager.RegisterCondition(cond2);
                 map.weatherManager.TransitionTo(WeatherDef.Named("IonStormWeather"));
                 base.SendStandardLetter();

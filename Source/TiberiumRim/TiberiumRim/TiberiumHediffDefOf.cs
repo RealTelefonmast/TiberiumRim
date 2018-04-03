@@ -16,7 +16,7 @@ namespace TiberiumRim
 
         public static HediffDef TiberiumStage2 = HediffDef.Named("TiberiumStage2");
 
-        public static HediffDef TiberiumContactPoison = HediffDef.Named("TiberiumContactPoison");
+        public static HediffDef TiberiumContactPoison = HediffDef.Named("TiberiumInfection");
 
         public static HediffDef TiberiumInfusionImmunity = HediffDef.Named("TiberiumInfusionImmunity");
 

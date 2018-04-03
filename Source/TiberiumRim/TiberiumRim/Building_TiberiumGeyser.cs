@@ -8,46 +8,31 @@ namespace TiberiumRim
 {
     public class Building_TiberiumGeyser : Building
     {
-        private IntermittentSteamSprayer steamSprayer;
-
         public Building harvester;
-
-        private Sustainer spraySustainer;
 
         private int radius = 12;
 
-        private int spraySustainerStartTick = -999;
+        public TiberiumType tiberiumType;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            this.steamSprayer = new IntermittentSteamSprayer(this);
-            this.steamSprayer.startSprayCallback = new Action(this.StartSpray);
-            this.steamSprayer.endSprayCallback = new Action(this.EndSpray);
-        }
-
-        private void StartSpray()
-        {
-            SnowUtility.AddSnowRadial(this.OccupiedRect().RandomCell, base.Map, 4f, -0.06f);
-            this.spraySustainer = SoundDefOf.GeyserSpray.TrySpawnSustainer(new TargetInfo(base.Position, base.Map, false));
-            this.spraySustainerStartTick = Find.TickManager.TicksGame;
-        }
-
-        private void EndSpray()
-        {
-            if (this.spraySustainer != null)
+            if (!respawningAfterLoad)
             {
-                this.spraySustainer.End();
-                this.spraySustainer = null;
+                this.tiberiumType = Rand.Element(TiberiumType.Green, TiberiumType.Blue, TiberiumType.Red);
             }
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look<TiberiumType>(ref tiberiumType, "tiberiumType");
         }
 
         public override void TickLong()
         {
             if (this.harvester == null)
             {
-                this.steamSprayer.SteamSprayerTick();
-
                 int num = GenRadial.NumCellsInRadius(this.radius);
 
                 for (int i = 0; i < num; i++)
@@ -56,11 +41,6 @@ namespace TiberiumRim
                     this.GasAttack(positionToCheck);
                 }
 
-            }
-            if (this.spraySustainer != null && Find.TickManager.TicksGame > this.spraySustainerStartTick + 1000)
-            {
-                this.spraySustainer.End();
-                this.spraySustainer = null;
             }
         }
 

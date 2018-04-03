@@ -13,6 +13,21 @@ namespace TiberiumRim
 
         public List<CellRect> Positions = new List<CellRect>();
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Collections.Look<Building_Connector>(ref Connectors, "Connectors", LookMode.Reference);
+        }
+
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            foreach(Building_Connector c in Connectors)
+            {
+                c.Destroy();
+            }
+            base.Destroy(mode);
+        }
+
         public List<Comp_TNW> AllStorages
         {
             get
@@ -68,9 +83,9 @@ namespace TiberiumRim
                         Comp_TNW comp = b.Parent.GetComp<Comp_TNW>();
                         if (comp != null)
                         {
-                            if (comp.CurrentlyStoredTiberium > 0)
+                            if (comp.Container.GetTotalStorage > 0)
                             {
-                                storage += comp.CurrentlyStoredTiberium;
+                                storage += comp.Container.GetTotalStorage;
                             }
                         }
                     }
@@ -78,12 +93,7 @@ namespace TiberiumRim
                 return storage;
             }
         }
-
-        public override void ExposeData()
-        {
-            base.ExposeData();
-            Scribe_Collections.Look<Building_Connector>(ref Connectors, "Connectors", LookMode.Reference);
-        }
+        
 
         public override void Tick()
         {
@@ -122,7 +132,7 @@ namespace TiberiumRim
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(base.GetInspectString());
-            stringBuilder.AppendLine("StoredSumTNW"+": " + TotalStoredTiberium);
+            stringBuilder.AppendLine("TotalStoredTib".Translate()+": " + TotalStoredTiberium);
             return stringBuilder.ToString().TrimEndNewlines();
         }
     }

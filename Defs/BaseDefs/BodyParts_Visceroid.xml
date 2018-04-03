@@ -4,7 +4,7 @@
 	<BodyPartDef>
 		<defName>VisceroidBody</defName>
 		<label>visceroid body</label>
-		<hitPoints>465</hitPoints>
+		<hitPoints>150</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
 		<frostbiteVulnerability>0.4</frostbiteVulnerability>
@@ -13,7 +13,7 @@
 	<BodyPartDef>
 		<defName>VisceroidVeins</defName>
 		<label>Veins</label>
-		<hitPoints>26</hitPoints>
+		<hitPoints>30</hitPoints>
 		<bleedingRateMultiplier>3</bleedingRateMultiplier>
 		<tags>
 			<li>BloodPumpingSource</li>
@@ -41,8 +41,30 @@
 	
 	<BodyPartDef>
 		<defName>VisceroidOrifice</defName>
-		<label>Orifice</label>
-		<hitPoints>32</hitPoints>
+		<label>orifice</label>
+		<hitPoints>15</hitPoints>
+		<tags>
+			<li>BreathingWay</li>
+			<li>EatingSource</li>
+			<li>TalkingSource</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>VisceroidOrifice2</defName>
+		<label>second orifice</label>
+		<hitPoints>15</hitPoints>
+		<tags>
+			<li>BreathingWay</li>
+			<li>EatingSource</li>
+			<li>TalkingSource</li>
+		</tags>
+	</BodyPartDef>
+	
+	<BodyPartDef>
+		<defName>VisceroidOrifice3</defName>
+		<label>third orifice</label>
+		<hitPoints>15</hitPoints>
 		<tags>
 			<li>BreathingWay</li>
 			<li>EatingSource</li>
@@ -53,7 +75,7 @@
 	<BodyPartDef>
 		<defName>LeftTentacle</defName>
 		<label>left tentacle</label>
-		<hitPoints>48</hitPoints>
+		<hitPoints>50</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
 		<tags>
@@ -65,7 +87,7 @@
 	<BodyPartDef>
 		<defName>RightTentacle</defName>
 		<label>right tentacle</label>
-		<hitPoints>48</hitPoints>
+		<hitPoints>50</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
 		<tags>
@@ -77,7 +99,7 @@
 	<BodyPartDef>
 		<defName>MiddleTentacle</defName>
 		<label>middle tentacle</label>
-		<hitPoints>48</hitPoints>
+		<hitPoints>50</hitPoints>
 		<oldInjuryBaseChance>0.08</oldInjuryBaseChance>
 		<skinCovered>true</skinCovered>
 		<tags>
@@ -89,7 +111,7 @@
   	<BodyPartDef>
 		<defName>VeinmonsterMouth</defName>
 		<label>Mouth</label>
-		<hitPoints>12</hitPoints>
+		<hitPoints>15</hitPoints>
 		<tags>
 			<li>BreathingWay</li>
 			<li>EatingSource</li>
@@ -108,12 +130,6 @@
 		<tags>
 			<li>SightSource</li>
 		</tags>
-		<hitChanceFactors>
-			<li>
-				<key>Blunt</key>
-				<value>0</value>
-			</li>
-		</hitChanceFactors>
 	</BodyPartDef>
 	
 	<BodyPartDef>
@@ -124,5 +140,6 @@
 		<skinCovered>true</skinCovered>
 		<frostbiteVulnerability>0.6</frostbiteVulnerability>
 	</BodyPartDef>
+
 	
 </Defs>

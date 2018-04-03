@@ -21,15 +21,36 @@ namespace TiberiumRim
             {
                 foreach (IntVec3 c in this.Position.CellsAdjacent8Way())
                 {
-                    Building_GraphicSwitchable building = null;
-                    building = (Building_GraphicSwitchable)this.Map.thingGrid.ThingsListAt(c).Find((Thing x) => x.TryGetComp<Comp_TNW>() != null);
-                    if (building != null)
+                    List<Thing> thingList = c.GetThingList(map);
+                    foreach (Thing thing in thingList)
                     {
-                        this.Parent = building;
+                        Building building = thing as Building;
+                        if (building?.TryGetComp<Comp_TNW>() != null)
+                        {
+                            if (building != null)
+                            {
+                                this.Parent = building as Building_GraphicSwitchable;
+                                if (building.TryGetComp<Comp_TNW>().Connector == null)
+                                {
+                                    this.Parent.TryGetComp<Comp_TNW>().Connector = this;
+                                    return;
+                                }
+                            }
+                        }
                     }
                 }
-                this.Parent.TryGetComp<Comp_TNW>().Connector = this;
+                if(Parent == null)
+                {
+                    base.Destroy();
+                }
             }
+        }
+
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        {
+            this.Parent.TryGetComp<Comp_TNW>().Connector = null;
+            this.Network.Connectors.Remove(this);
+            base.Destroy(mode);
         }
 
         public override void ExposeData()
@@ -48,8 +69,7 @@ namespace TiberiumRim
 
         public override void Draw()
         {
-            //Rot4 rot = this.Parent.Rotation != Rot4.West ? this.Parent.Rotation : this.Parent.Rotation.Opposite;
-            if (Find.Selector.IsSelected(this) || Find.Selector.IsSelected(Network))
+            if ((Find.Selector.IsSelected(this) || Find.Selector.IsSelected(Network)) && Parent != null)
             {
                 this.Graphic.GetColoredVersion(Graphic.Shader, Color.green, Color.green).DrawFromDef(NewDrawPos, this.Parent.Rotation, this.def);
                 return;
@@ -72,7 +92,7 @@ namespace TiberiumRim
                     {
                         x = Parent.DrawPos.x,
                         z = Parent.DrawPos.z,
-                        y = Altitudes.AltitudeFor(AltitudeLayer.MetaOverlays)
+                        y = Altitudes.AltitudeFor(AltitudeLayer.BuildingOnTop)
                     };
                     return exactPos;
                 }

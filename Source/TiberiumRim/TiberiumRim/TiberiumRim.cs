@@ -45,7 +45,7 @@ namespace TiberiumRim
             MakeNewCheckBox(newRect, "BuildingDamage".Translate(),ref this.settings.BuildingDamage, out newRect, 0f, 0f, false, "BuildingDamageDesc".Translate());
             MakeNewCheckBox(newRect, "EntityDamage".Translate(), ref this.settings.EntityDamage, out newRect, 30f, 0f, false, "EntityDamageDesc".Translate());
             MakeNewCheckBox(newRect, "PawnDamage".Translate(), ref this.settings.PawnDamage, out newRect, 30f, 0f, false, "PawnDamageDesc".Translate());
-            MakeNewCheckBox(newRect, "UseSpecificProducersLabel".Translate(), ref this.settings.UseSpecificProducers, out newRect, 30f, 0f, false, "UseSpecificProducersDesc".Translate());
+            MakeNewCheckBox(newRect, "UseSpecificProducersLabel".Translate(), ref this.settings.UseSpecificProducers, out newRect, 30f, 0f, false, "");
 
             if (this.settings.UseSpecificProducers)
             {
@@ -84,6 +84,7 @@ namespace TiberiumRim
             }
             MakeNewCheckBox(newRect, "UseSpreadRadiusLabel".Translate(), ref this.settings.UseSpreadRadius, out newRect, 30f, 0f, false, "UseSpreadRadiusDesc".Translate());
             MakeNewCheckBox(newRect, "UseCustomBackgroundLabel".Translate(), ref this.settings.UseCustomBackground, out newRect, 30f, 0f, false, "UseCustomBackgroundDesc".Translate());
+
         }
 
         public void MakeNewCheckBox(Rect lastRect,  string label, ref bool checkOn, out Rect newRect, float yOffset = 0f, float xOffset = 0f, bool disabled = false, string desc = null)
@@ -120,6 +121,11 @@ namespace TiberiumRim
         public int TiberiumProducersAmt = 7;
 
         public bool FirstStartUp = true;
+
+        public void StartUp(ref bool b)
+        {
+            b = !b;
+        }
 
         public void SetBeginner()
         {
@@ -197,29 +203,56 @@ namespace TiberiumRim
                 }
                 return true;
             }
-        }
+        }   
 
-        // TODO: Add worldcomp
-        /* 
-        [HarmonyPatch(typeof(WorldInspectPane))]
-        [HarmonyPatch("TileInspectString", PropertyMethod.Getter)]
-        class WorldTilePatch
+        [HarmonyPatch(typeof(MainMenuDrawer)), HarmonyPatch("MainMenuOnGUI"), StaticConstructorOnStartup]
+        class FirstGame
         {
             [HarmonyPostfix]
-            static void postFix(WorldInspectPane __instance, ref String __result)
+            static void Fix()
+            {
+                if (TiberiumRimSettings.settings.FirstStartUp)
+                {
+                    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("Hey hey hey, playing first time?", delegate
+                    {
+                        TiberiumRimSettings.settings.StartUp(ref TiberiumRimSettings.settings.FirstStartUp);
+                    }, true, "Welcome!"));                   
+                }
+            }
+        }
+
+        [HarmonyPatch(typeof(WorldInspectPane))]
+        [HarmonyPatch("TileInspectString", PropertyMethod.Getter)]
+        public class WorldTilePatch
+        {
+            [HarmonyPostfix]
+            static void PostFix(WorldInspectPane __instance, ref String __result)
             {
                 int SelectedTile = Traverse.Create(__instance).Property("SelectedTile").GetValue<int>();
-                Tile tile = Find.WorldGrid[SelectedTile];
 
                 StringBuilder stringBuilder = new StringBuilder();
                 if (Find.World.GetComponent<WorldComponent_TiberiumSpread>().tiberiumPcts.ContainsKey(SelectedTile))
                 {
-                    stringBuilder.Append("TiberiumTileInfestation".Translate() + Find.World.GetComponent<WorldComponent_TiberiumSpread>().tiberiumPcts[SelectedTile] * 100 + "%");
+                    stringBuilder.Append("Tiberium Infestation at:".Translate(new object[] {
+                        Math.Round(Find.World.GetComponent<WorldComponent_TiberiumSpread>().tiberiumPcts[SelectedTile], 5) * 100 + "%"
+                    }));
                 }
                 __result = __result + "\n\n" + stringBuilder.ToString();
-
             }
         }
-        */
+
+        [HarmonyPatch(typeof(CompGlower))]
+        [HarmonyPatch("ShouldBeLitNow", PropertyMethod.Getter)]
+        public class GlowerPatch
+        {
+            [HarmonyPostfix]
+            static void PostFix(CompGlower __instance, ref bool __result)
+            {
+                Thing parent = __instance.parent;
+                Comp_TNW compTNW = parent.TryGetComp<Comp_TNW>();
+
+                __result = compTNW == null || compTNW.IsGeneratingPower || compTNW.Container.GetTotalStorage > 0;
+            }
+        }
     }
 }

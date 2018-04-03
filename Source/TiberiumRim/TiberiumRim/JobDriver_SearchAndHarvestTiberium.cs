@@ -24,7 +24,6 @@ namespace TiberiumRim
                         return new Job(job, tiberiumTarget);
                     }
                 }
-                Log.Message("Can't find closest reachable tiberium!");
             }
             return null;
         }
@@ -50,7 +49,8 @@ namespace TiberiumRim
 
         private int ticksPassed;
 
-        private int newHarvestTicks;
+        private int newTicks;
+        private float growth;
 
         public override bool TryMakePreToilReservations()
         {
@@ -67,21 +67,18 @@ namespace TiberiumRim
             Toil harvest = new Toil();
             harvest.initAction = delegate
             {
-                if (!Harvester.CollectedTypeList.Contains(Tiberium.def))
-                {
-                    Harvester.CollectedTypeList.Add(Tiberium.def);
-                }
-                this.newHarvestTicks = (int)(Tiberium.harvestTicks * Tiberium.growthInt);
+                growth += Tiberium.growthInt;
+                newTicks += Tiberium.harvestTicks;
             };
             harvest.tickAction = delegate
             {
                 Harvester actor = (Harvester)harvest.actor;
-                if (!actor.CapacityFull)
+                if (!actor.Container.CapacityFull)
                 {
-                    if (ticksPassed < newHarvestTicks)
+                    if (ticksPassed < Tiberium.harvestTicks)
                     {
-                        actor.currentStorage += (Tiberium.HarvestValue / newHarvestTicks);
-                        Tiberium.growthInt -= Tiberium.growthInt / (newHarvestTicks - ticksPassed);
+                        actor.Container.AddCrystal(Tiberium.def.TibType, (growth / newTicks) * Tiberium.def.tiberium.maxHarvestValue , out float flt);
+                        Tiberium.growthInt -= (growth / newTicks) - (flt / Tiberium.def.tiberium.maxHarvestValue); 
                     }
                     else
                     {

@@ -61,7 +61,7 @@
 			<topWindExposure>0.4</topWindExposure>
 			<reproduceMtbDays>3</reproduceMtbDays>
 			<wildBiomes>
-				<TiberiumRedZone>1</TiberiumRedZone>
+				<RedZone_TB>1</RedZone_TB>
 			</wildBiomes>
 			<maxMeshCount>4</maxMeshCount>
 		</plant>
@@ -105,7 +105,7 @@
 		</visualSizeRange>
 		<topWindExposure>0.3</topWindExposure>
 		<wildBiomes>
-			<TiberiumRedZone>0.3</TiberiumRedZone>
+			<RedZone_TB>0.3</RedZone_TB>
 		</wildBiomes>
 		<maxMeshCount>4</maxMeshCount>
     </plant>
@@ -146,7 +146,7 @@
 		</wildClusterSizeRange>
 		<wildClusterRadius>4</wildClusterRadius>
 		<wildBiomes>
-			<TiberiumRedZone>0.3</TiberiumRedZone>
+			<RedZone_TB>0.3</RedZone_TB>
 		</wildBiomes>
 		<maxMeshCount>4</maxMeshCount>
     </plant>
@@ -179,7 +179,7 @@
 			<max>2.5</max>
 			</visualSizeRange>
 			<wildBiomes>
-				<TiberiumRedZone>0.3</TiberiumRedZone>
+				<RedZone_TB>0.3</RedZone_TB>
 			</wildBiomes>
 		</plant>
 	</ThingDef>

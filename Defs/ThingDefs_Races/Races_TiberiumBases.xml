@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+	<ThingDef Name="BasePawn_TR" Abstract="True">
+		<thingClass>Pawn</thingClass>
+		<category>Pawn</category>
+		<selectable>true</selectable>
+		<tickerType>Normal</tickerType>
+		<altitudeLayer>Pawn</altitudeLayer>
+		<useHitPoints>false</useHitPoints>
+		<hasTooltip>true</hasTooltip>
+		<soundImpactDefault>BulletImpactFlesh</soundImpactDefault>
+		<statBases>
+			<Mass>86</Mass>
+		</statBases>
+		<inspectorTabs>
+			<li>ITab_Pawn_Health</li>
+			<li>ITab_Pawn_Needs</li>
+			<li>ITab_Pawn_Character</li>
+			<li>ITab_Pawn_Training</li>
+			<li>ITab_Pawn_Gear</li>
+			<li>ITab_Pawn_Guest</li>
+			<li>ITab_Pawn_Prisoner</li>
+			<li>ITab_Pawn_Social</li>
+		</inspectorTabs>
+		<comps>
+			<li>
+				<compClass>CompAttachBase</compClass>
+			</li>
+		</comps>
+		<drawGUIOverlay>true</drawGUIOverlay>
+	</ThingDef>
+
+	<ThingDef ParentName="BasePawn_TR" Name="AnimalThingBase_TR" Abstract="True">
+		<statBases>
+			<Flammability>0.6</Flammability>
+			<LeatherAmount>25</LeatherAmount>
+		</statBases>
+		<race>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>AnimalConstant</thinkTreeConstant>
+			<hasGenders>true</hasGenders>
+			<nameGenerator>NamerAnimalGenericMale</nameGenerator>
+			<nameGeneratorFemale>NamerAnimalGenericFemale</nameGeneratorFemale>
+			<manhunterOnDamageChance>0.0125</manhunterOnDamageChance>
+			<manhunterOnTameFailChance>0.005</manhunterOnTameFailChance>
+			<nameOnNuzzleChance>0.5</nameOnNuzzleChance>
+			<hediffGiverSets>
+				<li>OrganicStandard</li>
+			</hediffGiverSets>
+		</race>
+		<recipes>
+			<li>ExciseCarcinoma</li>
+			<li>RemoveBodyPart</li>
+			<li>Euthanize</li>
+		</recipes>
+	</ThingDef>
+
+	
+	<PawnKindDef Name="AnimalKindBase_TR" Abstract="True">
+	</PawnKindDef>
+	
+  <ThingDef Abstract="True" ParentName="AnimalThingBase_TR" Name="TiberiumLifeform">
+    <statBases>
+      <ToxicSensitivity>0</ToxicSensitivity>
+	  <PainShockThreshold>1</PainShockThreshold>
+    </statBases>
+    <race>
+      <fleshType>Tiberium</fleshType>
+      <needsRest>false</needsRest>
+      <hasGenders>false</hasGenders>
+      <bloodDef>FilthTibBloodG</bloodDef>
+      <meatColor>(80,80,30)</meatColor>
+      <foodType>OmnivoreAnimal, AnimalProduct</foodType>
+      <manhunterOnDamageChance>1</manhunterOnDamageChance>
+      <manhunterOnTameFailChance>1</manhunterOnTameFailChance>
+    </race>
+  </ThingDef>
+</Defs>

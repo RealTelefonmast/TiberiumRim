@@ -245,6 +245,10 @@ namespace TiberiumRim
                 if (c.InBounds(Map))
                 {
                     GenTiberiumReproduction.SetTiberiumTerrainAndType(this.def.crystalDef, c.GetTerrain(Map), out TiberiumCrystalDef def, out TerrainDef NewTerrain);
+                    if(NewTerrain == null)
+                    {
+                        NewTerrain = this.def.crystalDef.defaultTerrain;
+                    }
                     if (NewTerrain != null)
                     {
                         Plant plant = c.GetPlant(Map);

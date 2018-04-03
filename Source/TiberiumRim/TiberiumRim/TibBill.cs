@@ -9,8 +9,16 @@ namespace TiberiumRim
 {
     public class TibBill : Bill_Production, IExposable
     {
+        public Pawn billDoer;
+
         public TibBill(RecipeDef_Tiberium def) : base(def as RecipeDef)
         {           
+        }
+
+        public override void Notify_DoBillStarted(Pawn billDoer)
+        {
+            this.billDoer = billDoer;
+            base.Notify_DoBillStarted(billDoer);
         }
 
         private float RecipeCost
@@ -59,9 +67,9 @@ namespace TiberiumRim
             base.Notify_IterationCompleted(billDoer, ingredients);
             foreach(Comp_TNW comp in crafter.TryGetComp<Comp_TNW>()?.Connector?.Network?.AllStorages)
             {
-                if(comp.CurrentlyStoredTiberium >= RecipeCost)
+                if(comp.Container.GetTotalStorage >= RecipeCost)
                 {
-                    comp.Take(RecipeCost);
+                    comp.Container.RemoveCrystal(comp.Container.MainType, RecipeCost);
                 }
             }
         }

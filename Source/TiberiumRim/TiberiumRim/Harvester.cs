@@ -27,13 +27,11 @@ namespace TiberiumRim
 
         public List<Building_Refinery> availableRefineries = new List<Building_Refinery>();
 
-        public List<TiberiumCrystalDef> CollectedTypeList = new List<TiberiumCrystalDef>();
-
         private IntVec3 homePosition = IntVec3.Invalid;
 
-        public float currentStorage = 0;
-
         public TiberiumCrystalDef TiberiumDefToPrefer;
+
+        public TiberiumContainer Container;
 
         private bool shouldStopHarvesting = false;
 
@@ -50,10 +48,10 @@ namespace TiberiumRim
         {
             base.ExposeData();
             Scribe_References.Look<Building_Refinery>(ref mainRefinery, "mainRefinery");
-            Scribe_Values.Look<float>(ref currentStorage, "currentStorage");
             Scribe_Values.Look<bool>(ref shouldStopHarvesting, "shouldStopHarvesting");
             Scribe_Values.Look<IntVec3>(ref homePosition, "homePosition");
             Scribe_Values.Look<bool>(ref harvestModeBool, "harvestType");
+            Scribe_Deep.Look<TiberiumContainer>(ref Container, "TiberiumContainer");
             Scribe_Collections.Look<Building_Refinery>(ref availableRefineries, "availableRefineries", LookMode.Reference);
         }
 
@@ -63,6 +61,7 @@ namespace TiberiumRim
             this.kindDef = (HarvesterKindDef)base.kindDef;
             if (!respawningAfterLoad)
             {
+                Container = new TiberiumContainer(kindDef.maxStorage);
                 this.homePosition = this.mainRefinery.InteractionCell;
                 UpdateRefineriesOrAddNewMain();
             }
@@ -83,30 +82,12 @@ namespace TiberiumRim
         public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
         {          
             TiberiumCrystalDef spawnDef = null;
-            float maxValue = 0f;
-            if (CurrentStorage > 0)
+            if (Container.GetTotalStorage > 0)
             {
-                IntVec3 pos = this.Position.RandomAdjacentCell8Way();
-                if (pos.InBounds(this.Map))
-                {
-                    foreach (TiberiumCrystalDef def in CollectedTypeList)
-                    {
-                        if (def.tiberium.maxHarvestValue > maxValue)
-                        {
-                            maxValue = def.tiberium.maxHarvestValue;
-                        }
-                    }
-                    foreach (TiberiumCrystalDef def in CollectedTypeList)
-                    {
-                        if (def.tiberium.maxHarvestValue == maxValue)
-                        {
-                            spawnDef = def;
-                        }
-                    }
-                    float radius = 1 + ((CurrentStorage / this.kindDef.maxStorage) * 5);
-                    int cells = GenRadial.NumCellsInRadius(radius);
-                    GenExplosion.DoExplosion(this.Position, this.Map, radius, DamageDefOf.Bomb, this, 10, null, null, null, spawnDef, (CurrentStorage/(CurrentStorage/25)) / cells);
-                }
+                spawnDef = TiberiumUtility.CrystalDefFromType(Container.MainType);
+                float radius = 1 + ((Container.GetTotalStorage / this.kindDef.maxStorage) * 5);
+                int cells = GenRadial.NumCellsInRadius(radius);
+                GenExplosion.DoExplosion(this.Position, this.Map, radius, DamageDefOf.Bomb, this, 10, null, null, null, spawnDef, (Container.GetTotalStorage / (Container.GetTotalStorage / 25)) / cells);
             }
             GenSpawn.Spawn(this.kindDef.destroyedThingDef, this.Position, this.Map);            
             this.DeSpawn();
@@ -168,16 +149,32 @@ namespace TiberiumRim
         {
             get
             {
+                if(this.mainRefinery != null)
+                {
+                    return this.mainRefinery;
+                }
+                foreach(Building_Refinery refinery in availableRefineries)
+                {
+                    return refinery;
+                }
+                return null;
+            }
+        }
+
+        public Building_Refinery AvailableRefineryToUnload
+        {
+            get
+            {
                 if (this.mainRefinery != null)
                 {
-                    if (!this.mainRefinery.NetworkComp.CapacityFull)
+                    if (!this.mainRefinery.NetworkComp.Container.CapacityFull)
                     {
                         return this.mainRefinery;
                     }
                 }
                 foreach (Building_Refinery refinery in availableRefineries)
                 {
-                    if (!refinery.NetworkComp.CapacityFull)
+                    if (!refinery.NetworkComp.Container.CapacityFull)
                     {
                         return refinery;
                     }
@@ -222,22 +219,6 @@ namespace TiberiumRim
             }
         }
 
-        public float CurrentStorage
-        {
-            get
-            {
-                if (currentStorage > this.kindDef.maxStorage)
-                {
-                    this.currentStorage = this.kindDef.maxStorage;
-                    return this.kindDef.maxStorage;
-                }
-                else
-                {
-                    return this.currentStorage;
-                }
-            }
-        }
-
         public bool CanWork
         {
             get
@@ -250,7 +231,7 @@ namespace TiberiumRim
         {
             get
             {
-                if (this.shouldStopHarvesting || this.CapacityFull || !this.Map.GetComponent<MapComponent_TiberiumHandler>().HarvestableTiberiumExists)
+                if (this.shouldStopHarvesting || this.Container.CapacityFull || !this.Map.GetComponent<MapComponent_TiberiumHandler>().HarvestableTiberiumExists)
                 {
                     return false;
                 }
@@ -262,9 +243,9 @@ namespace TiberiumRim
         {
             get
             {
-                if (this.CurrentStorage > 0)
+                if (this.Container.GetTotalStorage > 0)
                 {
-                    if (!this.ShouldHarvest && this.AvailableRefinery.CanBeRefinedAt)
+                    if (!this.ShouldHarvest && this.AvailableRefineryToUnload.CanBeRefinedAt)
                     {
                         return true;
                     }
@@ -300,14 +281,6 @@ namespace TiberiumRim
             }
         }
 
-        public bool CapacityFull
-        {
-            get
-            {
-                return this.CurrentStorage == this.kindDef.maxStorage;
-            }
-        }
-
         public TiberiumCrystalDef GetTiberiumDefToPrefer()
         {
             return this.TiberiumDefToPrefer;
@@ -339,7 +312,7 @@ namespace TiberiumRim
                 r.center = this.DrawPos;
                 r.center.z = r.center.z + 1.5f;
                 r.size = new Vector2(3f, 0.15f);
-                r.fillPercent = (CurrentStorage/this.kindDef.maxStorage);
+                r.fillPercent = (Container.GetTotalStorage/this.kindDef.maxStorage);
                 r.filledMat = Harvester.FilledMat;
                 r.unfilledMat = Harvester.UnfilledMat;
                 r.margin = 0.12f;
@@ -412,7 +385,7 @@ namespace TiberiumRim
             Command_Action setMode = new Command_Action();
             setMode.defaultLabel = (this.GetTiberiumDefToPrefer() == null ? (this.harvestModeBool == true ? "HarvesterModeNearest".Translate() : "HarvesterModeValue".Translate()) : "");
             setMode.defaultDesc = (this.GetTiberiumDefToPrefer() == null ? "HarvesterModeDesc".Translate() : "NA".Translate());
-            setMode.icon = (this.GetTiberiumDefToPrefer() == null ? (this.harvestModeBool == true ? ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetTib") : ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetTib")) : ContentFinder<Texture2D>.Get("UI/Icons/NotAvailable"));
+            setMode.icon = (this.GetTiberiumDefToPrefer() == null ? (this.harvestModeBool == true ? ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetClose") : ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetWealth")) : ContentFinder<Texture2D>.Get("UI/Icons/NotAvailable"));
             setMode.action = delegate
             {
                 if (this.GetTiberiumDefToPrefer() == null)
@@ -427,7 +400,7 @@ namespace TiberiumRim
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(base.GetInspectString());
-            stringBuilder.AppendLine("Harvester Storage at: " + Mathf.RoundToInt(CurrentStorage));
+            stringBuilder.AppendLine("Harvester Storage at: " + Mathf.RoundToInt(Container.GetTotalStorage));
             if (this.TiberiumDefToPrefer != null)
             {
                 stringBuilder.AppendLine("Current prefered tib: " + this.TiberiumDefToPrefer);

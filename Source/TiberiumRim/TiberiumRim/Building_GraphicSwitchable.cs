@@ -19,15 +19,10 @@ namespace TiberiumRim
     {
         public new GraphicSwitchableDef def;
         private CompPowerTrader powerComp;
-        private GraphicData graphicData;
 
-        [Unsaved]
         public Graphic BaseGraphic;
-        [Unsaved]
         public Graphic ActivatedGraphic;
-        [Unsaved]
-        public Graphic FilledGraphic;
-        [Unsaved]
+        public Graphic FilledOverlay;
         public Graphic OverlayGraphic;
 
         public override void SpawnSetup(Map map,bool respawningAfterLoad)
@@ -35,27 +30,36 @@ namespace TiberiumRim
             base.SpawnSetup(map, respawningAfterLoad);
             def = (GraphicSwitchableDef)base.def;
             powerComp = this.GetComp<CompPowerTrader>();
-            graphicData = this.def.graphicData;
+        }
+
+        public GraphicData GraphicData
+        {
+            get
+            {
+                return this.def.graphicData;
+            }
         }
 
         public bool GraphicsSet
         {
             get
             {
-                bool flag = false;
+                bool flag1 = false;
+                bool flag2 = false;
+                bool flag3 = false;
                 if (def.activeGraphicPath.Length > 0)
                 {
-                    flag = ActivatedGraphic != null;
+                    flag1 = ActivatedGraphic != null;
                 }
                 if (def.filledGraphicPath.Length > 0)
                 {
-                    flag = FilledGraphic != null;
+                    flag2 = FilledOverlay != null;
                 }
                 if (def.overlayGraphicPath.Length > 0)
                 {
-                    flag = OverlayGraphic != null;
+                    flag3 = OverlayGraphic != null;
                 }
-                return flag;
+                return flag1 && flag2 && flag3;
             }
         }
 
@@ -71,8 +75,8 @@ namespace TiberiumRim
         {
             get
             {
-                ShaderType sType = graphicData.shaderType;
-                if (graphicData.shaderType == ShaderType.None)
+                ShaderType sType = GraphicData.shaderType;
+                if (GraphicData.shaderType == ShaderType.None)
                 {
                     sType = ShaderType.Cutout;
                 }
@@ -82,14 +86,14 @@ namespace TiberiumRim
 
         public void SetBaseGraphic()
         {
-            BaseGraphic = GraphicDatabase.Get(graphicData.graphicClass, graphicData.texPath, Shader, graphicData.drawSize, graphicData.color, graphicData.colorTwo, graphicData);
+            BaseGraphic = GraphicDatabase.Get(GraphicData.graphicClass, GraphicData.texPath, Shader, GraphicData.drawSize, GraphicData.color, GraphicData.colorTwo, GraphicData);
         }
 
         public void SetActivatedGraphic()
         {
             if (def.activeGraphicPath.Length > 0)
             {
-                ActivatedGraphic = GraphicDatabase.Get(graphicData.graphicClass, def.activeGraphicPath, Shader, graphicData.drawSize, graphicData.color, graphicData.colorTwo, graphicData);
+                ActivatedGraphic = GraphicDatabase.Get(GraphicData.graphicClass, def.activeGraphicPath, Shader, GraphicData.drawSize, GraphicData.color, GraphicData.colorTwo, GraphicData);
             }
         }
 
@@ -97,7 +101,7 @@ namespace TiberiumRim
         {
             if (def.filledGraphicPath.Length > 0)
             {
-                FilledGraphic = GraphicDatabase.Get(graphicData.graphicClass, def.filledGraphicPath, Shader, graphicData.drawSize, graphicData.color, graphicData.colorTwo, graphicData);
+                FilledOverlay = GraphicDatabase.Get(GraphicData.graphicClass, def.filledGraphicPath, ShaderDatabase.MoteGlow, GraphicData.drawSize, Color.white, Color.white);
             }
         }
 
@@ -105,21 +109,33 @@ namespace TiberiumRim
         {
             if (def.overlayGraphicPath.Length > 0)
             {
-                OverlayGraphic = GraphicDatabase.Get(graphicData.graphicClass, def.overlayGraphicPath, Shader, graphicData.drawSize, graphicData.color, graphicData.colorTwo, graphicData);
+                OverlayGraphic = GraphicDatabase.Get(GraphicData.graphicClass, def.overlayGraphicPath, Shader, GraphicData.drawSize, GraphicData.color, GraphicData.colorTwo, GraphicData);
             }
         }
 
         public abstract bool IsActivated {get;}
 
-        public abstract bool IsFilled { get; }
+        public abstract float FilledPct { get; }
 
         public override void Draw()
         {
-            foreach(ThingComp comp in AllComps)
+            if (Graphic != null)
             {
-                comp.PostDraw();
+                foreach (ThingComp comp in AllComps)
+                {
+                    comp.PostDraw();
+                }
+                if (FilledPct > 0f)
+                {
+                    TiberiumContainer container = this.TryGetComp<Comp_TNW>().Container;
+                    Graphic NewFilledOL = FilledOverlay.GetColoredVersion(ShaderDatabase.MoteGlow, container.Color, container.Color);
+                    Material mat = NewFilledOL.MatAt(base.Rotation, null);
+                    Material fade = FadedMaterialPool.FadedVersionOf(mat, FilledPct);
+                    fade.color = new Color(container.Color.r, container.Color.g, container.Color.b, fade.color.a);
+                    Graphics.DrawMesh(NewFilledOL.MeshAt(base.Rotation), base.DrawPos + Altitudes.AltIncVect, Quaternion.identity, fade, 0);
+                }
+                Graphic.Draw(this.DrawPos, this.Rotation, this);
             }
-            Graphic.Draw(this.DrawPos, this.Rotation, this, 0f);
         }
 
         public override void Print(SectionLayer layer)
@@ -153,12 +169,8 @@ namespace TiberiumRim
                         }
                     }
                 }
-                if (IsFilled)
-                {
-                    graphic = FilledGraphic;
-                }
                 return graphic;
             }
-        }
+        }    
     }
 }

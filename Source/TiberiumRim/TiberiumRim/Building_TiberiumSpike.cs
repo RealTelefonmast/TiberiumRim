@@ -9,29 +9,16 @@ namespace TiberiumRim
 {
     public class Building_TiberiumSpike : Building_GraphicSwitchable
     {
-        private Building_TiberiumGeyser geyser;
+        public Building_TiberiumGeyser geyser;
 
-        public override bool IsFilled
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override float FilledPct => 0f;
 
-        public override bool IsActivated
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsActivated => false;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            bool flag = this.geyser == null;
-            if (flag)
+            if (this.geyser == null)
             {
                 ThingDef def = ThingDef.Named("TiberiumGeyser");
                 this.geyser = (Building_TiberiumGeyser)Map.thingGrid.ThingAt(Position, def);

@@ -13,12 +13,12 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
-            if (harvester.AvailableRefinery != null)
+            if (harvester.AvailableRefineryToUnload != null)
             {
-                if (harvester.ShouldUnload && !harvester.Unloading && harvester.CanReserve(harvester.AvailableRefinery))
+                if (harvester.ShouldUnload && !harvester.Unloading && harvester.CanReserve(harvester.AvailableRefineryToUnload))
                 {
                     JobDef job = DefDatabase<JobDef>.GetNamed("ReturnToRefineryToUnload");
-                    return new Job(job, harvester.AvailableRefinery);
+                    return new Job(job, harvester.AvailableRefineryToUnload);
                 }
             }
             return null;
@@ -58,24 +58,25 @@ namespace TiberiumRim
             Toil unload = new Toil();
             unload.initAction = delegate
             {
-                Harvester harvester = unload.actor as Harvester;               
-                CurrentStorage += harvester.CurrentStorage;
+                Harvester harvester = unload.actor as Harvester;      
+                
+                CurrentStorage += harvester.Container.GetTotalStorage;
                 harvester.pather.StopDead();
             };
             unload.tickAction = delegate
             {
                 Harvester actor = unload.actor as Harvester;
-                if (!Refinery.NetworkComp.CapacityFull)
+                if (!Refinery.NetworkComp.Container.CapacityFull)
                 {
                     if(ticksPassed < Refinery.refineTicks)
                     {
-                        Log.Message("" + CurrentStorage + " / " + Refinery.refineTicks + " = " + (CurrentStorage / Refinery.refineTicks));
-                        Refinery.NetworkComp.Receive(CurrentStorage / Refinery.refineTicks);
-                        actor.currentStorage -= actor.currentStorage / (Refinery.refineTicks - ticksPassed);
+                        TiberiumType type = actor.Container.MainType;
+
+                        Refinery.NetworkComp.Container.AddCrystal(type,(CurrentStorage / Refinery.refineTicks), out float flt);
+                        actor.Container.RemoveCrystal(type, ((CurrentStorage / Refinery.refineTicks) - flt));
                     }
                     else
                     {
-                        actor.CollectedTypeList.Clear();
                         this.EndJobWith(JobCondition.InterruptOptional);
                         return;
                     }

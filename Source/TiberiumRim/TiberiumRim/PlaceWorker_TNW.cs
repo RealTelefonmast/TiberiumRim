@@ -31,7 +31,7 @@ namespace TiberiumRim
             {
                 for (int i = 0; i < thingList.Count; i++)
                 {
-                    List<IntVec3> cells = thingList[i].CellsAdjacent8WayAndInside().Where((IntVec3 x) => !thingList[i].OccupiedRect().Contains(x)).ToList<IntVec3>();
+                    List<IntVec3> cells = thingList[i].CellsAdjacent8WayAndInside().Where((IntVec3 x) => !thingList[i].OccupiedRect().Contains(x) && thingList[i].InteractionCell != x).ToList<IntVec3>();
                     foreach (IntVec3 cell in cells)
                     {
                         if (cell.GetFirstBuilding(map) != null)

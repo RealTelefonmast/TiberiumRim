@@ -8,12 +8,32 @@ using RimWorld;
 using Verse.AI;
 using Verse;
 using System.Reflection;
+using Harmony;
 
 namespace TiberiumRim
 {
     [StaticConstructorOnStartup]
     public static class TiberiumUtility
-    {
+    { 
+
+        public static TiberiumCrystalDef CrystalDefFromType(TiberiumType type)
+        {
+            TiberiumCrystalDef crystalDef = null;
+            if (type == TiberiumType.Green)
+            {
+                crystalDef = TiberiumDefOf.TiberiumGreen;
+            }
+            if(type == TiberiumType.Blue)
+            {
+                crystalDef = TiberiumDefOf.TiberiumBlue;
+            }
+            if (type == TiberiumType.Red)
+            {
+                crystalDef = TiberiumDefOf.TiberiumRed;
+            }
+            return crystalDef;
+        }
+
         public static bool IsFarAwayEnoughFromAny(this IntVec3 pos, ThingDef def, Map map, int minDist)
         {
             List<Thing> thingList = map.listerThings.AllThings.FindAll((Thing x) => x.def == def);
@@ -180,27 +200,30 @@ namespace TiberiumRim
             return returnList;
         }
 
-        public static TiberiumCrystal ClosestPreferableReachableAndReservableTiberiumForHarvester(Harvester harvester, IntVec3 root, Map map, TiberiumCrystalDef preferableDef, TraverseParms traverseParms, PathEndMode peMode)
+        public static TiberiumCrystal ClosestPreferableReachableAndReservableTiberiumForHarvester(Pawn harvester, IntVec3 root, Map map, TiberiumCrystalDef preferableDef, TraverseParms traverseParms, PathEndMode peMode)
         {
             TiberiumCrystal result = null;           
             float maxValue = -1f;
             List<TiberiumCrystal> valueCheckList = new List<TiberiumCrystal>();
             valueCheckList.AddRange((preferableDef?.CanBeFound(map) == true ? map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => x.def == preferableDef && harvester.CanReserve(x)) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => harvester.CanReserve(x) && x.def.tiberium.harvestable)));
-            if (!harvester.harvestModeBool)
+            if (harvester is Harvester)
             {
-                foreach (TiberiumCrystal crystal in valueCheckList)
+                if (!(harvester as Harvester).harvestModeBool)
                 {
-                    if (crystal.HarvestValue > maxValue)
+                    foreach (TiberiumCrystal crystal in valueCheckList)
                     {
-                        maxValue = crystal.HarvestValue;
+                        if (crystal.HarvestValue > maxValue)
+                        {
+                            maxValue = crystal.HarvestValue;
+                        }
                     }
-                }
-                for (int i = 0; i < valueCheckList.Count; i++)
-                {
-                    TiberiumCrystal crystal = valueCheckList[i] as TiberiumCrystal;
-                    if (crystal.HarvestValue < maxValue)
+                    for (int i = 0; i < valueCheckList.Count; i++)
                     {
-                        valueCheckList.Remove(crystal);
+                        TiberiumCrystal crystal = valueCheckList[i] as TiberiumCrystal;
+                        if (crystal.HarvestValue < maxValue)
+                        {
+                            valueCheckList.Remove(crystal);
+                        }
                     }
                 }
             }
@@ -279,7 +302,7 @@ namespace TiberiumRim
             }
             else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumContactPoison))
             {
-                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumContactPoison");
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumContactPoison);
             }
             else
             {

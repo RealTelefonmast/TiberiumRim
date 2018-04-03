@@ -2,7 +2,7 @@
 <Defs>
 
 	<ThingDef Name="BenchBase_TR" ParentName="BuildingBase" Abstract="True">
-		<castEdgeShadows>true</castEdgeShadows>
+		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0.20</staticSunShadowHeight>
 		<building>
 			<workSpeedPenaltyOutdoors>true</workSpeedPenaltyOutdoors>
@@ -30,7 +30,7 @@
 			<WorkToBuild>750</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
-		<size>(3,2)</size>
+		<size>(4,4)</size>
 		<costList>
 			<Steel>75</Steel>
 			<Component>3</Component>
@@ -52,16 +52,17 @@
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<graphicData>
 			<texPath>Building/Common/TCNnode</texPath>
-			<graphicClass>Graphic_Multi</graphicClass>
-			<drawSize>(5,2.5)</drawSize>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(4,4)</drawSize>
 			<shadowData>
-				<volume>(1.5,1,1.5)</volume>
+				<volume>(1.5,1.5,1.5)</volume>
 			</shadowData>
 			<damageData>
 				<rect>(0.3,0.1,2.4,1.8)</rect>
 			</damageData>
 		</graphicData>
 		<fillPercent>0.5</fillPercent>
+		<rotatable>false</rotatable>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>		
 		<designationCategory>Tiberium</designationCategory>
 		<surfaceType>Item</surfaceType>
@@ -133,13 +134,13 @@
 			</damageData>
 		</graphicData>
 		<rotatable>false</rotatable>
-		<filledGraphicPath>Building/Common/silo_filled</filledGraphicPath>
-		<overlayGraphicPath>Building/Common/silo_overlay</overlayGraphicPath>
+		<filledGraphicPath>Building/FX/silo_filledOL</filledGraphicPath>
+		<overlayGraphicPath>Building/Common/siloOL</overlayGraphicPath>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<pathCost>70</pathCost>
 		<blockWind>true</blockWind>
-		<castEdgeShadows>true</castEdgeShadows>
+		<castEdgeShadows>false</castEdgeShadows>
 		<fillPercent>0.40</fillPercent>
 		<tickerType>Normal</tickerType>
 		<building>
@@ -163,6 +164,10 @@
 				<maxStorage>2500</maxStorage>
 				<isGlobalStorage>true</isGlobalStorage>
 			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>2</glowRadius>
+				<glowColor>(120,255,150,0)</glowColor>
+			</li>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
 		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
@@ -173,6 +178,71 @@
 		<researchPrerequisites>
 			<li>TiberiumResearchRefining</li>
 		</researchPrerequisites>
+	</ThingDef>
+	
+	<ThingDef ParentName="BuildingBase" Class="TiberiumRim.GraphicSwitchableDef">
+		<defName>TiberiumPowerPlant</defName>
+		<label>Tiberium power plant</label>
+		<description>This power plant needs to be connected to a Tiberium network before it can properly operate, it will automatically consume Tiberium from the network to sustain itself.</description>
+		<thingClass>TiberiumRim.Building_TiberiumPowerPlant</thingClass>
+		<graphicData>
+			<texPath>Building/Common/PowerPlant</texPath>
+			<graphicClass>Graphic_Single</graphicClass>
+			<drawSize>(5,5)</drawSize>
+		</graphicData>
+		<overlayGraphicPath>Building/Common/PowerPlantOL</overlayGraphicPath>
+		<filledGraphicPath>Building/FX/PowerPlant_Filled</filledGraphicPath>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<blockWind>true</blockWind>
+		<fillPercent>1.0</fillPercent>
+		<castEdgeShadows>false</castEdgeShadows>
+		<rotatable>false</rotatable>
+		<statBases>
+			<MaxHitPoints>500</MaxHitPoints>
+			<WorkToBuild>3000</WorkToBuild>
+			<Flammability>1.0</Flammability>
+		</statBases>
+		<tickerType>Normal</tickerType>
+		<size>(4,4)</size>
+		<costList>
+			<Steel>250</Steel>
+			<Uranium>25</Uranium>
+			<Plasteel>15</Plasteel>
+			<Component>5</Component>
+			<BookRiparius>1</BookRiparius>
+		</costList>
+		<comps>
+			<li Class="TiberiumRim.CompProperties_TNW">
+				<maxStorage>1000</maxStorage>
+				<isLocalStorage>true</isLocalStorage>
+				<isConsumer>true</isConsumer>
+				<consumeAmtPerDay>200</consumeAmtPerDay>
+			</li>
+			<li Class="CompProperties_Flickable" />
+			<li Class="CompProperties_Glower">
+				<glowRadius>4</glowRadius>
+				<glowColor>(120,255,150,0)</glowColor>
+			</li>			
+			<li Class="CompProperties_HeatPusher">
+				<compClass>CompHeatPusherPowered</compClass>
+				<heatPerSecond>12</heatPerSecond>
+			</li>
+			<li Class="CompProperties_Power">
+				<compClass>TiberiumRim.CompTiberiumPowerPlant</compClass>
+				<basePowerConsumption>-2700</basePowerConsumption>
+				<transmitsPower>true</transmitsPower>
+			</li>
+			<li Class="CompProperties_Breakdownable"/>
+		</comps>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<designationCategory>Tiberium</designationCategory>
+		<staticSunShadowHeight>0.5</staticSunShadowHeight>
+		<constructEffect>ConstructMetal</constructEffect>
+		<researchPrerequisites>
+			<li>TiberiumPower</li>
+		</researchPrerequisites>
+		<filthLeaving>FilthTibLiquid</filthLeaving>
 	</ThingDef>
 
 	<ThingDef ParentName="BenchBase_TR" Class="TiberiumRim.RefineryDef">
@@ -201,9 +271,10 @@
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<maxStorage>1000</maxStorage>
 				<isLocalStorage>true</isLocalStorage>
+				<isGlobalStorage>true</isGlobalStorage>
 			</li>
 			<li Class="CompProperties_Glower">
-				<glowRadius>2</glowRadius>
+				<glowRadius>4</glowRadius>
 				<glowColor>(120,255,150,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Power">
@@ -216,6 +287,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<overlayGraphicPath>Building/Common/TibRefineryOL</overlayGraphicPath>
+		<filledGraphicPath>Building/FX/TibRefineryFilledOL</filledGraphicPath>
 		<graphicData>
 			<texPath>Building/Common/TibRefinery</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -287,6 +359,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<overlayGraphicPath>Building/Common/ReplantOL</overlayGraphicPath>
+		<filledGraphicPath>Building/FX/ReplantFilled</filledGraphicPath>
 		<graphicData>
 			<texPath>Building/Common/Replant</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -331,10 +404,10 @@
 		</graphicData>
 		<overlayGraphicPath>Building/Common/TibSpikeOL</overlayGraphicPath>
 		<uiIconPath>Building/Common/TibSpike_Icon</uiIconPath>
-		<altitudeLayer>BuildingOnTop</altitudeLayer>
+		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
 		<blockWind>true</blockWind>
-		<castEdgeShadows>true</castEdgeShadows>
+		<castEdgeShadows>false</castEdgeShadows>
 		<scatterableOnMapGen>false</scatterableOnMapGen>
 		<fillPercent>1</fillPercent>
 		<blockLight>true</blockLight>
@@ -360,7 +433,7 @@
 				<isLocalStorage>true</isLocalStorage>
 				<isAutoProducer>true</isAutoProducer>
 				<produceAmt>25</produceAmt>
-				<produceTime>6</produceTime>
+				<workTime>6</workTime>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>

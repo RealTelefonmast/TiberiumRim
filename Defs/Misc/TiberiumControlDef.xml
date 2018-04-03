@@ -7,6 +7,7 @@
 		<GasInfectionFlt>0.01</GasInfectionFlt>
 		<VeinHitDamage>6</VeinHitDamage>
 		<TiberiumGrowthRate>1</TiberiumGrowthRate>
+		<TiberiumLeakScale>1</TiberiumLeakScale>
 	</Def>
   
 </Defs>

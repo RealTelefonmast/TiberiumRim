@@ -209,7 +209,6 @@
 		<graphicData>
 			<texPath>Building/Natural/BlossomTree</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
-			<shaderType>Transparent</shaderType>
 			<drawSize>(2,6)</drawSize>
 		</graphicData>
 		<statBases>

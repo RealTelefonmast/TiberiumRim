@@ -14,7 +14,13 @@ namespace TiberiumRim
             this.billStack = new BillStack(this);
         }
 
-        public override bool IsFilled => false;
+        public override float FilledPct
+        {
+            get
+            {
+                return ((this.billStack.Bills.Find((Bill x) => (x as TibBill).billDoer != null) != null) ? 1f : 0);
+            }
+        }
 
         public override bool IsActivated => false;
     }

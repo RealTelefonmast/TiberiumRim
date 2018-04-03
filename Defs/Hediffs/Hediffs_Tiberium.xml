@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<HediffDef Name="InjuryBase_TB" Abstract="True">
+	<HediffDef Name="InjuryBase_TR" Abstract="True">
 		<hediffClass>Hediff_Injury</hediffClass>
 		<tendable>true</tendable>
 		<displayWound>true</displayWound>
 	</HediffDef>
 	
-	<HediffDef Name="InfectionBase_TB" Abstract="True">
+	<HediffDef Name="InfectionBase_TR" Abstract="True">
 		<hediffClass>HediffWithComps</hediffClass>
-		<defaultLabelColor>(0.8, 0.8, 0.35)</defaultLabelColor>
 		<initialSeverity>0.1</initialSeverity>
 		<comps>
 			<li Class="HediffCompProperties_Discoverable">
@@ -16,21 +15,15 @@
 			</li>
 		</comps>
 	</HediffDef>
-
-	<!-- Treating Tiberium like a disease -->
 	
-	<HediffDef ParentName="InfectionBase_TB">
-		<defName>TiberiumContactPoison</defName>
+	<HediffDef ParentName="InfectionBase_TR">
+		<defName>TiberiumInfection</defName>
 		<defaultLabelColor>(10, 139, 0)</defaultLabelColor>
 		<label>Tiberium infection</label>
 		<makesSickThought>true</makesSickThought>
-		<tendable>true</tendable>
+		<tendable>false</tendable>
 		<lethalSeverity>1</lethalSeverity>
 		<comps>
-			<li Class="HediffCompProperties_TendDuration">
-				<tendDuration>60000</tendDuration>
-				<severityPerDayTended>-0.1</severityPerDayTended>
-			</li>
 			<li Class="HediffCompProperties_Immunizable">
 				<severityPerDayNotImmune>0.4</severityPerDayNotImmune>
 			</li>
@@ -134,7 +127,6 @@
 			</li>
 		</stages>
 	</HediffDef>
-	
 	
 	<HediffDef>
 		<defName>TiberiumBuildupHediff</defName>

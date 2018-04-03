@@ -25,21 +25,16 @@ namespace TiberiumRim
 
         public int refineTicks;
 
-        public override bool IsFilled
+        public override float FilledPct
         {
             get
             {
-                return false;
+                return NetworkComp.Container.GetTotalStorage / NetworkComp.props.maxStorage;
             }
         }
 
-        public override bool IsActivated
-        {
-            get
-            {
-                return false;
-            }
-        }
+        public override bool IsActivated => false;
+        
 
         public override void ExposeData()
         {
@@ -89,7 +84,7 @@ namespace TiberiumRim
             for(int i = 1; i < harvesterList.Count(); i++)
             {
                 int j = i;
-                while ((j > 0) && (harvesterList[j].CurrentStorage > harvesterList[j-1].CurrentStorage))
+                while ((j > 0) && (harvesterList[j].Container.GetTotalStorage > harvesterList[j-1].Container.GetTotalStorage))
                 {
                     int k = j - 1;
                     Harvester harvester = harvesterList[k];
@@ -135,7 +130,7 @@ namespace TiberiumRim
             {
                 if (this.GetComp<CompPowerTrader>().PowerOn && !this.IsBrokenDown())
                 {
-                    if (!NetworkComp.CapacityFull)
+                    if (!NetworkComp.Container.CapacityFull)
                     {
                         return true;
                     }

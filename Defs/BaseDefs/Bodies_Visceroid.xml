@@ -11,7 +11,7 @@
 			<parts>
 				<li>
 					<def>Brain</def>
-					<coverage>0.03</coverage>
+					<coverage>0.005</coverage>
 					<depth>Inside</depth>
 				</li>
 				<li>
@@ -31,7 +31,17 @@
 				</li>
 				<li>
 					<def>VisceroidOrifice</def>
-					<coverage>0.04</coverage>
+					<coverage>0.02</coverage>
+					<depth>Outside</depth>
+				</li>
+				<li>
+					<def>VisceroidOrifice2</def>
+					<coverage>0.02</coverage>
+					<depth>Outside</depth>
+				</li>
+				<li>
+					<def>VisceroidOrifice3</def>
+					<coverage>0.02</coverage>
 					<depth>Outside</depth>
 				</li>
 				<li>
@@ -63,7 +73,7 @@
 			<parts>
 				<li>
 					<def>Brain</def>
-					<coverage>0.03</coverage>
+					<coverage>0.005</coverage>
 					<depth>Inside</depth>
 				</li>
 				<li>

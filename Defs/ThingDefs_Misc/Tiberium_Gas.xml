@@ -6,7 +6,7 @@
 		<thingClass>TiberiumRim.Gas_Tiberium</thingClass>
 		<label>Tiberium gas</label>
 		<graphicData>
-			<texPath>Gas/Tiberium</texPath>
+			<texPath>Motes/TiberiumGas</texPath>
 			<drawSize>3</drawSize>
 			<color>(1.0,1.0,1.0,0.5)</color>
 		</graphicData>

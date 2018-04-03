@@ -21,8 +21,19 @@ namespace TiberiumRim
 
         public int ProducerCount = new int();
 
+        //Tiberium Biome Checker Part
+
+        public WorldComponent_TiberiumSpread worldComp = Find.World.GetComponent<WorldComponent_TiberiumSpread>();
+        private int mapTiles;
+
         public MapComponent_TiberiumHandler(Map map) : base(map)
         {
+        }
+
+        public override void FinalizeInit()
+        {
+            base.FinalizeInit();
+            mapTiles = (this.map.Size.ToIntVec2.x * this.map.Size.ToIntVec2.z);
         }
 
         public override void ExposeData()
@@ -38,6 +49,11 @@ namespace TiberiumRim
 
         public override void MapComponentTick()
         {
+            if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
+            {
+                SetPct();
+                Check();
+            }
             if (Find.TickManager.TicksGame % GenTicks.TickLongInterval == 0)
             {
                 if (TiberiumExists)
@@ -55,6 +71,61 @@ namespace TiberiumRim
                 }
             }            
             base.MapComponentTick();
+        }
+
+        // -- Biome Checker --
+
+        private int MapTile
+        {
+            get
+            {
+                return this.map.Tile;
+            }
+        }
+
+        public float TileCount
+        {
+            get
+            {
+                int tilesCovered = 0;
+                tilesCovered = this.map.listerThings.AllThings.Where((Thing x) => x.def.coversFloor == true).Sum(x => x.def.size.x * x.def.size.z);
+                return (mapTiles - tilesCovered);
+            }
+        }
+
+        public bool IsRedZone
+        {
+            get
+            {
+                return map.Biome.defName.Contains("RedZone_TB");
+            }
+        }
+
+        public void SetPct()
+        {
+            if (!worldComp.tiberiumPcts.ContainsKey(MapTile))
+            {
+                worldComp.tiberiumPcts.Add(MapTile, ((float)AllTiberiumCrystals.Count / TileCount));
+            }
+            else
+            {
+                worldComp.tiberiumPcts[MapTile] = ((float)AllTiberiumCrystals.Count / TileCount);
+            }
+
+        }
+
+        public void Check()
+        {
+            if (IsRedZone != true)
+            {
+                if (worldComp.tiberiumPcts[MapTile] > 0f)
+                {
+                    if (!worldComp.TileID.Contains(MapTile))
+                    {
+                        worldComp.TileID.Add(MapTile);
+                    }
+                }
+            }
         }
 
         // -- Bools --
@@ -204,7 +275,7 @@ namespace TiberiumRim
             ThingDef RockOrChunk = null;
             IntVec3 loc = thing.Position;
             thing.TakeDamage(dinfo);
-            if (thing != null && Rand.Chance(0.05f))
+            if (thing != null && !thing.Destroyed && Rand.Chance(0.05f))
             {
                 if (!thingIsChunk)
                 {

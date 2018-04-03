@@ -57,12 +57,6 @@ namespace TiberiumRim
                 }
                 SetTiles();
                 this.harvestTicks = GenTicks.SecondsToTicks(def.tiberium.harvestTimeSec);
-                /* TODO: Mapcomp biomechecker
-                if (!this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Contains(this.thingIDNumber))
-                {
-                    this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Add(this.thingIDNumber);
-                }
-                */
             }            
         }
 
@@ -70,12 +64,6 @@ namespace TiberiumRim
         {
             RemoveTiles();
             this.Map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Remove(this);
-            /* TODO: Mapcomp biomechecker
-            if (this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Contains(this.thingIDNumber))
-            {
-                this.Map.GetComponent<MapComponent_TiberiumBiomeChecker>().tiberCount.Remove(this.thingIDNumber);
-            }
-            */
             base.DeSpawn();
         }
 
@@ -87,7 +75,6 @@ namespace TiberiumRim
             Scribe_Values.Look<int>(ref harvestTicks, "harvestTicks");
             Scribe_Defs.Look<TiberiumCrystalDef>(ref this.def, "def");
         }
-        //
 
         public override void TickLong()
         {
