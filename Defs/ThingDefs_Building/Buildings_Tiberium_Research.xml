@@ -115,6 +115,7 @@
 		<surfaceType>Item</surfaceType>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_OnTiberiumProducer</li>
+			<li>TiberiumRim.PlaceWorker_Once</li>
 		</placeWorkers>
 		<researchPrerequisites>
 			<li>MicroelectronicsBasics</li>
@@ -141,11 +142,6 @@
 			<Steel>75</Steel>
 			<Component>2</Component>
 		</costList>
-		<recipes>
-			<li>MakeBookRiparius</li>
-			<li>MakeBookVinifera</li>
-			<li>MakeBookRutila</li>
-		</recipes>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<graphicData>

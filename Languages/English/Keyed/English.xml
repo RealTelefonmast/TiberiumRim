@@ -15,8 +15,8 @@
   <MessagePawnEaten>A pawn has been eaten by a Veinhole, should've been more careful!</MessagePawnEaten>
   <ProducerWokenIn>Fully formed in</ProducerWokenIn>
   <ProducerWoken>Fully formed.</ProducerWoken>
-  <NewRefinerySet>New Tiberium refinery set for {0}.</NewRefinerySet>
-  <RefineryLost>Refinery Lost.</RefineryLost>
+  
+  <ResearchBound>Bound to crane.</ResearchBound>
   
   <!-- PlaceWorkers -->
   <MustPlaceOnTiberiumGeyser>This must be placed on a Tiberium geyser.</MustPlaceOnTiberiumGeyser>
@@ -27,6 +27,11 @@
   <TotalStoredTib>Total stored Tiberium</TotalStoredTib>
   <Consumes>Consumes {0} Tiberium credits per day</Consumes>
   <DaysRemaining>{0} days remaining</DaysRemaining>
+  
+  <NewRefinerySet>New Tiberium refinery set for {0}.</NewRefinerySet>
+  <RefineryLost>Refinery Lost.</RefineryLost>
+  
+  <ThingAlreadyExists>A {0} already exists on your map.</ThingAlreadyExists>
   
   <!-- World -->
   <InfestationPct>Tiberium Infestation at: {0}</InfestationPct>
@@ -41,8 +46,8 @@
   <UseSpreadRadiusDesc>This makes Tiberium only spread in a certain radius around producers.</UseSpreadRadiusDesc>
   <UseCustomBackgroundLabel>Allow Custom Background</UseCustomBackgroundLabel>
   <UseCustomBackgroundDesc>Displays the custom TiberiumRim background instead of the the vanilla one.</UseCustomBackgroundDesc>
-  <PawnDamage>Tiberium Infects Pawns</PawnDamage> 
-  <PawnDamageDesc>All pawns next to Tiberium will get affected by it.</PawnDamageDesc>   
+  <PawnDamage>Tiberium Infects Pawns</PawnDamage>
+  <PawnDamageDesc>All pawns next to Tiberium will get affected by it.</PawnDamageDesc>
   <UseSpecificProducersLabel>Only Allow Specific producers</UseSpecificProducersLabel>
   <BuildingDamage>Tiberium Damages Structures</BuildingDamage>
   <BuildingDamageDesc>Activate this to let Tiberium damage any structure.</BuildingDamageDesc>
@@ -61,11 +66,17 @@
   <SetTiberiumLabel>Preferred Type</SetTiberiumLabel>
   <SetTiberiumDesc>Set a preferred Tiberium type, it will then be seeked out no matter the distance instead of the other types as long as it exists.</SetTiberiumDesc>
   <ResetTiberium>Reset Preferred Type</ResetTiberium>
+  <CurPrefType>Current preferred type</CurPrefType>
   
   <HarvesterModeNearest>Harvest Closest Tiberium</HarvesterModeNearest>
   <HarvesterModeValue>Harvest Most Valuable Tiberium</HarvesterModeValue>
   <HarvesterModeDesc>Determine whether the Harvester goes to the closest or the most valuable Tiberium on the map. Is overriden by preferred types.</HarvesterModeDesc>
   <NA>Not Available</NA>
+  
+  <HarvestingReport>Harvesting {0}.</HarvestingReport>
+  
+  <ErMossInActive>Eradicate Moss</ErMossInActive>
+  <ErMossActive>/Eradicating/</ErMossActive>
   
   <!-- Tiberium -->
   <HarvestValue>Current value</HarvestValue>

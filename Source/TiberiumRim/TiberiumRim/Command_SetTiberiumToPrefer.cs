@@ -45,7 +45,7 @@ namespace TiberiumRim
                     }
                 }
             }
-            foreach (TiberiumCrystalDef tibDef in typeSum.Where((TiberiumCrystalDef x) => x.tiberium.harvestable))
+            foreach (TiberiumCrystalDef tibDef in typeSum.Where((TiberiumCrystalDef x) => x.HarvestableType))
             {             
                 string text = tibDef.LabelCap;
                 list.Add(new FloatMenuOption(text, delegate

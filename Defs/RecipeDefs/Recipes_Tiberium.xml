@@ -61,6 +61,19 @@
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
 	
+	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
+		<defName>BurnSludge</defName>
+		<label>Burn Sludge</label>
+		<description>Get rid of the useless sludge.</description>
+		<jobString>burning sludge.</jobString>
+		<workAmount>75</workAmount>
+		<effectWorking>Cremate</effectWorking>
+		<soundWorking>Recipe_Cremate</soundWorking>
+		<tiberiumCost>100</tiberiumCost>
+		<drainType>Sludge</drainType>
+		<workSkill>Crafting</workSkill>
+	</RecipeDef>
+	
 	<!-- TODO: Each book specific to a producer -->
 
 	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
@@ -71,6 +84,7 @@
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<tiberiumCost>25</tiberiumCost>
+		<drainType>Green</drainType>
 		<products>
 		  <BookRiparius>1</BookRiparius>
 		</products>
@@ -85,6 +99,7 @@
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<tiberiumCost>50</tiberiumCost>
+		<drainType>Blue</drainType>
 		<products>
 		  <BookVinifera>1</BookVinifera>
 		</products>
@@ -99,6 +114,7 @@
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<tiberiumCost>75</tiberiumCost>
+		<drainType>Red</drainType>
 		<products>
 		  <BookRutila>1</BookRutila>
 		</products>

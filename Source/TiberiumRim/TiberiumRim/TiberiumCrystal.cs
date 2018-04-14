@@ -31,7 +31,7 @@ namespace TiberiumRim
 
         protected int ageInt;
 
-        public float growthInt = 0.05f;
+        public float growthInt = 0.001f;
 
         public int harvestTicks;
 
@@ -284,6 +284,14 @@ namespace TiberiumRim
         }
 
         // Bools
+        public bool Harvestable
+        {
+            get
+            {
+                return this.def.tiberium.maxHarvestValue > 0 && this.def.HarvestableType;
+            }
+        }
+
         public virtual bool CanReproduceNow
         {
             get
@@ -449,12 +457,12 @@ namespace TiberiumRim
             }
             else if (this.LifeStage == TiberiumLifeStage.Mature)
             {
-                if (CountsAsMature && def.tiberium.harvestable)
+                if (CountsAsMature && this.Harvestable)
                 {
                     stringBuilder.AppendLine("HarvestReady".Translate());
                 }
             }
-            if (this.def.tiberium.harvestable)
+            if (this.Harvestable)
             {
                 stringBuilder.AppendLine("HarvestValue".Translate() + ": " + Mathf.RoundToInt(HarvestValue));
             }

@@ -34,8 +34,6 @@ namespace TiberiumRim
 
         public float harvestTimeSec = 3;
 
-        public bool harvestable = true;
-
         public bool canBeInhibited = true;
 
         public bool corruptsWater = false;

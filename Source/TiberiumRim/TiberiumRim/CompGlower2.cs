@@ -11,8 +11,6 @@ namespace TiberiumRim
     {
         public new CompProperties_Glower props;
 
-
-
         public CompGlower2() : base()
         {
             this.props = new CompProperties_Glower() { glowRadius = this.props.glowRadius, overlightRadius = this.props.overlightRadius, glowColor = this.props.glowColor };           

@@ -14,11 +14,16 @@ namespace TiberiumRim
             this.billStack = new BillStack(this);
         }
 
+        public override void ExposeData()
+        {
+            base.ExposeData();
+        }
+
         public override float FilledPct
         {
             get
             {
-                return ((this.billStack.Bills.Find((Bill x) => (x as TibBill).billDoer != null) != null) ? 1f : 0);
+                return (this.billStack.Bills.Find((Bill x) => (x as TibBill).isBeingDone) != null ? 1f : 0);
             }
         }
 

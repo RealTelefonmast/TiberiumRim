@@ -17,11 +17,17 @@ namespace TiberiumRim
 
         public float TiberiumLeakScale;
 
+        public float WorldCorruptMinPct;
+
+        public float WorldCorruptAdder;
+
         public Color GreenColor;
 
         public Color BlueColor;
 
         public Color RedColor;
+
+        public Color SludgeColor;
 
         public static TiberiumControlDef Named(string defName)
         {

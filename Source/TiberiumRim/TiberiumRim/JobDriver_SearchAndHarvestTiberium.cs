@@ -12,17 +12,22 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
+            bool erFlag = harvester.ShouldEradicate;
             if (harvester.ShouldHarvest && !harvester.Harvesting && !harvester.Unloading)
             {
                 TraverseParms traverseParms = TraverseParms.For(harvester, Danger.Some, TraverseMode.PassDoors, false);
-                TiberiumCrystal tiberiumTarget = TiberiumUtility.ClosestPreferableReachableAndReservableTiberiumForHarvester(harvester, harvester.Position, harvester.Map, harvester.TiberiumDefToPrefer, traverseParms, PathEndMode.Touch);
+                TiberiumCrystal tiberiumTarget = TiberiumUtility.ClosestPreferableReachableAndReservableTiberiumForHarvester(harvester, harvester.Position, harvester.Map, harvester.TiberiumDefToPrefer, !erFlag, traverseParms, PathEndMode.Touch);
                 if (tiberiumTarget != null)
-                {
+                {                   
                     if (harvester.CanReach(tiberiumTarget, PathEndMode.Touch, Danger.Some, false))
                     {
                         JobDef job = DefDatabase<JobDef>.GetNamed("SearchAndHarvestTiberium");
                         return new Job(job, tiberiumTarget);
                     }
+                }
+                if (harvester.shouldStopHarvesting == false)
+                {
+                    harvester.shouldStopHarvesting = true;
                 }
             }
             return null;
@@ -30,7 +35,7 @@ namespace TiberiumRim
     }
 
     public class JobDriver_SearchAndHarvestTiberium : JobDriver
-    {
+    {       
         protected TiberiumCrystal Tiberium
         {
             get
@@ -52,6 +57,22 @@ namespace TiberiumRim
         private int newTicks;
         private float growth;
 
+        public bool IsEradicating
+        {
+            get
+            {
+                return !Tiberium.def.HarvestableType;
+            }
+        }
+
+        public bool FailOn
+        {
+            get
+            {
+                return Harvester.shouldStopHarvesting || IsEradicating ? !Harvester.ShouldEradicate : Harvester.ShouldEradicate || Harvester.TiberiumDefToPrefer != null && Harvester.TiberiumDefToPrefer != Tiberium.def;
+            }
+        }
+
         public override bool TryMakePreToilReservations()
         {
             if (pawn.CanReserve(this.TargetA))
@@ -61,33 +82,50 @@ namespace TiberiumRim
             return false;
         }
 
+        public override string GetReport()
+        {
+            string report = Harvester.ShouldEradicate ? "EradicateMoss".Translate() : "HarvestingReport".Translate(new object[] { this.TargetA.Thing.def.LabelCap });
+            return "HarvestingReport".Translate(new object[] { this.TargetA.Thing.def.LabelCap });
+        }
+
+        public override void ExposeData()
+        {
+            base.ExposeData();
+            Scribe_Values.Look<int>(ref ticksPassed, "ticksPassed");
+            Scribe_Values.Look<int>(ref newTicks, "newTicks");
+            Scribe_Values.Look<float>(ref growth, "growth");
+        }
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            yield return Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
+            Toil gotoToil = Toils_Goto.GotoThing(TargetIndex.A, PathEndMode.Touch);
+            gotoToil.FailOn(() => FailOn);
+            yield return gotoToil;
+
             Toil harvest = new Toil();
             harvest.initAction = delegate
             {
                 growth += Tiberium.growthInt;
-                newTicks += Tiberium.harvestTicks;
+                newTicks += (int)(Tiberium.harvestTicks * growth);
             };
             harvest.tickAction = delegate
             {
                 Harvester actor = (Harvester)harvest.actor;
                 if (!actor.Container.CapacityFull)
                 {
-                    if (ticksPassed < Tiberium.harvestTicks)
+                    if (ticksPassed < newTicks)
                     {
-                        actor.Container.AddCrystal(Tiberium.def.TibType, (growth / newTicks) * Tiberium.def.tiberium.maxHarvestValue , out float flt);
-                        Tiberium.growthInt -= (growth / newTicks) - (flt / Tiberium.def.tiberium.maxHarvestValue); 
+                        actor.Container.AddCrystal(Tiberium.def.TibType, (growth / newTicks) * Tiberium.def.tiberium.maxHarvestValue, out float flt);
+                        Tiberium.growthInt -= (growth / newTicks) - (flt / Tiberium.def.tiberium.maxHarvestValue);
                     }
                     else
                     {
                         if (Tiberium != null)
                         {
-                            Tiberium.Destroy();                          
-                        }                     
+                            Tiberium.Destroy();
+                        }
                         this.EndJobWith(JobCondition.InterruptOptional);
-                        return;                       
+                        return;
                     }
                 }
                 else
@@ -99,6 +137,7 @@ namespace TiberiumRim
             };
             harvest.FailOnDespawnedNullOrForbidden(TargetIndex.A);
             harvest.FailOnCannotTouch(TargetIndex.A, PathEndMode.Touch);
+            harvest.FailOn(() => FailOn);
             harvest.defaultCompleteMode = ToilCompleteMode.Never;
             yield return harvest;
         }

@@ -101,7 +101,7 @@ namespace TiberiumRim
         {
             if (def.filledGraphicPath.Length > 0)
             {
-                FilledOverlay = GraphicDatabase.Get(GraphicData.graphicClass, def.filledGraphicPath, ShaderDatabase.MoteGlow, GraphicData.drawSize, Color.white, Color.white);
+                FilledOverlay = GraphicDatabase.Get(GraphicData.graphicClass, def.filledGraphicPath, ShaderDatabase.MoteGlow, GraphicData.drawSize, Color, Color);
             }
         }
 
@@ -130,6 +130,15 @@ namespace TiberiumRim
             }
         }
 
+        public Material FadedMaterial
+        {
+            get
+            {
+                Material fade1 = FilledOverlay.MatAt(base.Rotation, null);
+                return fade1;
+            }
+        }
+
         public override void Draw()
         {
             if (Graphic != null)
@@ -140,11 +149,7 @@ namespace TiberiumRim
                 }
                 if (FilledPct > 0f)
                 {
-                    Graphic NewFilledOL = FilledOverlay.GetColoredVersion(ShaderDatabase.MoteGlow, Color, Color);
-                    Material mat = NewFilledOL.MatAt(base.Rotation, null);
-                    Material fade = FadedMaterialPool.FadedVersionOf(mat, FilledPct);
-                    fade.color = new Color(Color.r, Color.g, Color.b, fade.color.a);
-                    Graphics.DrawMesh(NewFilledOL.MeshAt(base.Rotation), base.DrawPos + Altitudes.AltIncVect, Quaternion.identity, fade, 0);
+                    Graphics.DrawMesh(FilledOverlay.MeshAt(base.Rotation), base.DrawPos + Altitudes.AltIncVect, Quaternion.identity, FadedMaterial, 0);
                 }
                 Graphic.Draw(this.DrawPos, this.Rotation, this);
             }

@@ -11,8 +11,6 @@ namespace TiberiumRim
     {
         private List<IntVec3> cellList = new List<IntVec3>();
 
-        private List<IntVec3> obstructedCells = new List<IntVec3>();
-
         public Map Map = Current.Game.VisibleMap;
         public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map, Thing thingToIgnore = null)
         {
@@ -31,17 +29,10 @@ namespace TiberiumRim
             {
                 for (int i = 0; i < thingList.Count; i++)
                 {
-                    List<IntVec3> cells = thingList[i].CellsAdjacent8WayAndInside().Where((IntVec3 x) => !thingList[i].OccupiedRect().Contains(x) && thingList[i].InteractionCell != x).ToList<IntVec3>();
+                    List<IntVec3> cells = thingList[i].OccupiedRect().ExpandedBy(1).EdgeCells.ToList<IntVec3>();
                     foreach (IntVec3 cell in cells)
                     {
-                        if (cell.GetFirstBuilding(map) != null)
-                        {
-                            if (!obstructedCells.Contains(cell))
-                            { 
-                                obstructedCells.Add(cell);
-                            }
-                        }
-                        else if (!cellList.Contains(cell))
+                        if (!cellList.Contains(cell))
                         {
                             cellList.Add(cell);
                         }
@@ -57,11 +48,6 @@ namespace TiberiumRim
             {
                 IntVec3 c = cellList[i];
                 CellRenderer.RenderCell(c, 0.44f);             
-            }
-            for(int i = 0; i < obstructedCells.Count; i++)
-            {
-                IntVec3 c = obstructedCells[i];
-                CellRenderer.RenderCell(c, 1f);
             }
         }
     }

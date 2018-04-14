@@ -40,21 +40,33 @@ namespace TiberiumRim
             return false;
         }
 
+        public bool HarvestableType
+        {
+            get
+            {
+                return TibType != TiberiumType.Sludge && TibType != TiberiumType.None;
+            }
+        }
+
         public TiberiumType TibType
         {
             get
             {
-                if (this == TiberiumDefOf.TiberiumGreen || this == TiberiumDefOf.TiberiumPod || this == TiberiumDefOf.TiberiumMossGreen || this == TiberiumDefOf.TiberiumShardsGreen || this == TiberiumDefOf.TiberiumVein)
+                if (this == TiberiumDefOf.TiberiumGreen || this == TiberiumDefOf.TiberiumPod || this == TiberiumDefOf.TiberiumShardsGreen || this == TiberiumDefOf.TiberiumVein)
                 {
                     return TiberiumType.Green;
                 }
-                if (this == TiberiumDefOf.TiberiumBlue || this == TiberiumDefOf.TiberiumMossBlue || this == TiberiumDefOf.TiberiumShardsBlue)
+                if (this == TiberiumDefOf.TiberiumBlue || this == TiberiumDefOf.TiberiumShardsBlue)
                 {
                     return TiberiumType.Blue;
                 }
                 if (this == TiberiumDefOf.TiberiumRed || this == TiberiumDefOf.TiberiumShardsRed)
                 {
                     return TiberiumType.Red;
+                }
+                if(this == TiberiumDefOf.TiberiumMossGreen || this == TiberiumDefOf.TiberiumMossBlue)
+                {
+                    return TiberiumType.Sludge;
                 }
                 return TiberiumType.None;
             }

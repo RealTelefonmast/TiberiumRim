@@ -15,11 +15,35 @@ namespace TiberiumRim
     [StaticConstructorOnStartup]
     public static class TiberiumUtility
     { 
+        public static Dictionary<int, float> CopyDictionary(this Dictionary<int, float> dict)
+        {
+            Dictionary<int, float> newDict = new Dictionary<int, float>();
+            foreach(int i in dict.Keys)
+            {
+                newDict.Add(i, dict[i]);
+            }
+            return newDict;
+        }
+
+        public static void SpawnTiberiumFromMapEdge(Map map, TiberiumType type, out TiberiumCrystal crystal)
+        {
+            TiberiumCrystalDef crystalDef = TiberiumUtility.CrystalDefFromType(type);
+            Predicate<IntVec3> validator = delegate (IntVec3 c)
+            {
+                Room room = c.GetRoom(map, RegionType.Set_Passable);
+                return room != null && room.TouchesMapEdge;
+            };
+            CellFinder.TryFindRandomEdgeCellWith(validator, map, CellFinder.EdgeRoadChance_Animal, out IntVec3 spawnCell);
+            GenTiberiumReproduction.SetTiberiumTerrainAndType(crystalDef, spawnCell.GetTerrain(map), out TiberiumCrystalDef crystalDef2, out TerrainDef terrainDef);
+
+            crystal = (TiberiumCrystal)GenSpawn.Spawn(crystalDef2, spawnCell, map);
+            map.terrainGrid.SetTerrain(spawnCell, terrainDef);
+        }
 
         public static TiberiumCrystalDef CrystalDefFromType(TiberiumType type)
         {
             TiberiumCrystalDef crystalDef = null;
-            if (type == TiberiumType.Green)
+            if (type == TiberiumType.Green || type == TiberiumType.Sludge)
             {
                 crystalDef = TiberiumDefOf.TiberiumGreen;
             }
@@ -200,41 +224,38 @@ namespace TiberiumRim
             return returnList;
         }
 
-        public static TiberiumCrystal ClosestPreferableReachableAndReservableTiberiumForHarvester(Pawn harvester, IntVec3 root, Map map, TiberiumCrystalDef preferableDef, TraverseParms traverseParms, PathEndMode peMode)
+        public static TiberiumCrystal ClosestPreferableReachableAndReservableTiberiumForHarvester(Pawn harvester, IntVec3 root, Map map, TiberiumCrystalDef preferableDef, bool harvestable, TraverseParms traverseParms, PathEndMode peMode)
         {
             TiberiumCrystal result = null;           
             float maxValue = -1f;
             List<TiberiumCrystal> valueCheckList = new List<TiberiumCrystal>();
-            valueCheckList.AddRange((preferableDef?.CanBeFound(map) == true ? map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => x.def == preferableDef && harvester.CanReserve(x)) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => harvester.CanReserve(x) && x.def.tiberium.harvestable)));
-            if (harvester is Harvester)
+            valueCheckList.AddRange(harvestable ? (preferableDef?.CanBeFound(map) == true ? map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => x.def == preferableDef && harvester.CanReserve(x)) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => harvester.CanReserve(x))) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => !x.Harvestable && x.def.defName.Contains("Moss") && harvester.CanReserve(x)));
+
+            if (harvestable)
             {
-                if (!(harvester as Harvester).harvestModeBool)
+                if (harvester is Harvester)
                 {
-                    foreach (TiberiumCrystal crystal in valueCheckList)
+                    if (!(harvester as Harvester).harvestModeBool)
                     {
-                        if (crystal.HarvestValue > maxValue)
+                        foreach (TiberiumCrystal crystal in valueCheckList)
                         {
-                            maxValue = crystal.HarvestValue;
+                            if (crystal.HarvestValue > maxValue)
+                            {
+                                maxValue = crystal.HarvestValue;
+                            }
                         }
-                    }
-                    for (int i = 0; i < valueCheckList.Count; i++)
-                    {
-                        TiberiumCrystal crystal = valueCheckList[i] as TiberiumCrystal;
-                        if (crystal.HarvestValue < maxValue)
-                        {
-                            valueCheckList.Remove(crystal);
-                        }
+                        valueCheckList.RemoveAll((TiberiumCrystal x) => x.HarvestValue < maxValue);
                     }
                 }
             }
 
-            RegionEntryPredicate entryCondition = (Region from, Region to) => to.Allows(traverseParms, false);
+            RegionEntryPredicate entryCondition = (Region from, Region to) => to.Allows(traverseParms, true);
             Region region = root.GetRegion(map, RegionType.Set_Passable);
             if (region == null)
             {
                 return null;
             }
-            float maxDistSquared = 99980001f;
+            float maxDistSquared = 99980000f;
             float closestDistSquared = 9999999f;
             float bestPrio = float.MinValue;
             RegionProcessor regionProcessor = delegate (Region r)
@@ -300,9 +321,9 @@ namespace TiberiumRim
             {
                 return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumStage2");
             }
-            else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumContactPoison))
+            else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumInfection))
             {
-                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumContactPoison);
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumInfection);
             }
             else
             {
@@ -433,7 +454,7 @@ namespace TiberiumRim
             HediffDef addiction = TiberiumHediffDefOf.TiberiumAddiction;
             HediffDef Stage1 = TiberiumHediffDefOf.TiberiumStage1;
             HediffDef Stage2 = TiberiumHediffDefOf.TiberiumStage2;
-            HediffDef Stage3 = TiberiumHediffDefOf.TiberiumContactPoison;
+            HediffDef Stage3 = TiberiumHediffDefOf.TiberiumInfection;
             HediffDef Immunity = TiberiumHediffDefOf.TiberiumInfusionImmunity;
 
             if (Immunity != null)

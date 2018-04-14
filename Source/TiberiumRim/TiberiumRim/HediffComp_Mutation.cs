@@ -24,7 +24,7 @@ namespace TiberiumRim
 
         public void CheckSeverity(Pawn p)
         {
-            HediffDef Infection = TiberiumHediffDefOf.TiberiumContactPoison;
+            HediffDef Infection = TiberiumHediffDefOf.TiberiumInfection;
             HediffDef MutationGood = TiberiumHediffDefOf.TiberiumMutationGood;
             HediffDef MutationBad = TiberiumHediffDefOf.TiberiumMutationBad;
             HediffDef Addiction = TiberiumHediffDefOf.TiberiumAddiction;

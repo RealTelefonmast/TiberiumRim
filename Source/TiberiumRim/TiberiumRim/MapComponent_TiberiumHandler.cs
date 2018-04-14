@@ -52,7 +52,6 @@ namespace TiberiumRim
             if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
             {
                 SetPct();
-                Check();
             }
             if (Find.TickManager.TicksGame % GenTicks.TickLongInterval == 0)
             {
@@ -88,7 +87,11 @@ namespace TiberiumRim
             get
             {
                 int tilesCovered = 0;
-                tilesCovered = this.map.listerThings.AllThings.Where((Thing x) => x.def.coversFloor == true).Sum(x => x.def.size.x * x.def.size.z);
+                List<Thing> thingList = this.map.listerThings.AllThings.Where((Thing x) => x.def.coversFloor == true).ToList();
+                foreach(Thing t in thingList)
+                {
+                    tilesCovered += t.OccupiedRect().Cells.Count();
+                }
                 return (mapTiles - tilesCovered);
             }
         }
@@ -103,36 +106,22 @@ namespace TiberiumRim
 
         public void SetPct()
         {
-            if (!worldComp.tiberiumPcts.ContainsKey(MapTile))
+            if (!worldComp.TiberiumTiles.ContainsKey(MapTile))
             {
-                worldComp.tiberiumPcts.Add(MapTile, ((float)AllTiberiumCrystals.Count / TileCount));
+                worldComp.TiberiumTiles.Add(MapTile, ((float)AllTiberiumCrystals.Count / TileCount));
             }
             else
             {
-                worldComp.tiberiumPcts[MapTile] = ((float)AllTiberiumCrystals.Count / TileCount);
+                worldComp.TiberiumTiles[MapTile] = ((float)AllTiberiumCrystals.Count / TileCount);
             }
 
-        }
-
-        public void Check()
-        {
-            if (IsRedZone != true)
-            {
-                if (worldComp.tiberiumPcts[MapTile] > 0f)
-                {
-                    if (!worldComp.TileID.Contains(MapTile))
-                    {
-                        worldComp.TileID.Add(MapTile);
-                    }
-                }
-            }
         }
 
         // -- Bools --
 
         public bool TiberiumExists => AllTiberiumCrystals.Count > 0;
 
-        public bool HarvestableTiberiumExists => AllTiberiumCrystals.Where((TiberiumCrystal x) => x.def.tiberium.harvestable).Count() > 0;
+        public bool HarvestableTiberiumExists => AllTiberiumCrystals.Where((TiberiumCrystal x) => x.Harvestable).Count() > 0;
 
         private bool CanSpawnMonolith(TiberiumCrystal parent)
         {

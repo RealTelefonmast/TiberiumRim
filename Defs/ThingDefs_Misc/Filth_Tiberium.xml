@@ -1,112 +1,105 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef ParentName="BaseFilth">
+  <ThingDef Name="BaseFilthTR" Abstract="True">
+    <thingClass>Filth</thingClass>
+    <category>Filth</category>
+    <altitudeLayer>Filth</altitudeLayer>
+    <useHitPoints>false</useHitPoints>
+    <drawerType>MapMeshOnly</drawerType>
+    <graphicData>
+			<graphicClass>Graphic_Cluster</graphicClass>
+			<shaderType>Transparent</shaderType>
+		</graphicData>
+    <statBases>
+      <Beauty>-15</Beauty>
+      <Cleanliness>-5</Cleanliness>
+    </statBases>
+  </ThingDef>
+  
+	<ThingDef Name="TibFilth" ParentName="BaseFilthTR" Abstract="True">
+		<statBases>
+			<Beauty>-10</Beauty>
+			<Cleanliness>-55</Cleanliness>
+		</statBases>
+		<filth>
+			<rainWashes>true</rainWashes>
+			<cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
+			<canFilthAttach>true</canFilthAttach>
+		</filth>
+	</ThingDef>
+
+  <ThingDef ParentName="TibFilth">
     <defName>FilthTiberiumGreen</defName>
     <label>Green tiberium dust</label>
-    <statBases>
-      <Beauty>-10</Beauty>
-      <Cleanliness>-55</Cleanliness>
-    </statBases>
     <graphicData>
       <texPath>Filth/TibDustGreen</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
-    <filth>
-      <rainWashes>true</rainWashes>
-      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
-      <canFilthAttach>true</canFilthAttach>
-    </filth>
   </ThingDef>
   
-  <ThingDef ParentName="BaseFilth">
+  <ThingDef ParentName="TibFilth">
     <defName>FilthTiberiumBlue</defName>
     <label>Blue tiberium dust</label>
-    <statBases>
-      <Beauty>-10</Beauty>
-      <Cleanliness>-55</Cleanliness>
-    </statBases>
     <graphicData>
       <texPath>Filth/TibDustBlue</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
-    <filth>
-      <rainWashes>true</rainWashes>
-      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
-      <canFilthAttach>true</canFilthAttach>
-    </filth>
   </ThingDef>
   
-  <ThingDef ParentName="BaseFilth">
+  <ThingDef ParentName="TibFilth">
     <defName>FilthTiberiumRed</defName>
     <label>Red tiberium dust</label>
-    <statBases>
-      <Beauty>-10</Beauty>
-      <Cleanliness>-55</Cleanliness>
-    </statBases>
     <graphicData>
       <texPath>Filth/TibDustRed</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
-    <filth>
-      <rainWashes>true</rainWashes>
-      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
-      <canFilthAttach>true</canFilthAttach>
-    </filth>
   </ThingDef>
   
-  <ThingDef ParentName="BaseFilth">
+  <ThingDef ParentName="TibFilth">
     <defName>FilthTibBloodG</defName>
     <label>green mutated blood</label>
-    <statBases>
-      <Beauty>-10</Beauty>
-      <Cleanliness>-55</Cleanliness>
-    </statBases>
     <graphicData>
       <texPath>Filth/TibBloodA</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
-    <filth>
-      <rainWashes>true</rainWashes>
-      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
-      <canFilthAttach>true</canFilthAttach>
-    </filth>
   </ThingDef>
 
-  <ThingDef ParentName="BaseFilth">
+  <ThingDef ParentName="TibFilth">
     <defName>FilthTibBloodB</defName>
     <label>blue mutated blood</label>
-    <statBases>
-      <Beauty>-10</Beauty>
-      <Cleanliness>-55</Cleanliness>
-    </statBases>
     <graphicData>
       <texPath>Filth/TibBloodB</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
-    <filth>
-      <rainWashes>true</rainWashes>
-      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
-      <canFilthAttach>true</canFilthAttach>
-    </filth>
   </ThingDef>
   
-  <ThingDef ParentName="BaseFilth">
-    <defName>FilthTibLiquid</defName>
+  
+  <ThingDef ParentName="TibFilth">
+    <defName>FilthTibLiquidGreen</defName>
     <label>leaked tiberium</label>
-    <statBases>
-      <Beauty>-10</Beauty>
-      <Cleanliness>-55</Cleanliness>
-    </statBases>
     <graphicData>  
-      <texPath>Filth/TibLiquid</texPath>
+      <texPath>Filth/TibLiquidG</texPath>
       <color>(255, 255, 255, 255)</color>
     </graphicData>
-    <filth>
-      <rainWashes>true</rainWashes>
-      <cleaningWorkToReduceThickness>100</cleaningWorkToReduceThickness>
-      <canFilthAttach>true</canFilthAttach>
-    </filth>
+  </ThingDef>
+  
+    <ThingDef ParentName="TibFilth">
+    <defName>FilthTibLiquidBlue</defName>
+    <label>leaked tiberium</label>
+    <graphicData>  
+      <texPath>Filth/TibLiquidB</texPath>
+      <color>(255, 255, 255, 255)</color>
+    </graphicData>
+  </ThingDef>
+  
+    <ThingDef ParentName="TibFilth">
+    <defName>FilthTibLiquidRed</defName>
+    <label>leaked tiberium</label>
+    <graphicData>  
+      <texPath>Filth/TibLiquidR</texPath>
+      <color>(255, 255, 255, 255)</color>
+    </graphicData>
   </ThingDef>
   
 </Defs>

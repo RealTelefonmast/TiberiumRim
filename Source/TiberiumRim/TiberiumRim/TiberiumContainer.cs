@@ -10,19 +10,30 @@ namespace TiberiumRim
 {
     public class TiberiumContainer : IExposable
     {
-        public readonly float maxStorage;
+        public float maxStorage;
+
+        private TiberiumType allowedType = TiberiumType.None;
+
+        public Comp_TNW parent;
 
         private Dictionary<TiberiumType, float> ContainedTiberium = new Dictionary<TiberiumType, float>();
 
-        public TiberiumContainer(float maxStorage)
+        public TiberiumContainer(float maxStorage, Comp_TNW parent = null) : base()
         {
             this.maxStorage = maxStorage;
+            this.parent = parent;
+        }
+
+        public TiberiumContainer() : base()
+        {
         }
 
         public void ExposeData()
         {
             Scribe_Collections.Look<TiberiumType, float>(ref ContainedTiberium, "ContainedTinerium");
-            Log.Message("Scribing Container");
+            Scribe_Values.Look<float>(ref maxStorage, "maxStorage");
+            Scribe_Values.Look<TiberiumType>(ref allowedType, "allowedType");
+            Scribe_Values.Look<float>(ref maxStorage, "maxStorage");
         }
 
         public Color Color
@@ -30,9 +41,27 @@ namespace TiberiumRim
             get
             {
                 Color newColor = new Color();
-                foreach(TiberiumType type in ContainedTiberium.Keys)
+                if (parent != null)
                 {
-                    newColor += TypeColor(type) * (ContainedTiberium[type] / maxStorage);
+                    if (!parent.IsStorage)
+                    {
+                        if (newColor == new Color())
+                        {
+                            newColor = TypeColor(TiberiumType.Green);
+                            newColor.a = 1;
+                        }
+                    }
+                    else
+                    {
+                        if (ContainedTiberium.Keys.Count > 0)
+                        {
+                            foreach (TiberiumType type in ContainedTiberium.Keys)
+                            {
+                                newColor += TypeColor(type) * (ContainedTiberium[type] / maxStorage);
+                            }
+                        }
+                    }
+
                 }
                 return newColor;
             }
@@ -53,6 +82,10 @@ namespace TiberiumRim
             if (type == TiberiumType.Red)
             {
                 color = def.RedColor;
+            }
+            if(type == TiberiumType.Sludge)
+            {
+                color = def.SludgeColor;
             }
             return color;
         }
@@ -114,6 +147,58 @@ namespace TiberiumRim
             }
         }
 
+        public bool ShouldUnloadSludgeInContainer(out TiberiumContainer container)
+        {
+            if (ContainedTiberium.ContainsKey(TiberiumType.Sludge) && ContainedTiberium[TiberiumType.Sludge] > 0)
+            {
+                Comp_TNW comp = parent.Connector.Network.AllStorages.Find((Comp_TNW x) => x.Container.allowedType == TiberiumType.Sludge && !x.Container.CapacityFull && x != this.parent);
+                if (comp != null)
+                {
+                    container = comp.Container;
+                    return true;
+                }
+            }
+            container = null;
+            return false;
+        }
+
+        public bool ShouldEmptyUnallowedTypes
+        {
+            get
+            {
+                if (allowedType != TiberiumType.None)
+                {
+                    bool flag = false;
+                    foreach (TiberiumType type in ContainedTiberium.Keys)
+                    {
+                        if (type == allowedType)
+                        {
+                            flag = true;
+                        }
+                    }
+                    return !flag;
+                }
+                return false;
+            }
+        }
+
+        public void SetAllowedType(TiberiumType type)
+        {
+            this.allowedType = type;
+        }
+
+
+        public bool AcceptsType(TiberiumType type)
+        {
+            if (allowedType != TiberiumType.None)
+            {
+                if (type != this.allowedType)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public void AddCrystal(TiberiumType type, float value, out float leftOver)
         {
             leftOver = 0f;
@@ -127,7 +212,7 @@ namespace TiberiumRim
                 ContainedTiberium.Add(type, value);
                 return;
             }
-            if(ContainedTiberium[type] + value > maxStorage)
+            if (ContainedTiberium[type] + value > maxStorage)
             {
                 value = (ContainedTiberium[type] + value) - ContainedTiberium[type];
             }

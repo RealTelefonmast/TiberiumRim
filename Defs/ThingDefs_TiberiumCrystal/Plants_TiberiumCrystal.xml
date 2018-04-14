@@ -393,9 +393,9 @@ It only harms items but is still toxic to living beings.</description>
 		<altitudeLayer>FloorEmplacement</altitudeLayer>
 		<tiberium>
 			<corruptsStone>True</corruptsStone>
-			<corruptsIce>True</corruptsIce>
+			<corruptsIce>True</corruptsIce>		
 			
-			<harvestable>False</harvestable>
+			<harvestTimeSec>2</harvestTimeSec>
 			<entityDamage>
 				<min>2</min>
 				<max>5</max>
@@ -407,7 +407,7 @@ It only harms items but is still toxic to living beings.</description>
 			<maxMeshCount>4</maxMeshCount>
 			<reproduceMtbDays>0.5</reproduceMtbDays>
 			<reproduceRadius>3</reproduceRadius>
-			<maxHarvestValue>0</maxHarvestValue>
+			<maxHarvestValue>5</maxHarvestValue>
 			<topWindExposure>0</topWindExposure>
 			<growDays>4</growDays>
 			<visualSizeRange>
@@ -447,9 +447,9 @@ It only harms items but is still toxic to living beings.</description>
 		</comps>
 		<tiberium>
 			<corruptsStone>True</corruptsStone>
-			<corruptsIce>True</corruptsIce>
+			<corruptsIce>True</corruptsIce>		
 			
-			<harvestable>False</harvestable>
+			<harvestTimeSec>4</harvestTimeSec>
 			<entityDamage>
 				<min>4</min>
 				<max>7</max>
@@ -461,7 +461,7 @@ It only harms items but is still toxic to living beings.</description>
 			<maxMeshCount>4</maxMeshCount>
 			<reproduceMtbDays>0.5</reproduceMtbDays>
 			<reproduceRadius>3</reproduceRadius>
-			<maxHarvestValue>0</maxHarvestValue>
+			<maxHarvestValue>10</maxHarvestValue>
 			<topWindExposure>0</topWindExposure>
 			<growDays>4</growDays>
 			<visualSizeRange>
@@ -494,7 +494,7 @@ It only harms items but is still toxic to living beings.</description>
 		<passability>PassThroughOnly</passability>
 		<tiberium>		
 			<canBeInhibited>False</canBeInhibited>
-			<harvestable>False</harvestable>
+			
 			<entityDamage>
 				<min>3</min>
 				<max>4</max>

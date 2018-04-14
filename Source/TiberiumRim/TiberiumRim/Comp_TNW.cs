@@ -15,20 +15,33 @@ namespace TiberiumRim
 
         public TiberiumContainer Container;
 
+        CompGlower compGlower;
+
         private IntVec3 savedPos;
+
+        private CellRect savedRect;
 
         private int ticksToDoWork;
 
         private int ticksToPower;
 
+        private bool isSludged = false;
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
             this.props = base.props as CompProperties_TNW;
+            compGlower = (CompGlower)this.parent.AllComps.Find((ThingComp x) => x.props.compClass == typeof(CompGlower));
+            if(Container != null)
+            {
+                Container.parent = this;
+            }
             if (!respawningAfterLoad)
             {
                 savedPos = new IntVec3(parent.Position.x, parent.Position.y, parent.Position.z);
-                Container = new TiberiumContainer(props.maxStorage);
+                CellRect c = parent.OccupiedRect();
+                savedRect = new CellRect(c.minX,c.minZ, c.Width, c.Height);
+                Container = new TiberiumContainer(props.maxStorage, this);
                 ResetWorkTimer();
             }
         }
@@ -38,28 +51,39 @@ namespace TiberiumRim
             base.PostExposeData();
             Scribe_Values.Look<int>(ref ticksToDoWork, "ticksToProduce");
             Scribe_Values.Look<int>(ref ticksToPower, "ticksToPower");
+            Scribe_Values.Look<bool>(ref isSludged, "isSludged");
             Scribe_Values.Look<IntVec3>(ref savedPos, "savedPos");
+            Scribe_Values.Look<CellRect>(ref savedRect, "savedRect");
             Scribe_Deep.Look<TiberiumContainer>(ref Container, "TiberiumContainer");
             Scribe_References.Look<Building_Connector>(ref Connector, "Connector");
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
         {
+            ticksToPower = 0;
             if (Connector != null && !Connector.Destroyed)
             {
                 this.Connector.Destroy(DestroyMode.Deconstruct);
             }
             if (mode == DestroyMode.KillFinalize)
             {
-                LeakTiberium(savedPos, previousMap);
+                LeakTiberium(savedPos, savedRect, previousMap);
             }
+            Container = null;
+            compGlower.UpdateLit(previousMap);
             base.PostDestroy(mode, previousMap);
         }
 
         public override void CompTick()
         {
             base.CompTick();
-
+            if(Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
+            {
+                if (compGlower != null)
+                {
+                    compGlower.ReceiveCompSignal("Refueled");
+                }
+            }
             if (NeedsPower)
             {
                 if (!PowerComp.PowerOn)
@@ -89,7 +113,7 @@ namespace TiberiumRim
                 {
                     float pct = 0f;
 
-                    if (Container.GetTotalStorage > 0)
+                    if (Container.GetTotalStorage > 0 && Container.MainType != TiberiumType.None)
                     {
                         float value = props.consumeAmtPerDay;
                         float flt = -(Container.GetTotalStorage - props.consumeAmtPerDay);
@@ -104,47 +128,91 @@ namespace TiberiumRim
 
                     ResetPowerTimer((int)(GenDate.TicksPerDay * pct));
 
-                    CompGlower glower = (CompGlower)this.parent.AllComps.Find((ThingComp x) => x.props.compClass == typeof(CompGlower));
-                    glower.ReceiveCompSignal("Refueled");
+                    compGlower.ReceiveCompSignal("Refueled");
                 }
                 else { ticksToPower -= 1; }
             }
             if (this.Connector != null)
             {
-                if (NetworkIsPowered)
+                if (NetworkIsFunctional)
                 {
+                    if (props.isGlobalStorage)
+                    {
+                        if (Container.GetTotalStorage > 0f)
+                        {
+                            if (isSludged)
+                            {
+                                if (Container.ShouldEmptyUnallowedTypes)
+                                {
+                                    List<TiberiumType> types = this.Container.GetTypes.Where((TiberiumType x) => x != TiberiumType.Sludge).ToList();
+                                    TiberiumType type = types.RandomElement();
+                                    List<Comp_TNW> compList = Connector.Network.AllGlobalStorages.FindAll((Comp_TNW x) => !x.Container.CapacityFull && !x.props.isLocalStorage && x.Container.AcceptsType(type));
+                                    for (int i = 0; i < compList.Count; i++)
+                                    {
+                                        if (Container.MainType != TiberiumType.None)
+                                        {
+                                            Comp_TNW comp = compList[i];
+                                            TransferTib(Container, comp.Container, 1f, type);
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (Container.ShouldUnloadSludgeInContainer(out TiberiumContainer sludger))
+                                {
+                                    TransferTib(Container, sludger, 1f, TiberiumType.Sludge);
+                                }
+                            }
+                        }
+                    }
                     if (props.isLocalStorage)
                     {
                         if (props.isConsumer)
                         {
                             if (!Container.CapacityFull)
                             {
-                                Comp_TNW comp = Connector.Network.AllStorages.Find((Comp_TNW x) => x.Container.GetTotalStorage >= 1 && !x.props.isConsumer);
-                                if (comp != null)
+                                List<Comp_TNW> compList = Connector.Network.AllGlobalStorages.FindAll((Comp_TNW x) => x.Container.GetTotalStorage >= 0 && !x.props.isConsumer && x.Container.MainType != TiberiumType.Sludge);
+                                for (int i = 0; i < compList.Count; i++)
                                 {
-                                    TiberiumType type = comp.Container.MainType;
-                                    Container.AddCrystal(type, 1f, out float leftOver);
-                                    comp.Container.RemoveCrystal(type, (1f - leftOver));
+                                    Comp_TNW comp = compList[i];
+                                    if (comp.Container.MainType != TiberiumType.None)
+                                    {
+                                        TransferTib(comp.Container, Container, 1f);
+                                    }
+
                                 }
                             }
                             return;
                         }
                         if (Container.GetTotalStorage > 0)
-                        {
-                            List<Comp_TNW> compList = Connector.Network.AllGlobalStorages.FindAll((Comp_TNW x) => !x.Container.CapacityFull && !x.props.isLocalStorage);
+                        {                          
+                            List<Comp_TNW> compList = Connector.Network.AllGlobalStorages.FindAll((Comp_TNW x) => !x.Container.CapacityFull && !x.props.isLocalStorage && x.Container.AcceptsType(this.Container.MainType));
                             for (int i = 0; i < compList.Count; i++)
                             {
-                                Comp_TNW comp = compList[i];
-                                TiberiumContainer container = comp.Container;
-                                TiberiumType type = Container.MainType;
-                                container.AddCrystal(type, 1f, out float leftOver);
-                                Container.RemoveCrystal(type, (1f - leftOver));
+                                if (Container.MainType != TiberiumType.None)
+                                {
+                                    Comp_TNW comp = compList[i];
+                                    TransferTib(Container, comp.Container, 1f);
+                                }
                             }
                         }
                     }
                 }
             }
-        }       
+        }
+
+        private void TransferTib(TiberiumContainer containerFrom, TiberiumContainer containerTo, float value, TiberiumType specialType = TiberiumType.None)
+        {
+            TiberiumType type = specialType;
+            if (specialType == TiberiumType.None)
+            {
+                type = containerFrom.MainType;
+            }
+            float value2 = containerFrom.ValueForType(type) < value ? containerFrom.ValueForType(type) : value;
+            containerTo.AddCrystal(type, value, out float leftOver);
+            containerFrom.RemoveCrystal(type, (value - leftOver));
+        }
 
         public void ResetWorkTimer()
         {
@@ -164,6 +232,14 @@ namespace TiberiumRim
             }
         }
 
+        public bool IsStorage
+        {
+            get
+            {
+                return props.isGlobalStorage || props.isLocalStorage;
+            }
+        }
+
         public bool IsGeneratingPower
         {
             get
@@ -176,11 +252,41 @@ namespace TiberiumRim
         {
             get
             {
-                return Connector?.Network != null;
+                if (Connector != null)
+                {
+                    if (Connector.Network != null)
+                    {
+
+                        return Connector?.Network != null;
+                    }
+                }
+                return false;
             }
         }
 
-        public bool NetworkIsPowered => (bool)this.Connector?.Network?.TryGetComp<CompPowerTrader>()?.PowerOn;
+        public bool NetworkIsFunctional
+        {
+            get
+            {
+                return Connector.Network != null && !Connector.Network.IsBrokenDown() && NetworkIsPowered;
+            }
+        }
+
+        public bool NetworkIsPowered
+        {
+            get
+            {
+                if (ConnectedToNetwork)
+                {
+                    CompPowerTrader compPower = this.Connector.Network.TryGetComp<CompPowerTrader>();
+                    if(compPower != null && compPower.PowerOn)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
 
         public bool NeedsPower => this.PowerComp != null;
 
@@ -200,7 +306,7 @@ namespace TiberiumRim
             }
         }
 
-        public void LeakTiberium(IntVec3 parentPos, Map map)
+        public void LeakTiberium(IntVec3 parentPos, CellRect parentRect, Map map)
         {
             List<TiberiumCrystal> tibList = new List<TiberiumCrystal>();
             foreach (TiberiumType type in Container.GetTypes)
@@ -210,30 +316,125 @@ namespace TiberiumRim
                 float scale = tibAmt / MainTCD.MainTiberiumControlDef.TiberiumLeakScale;
                 for (int i = 0; i < scale; i++)
                 {
-                    TiberiumCrystal newCrystal = (TiberiumCrystal)ThingMaker.MakeThing(crystalDef);
-                    newCrystal.growthInt = 1f;
-                    tibList.Add(newCrystal);
+                    if (crystalDef != null)
+                    {
+                        TiberiumCrystal newCrystal = (TiberiumCrystal)ThingMaker.MakeThing(crystalDef);
+                        newCrystal.def = crystalDef;
+                        tibList.Add(newCrystal);
+                    }
                 }
             }
-            int num = tibList.Count;
-            for (int i = 0; i < num; i++)
+            List<IntVec3> spawnCells = FindPositions(tibList, parentPos, parentRect, map);
+            for (int i = 0; i < tibList.Count; i++)
             {
-                IntVec3 pos = parentPos + GenRadial.RadialPattern[i];
-                if(pos.InBounds(map) && GenSight.LineOfSight(parentPos, pos, map) && pos.GetFirstBuilding(map) == null)
+                if (tibList[i] != null)
                 {
                     if (Rand.Chance(0.5f))
                     {
-                        GenSpawn.Spawn(DefDatabase<ThingDef>.GetNamed("FilthTibLiquid"), pos, map);
+                        GenSpawn.Spawn(LiquidFromType(tibList[i].def.TibType), spawnCells[i], map);
                     }
-                    GenSpawn.Spawn(tibList[i], pos, map);
+                    GenTiberiumReproduction.SetTiberiumTerrainAndType(tibList[i].def, spawnCells[i].GetTerrain(map), out TiberiumCrystalDef crystal, out TerrainDef terrain); 
+                    if(crystal == null)
+                    {
+                        crystal = tibList[i].def;
+                    }
+                    if(terrain == null)
+                    {
+                        terrain = tibList[i].def.defaultTerrain;
+                    }
+                    GenSpawn.Spawn(crystal, spawnCells[i], map);
+                    map.terrainGrid.SetTerrain(spawnCells[i], terrain);
                 }
-            }         
+            }
+        }
+
+        public ThingDef LiquidFromType(TiberiumType type)
+        {
+            ThingDef def = null;
+            if(type == TiberiumType.Green || type == TiberiumType.Sludge)
+            {
+                def = DefDatabase<ThingDef>.GetNamed("FilthTibLiquidGreen");
+            }
+            if (type == TiberiumType.Blue)
+            {
+                def = DefDatabase<ThingDef>.GetNamed("FilthTibLiquidBlue");
+            }
+            if (type == TiberiumType.Red)
+            {
+                def = DefDatabase<ThingDef>.GetNamed("FilthTibLiquidRed");
+            }
+            return def;
+        }
+
+        public List<IntVec3> FindPositions(List<TiberiumCrystal> tibList, IntVec3 origin, CellRect rect, Map map)
+        {
+            List<IntVec3> Positions = new List<IntVec3>();
+            Positions.Add(origin);
+
+            int cells = 0;
+            while (cells < tibList.Count)
+            {
+                Room room = origin.GetRoom(map);
+                cells += room.CellCount - cells;
+                if (room.CellCount < tibList.Count)
+                {
+                    Building building = room.BorderCells.RandomElement<IntVec3>().GetFirstBuilding(map);
+                    if(building != null)
+                    {
+                        building.Destroy();
+                    }
+                }               
+            }
+
+            while (Positions.Count < tibList.Count)
+            {
+                List<IntVec3> checkCells = Positions.FindAll((IntVec3 x) => x.CellsAdjacent8Way().Where((IntVec3 y) => !Positions.Contains(y)).Count<IntVec3>() > 0);
+                for (int i = 0; i < checkCells.Count; i++)
+                {
+                    IntVec3 c = checkCells[i];
+                    List<IntVec3> list = c.CellsAdjacent8Way().Where((IntVec3 y) => y.InBounds(map) && y.GetFirstBuilding(map) == null && !Positions.Contains(y)).ToList();
+                    if (list.Count > 0)
+                    {
+                        IntVec3 cell = list.RandomElement<IntVec3>();
+                        Positions.Add(cell);
+                    }
+                }
+            }
+            return Positions;
         }
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
+            if (props.isGlobalStorage)
+            {
+                yield return new Command_Action
+                {
+                    defaultLabel = "Sludge Container",
+                    icon = null,
+                    action = delegate
+                    {
+                        if (!isSludged)
+                        {
+                            this.Container.SetAllowedType(TiberiumType.Sludge);
+                            isSludged = !isSludged;
+                        }
+                        else { this.Container.SetAllowedType(TiberiumType.None); isSludged = !isSludged; }
+                    }
+                };
+            }
+
             if (Prefs.DevMode)
             {
+                yield return new Command_Action
+                {
+                    defaultLabel = "Fill Slduge",
+                    icon = TexCommand.DesirePower,
+                    action = delegate
+                    {
+                        this.Container.AddCrystal(TiberiumType.Sludge, 500f, out float flt);
+                    }
+                };
+
                 yield return new Command_Action
                 {
                     defaultLabel = "Fill Green",
@@ -300,14 +501,26 @@ namespace TiberiumRim
             {
                 stringBuilder.AppendLine("MissingNetwork".Translate());
             }
+            if (isSludged)
+            {
+                stringBuilder.AppendLine("IsSludged".Translate());
+            }
             if (props.isLocalStorage || props.isGlobalStorage)
             {
-                stringBuilder.AppendLine("StoredTib".Translate() + ": " + /* Math.Round(this.Container.GetTotalStorage, 0) */ Container.GetTotalStorage + " | ");
-                foreach(TiberiumType type in Container.GetTypes)
+                stringBuilder.AppendLine("StoredTib".Translate() + ": " + Math.Round(this.Container.GetTotalStorage, 0));
+                StringBuilder sb2 = new StringBuilder();
+                for( int i = 0;  i < Container.GetTypes.Count; i++)
                 {
-                    stringBuilder.Append(type + " x " + (Container.ValueForType(type) / TiberiumUtility.CrystalDefFromType(type).tiberium.maxHarvestValue)+"|");                   
+                    TiberiumType type = Container.GetTypes[i];
+                    if (Container.ValueForType(type) > 0f)
+                    {
+                        sb2.Append((i > 0 ? " " : "") + type + ": " + Math.Round(Container.ValueForType(type) / TiberiumUtility.CrystalDefFromType(type).tiberium.maxHarvestValue) + " |");
+                    }
                 }
-                stringBuilder.AppendLine("" + Container.Color);
+                if(sb2.Length > 4)
+                {
+                    stringBuilder.AppendLine(sb2.ToString().TrimEndNewlines());
+                }
             }
             if (props.isConsumer)
             {

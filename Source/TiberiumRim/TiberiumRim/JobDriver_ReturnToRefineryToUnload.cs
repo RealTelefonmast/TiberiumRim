@@ -52,6 +52,13 @@ namespace TiberiumRim
             return this.pawn.Reserve(this.TargetA, this.job);
         }
 
+        public override void ExposeData()
+        {           
+            base.ExposeData();
+            Scribe_Values.Look<int>(ref ticksPassed, "ticksPassed");
+            Scribe_Values.Look<float>(ref CurrentStorage, "ticksPassed");
+        }
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
             yield return Toils_Goto.GotoCell(Refinery.InteractionCell, PathEndMode.OnCell);
@@ -71,7 +78,6 @@ namespace TiberiumRim
                     if(ticksPassed < Refinery.refineTicks)
                     {
                         TiberiumType type = actor.Container.MainType;
-
                         Refinery.NetworkComp.Container.AddCrystal(type,(CurrentStorage / Refinery.refineTicks), out float flt);
                         actor.Container.RemoveCrystal(type, ((CurrentStorage / Refinery.refineTicks) - flt));
                     }

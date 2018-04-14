@@ -11,7 +11,7 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             TraverseParms traverseParms = TraverseParms.For(pawn, Danger.Some, TraverseMode.PassDoors, false);
-            Thing targetA = TiberiumUtility.ClosestPreferableReachableAndReservableTiberiumForHarvester(pawn, pawn.Position, pawn.Map, null, traverseParms, PathEndMode.OnCell);
+            Thing targetA = TiberiumUtility.ClosestPreferableReachableAndReservableTiberiumForHarvester(pawn, pawn.Position, pawn.Map, null, true, traverseParms, PathEndMode.OnCell);
             JobDef job = DefDatabase<JobDef>.GetNamed("TiberiumBath");
             return new Job(job, targetA);
         }

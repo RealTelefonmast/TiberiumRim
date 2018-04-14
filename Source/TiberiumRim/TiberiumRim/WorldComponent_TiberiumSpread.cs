@@ -9,11 +9,7 @@ namespace TiberiumRim
     {
         private List<int> tmpNeighbors = new List<int>();
 
-        public List<int> TileID = new List<int>();
-
-        public HashSet<int> TileHashList = new HashSet<int>();
-
-        public Dictionary<int, float> tiberiumPcts = new Dictionary<int, float>();
+        public Dictionary<int, float> TiberiumTiles = new Dictionary<int, float>();
 
         public WorldComponent_TiberiumSpread(World world) : base(world)
         {
@@ -21,9 +17,7 @@ namespace TiberiumRim
 
         public override void ExposeData()
         {
-            Scribe_Collections.Look<int, float>(ref this.tiberiumPcts, "tiberiumPcts", LookMode.Value, LookMode.Value);
-            Scribe_Collections.Look<int>(ref this.TileID, "TileID", LookMode.Value);
-            Scribe_Collections.Look<int>(ref this.TileHashList, "TileHashList", LookMode.Value);
+            Scribe_Collections.Look<int, float>(ref this.TiberiumTiles, "TiberiumTiles", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look<int>(ref this.tmpNeighbors, "tmpNeighbors", LookMode.Value);
             base.ExposeData();
         }
@@ -31,9 +25,12 @@ namespace TiberiumRim
         public override void FinalizeInit()
         {
             base.FinalizeInit();
-            foreach (int hash in TileHashList)
+            foreach (int tile in TiberiumTiles.Keys)
             {
-                SetBiome(hash);
+                if (IsBiomeReady(tile))
+                {
+                    SetBiome(tile);
+                }
             }
         }
 
@@ -41,102 +38,93 @@ namespace TiberiumRim
         {
             base.WorldComponentTick();
             if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
-            {
-                Spread();
+            { 
+                Log.Message("should spread");
+                AffectSurroundingTiles();
             }
-            if (Find.TickManager.TicksGame % GenDate.TicksPerDay == 0)
+            //gotta change this to ticksperday again       
+            if (Find.TickManager.TicksGame % GenDate.TicksPerHour == 0)
             {
-                Grow();
+                Log.Message("should grow");
+                GrowBiomes();
             }
         }
 
-        public void Spread()
+        public void AffectSurroundingTiles()
         {
-            for (int i = 0; i < TileID.Count; i++)
+            Dictionary<int, float> tmpDict = new Dictionary<int, float>();
+            tmpDict = TiberiumTiles.CopyDictionary();
+            foreach(int tile in tmpDict.Keys)
             {
-                int tileID = TileID[i];
-                if (!TileHashList.Contains(tileID))
+                if (IsTiberiumTile(tile))
                 {
-                    if (!IsFullyInfected(tileID))
+                    Find.WorldGrid.GetTileNeighbors(tile, tmpNeighbors);
+                    for (int i = 0; i < tmpNeighbors.Count; i++)
                     {
-                        if (IsTiberiumTile(tileID))
+                        if (!TiberiumTiles.ContainsKey(tmpNeighbors[i]))
                         {
-                            Find.WorldGrid.GetTileNeighbors(tileID, tmpNeighbors);
-                            for (int ii = 0; ii < tmpNeighbors.Count; ii++)
+                            if (Find.WorldGrid.tiles[tmpNeighbors[i]].biome.defName.Contains("Ice"))
                             {
-                                if (!TileHashList.Contains(tmpNeighbors[ii]))
+                                tmpNeighbors.Remove(tmpNeighbors[i]);
+                            }
+                            else
+                            {
+                                if (world.grid.tiles[tmpNeighbors[i]] != Find.AnyPlayerHomeMap.TileInfo)
                                 {
-                                    if (!TileID.Contains(tmpNeighbors[ii]))
-                                    {
-                                        if (Find.WorldGrid.tiles[tmpNeighbors[ii]].biome.defName.Contains("Ice"))
-                                        {
-                                            tmpNeighbors.Remove(tmpNeighbors[ii]);
-                                        }
-                                        else
-                                        {
-                                            TileID.Add(tmpNeighbors[ii]);
-                                            tmpNeighbors.Remove(tmpNeighbors[ii]);
-                                        }
-                                    }
+                                    Log.Message("affacting neighbours but not colony");
+                                    TiberiumTiles.Add(tmpNeighbors[i], MainTCD.MainTiberiumControlDef.WorldCorruptAdder);
+                                    tmpNeighbors.Remove(tmpNeighbors[i]);
+                                }
+                                else
+                                {
+                                    Log.Message("affacting colony, I think");
+                                    TiberiumType type = Rand.Element<TiberiumType>(TiberiumType.Green, TiberiumType.Blue);
+                                    Map map = Find.Maps.Find((Map x) => x.TileInfo == world.grid.tiles[tmpNeighbors[i]]);
+                                    TiberiumUtility.SpawnTiberiumFromMapEdge(map, type, out TiberiumCrystal crystal);
+                                    Messages.Message("TiberiumSpawnFromOutside".Translate(), crystal, MessageTypeDefOf.NeutralEvent);
                                 }
                             }
                         }
-                        else
-                        {
-                            if (tiberiumPcts.ContainsKey(tileID))
-                            {
-                                if (tiberiumPcts[tileID] > 0.55 && tiberiumPcts[TileID[i]] < 1.0f)
-                                {
-                                    SetBiome(tileID);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        TileHashList.Add(tileID);
                     }
                 }
                 else
                 {
-                    TileID.Remove(tileID);
+                    if (IsBiomeReady(tile))
+                    {
+                        SetBiome(tile);
+                    }
                 }
             }
         }
 
-        public void Grow()
+        public void GrowBiomes()
         {
-            for (int i = 0; i < TileID.Count; i++)
+            Dictionary<int, float> tmpDict = new Dictionary<int, float>();
+            tmpDict = TiberiumTiles.CopyDictionary();
+            foreach (int tile in tmpDict.Keys)
             {
-                int tileID = TileID[i];
-                if (!TileHashList.Contains(tileID))
+                if(TiberiumTiles[tile] < 1f)
                 {
-                    Tile tile = Find.WorldGrid.tiles[tileID];
-                    if (tile != Current.Game.AnyPlayerHomeMap.TileInfo)
+                    Tile tile2 = Find.WorldGrid.tiles[tile];
+                    if (tile2 != Find.AnyPlayerHomeMap.TileInfo)
                     {
-                        if (!tiberiumPcts.ContainsKey(tileID))
+                        float add = MainTCD.MainTiberiumControlDef.WorldCorruptAdder;
+                        if (tile2.hilliness == Hilliness.Mountainous || tile2.hilliness == Hilliness.Impassable)
                         {
-                            tiberiumPcts.Add(tileID, Rand.Range(0f, 0.025f));
+                            TiberiumTiles[tile] += Rand.Range(0f, add/4);
+                        }
+                        else
+                        if (tile2.temperature < 10)
+                        {
+                            TiberiumTiles[tile] += Rand.Range(0f, add/2);
                         }
                         else
                         {
-                            if (tile.hilliness == Hilliness.Mountainous)
-                            {
-                                tiberiumPcts[tileID] += Rand.Range(0f, 0.015f);
-                            }
-                            else
-                            if (tile.temperature < 10)
-                            {
-                                tiberiumPcts[tileID] += Rand.Range(0f, 0.007f);
-                            }
-                            else
-                            {
-                                tiberiumPcts[tileID] += Rand.Range(0f, 0.025f);
-                            }
-                            if (tiberiumPcts[tileID] >= 1f)
-                            {
-                                tiberiumPcts[tileID] = 1f;
-                            }
+                            TiberiumTiles[tile] += Rand.Range(0f, add);
+                        }
+                        if (TiberiumTiles[tile] >= 1f)
+                        {
+                            TiberiumTiles[tile] = 1f;
                         }
                     }
                 }
@@ -145,18 +133,18 @@ namespace TiberiumRim
 
         public float GetPct(int tile)
         {
-            if(tiberiumPcts.ContainsKey(tile))
+            if (TiberiumTiles.ContainsKey(tile))
             {
-                return tiberiumPcts[tile];
+                return TiberiumTiles[tile];
             }
             return 0f;
         }
 
-        public bool IsFullyInfected(int tile)
+        public bool IsBiomeReady(int tile)
         {
-            if (tiberiumPcts.ContainsKey(tile))
+            if (TiberiumTiles.ContainsKey(tile))
             {
-                return tiberiumPcts[tile] >= 1f;
+                return TiberiumTiles[tile] >= MainTCD.MainTiberiumControlDef.WorldCorruptMinPct;
             }
             return false;
         }

@@ -7,9 +7,10 @@ namespace TiberiumRim
 {
     public enum TiberiumType
     {
-        Red,
         Green,
         Blue,
+        Red,
+        Sludge,
         None
     }
 }

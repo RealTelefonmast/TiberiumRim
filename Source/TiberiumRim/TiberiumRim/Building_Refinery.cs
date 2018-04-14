@@ -95,20 +95,23 @@ namespace TiberiumRim
             }
         }
 
-        public override void DeSpawn()
+        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            List<Harvester> list = new List<Harvester>();
-            list.AddRange(this.harvesterList);            
-            foreach(Harvester harvester in list)
+            if (mode != DestroyMode.Deconstruct)
             {
-                if (harvester.mainRefinery == this)
+                List<Harvester> list = new List<Harvester>();
+                list.AddRange(this.harvesterList);
+                foreach (Harvester harvester in list)
                 {
-                    harvester.mainRefinery = null;
-                    Messages.Message("RefineryLost".Translate(), this, MessageTypeDefOf.NegativeEvent);
+                    if (harvester.mainRefinery == this)
+                    {
+                        harvester.mainRefinery = null;
+                        Messages.Message("RefineryLost".Translate(), this, MessageTypeDefOf.NegativeEvent);
+                    }
+                    harvester.availableRefineries.Remove(this);
                 }
-                harvester.availableRefineries.Remove(this);
             }
-            base.DeSpawn();
+            base.Destroy(mode);
         }
 
         private Harvester SpawnHarvester()

@@ -98,8 +98,7 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<building>
-			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
-			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
+			<isEdifice>false</isEdifice>
 		</building>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
@@ -109,9 +108,9 @@
 			<Beauty>-18</Beauty>
 		</statBases>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
-		<fillPercent>0.5</fillPercent>
+		<fillPercent>0</fillPercent>
 		<rotatable>false</rotatable>
-		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
 		<surfaceType>Item</surfaceType>
 		<placeWorkers>
 			<li>TiberiumRim.PlaceWorker_TNW</li>
@@ -141,11 +140,8 @@
 		<pathCost>70</pathCost>
 		<blockWind>true</blockWind>
 		<castEdgeShadows>false</castEdgeShadows>
-		<fillPercent>0.40</fillPercent>
+		<fillPercent>1</fillPercent>
 		<tickerType>Normal</tickerType>
-		<building>
-			<isEdifice>false</isEdifice>
-		</building>
 		<statBases>
 			<MaxHitPoints>100</MaxHitPoints>
 			<WorkToBuild>800</WorkToBuild>
@@ -170,7 +166,7 @@
 			</li>
 			<li Class="CompProperties_Breakdownable"/>
 		</comps>
-		<terrainAffordanceNeeded>Light</terrainAffordanceNeeded>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
 		<designationCategory>Tiberium</designationCategory>
 		<staticSunShadowHeight>0.5</staticSunShadowHeight>
 		<constructEffect>ConstructMetal</constructEffect>
@@ -221,9 +217,9 @@
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="CompProperties_Glower">
-				<glowRadius>2</glowRadius>
+				<glowRadius>4</glowRadius>
 				<glowColor>(120,255,150,0)</glowColor>
-			</li>
+			</li>			
 			<li Class="CompProperties_HeatPusher">
 				<compClass>CompHeatPusherPowered</compClass>
 				<heatPerSecond>12</heatPerSecond>
@@ -242,7 +238,6 @@
 		<researchPrerequisites>
 			<li>TiberiumPower</li>
 		</researchPrerequisites>
-		<filthLeaving>FilthTibLiquid</filthLeaving>
 	</ThingDef>
 
 	<ThingDef ParentName="BenchBase_TR" Class="TiberiumRim.RefineryDef">
@@ -274,7 +269,7 @@
 				<isGlobalStorage>true</isGlobalStorage>
 			</li>
 			<li Class="CompProperties_Glower">
-				<glowRadius>2</glowRadius>
+				<glowRadius>4</glowRadius>
 				<glowColor>(120,255,150,0)</glowColor>
 			</li>
 			<li Class="CompProperties_Power">
@@ -299,9 +294,6 @@
 				<rect>(0.3,0.1,2.4,1.8)</rect>
 			</damageData>
 		</graphicData>
-		<inspectorTabs>
-			<li>ITab_Bills</li>
-		</inspectorTabs>
 		<building>
 			<workSpeedPenaltyOutdoors>false</workSpeedPenaltyOutdoors>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
@@ -355,6 +347,10 @@
 			<li>ExtractPlasteel</li>
 			<li>ExtractGold</li>
 			<li>ExtractUranium</li>
+			<li>BurnSludge</li>
+			<li>MakeBookRiparius</li>
+			<li>MakeBookVinifera</li>
+			<li>MakeBookRutila</li>
 		</recipes>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
@@ -459,7 +455,6 @@
 			<li>TiberiumResearchRefining</li>
 			<li>TiberiumPower</li>
 		</researchPrerequisites>
-		<filthLeaving>FilthTibLiquid</filthLeaving>
 	</ThingDef>
 
 </Defs>

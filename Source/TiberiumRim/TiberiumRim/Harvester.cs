@@ -33,10 +33,12 @@ namespace TiberiumRim
 
         public TiberiumContainer Container;
 
-        private bool shouldStopHarvesting = false;
+        public bool shouldStopHarvesting = false;
 
         // True: Any - False: Most Value
         public bool harvestModeBool = false;
+
+        private bool eradicateMoss = false;
 
         // ProgressBar
 
@@ -51,6 +53,7 @@ namespace TiberiumRim
             Scribe_Values.Look<bool>(ref shouldStopHarvesting, "shouldStopHarvesting");
             Scribe_Values.Look<IntVec3>(ref homePosition, "homePosition");
             Scribe_Values.Look<bool>(ref harvestModeBool, "harvestType");
+            Scribe_Values.Look<bool>(ref eradicateMoss, "eradicateMoss");
             Scribe_Deep.Look<TiberiumContainer>(ref Container, "TiberiumContainer");
             Scribe_Collections.Look<Building_Refinery>(ref availableRefineries, "availableRefineries", LookMode.Reference);
         }
@@ -201,7 +204,7 @@ namespace TiberiumRim
             {
                 if (this.CurJob != null)
                 {
-                    return this.CurJob.def == DefDatabase<JobDef>.GetNamed("SearchAndHarvestTiberium");
+                    return this.CurJob.def.defName.Contains("SearchAndHarvestTiberium");
                 }
                 return false;
             }
@@ -227,11 +230,19 @@ namespace TiberiumRim
             }
         }
 
+        public bool ShouldEradicate
+        {
+            get
+            {
+                return this.eradicateMoss;
+            }
+        }
+
         public bool ShouldHarvest
         {
             get
             {
-                if (this.shouldStopHarvesting || this.Container.CapacityFull || !this.Map.GetComponent<MapComponent_TiberiumHandler>().HarvestableTiberiumExists)
+                if (this.shouldStopHarvesting || this.Container.CapacityFull || (this.ShouldEradicate ? !this.Map.GetComponent<MapComponent_TiberiumHandler>().TiberiumExists : !this.Map.GetComponent<MapComponent_TiberiumHandler>().HarvestableTiberiumExists))
                 {
                     return false;
                 }
@@ -258,7 +269,7 @@ namespace TiberiumRim
         {
             get
             {
-                if (!this.ShouldHarvest)
+                if (!this.ShouldHarvest || this.AvailableRefineryToUnload == null)
                 {
                     if (CurJob != null)
                     {
@@ -317,6 +328,13 @@ namespace TiberiumRim
                 r.unfilledMat = Harvester.UnfilledMat;
                 r.margin = 0.12f;
                 GenDraw.DrawFillableBar(r);
+                if (Prefs.DevMode)
+                {
+                    if (this.CurJob.targetA != null)
+                    {
+                        CellRenderer.RenderCell(this.CurJob.targetA.Cell, 0.44f);
+                    }
+                }
             }
         }
 
@@ -330,6 +348,7 @@ namespace TiberiumRim
             Command_Action returnToRefinery = new Command_Action();
             returnToRefinery.icon = (shouldStopHarvesting ? ContentFinder<Texture2D>.Get("UI/Icons/Harvester_Return", true) : ContentFinder<Texture2D>.Get("UI/Icons/Harvester_Continue", true));
             returnToRefinery.defaultLabel = (shouldStopHarvesting ? "ReturnToRefineryIdling".Translate() : "ReturnToRefineryHarvesting".Translate());
+            returnToRefinery.hotKey = KeyBindingDefOf.Misc1;
             returnToRefinery.action = delegate
             {
                 this.shouldStopHarvesting = !this.shouldStopHarvesting;
@@ -341,6 +360,7 @@ namespace TiberiumRim
             selectRefinery.defaultDesc = "SelectRefineryDesc".Translate();
             selectRefinery.icon = ContentFinder<Texture2D>.Get("UI/Icons/Harvester_RefineryRequest");
             selectRefinery.targetingParams = TiberiumTargetingParameters.ForRefinery();
+            selectRefinery.hotKey = KeyBindingDefOf.Misc2;
             selectRefinery.action = delegate (Thing target)
             {
                 if (target != null)
@@ -365,45 +385,57 @@ namespace TiberiumRim
             };
             yield return selectRefinery;
 
-            Command_SetTiberiumToPrefer setTiberium = new Command_SetTiberiumToPrefer();
-            setTiberium.defaultLabel = "SetTiberiumLabel".Translate();
-            setTiberium.defaultDesc = "SetTiberiumDesc".Translate();
-            setTiberium.icon = ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetTib");
-            setTiberium.settable = this;
-            setTiberium.map = this.Map;
-            yield return setTiberium;
-
-            Command_Action resetTiberium = new Command_Action();
-            resetTiberium.defaultLabel = "ResetTiberium".Translate();
-            resetTiberium.icon = ContentFinder<Texture2D>.Get("UI/Icons/Stop");
-            resetTiberium.action = delegate
+            if (this.eradicateMoss == false)
             {
-                this.TiberiumDefToPrefer = null;
-            };
-            yield return resetTiberium;
+                Command_SetTiberiumToPrefer setTiberium = new Command_SetTiberiumToPrefer();
+                setTiberium.defaultLabel = "SetTiberiumLabel".Translate();
+                setTiberium.defaultDesc = "SetTiberiumDesc".Translate();
+                setTiberium.icon = ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetTib");
+                setTiberium.settable = this;
+                setTiberium.map = this.Map;
+                yield return setTiberium;
 
-            Command_Action setMode = new Command_Action();
-            setMode.defaultLabel = (this.GetTiberiumDefToPrefer() == null ? (this.harvestModeBool == true ? "HarvesterModeNearest".Translate() : "HarvesterModeValue".Translate()) : "");
-            setMode.defaultDesc = (this.GetTiberiumDefToPrefer() == null ? "HarvesterModeDesc".Translate() : "NA".Translate());
-            setMode.icon = (this.GetTiberiumDefToPrefer() == null ? (this.harvestModeBool == true ? ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetClose") : ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetWealth")) : ContentFinder<Texture2D>.Get("UI/Icons/NotAvailable"));
-            setMode.action = delegate
-            {
-                if (this.GetTiberiumDefToPrefer() == null)
+                Command_Action resetTiberium = new Command_Action();
+                resetTiberium.defaultLabel = "ResetTiberium".Translate();
+                resetTiberium.icon = ContentFinder<Texture2D>.Get("UI/Icons/Stop");
+                resetTiberium.action = delegate
+                {
+                    this.TiberiumDefToPrefer = null;
+                };
+                yield return resetTiberium;
+
+                Command_Action setMode = new Command_Action();
+                setMode.defaultLabel = this.harvestModeBool == true ? "HarvesterModeNearest".Translate() : "HarvesterModeValue".Translate();
+                setMode.defaultDesc = "HarvesterModeDesc".Translate();
+                setMode.icon = (this.harvestModeBool == true ? ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetClose") : ContentFinder<Texture2D>.Get("UI/Icons/Harvester_TargetWealth"));
+                setMode.hotKey = KeyBindingDefOf.Misc3;
+                setMode.action = delegate
                 {
                     this.harvestModeBool = !this.harvestModeBool;
-                }
+                };
+                yield return setMode;
+            }
+
+            Command_Action eradicateMoss = new Command_Action();
+            eradicateMoss.defaultLabel = this.eradicateMoss == true ? "ErMossActive".Translate() : "ErMossInActive".Translate();
+            eradicateMoss.defaultDesc = "ErMossDesc".Translate();
+            eradicateMoss.icon = (this.eradicateMoss == true ? ContentFinder<Texture2D>.Get("UI/Icons/MossEr_Active") : ContentFinder<Texture2D>.Get("UI/Icons/MossEr_InActive"));
+            eradicateMoss.hotKey = KeyBindingDefOf.Misc4;
+            eradicateMoss.action = delegate
+            {
+                this.eradicateMoss = !this.eradicateMoss;
             };
-            yield return setMode;
+            yield return eradicateMoss;
         }
 
         public override string GetInspectString()
         {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.AppendLine(base.GetInspectString());
-            stringBuilder.AppendLine("Harvester Storage at: " + Mathf.RoundToInt(Container.GetTotalStorage));
+            stringBuilder.AppendLine("StoredTib".Translate() + ": "+ Mathf.RoundToInt(Container.GetTotalStorage));
             if (this.TiberiumDefToPrefer != null)
             {
-                stringBuilder.AppendLine("Current prefered tib: " + this.TiberiumDefToPrefer);
+                stringBuilder.AppendLine("CurPrefType".Translate() + ": "+ this.TiberiumDefToPrefer.LabelCap);
             }
             return stringBuilder.ToString().TrimEndNewlines();        
         }

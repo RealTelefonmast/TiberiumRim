@@ -21,9 +21,13 @@ namespace TiberiumRim
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            foreach(Building_Connector c in Connectors)
+            for (int i = 0; i < Connectors.Count; i++)
             {
-                c.Destroy();
+                Building_Connector c = Connectors[i];
+                if (!c.Destroyed)
+                {
+                    c.Destroy();
+                }
             }
             base.Destroy(mode);
         }
@@ -93,7 +97,47 @@ namespace TiberiumRim
                 return storage;
             }
         }
+
+        public List<TiberiumType> ContainedTiberiumTypes
+        {
+            get
+            {
+                List<TiberiumType> types = new List<TiberiumType>();
+                foreach(Building_Connector connector in Connectors)
+                {
+                    List<TiberiumType> types2 = connector.Parent.GetComp<Comp_TNW>().Container.GetTypes;
+                    foreach(TiberiumType type in types2)
+                    {
+                        if (!types.Contains(type))
+                        {
+                            types.Add(type);
+                        }
+                    }
+                }
+                return types;
+            }
+        }
         
+        public float TotalStoredForType(TiberiumType type)
+        {
+            float flt = 0f;
+            for (int i = 0; i < Connectors.Count; i++)
+            {
+                Building_Connector b = Connectors[i];
+                if (b != null)
+                {
+                    Comp_TNW comp = b.Parent.GetComp<Comp_TNW>();
+                    if (comp != null)
+                    {
+                        if (comp.Container.GetTotalStorage > 0)
+                        {
+                            flt += comp.Container.ValueForType(type);
+                        }
+                    }
+                }
+            }
+            return flt;
+        }
 
         public override void Tick()
         {

@@ -231,10 +231,10 @@ namespace TiberiumRim
                 int SelectedTile = Traverse.Create(__instance).Property("SelectedTile").GetValue<int>();
 
                 StringBuilder stringBuilder = new StringBuilder();
-                if (Find.World.GetComponent<WorldComponent_TiberiumSpread>().tiberiumPcts.ContainsKey(SelectedTile))
+                if (Find.World.GetComponent<WorldComponent_TiberiumSpread>().TiberiumTiles.ContainsKey(SelectedTile))
                 {
-                    stringBuilder.Append("Tiberium Infestation at:".Translate(new object[] {
-                        Math.Round(Find.World.GetComponent<WorldComponent_TiberiumSpread>().tiberiumPcts[SelectedTile], 5) * 100 + "%"
+                    stringBuilder.Append("InfestationPct".Translate(new object[] {
+                        Math.Round(Find.World.GetComponent<WorldComponent_TiberiumSpread>().TiberiumTiles[SelectedTile], 5) * 100 + "%"
                     }));
                 }
                 __result = __result + "\n\n" + stringBuilder.ToString();
@@ -250,12 +250,15 @@ namespace TiberiumRim
             {
                 Thing parent = __instance.parent;
                 Comp_TNW compTNW = parent.TryGetComp<Comp_TNW>();
-                Log.Message("Result1: " + __result);
+
                 if (compTNW != null)
                 {
-                    __result = compTNW.IsGeneratingPower || compTNW.Container.GetTotalStorage > 0;
+                    if(compTNW.Container != null)
+                    {
+                        __result = compTNW.Container.GetTotalStorage > 0;                       
+                    }
+                    __result = compTNW.IsGeneratingPower;
                 }
-                Log.Message("Result2: " + __result);
             }
         }
     }

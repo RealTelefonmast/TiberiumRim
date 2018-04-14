@@ -1067,7 +1067,7 @@
 		<bloodDef>FilthTibBloodB</bloodDef>
 		<body>QuadrupedAnimalWithPaws</body>
 		<predator>true</predator>
-		<deathActionWorkerClass>DeathActionWorker_BigExplosion</deathActionWorkerClass>
+		<deathActionWorkerClass>TiberiumRim.DeathActionWorker_TiberiumExplosion</deathActionWorkerClass>
 		<baseBodySize>0.2</baseBodySize>
 		<baseHungerRate>0.35</baseHungerRate>
 		<baseHealthScale>0.75</baseHealthScale>

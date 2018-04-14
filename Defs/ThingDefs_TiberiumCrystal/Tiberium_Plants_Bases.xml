@@ -5,7 +5,7 @@
 		<category>Building</category>
 		<thingClass>TiberiumRim.TiberiumCrystal</thingClass>
 		<selectable>true</selectable>
-		<neverMultiSelect>True</neverMultiSelect>
+		<neverMultiSelect>true</neverMultiSelect>
 		<drawerType>MapMeshOnly</drawerType>		
 		<scatterableOnMapGen>false</scatterableOnMapGen>
 		<blockPlants>true</blockPlants>

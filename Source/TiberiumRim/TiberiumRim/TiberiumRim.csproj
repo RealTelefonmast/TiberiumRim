@@ -93,6 +93,7 @@
     <Compile Include="IncidentWorker_FiendsArrive.cs" />
     <Compile Include="IncidentWorker_IonStorm.cs" />
     <Compile Include="JobDriver_TiberiumBath.cs" />
+    <Compile Include="PlaceWorker_Once.cs" />
     <Compile Include="TibBill.cs" />
     <Compile Include="ITab_TiberiumCrafter.cs" />
     <Compile Include="JobDriver_RapairAnyMechWithinRange.cs" />

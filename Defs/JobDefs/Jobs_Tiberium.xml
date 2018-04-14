@@ -4,7 +4,6 @@
 	<JobDef>
 		<defName>SearchAndHarvestTiberium</defName>
 		<driverClass>TiberiumRim.JobDriver_SearchAndHarvestTiberium</driverClass>
-		<reportString>harvesting Tiberium.</reportString>
 	</JobDef>
 
 	<JobDef>
@@ -18,8 +17,7 @@
 		<driverClass>TiberiumRim.JobDriver_ReturnToRefineryToIdle</driverClass>
 		<reportString>idling at refinery.</reportString>
 	</JobDef>
-  
-  
+	
 	<JobDef>
 		<defName>TiberiumBath</defName>
 		<driverClass>TiberiumRim.JobDriver_TiberiumBath</driverClass>

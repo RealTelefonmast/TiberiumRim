@@ -22,7 +22,7 @@ namespace TiberiumRim
             StringBuilder stringBuilder = new StringBuilder();
             foreach(Map map in Find.Maps)
             {
-                if (World.tiberiumPcts.ContainsKey(map.Tile))
+                if (World.TiberiumTiles.ContainsKey(map.Tile))
                 {
                     float pct = World.GetPct(map.Tile);
                     if (pct > 0f)
@@ -50,7 +50,7 @@ namespace TiberiumRim
                 for (int i = 0; i < maps.Count; i++)
                 {
                     Map map = maps[i];
-                    if (World.tiberiumPcts.ContainsKey(map.Tile))
+                    if (World.TiberiumTiles.ContainsKey(map.Tile))
                     {
                         float pct = World.GetPct(map.Tile);
                         if (pct > 0f)
