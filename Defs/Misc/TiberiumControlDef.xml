@@ -13,8 +13,8 @@
 		<RedColor>(230, 75, 75)</RedColor>
 		<SludgeColor>(160,255,0)</SludgeColor>
 		
-		<WorldCorruptMinPct>0.10</WorldCorruptMinPct>
-		<WorldCorruptAdder>0.10</WorldCorruptAdder>
+		<WorldCorruptMinPct>0.50</WorldCorruptMinPct>
+		<WorldCorruptAdder>0.01</WorldCorruptAdder>
 	</Def>
   
 </Defs>
