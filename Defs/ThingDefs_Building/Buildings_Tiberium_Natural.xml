@@ -71,7 +71,7 @@
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
         <killedLeavings>
-            <TiberiumGreen>3</TiberiumGreen>
+            <TiberiumGreen>1</TiberiumGreen>
         </killedLeavings>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>

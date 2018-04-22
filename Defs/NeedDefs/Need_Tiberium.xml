@@ -5,9 +5,9 @@
     <defName>Need_Tiberium</defName>
     <needClass>TiberiumRim.Need_Tiberium</needClass>
     <label>Tiberium</label>
-    <description>This person is enhanced with Tiberium, though it might seem good at first, this person is also dependent on Tiberium radiation now.</description>
+    <description>This pawn is dependant on Tiberium, the need can be satisfied by having your pawn sit in Tiberium or consume Tiberadd.</description>
     <listPriority>20</listPriority>
-    <fallPerDay>0.1</fallPerDay>
+    <fallPerDay>0.05</fallPerDay>
   </NeedDef>
 
 </Defs>

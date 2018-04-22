@@ -192,7 +192,7 @@ namespace TiberiumRim
                         TiberiumCrystal parent = Sources(affectedTile, map, true).GetOneThing();
                         if(parent != null)
                         {
-                            TiberiumCrystalDef def = (TiberiumCrystalDef)parent.def;
+                            TiberiumCrystalDef def = parent.def;
                             DamageInfo damageEntity = new DamageInfo(DamageDefOf.Deterioration, def.tiberium.entityDamage.RandomInRange);
                             DamageInfo damageBuilding = new DamageInfo(DamageDefOf.Deterioration, def.tiberium.buildingDamage.RandomInRange);
                             if(spawnedMonolith && def.monolithDef != null && CanSpawnMonolith(parent) && Rand.Chance(0.005f) && Find.TickManager.TicksGame % GenDate.TicksPerDay == 0)

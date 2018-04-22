@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Alert_TiberiumInfestation.cs" />
     <Compile Include="Alert_TiberiumInHomeArea.cs" />
+    <Compile Include="Alert_TiberiumNeed.cs" />
     <Compile Include="BiomeWorker_TiberiumRedZone.cs" />
     <Compile Include="Building_Connector.cs" />
     <Compile Include="Building_TiberiumPowerPlant.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="CompFX.cs" />
     <Compile Include="CompGlower2.cs" />
     <Compile Include="CompTiberiumPowerPlant.cs" />
+    <Compile Include="Comp_GraphicExtra.cs" />
     <Compile Include="Designator_BuildWithParent.cs" />
     <Compile Include="Building_GasCrack.cs" />
     <Compile Include="Building_MechSpawner.cs" />
@@ -93,6 +95,9 @@
     <Compile Include="IncidentWorker_FiendsArrive.cs" />
     <Compile Include="IncidentWorker_IonStorm.cs" />
     <Compile Include="JobDriver_TiberiumBath.cs" />
+    <Compile Include="JobDriver_WanderAtParent.cs" />
+    <Compile Include="JobGiver_Amalgamation.cs" />
+    <Compile Include="Mechanical_Pawn.cs" />
     <Compile Include="PlaceWorker_Once.cs" />
     <Compile Include="TibBill.cs" />
     <Compile Include="ITab_TiberiumCrafter.cs" />
@@ -119,6 +124,7 @@
     <Compile Include="TiberiumPosIndices.cs" />
     <Compile Include="TiberiumProperties.cs" />
     <Compile Include="TiberiumRim.cs" />
+    <Compile Include="TiberiumRimPatches.cs" />
     <Compile Include="TiberiumTargetingParams.cs" />
     <Compile Include="TiberiumTerrain.cs" />
     <Compile Include="TiberiumType.cs" />

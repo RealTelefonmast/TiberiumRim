@@ -42,7 +42,7 @@
 			<reproduceRadius>3</reproduceRadius>
 			<maxHarvestValue>12</maxHarvestValue>
 			<topWindExposure>0</topWindExposure>
-			<growDays>1</growDays>
+			<growDays>3.5</growDays>
 			<visualSizeRange>
 				<min>1.0</min>
 				<max>2.0</max>

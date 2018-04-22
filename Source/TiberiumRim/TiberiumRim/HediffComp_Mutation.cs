@@ -28,7 +28,7 @@ namespace TiberiumRim
             HediffDef MutationGood = TiberiumHediffDefOf.TiberiumMutationGood;
             HediffDef MutationBad = TiberiumHediffDefOf.TiberiumMutationBad;
             HediffDef Addiction = TiberiumHediffDefOf.TiberiumAddiction;
-            HediffDef Exposure = TiberiumHediffDefOf.TiberiumBuildupHediff;
+            HediffDef Exposure = TiberiumHediffDefOf.TiberiumExposure;
 
             if (!p.health.hediffSet.HasHediff(Infection) && this.parent.Severity > 0.3 && Rand.Chance(0.1f))
             {

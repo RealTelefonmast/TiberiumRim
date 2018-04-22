@@ -41,27 +41,21 @@ namespace TiberiumRim
             get
             {
                 Color newColor = new Color();
-                if (parent != null)
+                if (parent != null && !parent.IsStorage)
                 {
-                    if (!parent.IsStorage)
+                    if (newColor == new Color())
                     {
-                        if (newColor == new Color())
-                        {
-                            newColor = TypeColor(TiberiumType.Green);
-                            newColor.a = 1;
-                        }
+                        newColor = TypeColor(TiberiumType.Green);
+                        newColor.a = 1;
                     }
-                    else
+                    return newColor;
+                }
+                if (ContainedTiberium.Keys.Count > 0)
+                {
+                    foreach (TiberiumType type in ContainedTiberium.Keys)
                     {
-                        if (ContainedTiberium.Keys.Count > 0)
-                        {
-                            foreach (TiberiumType type in ContainedTiberium.Keys)
-                            {
-                                newColor += TypeColor(type) * (ContainedTiberium[type] / maxStorage);
-                            }
-                        }
+                        newColor += TypeColor(type) * (ContainedTiberium[type] / maxStorage);
                     }
-
                 }
                 return newColor;
             }

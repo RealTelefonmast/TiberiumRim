@@ -27,19 +27,15 @@ namespace TiberiumRim
             {
                 return false;
             }
-            if (map.fertilityGrid.FertilityAt(c) < 0)
-            {
-                return false;
-            }
             List<Thing> list = map.thingGrid.ThingsListAt(c);
             for (int i = 0; i < list.Count; i++)
             {
                 Thing thing = list[i];
-                if (thing.def.BlockPlanting)
+                if(thing.def.thingClass == typeof(TiberiumCrystal))
                 {
                     return false;
                 }
-                if (crystalDef.passability == Traversability.Impassable && (thing.def.category == ThingCategory.Pawn || thing.def.category == ThingCategory.Item || thing.def.category == ThingCategory.Building || thing.def.category == ThingCategory.Plant))
+                if (crystalDef.passability == Traversability.Impassable && (thing.def.category == ThingCategory.Pawn || thing.def.category == ThingCategory.Item || thing.def.category == ThingCategory.Building))
                 {
                     return false;
                 }

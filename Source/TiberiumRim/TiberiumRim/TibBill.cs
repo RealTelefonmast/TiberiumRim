@@ -50,8 +50,30 @@ namespace TiberiumRim
             }
         }
 
+        //TODO: Fix shit
         public override bool ShouldDoNow()
         {
+            if(this.def.tiberiumCost == 0)
+            {
+                if (Map.listerBuildings.allBuildingsColonist.Find((Building x) => x is Building_ResearchBench && x.def.defName == "TiberiumResearchCrane_TBNS") is Building_ResearchBench r)
+                {
+                    if (r.Position.GetThingList(r.Map).Find((Thing x) => x.def.thingClass == typeof(Building_TiberiumProducer)) is Building_TiberiumProducer p)
+                    {
+                        foreach (TiberiumCrystalDef def in p.def.crystalDefs)
+                        {
+                            TiberiumType type = def.TibType;
+                            if (type == this.def.drainType)
+                            {
+                                if (base.ShouldDoNow())
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
             Building_TiberiumCrafter b = this.billStack.billGiver as Building_TiberiumCrafter;
             Comp_TNW comp = b.GetComp<Comp_TNW>();
             if (comp != null)
@@ -89,6 +111,12 @@ namespace TiberiumRim
 
         public override void Notify_IterationCompleted(Pawn billDoer, List<Thing> ingredients)
         {
+            if(this.def.tiberiumCost == 0)
+            {
+                base.Notify_IterationCompleted(billDoer, ingredients);
+                isBeingDone = false;
+                return;
+            }
             Building_TiberiumCrafter crafter = null;
             foreach (IntVec3 c in billDoer.CellsAdjacent8WayAndInside())
             {

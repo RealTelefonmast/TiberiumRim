@@ -25,15 +25,12 @@ namespace TiberiumRim
             HediffDef Stage1 = TiberiumHediffDefOf.TiberiumStage1;
             HediffDef Stage2 = TiberiumHediffDefOf.TiberiumStage2;
             Hediff R = p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName.Contains("TiberiumStage1"));
-            HediffDef Addiction = TiberiumHediffDefOf.TiberiumAddiction;
-            HediffDef Stage1Animals = TiberiumHediffDefOf.TiberiumBuildUp_Animals;
 
             if (!p.health.hediffSet.HasHediff(Stage1) && !p.health.hediffSet.HasHediff(Stage2) && this.parent.Severity > 0.3 && Rand.Chance(0.3f))
             {
                 if (p.AnimalOrWildMan())
                 {
                     HealthUtility.AdjustSeverity(p, this.parent.def, -0.5f);
-                    HealthUtility.AdjustSeverity(p, Stage1Animals, 1.0f);
                     return;
                 }
                 HealthUtility.AdjustSeverity(p, this.parent.def, -0.5f);

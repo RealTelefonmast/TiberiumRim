@@ -12,7 +12,7 @@ namespace TiberiumRim
     {
         public Building_TNC Network;
 
-        public Building_GraphicSwitchable Parent;
+        public Building Parent;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -29,7 +29,7 @@ namespace TiberiumRim
                         {
                             if (building != null)
                             {
-                                this.Parent = building as Building_GraphicSwitchable;
+                                this.Parent = building;
                                 if (building.TryGetComp<Comp_TNW>().Connector == null)
                                 {
                                     this.Parent.TryGetComp<Comp_TNW>().Connector = this;
@@ -46,6 +46,19 @@ namespace TiberiumRim
             }
         }
 
+        public Comp_GraphicExtra GraphicComp
+        {
+            get
+            {
+                Comp_GraphicExtra gc = Parent.TryGetComp<Comp_GraphicExtra>();
+                if (gc != null)
+                {
+                    return gc;
+                }
+                return null;
+            }
+        }
+
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
             this.Parent.TryGetComp<Comp_TNW>().Connector = null;
@@ -56,8 +69,8 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_References.Look<Building_GraphicSwitchable>(ref this.Parent, "Parent");
-            Scribe_References.Look<Building_TNC>(ref this.Network, "Network");
+            Scribe_References.Look(ref this.Parent, "Parent");
+            Scribe_References.Look(ref this.Network, "Network");
         }
 
         public Graphic Notify_GraphicsUpdated(Graphic graphic)
@@ -104,13 +117,13 @@ namespace TiberiumRim
         {
             get
             {
-                if (Parent != null)
+                if (GraphicComp != null)
                 {
-                    if(Parent.OverlayGraphic == null)
+                    if(GraphicComp.OverlayGraphic == null)
                     {
-                        Parent.SetOverlayGraphic();
+                        GraphicComp.SetOverlayGraphic();
                     }
-                    return Notify_GraphicsUpdated(Parent.OverlayGraphic);
+                    return Notify_GraphicsUpdated(GraphicComp.OverlayGraphic);
                 }
                 return Notify_GraphicsUpdated(base.Graphic);
             }

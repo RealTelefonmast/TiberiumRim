@@ -19,10 +19,13 @@ namespace TiberiumRim
 
         public override void CompPostTick(ref float severityAdjustment)
         {
-            Need_Tiberium N = (Need_Tiberium)this.Pawn.needs.AllNeeds.Find((Need x) => x.def.defName.Contains("Need_Tiberium"));
-            if (N != null)
+            if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
             {
-                N.CurLevelPercentage += 0.05f;
+                Need_Tiberium N = (Need_Tiberium)this.Pawn.needs.AllNeeds.Find((Need x) => x.def.defName.Contains("Need_Tiberium"));
+                if (N != null)
+                {
+                    N.CurLevelPercentage += 0.05f;
+                }
             }
         }
     }

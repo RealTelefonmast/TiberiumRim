@@ -29,6 +29,8 @@
 			</li>
 		</verbs>
 		<race>
+			<thinkTreeMain>Animal</thinkTreeMain>
+			<thinkTreeConstant>Visceroid_Constant</thinkTreeConstant>
 			<hasGenders>false</hasGenders>
 			<herdAnimal>true</herdAnimal>
 			<body>Visceroid</body>

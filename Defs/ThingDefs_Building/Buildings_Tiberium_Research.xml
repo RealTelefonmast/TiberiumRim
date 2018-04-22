@@ -65,7 +65,7 @@
 	<ThingDef ParentName="BenchBase">
 		<defName>TiberiumResearchCrane_TBNS</defName>
 		<label>tiberium research crane</label>
-		<description>This research crane can be placed on any Tiberium source.</description>
+		<description>This research crane can be placed on any Tiberium source and will allow you to learn more about the alien substance. It is immune to Tiberium itself and will inhibit the producer from spawning more Tiberium.\n\nOnly one research crane can be placed on a map.</description>
 		<thingClass>Building_ResearchBench</thingClass>
 		<size>(5,5)</size>
 		<costList>
@@ -158,6 +158,11 @@
 		<inspectorTabs>
 			<li>ITab_Bills</li>
 		</inspectorTabs>
+		<recipes>
+			<li>MakeBookRiparius</li>
+			<li>MakeBookVinifera</li>
+			<li>MakeBookRutila</li>
+		</recipes>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>
 		</building>

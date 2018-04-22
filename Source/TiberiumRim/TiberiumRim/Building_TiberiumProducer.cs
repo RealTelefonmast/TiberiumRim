@@ -21,7 +21,7 @@ namespace TiberiumRim
 
         public bool spawnsTerrain = false;
 
-        public TiberiumCrystalDef crystalDef;
+        public List<TiberiumCrystalDef> crystalDefs;
     }
 
     public class Building_TiberiumProducer : Building
@@ -47,7 +47,7 @@ namespace TiberiumRim
             {
                 SetGrowthRadius();
                 RemoveGrass();
-                SpawnTerrain();
+                SpawnTerrain(CrystalDef);
                 ResetCountdown();                        
                 mapComp.ProducerCount += 1;
                 if (this.def.needsToActivate)
@@ -56,6 +56,14 @@ namespace TiberiumRim
                     this.ticksUntilWoken = GenDate.TicksPerDay * Mathf.RoundToInt(this.HPVar);
                     this.HitPoints = Mathf.RoundToInt(this.SpawnHitpoints);
                 }
+            }
+        }
+
+        public TiberiumCrystalDef CrystalDef
+        {
+            get
+            {
+                return this.def.crystalDefs.Where((TiberiumCrystalDef x) => x != null).RandomElement();
             }
         }
 
@@ -221,15 +229,15 @@ namespace TiberiumRim
             }
         }
 
-        public virtual void SpawnTerrain()
-        {           
+        public virtual void SpawnTerrain(TiberiumCrystalDef crystalDef)
+        {            
             if (!this.def.spawnsTerrain)
             {
                 foreach (IntVec3 inside in this.CellsAdjacent8WayAndInside())
                 {
                     if (inside.InBounds(this.Map))
                     {
-                        GenTiberiumReproduction.SetTiberiumTerrainAndType(this.def.crystalDef, inside.GetTerrain(Map), out TiberiumCrystalDef def, out TerrainDef NewTerrain);
+                        GenTiberiumReproduction.SetTiberiumTerrainAndType(crystalDef, inside.GetTerrain(Map), out TiberiumCrystalDef def, out TerrainDef NewTerrain);
                         if (NewTerrain != null)
                         {
                             this.Map.terrainGrid.SetTerrain(inside, NewTerrain);
@@ -244,11 +252,7 @@ namespace TiberiumRim
                 IntVec3 c = this.Position + GenRadial.RadialPattern[i];
                 if (c.InBounds(Map))
                 {
-                    GenTiberiumReproduction.SetTiberiumTerrainAndType(this.def.crystalDef, c.GetTerrain(Map), out TiberiumCrystalDef def, out TerrainDef NewTerrain);
-                    if(NewTerrain == null)
-                    {
-                        NewTerrain = this.def.crystalDef.defaultTerrain;
-                    }
+                    GenTiberiumReproduction.SetTiberiumTerrainAndType(crystalDef, c.GetTerrain(Map), out TiberiumCrystalDef def, out TerrainDef NewTerrain);
                     if (NewTerrain != null)
                     {
                         Plant plant = c.GetPlant(Map);
@@ -298,7 +302,7 @@ namespace TiberiumRim
             {
                 if(c.GetEdifice(this.Map) == null && c.GetTiberium(this.Map) == null)
                 {
-                    GenTiberiumReproduction.SetTiberiumTerrainAndType(this.def.crystalDef, c.GetTerrain(Map), out TiberiumCrystalDef crystalDef, out TerrainDef tdef);
+                    GenTiberiumReproduction.SetTiberiumTerrainAndType(CrystalDef, c.GetTerrain(Map), out TiberiumCrystalDef crystalDef, out TerrainDef tdef);
                     if (crystalDef != null)
                     {
                         TiberiumCrystal crystal = (TiberiumCrystal)ThingMaker.MakeThing(crystalDef, null);
@@ -328,7 +332,7 @@ namespace TiberiumRim
             {
                 yield return new Command_Action
                 {
-                    defaultLabel = "DEBUG: Spawn " + this.def.crystalDef.label,
+                    defaultLabel = "DEBUG: Spawn " + CrystalDef.label,
                     icon = TexCommand.DesirePower,
                     action = delegate
                     {

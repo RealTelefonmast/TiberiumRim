@@ -13,12 +13,13 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             Harvester harvester = pawn as Harvester;
-            if (harvester.AvailableRefineryToUnload != null)
+            Building_Refinery refinery = harvester.AvailableRefineryToUnload;
+            if (refinery != null)
             {
-                if (harvester.ShouldUnload && !harvester.Unloading && harvester.CanReserve(harvester.AvailableRefineryToUnload))
+                if (harvester.ShouldUnload && !harvester.Unloading && harvester.CanReserve(refinery))
                 {
                     JobDef job = DefDatabase<JobDef>.GetNamed("ReturnToRefineryToUnload");
-                    return new Job(job, harvester.AvailableRefineryToUnload);
+                    return new Job(job, refinery);
                 }
             }
             return null;
@@ -61,7 +62,9 @@ namespace TiberiumRim
 
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            yield return Toils_Goto.GotoCell(Refinery.InteractionCell, PathEndMode.OnCell);
+            Toil gotoToil = Toils_Goto.GotoCell(Refinery.InteractionCell, PathEndMode.OnCell);
+            gotoToil.FailOnDespawnedOrNull(TargetIndex.A);
+            yield return gotoToil;
             Toil unload = new Toil();
             unload.initAction = delegate
             {

@@ -83,7 +83,7 @@
 			<Component>1</Component>
 		</costList>
 		<graphicData>
-			<texPath>Building/Common/connector_base</texPath>
+			<texPath>Building/Common/Connector</texPath>
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(1,1)</drawSize>
 			<shadowData>
@@ -93,6 +93,7 @@
 				<rect>(0.3,0.1,2.4,1.8)</rect>
 			</damageData>
 		</graphicData>
+		<uiIconPath>Building/Common/Connector_Icon</uiIconPath>
 		<passability>Standable</passability>
 		<pathCost>0</pathCost>
 		<castEdgeShadows>false</castEdgeShadows>
@@ -133,8 +134,6 @@
 			</damageData>
 		</graphicData>
 		<rotatable>false</rotatable>
-		<filledGraphicPath>Building/FX/silo_filledOL</filledGraphicPath>
-		<overlayGraphicPath>Building/Common/siloOL</overlayGraphicPath>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<pathCost>70</pathCost>
@@ -149,7 +148,7 @@
 			<Flammability>1.0</Flammability>
 			<Beauty>-18</Beauty>
 		</statBases>
-		<description>Stores Tiberium and distributes it to Tiberium structures.</description>
+		<description>Stores Tiberium and distributes it to other Tiberium structures when necessary.</description>
 		<size>(2,2)</size>
 		<costList>
 			<Steel>50</Steel>
@@ -159,6 +158,10 @@
 			<li Class="TiberiumRim.CompProperties_TNW">
 				<maxStorage>2500</maxStorage>
 				<isGlobalStorage>true</isGlobalStorage>
+			</li>
+			<li Class="TiberiumRim.CompProperties_GraphicExtra">
+				<filledOverlayGraphicPath>Building/FX/silo_filledOL</filledOverlayGraphicPath>
+				<overlayGraphicPath>Building/Common/siloOL</overlayGraphicPath>
 			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>2</glowRadius>
@@ -186,8 +189,6 @@
 			<graphicClass>Graphic_Single</graphicClass>
 			<drawSize>(5,5)</drawSize>
 		</graphicData>
-		<overlayGraphicPath>Building/Common/PowerPlantOL</overlayGraphicPath>
-		<filledGraphicPath>Building/FX/PowerPlant_Filled</filledGraphicPath>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
 		<blockWind>true</blockWind>
@@ -214,6 +215,10 @@
 				<isLocalStorage>true</isLocalStorage>
 				<isConsumer>true</isConsumer>
 				<consumeAmtPerDay>200</consumeAmtPerDay>
+			</li>
+			<li Class="TiberiumRim.CompProperties_GraphicExtra">
+				<overlayGraphicPath>Building/Common/PowerPlantOL</overlayGraphicPath>
+				<filledOverlayGraphicPath>Building/FX/PowerPlant_Filled</filledOverlayGraphicPath>
 			</li>
 			<li Class="CompProperties_Flickable" />
 			<li Class="CompProperties_Glower">
@@ -243,7 +248,7 @@
 	<ThingDef ParentName="BenchBase_TR" Class="TiberiumRim.RefineryDef">
 		<defName>TiberiumRefinery</defName>
 		<label>tiberium refinery</label>
-		<description>A specialized chemical refining plant. Used to refine lethal Tiberium into useful resources.</description>
+		<description>This refinery will create a Harvester upon construction, which will harvest nearby Tiberium, return and store it inside of the refinery.</description>
 		<thingClass>TiberiumRim.Building_Refinery</thingClass>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>PassThroughOnly</passability>
@@ -268,6 +273,15 @@
 				<isLocalStorage>true</isLocalStorage>
 				<isGlobalStorage>true</isGlobalStorage>
 			</li>
+			<li Class="TiberiumRim.CompProperties_GraphicExtra">
+				<overlayGraphicPath>Building/Common/TibRefineryOL</overlayGraphicPath>
+				<filledOverlayGraphicPath>Building/FX/TibRefineryFilledOL</filledOverlayGraphicPath>
+			</li>
+			<li Class="TiberiumRim.CompProperties_RepairDrone">
+				<droneAmount>3</droneAmount>
+				<radius>6</radius>
+				<droneDef>RepairDrone_Common</droneDef>
+			</li>
 			<li Class="CompProperties_Glower">
 				<glowRadius>4</glowRadius>
 				<glowColor>(120,255,150,0)</glowColor>
@@ -280,9 +294,7 @@
 		</comps>
 		<tickerType>Normal</tickerType>
 		<castEdgeShadows>false</castEdgeShadows>
-		<staticSunShadowHeight>0</staticSunShadowHeight>
-		<overlayGraphicPath>Building/Common/TibRefineryOL</overlayGraphicPath>
-		<filledGraphicPath>Building/FX/TibRefineryFilledOL</filledGraphicPath>
+		<staticSunShadowHeight>0</staticSunShadowHeight>		
 		<graphicData>
 			<texPath>Building/Common/TibRefinery</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -335,6 +347,10 @@
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
 			</li>
+			<li Class="TiberiumRim.CompProperties_GraphicExtra">
+				<overlayGraphicPath>Building/Common/ReplantOL</overlayGraphicPath>
+				<filledOverlayGraphicPath>Building/FX/ReplantFilled</filledOverlayGraphicPath>
+			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>
 				<basePowerConsumption>425</basePowerConsumption>
@@ -348,14 +364,10 @@
 			<li>ExtractGold</li>
 			<li>ExtractUranium</li>
 			<li>BurnSludge</li>
-			<li>MakeBookRiparius</li>
-			<li>MakeBookVinifera</li>
-			<li>MakeBookRutila</li>
 		</recipes>
+		<tickerType>Normal</tickerType>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
-		<overlayGraphicPath>Building/Common/ReplantOL</overlayGraphicPath>
-		<filledGraphicPath>Building/FX/ReplantFilled</filledGraphicPath>
 		<graphicData>
 			<texPath>Building/Common/Replant</texPath>
 			<graphicClass>Graphic_Multi</graphicClass>
@@ -398,7 +410,6 @@
 			<rect>(0.3,0,5.4,6)</rect>
 			</damageData>
 		</graphicData>
-		<overlayGraphicPath>Building/Common/TibSpikeOL</overlayGraphicPath>
 		<uiIconPath>Building/Common/TibSpike_Icon</uiIconPath>
 		<altitudeLayer>Building</altitudeLayer>
 		<passability>Impassable</passability>
@@ -415,7 +426,7 @@
 			<Beauty>-30</Beauty>
 		</statBases>
 		<tickerType>Normal</tickerType>
-		<description>Slowly produces raw Tiberium.</description>
+		<description>The Tiberium Spike pumps Tiberium gases and liquids out of the geyser and stores it in Silos if connected to the Tiberium Network, however it possesses an internal storage as well.</description>
 		<size>(2,2)</size>
 		<costList>
 			<Steel>425</Steel>
@@ -424,12 +435,14 @@
 		</costList>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_TNW">
-			<!-- Storage must be removed when done-->
-				<maxStorage>1337</maxStorage>
+				<maxStorage>250</maxStorage>
 				<isLocalStorage>true</isLocalStorage>
 				<isAutoProducer>true</isAutoProducer>
 				<produceAmt>25</produceAmt>
 				<workTime>6</workTime>
+			</li>
+			<li Class="TiberiumRim.CompProperties_GraphicExtra">
+				<overlayGraphicPath>Building/Common/TibSpikeOL</overlayGraphicPath>
 			</li>
 			<li Class="CompProperties_Power">
 				<compClass>CompPowerTrader</compClass>

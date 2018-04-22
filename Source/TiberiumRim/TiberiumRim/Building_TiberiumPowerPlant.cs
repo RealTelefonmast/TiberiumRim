@@ -17,14 +17,6 @@ namespace TiberiumRim
             }
         }
 
-        public override float FilledPct
-        {
-            get
-            {
-                return Network.Container.GetTotalStorage / Network.props.maxStorage;
-            }
-        }
-
         public override bool IsActivated => false;
     }
 }

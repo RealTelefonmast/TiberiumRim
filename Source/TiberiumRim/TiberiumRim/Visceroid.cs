@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using Verse;
+using Verse.AI;
 
 namespace TiberiumRim
 {
@@ -37,6 +38,18 @@ namespace TiberiumRim
                 stringBuilder.AppendLine("UsedToBeNoName".Translate(new object[] { kindDefName }) + ".");
             }
             return stringBuilder.ToString().TrimEndNewlines();
+        }
+
+        public bool OtherVisceroidExists(out Visceroid visceroid)
+        {
+            Visceroid visc = (Visceroid)Map.listerThings.AllThings.Find((Thing x) => (x as Visceroid) != null && x != this && this.CanReserve(x));
+            if(visc != null)
+            {
+                visceroid = visc;
+                return true;
+            }
+            visceroid = null;
+            return false;
         }
     }
 }

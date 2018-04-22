@@ -22,20 +22,11 @@ namespace TiberiumRim
                 if (pawn.Position.InBounds(pawn.Map))
                 {
                     Need_Tiberium N = (Need_Tiberium)pawn.needs.AllNeeds.Find((Need x) => x.def.defName.Contains("Need_Tiberium"));
-                    HediffDef Exposure = TiberiumHediffDefOf.TiberiumBuildupHediff;
+                    HediffDef Exposure = TiberiumHediffDefOf.TiberiumExposure;
                     if (N != null)
                     {
-                        HealthUtility.AdjustSeverity(pawn, this.parent.def, -this.parent.Severity);
-                        HealthUtility.AdjustSeverity(pawn, this.parent.def, 1 - N.CurLevelPercentage * 0.999999f);
-
-                        if (N.isInTiberium)
-                        {
-                            Hediff hediff;
-                            if ((from hd in pawn.health.hediffSet.hediffs where !hd.IsOld() && hd.def.hediffClass == typeof(Hediff_Injury) && !hd.def.defName.Contains("Tiberium") select hd).TryRandomElement(out hediff))
-                            {
-                                hediff.Heal(0.001f);
-                            }
-                        }
+                        Log.Message("Pct: " + N.CurLevelPercentage + " final pct: " + (1 - N.CurLevelPercentage * 0.999999f));
+                        this.parent.Severity = 1 - N.CurLevelPercentage * 0.999999f;
                     }
 
                     if (pawn.health.hediffSet.HasHediff(Exposure))

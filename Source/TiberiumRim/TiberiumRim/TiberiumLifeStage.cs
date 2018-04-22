@@ -8,6 +8,7 @@ namespace TiberiumRim
     public enum TiberiumLifeStage : byte
     {
         Growing,
+        ProducesTerrain,
         Mature,
         Evolving
     }

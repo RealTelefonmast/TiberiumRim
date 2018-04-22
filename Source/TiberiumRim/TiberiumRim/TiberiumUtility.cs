@@ -93,14 +93,30 @@ namespace TiberiumRim
 
         public static Building GetBuilding(this CellRect cells, ThingDef def, Map map)
         {
+            foreach (IntVec3 c in cells.Cells)
+            {
+                if (c.InBounds(map))
+                {
+                    Building thing = (Building)c.GetThingList(map).Find((Thing x) => x.def == def);
+                    if (thing != null)
+                    {
+                        return thing;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static Thing GetAnyThingIn(this CellRect cells, Type type, Map map)
+        {
             foreach(IntVec3 c in cells.Cells)
             {
                 if (c.InBounds(map))
                 {
-                    Building building = (Building)c.GetFirstThing(map, def);
-                    if(building != null)
+                    Thing thing = (Building)c.GetThingList(map).Find((Thing x) => x.def.thingClass == type);
+                    if(thing != null)
                     {
-                        return building;
+                        return thing;
                     }
                 }
             }
@@ -295,11 +311,11 @@ namespace TiberiumRim
         {
             if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumMutationBad))
             {
-                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumMutationBad");
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumMutationBad);
             }
             else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumMutationGood))
             {
-                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumMutationGood");
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumMutationGood);
             }
             else
             {
@@ -309,17 +325,17 @@ namespace TiberiumRim
 
         public static Hediff TibSickness(Pawn p)
         {
-            if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumBuildupHediff))
+            if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumExposure))
             {
-                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumBuildupHediff");
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumExposure);
             }
             else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumStage1))
             {
-                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumStage1");
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumStage1);
             }
             else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumStage2))
             {
-                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName == "TiberiumStage2");
+                return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumStage2);
             }
             else if (p.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberiumInfection))
             {
@@ -365,8 +381,10 @@ namespace TiberiumRim
             HashSet<TiberiumCrystalDef> result = new HashSet<TiberiumCrystalDef>();
             foreach(Thing thing in map.listerThings.AllThings.Where(x=> x.def.thingClass == typeof(Building_TiberiumProducer)))
             {
-                TiberiumCrystalDef def = ((TiberiumProducerDef)thing.def).crystalDef;
-                result.Add(def);
+                foreach (TiberiumCrystalDef def in ((TiberiumProducerDef)thing.def).crystalDefs)
+                {
+                    result.Add(def);
+                }
             }
             return result;
         }
@@ -450,7 +468,7 @@ namespace TiberiumRim
 
         public static void Infect(Pawn pawn, float amt, Map map, bool isGas = false)
         {
-            HediffDef tiberium = TiberiumHediffDefOf.TiberiumBuildupHediff;
+            HediffDef exposure = TiberiumHediffDefOf.TiberiumExposure;
             HediffDef addiction = TiberiumHediffDefOf.TiberiumAddiction;
             HediffDef Stage1 = TiberiumHediffDefOf.TiberiumStage1;
             HediffDef Stage2 = TiberiumHediffDefOf.TiberiumStage2;
@@ -486,13 +504,13 @@ namespace TiberiumRim
             {
                 if (pawn.AnimalOrWildMan())
                 {
-                    HealthUtility.AdjustSeverity(pawn, tiberium, +amt * 2);
+                    HealthUtility.AdjustSeverity(pawn, exposure, +amt * 2);
                     return;
                 }
                 else
                 if (pawn.apparel == null)
                 {
-                    HealthUtility.AdjustSeverity(pawn, tiberium, +amt * 3);
+                    HealthUtility.AdjustSeverity(pawn, exposure, +amt * 3);
                     return;
                 }
 
@@ -510,7 +528,7 @@ namespace TiberiumRim
                     {
                         if (a.HitPoints < a.MaxHitPoints * 0.15)
                         {
-                            HealthUtility.AdjustSeverity(pawn, tiberium, +amt / 2);
+                            HealthUtility.AdjustSeverity(pawn, exposure, +amt / 2);
                             if (Current.Game.tickManager.TicksGame % 1250 == 0)
                             {
                                 Messages.Message("MessageTiberiumSuitLeak".Translate(), new TargetInfo(pawn.Position, map, false), MessageTypeDefOf.CautionInput);
@@ -539,12 +557,12 @@ namespace TiberiumRim
                         {
                             if (!apparel.def.apparel.bodyPartGroups.Contains(BodyPartGroupDefOf.FullHead))
                             {
-                                HealthUtility.AdjustSeverity(pawn, tiberium, +amt);
+                                HealthUtility.AdjustSeverity(pawn, exposure, +amt);
                                 return;
                             }
                         }
                     }
-                    HealthUtility.AdjustSeverity(pawn, tiberium, +amt);
+                    HealthUtility.AdjustSeverity(pawn, exposure, +amt);
                     return;
                 }
             }

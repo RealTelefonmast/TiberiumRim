@@ -17,10 +17,16 @@
 						<li>
 							<def>Harvester_CollectorLeftArm</def>
 							<coverage>0.045</coverage>
+							<groups>
+								<li>LeftHand</li>
+							</groups>
 						</li>
 						<li>
 							<def>Harvester_CollectorRightArm</def>
 							<coverage>0.045</coverage>
+							<groups>
+								<li>RightHand</li>
+							</groups>
 						</li>
 					</parts>
 				</li>
@@ -28,6 +34,9 @@
 					<def>HarvesterCockpit</def>
 					<coverage>0.20</coverage>
 					<height>Top</height>
+					<groups>
+						<li>HeadAttackTool</li>
+					</groups>
 					<parts>
 						<li>
 						<def>ArtificialBrain</def>

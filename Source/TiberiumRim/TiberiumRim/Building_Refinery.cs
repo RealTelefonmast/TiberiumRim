@@ -25,14 +25,6 @@ namespace TiberiumRim
 
         public int refineTicks;
 
-        public override float FilledPct
-        {
-            get
-            {
-                return NetworkComp.Container.GetTotalStorage / NetworkComp.props.maxStorage;
-            }
-        }
-
         public override bool IsActivated => false;
         
 
@@ -97,21 +89,29 @@ namespace TiberiumRim
 
         public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
         {
-            if (mode != DestroyMode.Deconstruct)
+            List<Harvester> list = new List<Harvester>();
+            list.AddRange(this.harvesterList);
+            foreach (Harvester harvester in list)
             {
-                List<Harvester> list = new List<Harvester>();
-                list.AddRange(this.harvesterList);
-                foreach (Harvester harvester in list)
+                if (harvester.mainRefinery == this)
                 {
-                    if (harvester.mainRefinery == this)
+                    harvester.mainRefinery = null;
+                    if (mode != DestroyMode.Deconstruct)
                     {
-                        harvester.mainRefinery = null;
+                        if(!Destroyed)
+                        {
+                            base.Destroy();                     
+                        }
+                        harvester.UpdateRefineriesOrAddNewMain();
                         Messages.Message("RefineryLost".Translate(), this, MessageTypeDefOf.NegativeEvent);
                     }
-                    harvester.availableRefineries.Remove(this);
                 }
+                harvester.availableRefineries.Remove(this);               
             }
-            base.Destroy(mode);
+            if (!Destroyed)
+            {
+                base.Destroy(mode);
+            }
         }
 
         private Harvester SpawnHarvester()

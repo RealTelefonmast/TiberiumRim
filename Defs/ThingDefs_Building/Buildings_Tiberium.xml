@@ -41,10 +41,12 @@
 	
 	<ThingDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCraterGreen_TBNS</defName>
-		<description>A green Tiberium field, as the name suggests it is the producer of green Tiberium.</description>
+		<description>The aftermath of a Tiberium asteroid impact, leaving behind a crater of glowing death spreading green gold over your map.</description>
 		<label>Green Tiberium Field</label>
 		<growRadius>18</growRadius>
-		<crystalDef>TiberiumGreen</crystalDef>
+		<crystalDefs>
+			<li>TiberiumGreen</li>
+		</crystalDefs>
 		<size>(3,3)</size>
 		<graphicData>
 			<texPath>Building/Natural/BigTiberiumCraterGreen</texPath>
@@ -71,10 +73,12 @@
 	
 	<ThingDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumCraterBlue_TBNS</defName>
-		<description>A beautiful field of blue Tiberium, as the name suggests it’s the producer of blue Tiberium.</description>
+		<description>The aftermath of a Tiberium asteroid impact, leaving behind a crater of glowing death spreading blue crystals slowly. The glow is very attracting.</description>
 		<label>Blue Tiberium Field</label>
 		<growRadius>15</growRadius>
-		<crystalDef>TiberiumBlue</crystalDef>
+		<crystalDefs>
+			<li>TiberiumBlue</li>
+		</crystalDefs>
 		<size>(3,3)</size>
 		<graphicData>
 			<texPath>Building/Natural/BigTiberiumCraterBlue</texPath>
@@ -102,11 +106,16 @@
 		<filthLeaving>FilthTiberiumBlue</filthLeaving>
 	</ThingDef>	
 	
-	<ThingDef ParentName="BuildingBase">
+	<ThingDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumMeteor_TBNS</defName>
-		<description>An extraterrestrial meteor. Contains glowing crystal of all sorts.\n\nWhile it is often mistaken for a producer, it is in fact not. It does not have an “extremely” low spawn-rate because it never spawns any crystals on its own. It can be deconstructed like crashed ship part and will give you a bit of each Tiberium type (red/green/blue). It is extremely harmless.</description>
+		<description>This strange meteor seems to contain various types of a glowing crystal, they seem to spread outside of it slowly.</description>
 		<label>Tiberium Meteor</label>
-		<category>Building</category>
+		<growRadius>6</growRadius>
+		<crystalDefs>
+			<li>TiberiumBlue</li>
+			<li>TiberiumGreen</li>
+			<li>TiberiumRed</li>
+		</crystalDefs>
 		<graphicData>
 			<texPath>Building/Natural/TiberiumMeteor</texPath>
 			<graphicClass>Graphic_Random</graphicClass>
@@ -126,7 +135,6 @@
 		</statBases>
 		<building>
 			<claimable>false</claimable>
-			<alwaysDeconstructible>true</alwaysDeconstructible>
 		</building>
 		<selectable>true</selectable>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>
@@ -148,19 +156,21 @@
 		</comps>
 		<leaveResourcesWhenKilled>true</leaveResourcesWhenKilled>
         <killedLeavings>
-            <TiberiumGreen>50</TiberiumGreen>
-			<TiberiumBlue>25</TiberiumBlue>
-			<TiberiumRed>5</TiberiumRed>
+            <TiberiumGreen>3</TiberiumGreen>
+			<TiberiumBlue>2</TiberiumBlue>
+			<TiberiumRed>1</TiberiumRed>
         </killedLeavings>
 		<filthLeaving>FilthTiberiumGreen</filthLeaving>
 	</ThingDef>	
 
 	<ThingDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumMonolith_TBNS</defName>
-		<description>A blue monolith growing out of the ground, acts as a blue Tiberium producer.</description>
+		<description>A blue monolith growing out of the ground, it grows more crystals.</description>
 		<label>blue Tiberium Monolith</label>
 		<growRadius>6</growRadius>
-		<crystalDef>TiberiumBlue</crystalDef>
+		<crystalDefs>
+			<li>TiberiumBlue</li>
+		</crystalDefs>
 		<size>(1,1)</size>
 		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
@@ -197,10 +207,12 @@
 	
 	<ThingDef ParentName="TiberiumProducerBase">
 		<defName>BlossomTree_TBNS</defName>
-		<description>A strange tree with alien properties. It is the only producer of Tiberium Pods.</description>
+		<description>Blossom trees are an early form of organic Tiberium producer.</description>
 		<label>blossom Tree</label>
 		<growRadius>8</growRadius>
-		<crystalDef>TiberiumPod</crystalDef>
+		<crystalDefs>
+			<li>TiberiumPod</li>
+		</crystalDefs>
 		<needsToActivate>false</needsToActivate>
 		<spawnsTerrain>true</spawnsTerrain>
 		<terrainRadius>6</terrainRadius>
@@ -233,10 +245,10 @@
 	
 	<ThingDef ParentName="TiberiumProducerBase">
 		<defName>TiberiumShard_TBNS</defName>
-		<description>An extraterrestrial shard and rare phenomenon, it’s the producer of red Tiberium.</description>
+		<description>An extraterrestrial shard which crashed down from space and an extremely mysteriousm, rare phenomenon. It radiates heat and a uneasy feeling.</description>
 		<label>tiberium Shard</label>
 		<growRadius>6</growRadius>
-		<crystalDef>TiberiumRed</crystalDef>
+		<crystalDefs><li>TiberiumRed</li></crystalDefs>
 		<size>(1,1)</size>
 		<altitudeLayer>Building</altitudeLayer>
 		<graphicData>
@@ -267,12 +279,12 @@
 	
 	<ThingDef ParentName="TiberiumProducerBase">
 		<defName>Veinhole_TBNS</defName>
-		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters from itself and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground. Killing the Veinhole kills all adjacent Veins and spawned Vein Hubs. The Veinhole has a chance to eat a pawn that comes too close. This basically removes a colonist from your colony.\n\nAlso be aware of blunt damage. Coming too close to the center might cause infection by poisonous gases.</description>
+		<description>The Veinhole is a type for itself, it is the producer of Tiberium Veins, spawns Veinmonsters and also creates Vein Hubs which are structures that will attack any living being inside their area of effect with veiny tentacles coming out of the ground.\n\nKilling the Veinhole kills all adjacent Veins and spawned Vein Hubs. The Veinhole has a chance to eat a pawn that comes too close. This basically removes a colonist from your colony.\n\nComing too close to the center might cause infection by poisonous gases.</description>
 		<label>Veinhole</label>
 		<thingClass>TiberiumRim.Building_Veinhole</thingClass>
 		<growRadius>6</growRadius>
 		<bindsToCrystals>true</bindsToCrystals>
-		<crystalDef>TiberiumVein</crystalDef>
+		<crystalDefs><li>TiberiumVein</li></crystalDefs>
 		<needsToActivate>false</needsToActivate>
 		<spawnsTerrain>true</spawnsTerrain>
 		<terrainRadius>7</terrainRadius>
@@ -303,7 +315,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>TiberiumTower_TBNS</defName>
-		<description>A green tower rising from the ground. These structures normally take years to form.\n\nIt is similar to the monolith but for green Tiberium except it does not spawn any Tiberium on its own, basically a decorative structure.</description>
+		<description>A green tower growing from the ground. These structures usually take a while to form.\n\nIt is similar to the blue monolith except it does not spawn any Tiberium on its own.</description>
 		<label>green Tiberium Tower</label>
 		<thingClass>Building</thingClass>
 		<size>(1,1)</size>
@@ -358,7 +370,7 @@
 		<useHitPoints>false</useHitPoints>
 		<tickerType>Long</tickerType>
 		<selectable>true</selectable>
-		<description>This geyser has been infected with Tiberium. The ground around it has been destabilized and walking in might cause cracks leaking Tiberium gas. It could serve useful for a Tiberium Spike.</description>
+		<description>This geyser has been infected with Tiberium. The ground around it has been destabilized and walking around it might break open cracks leaking Tiberium gas. It could serve useful for a Tiberium Spike.</description>
 		<size>(2,2)</size>
 		<neverOverlapFloors>true</neverOverlapFloors>
 		<blockPlants>true</blockPlants>
@@ -397,7 +409,7 @@
 	
 	<ThingDef ParentName="TiberiumBuildingBase">
 		<defName>VeinholeHub_TBNS</defName>
-		<description>This part of a nearby veinhole will attack any living being in its' area of effect visiualized by the veiny terrain circle around it.</description>
+		<description>This is a part of a nearby veinhole which will attack any living being walking on the veiny terrain which surrounds it.</description>
 		<label>Veinhole Hub</label>
 		<thingClass>TiberiumRim.Building_Veinhub</thingClass>
 		<size>(1,1)</size>
@@ -422,7 +434,7 @@
 	<ThingDef ParentName="BuildingNaturalBase">
 		<defName>VeinTentacle</defName>
 		<thingClass>TiberiumRim.Building_VeinTentacle</thingClass>
-		<label>Vein Tentacle</label>
+		<label>Vein tentacle</label>
 		<graphicData>
 			<texPath>Building/Natural/Veinhole/Tentacle</texPath>
 			<graphicClass>Graphic_Random</graphicClass>

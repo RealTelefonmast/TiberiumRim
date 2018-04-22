@@ -107,6 +107,7 @@ namespace TiberiumRim
             {
                 growth += Tiberium.growthInt;
                 newTicks += (int)(Tiberium.harvestTicks * growth);
+                Harvester.Rotation = Harvester.AvailableRefinery.Rotation.Opposite;
             };
             harvest.tickAction = delegate
             {

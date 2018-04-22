@@ -6,9 +6,11 @@ using RimWorld;
 using Verse;
 using Verse.AI;
 using Verse.AI.Group;
+using UnityEngine;
 
 namespace TiberiumRim
 {
+    [StaticConstructorOnStartup]
     public class Building_Veinhole : Building_TiberiumProducer
     {
         private int hubsInt = 0;
@@ -20,6 +22,8 @@ namespace TiberiumRim
         private Lord defenseLord;
 
         private List<Thing> hubList = new List<Thing>();
+
+        private static readonly Material WireMat = MaterialPool.MatFrom("Building/Natural/Veinhole/VeinConnection");
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
@@ -151,6 +155,28 @@ namespace TiberiumRim
                     Messages.Message("VeinHubSpawned".Translate(), new TargetInfo(hub.Position, Map, false), MessageTypeDefOf.CautionInput);
                 }
             }
+        }
+
+        //TODO: Add connection between veinhole and hubs
+        public void MakeTerrainConnection()
+        {
+
+        }
+
+        public override void Print(SectionLayer layer)
+        {
+            Material mat = WireMat; 
+            float y = Altitudes.AltitudeFor(AltitudeLayer.SmallWire);
+            foreach (Building_Veinhub hub in hubList)
+            {
+                Vector3 center = (this.TrueCenter() + hub.TrueCenter()) / 2f;
+                center.y = y;
+                Vector3 v = hub.TrueCenter() - this.TrueCenter();
+                Vector2 size = new Vector2(1f, v.MagnitudeHorizontal());
+                float rot = v.AngleFlat();
+                Printer_Plane.PrintPlane(layer, center, size, mat, rot, false, null, null, 0.01f);
+            }
+            base.Print(layer);
         }
 
         public override IEnumerable<Gizmo> GetGizmos()

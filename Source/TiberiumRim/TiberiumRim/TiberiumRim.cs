@@ -1,13 +1,15 @@
 ﻿using Harmony;
-using RimWorld;
 using System.Reflection;
-using Verse;
 using UnityEngine;
-using RimWorld.Planet;
 using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
+using RimWorld;
+using RimWorld.Planet;
+using RimWorld.BaseGen;
+using Verse;
+using Verse.AI.Group;
 
 namespace TiberiumRim
 {
@@ -156,110 +158,6 @@ namespace TiberiumRim
             Scribe_Values.Look(ref this.TiberiumProducersAmt, "TiberiumProducersAmt", 7, true);
 
             Scribe_Values.Look(ref this.FirstStartUp, "FirstStartUp", true, true);
-        }
-    }
-
-    [StaticConstructorOnStartup]
-    public static class TiberiumRim
-    {
-        static TiberiumRim()
-        {
-            HarmonyInstance TiberiumRim = HarmonyInstance.Create("com.tiberiumrim.rimworld.mod");
-            TiberiumRim.PatchAll(Assembly.GetExecutingAssembly());
-        }
-
-        [HarmonyPatch(typeof(BillUtility)), HarmonyPatch("MakeNewBill")]
-        class BillPatch
-        {
-            [HarmonyPostfix]
-            static void Fix(ref Bill __result)
-            {
-                if(__result.recipe is RecipeDef_Tiberium)
-                {
-                    TibBill tibBill = new TibBill(__result.recipe as RecipeDef_Tiberium);
-                    __result = tibBill;
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(UI_BackgroundMain)), HarmonyPatch("BackgroundOnGUI"), StaticConstructorOnStartup]
-        internal static class Custom_UI_BackgroundMain
-        {         
-            private static readonly Texture2D Custom_Background = ContentFinder<Texture2D>.Get("UI/Icons/TiberiumBackground", true);
-
-            internal static readonly Vector2 MainBackgroundSize = new Vector2(2048f, 1280f);
-
-            private static bool Prefix()
-            {
-                if (TiberiumRimSettings.settings.UseCustomBackground)
-                {
-                    if (Custom_UI_BackgroundMain.Custom_Background)
-                    {
-                        float width = (float)UI.screenWidth;
-                        float num = (float)UI.screenWidth * (Custom_UI_BackgroundMain.MainBackgroundSize.y / Custom_UI_BackgroundMain.MainBackgroundSize.x);
-                        GUI.DrawTexture(new Rect(0f, (float)UI.screenHeight / 2f - num / 2f, width, num), Custom_UI_BackgroundMain.Custom_Background, ScaleMode.ScaleToFit, true);
-                    }
-                    return false;
-                }
-                return true;
-            }
-        }   
-
-        [HarmonyPatch(typeof(MainMenuDrawer)), HarmonyPatch("MainMenuOnGUI"), StaticConstructorOnStartup]
-        class FirstGame
-        {
-            [HarmonyPostfix]
-            static void Fix()
-            {
-                if (TiberiumRimSettings.settings.FirstStartUp)
-                {
-                    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("Hey hey hey, playing first time?", delegate
-                    {
-                        TiberiumRimSettings.settings.StartUp(ref TiberiumRimSettings.settings.FirstStartUp);
-                    }, true, "Welcome!"));                   
-                }
-            }
-        }
-
-        [HarmonyPatch(typeof(WorldInspectPane))]
-        [HarmonyPatch("TileInspectString", PropertyMethod.Getter)]
-        public class WorldTilePatch
-        {
-            [HarmonyPostfix]
-            static void PostFix(WorldInspectPane __instance, ref String __result)
-            {
-                int SelectedTile = Traverse.Create(__instance).Property("SelectedTile").GetValue<int>();
-
-                StringBuilder stringBuilder = new StringBuilder();
-                if (Find.World.GetComponent<WorldComponent_TiberiumSpread>().TiberiumTiles.ContainsKey(SelectedTile))
-                {
-                    stringBuilder.Append("InfestationPct".Translate(new object[] {
-                        Math.Round(Find.World.GetComponent<WorldComponent_TiberiumSpread>().TiberiumTiles[SelectedTile], 5) * 100 + "%"
-                    }));
-                }
-                __result = __result + "\n\n" + stringBuilder.ToString();
-            }
-        }
-
-        [HarmonyPatch(typeof(CompGlower))]
-        [HarmonyPatch("ShouldBeLitNow", PropertyMethod.Getter)]
-        public class GlowerPatch
-        {
-            [HarmonyPostfix]
-            static void PostFix(CompGlower __instance, ref bool __result)
-            {
-                Thing parent = __instance.parent;
-                Comp_TNW compTNW = parent.TryGetComp<Comp_TNW>();
-
-                if (compTNW != null)
-                {
-                    if(compTNW.Container != null)
-                    {
-                        __result = compTNW.Container.GetTotalStorage > 0;                       
-                    }
-                    __result = compTNW.IsGeneratingPower;
-                }
-            }
         }
     }
 }

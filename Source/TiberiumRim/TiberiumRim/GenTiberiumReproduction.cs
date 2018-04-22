@@ -21,7 +21,6 @@ namespace TiberiumRim
         public static TiberiumCrystal TryReproduceInto(IntVec3 dest, TiberiumCrystal crystal, Map map, MapComponent_TiberiumHandler mapComp)
         {
             TiberiumCrystalDef crystalDef = crystal.def;
-            TerrainDef setTerrain = null;
 
             if (!crystalDef.CanEverGrowTo(dest, map))
             {
@@ -39,16 +38,13 @@ namespace TiberiumRim
                 }
             }
 
-            TerrainDef terrainDef = dest.GetTerrain(map);
+            SetTiberiumTerrainAndType(crystalDef, dest.GetTerrain(map), out crystalDef, out TerrainDef setTerrain);
 
-            SetTiberiumTerrainAndType(crystalDef, terrainDef, out crystalDef, out setTerrain);
-
-            if (Rand.Chance(0.8f) && setTerrain != null)
+            if (Rand.Chance(0.8f) && crystalDef != null)
             {
-                ChangeTerrain(dest, map, setTerrain);
                 if (crystal.boundProducer != null)
                 {
-                    TiberiumCrystal newCrystal = (TiberiumCrystal)GenSpawn.Spawn(crystal.def, dest, map);
+                    TiberiumCrystal newCrystal = (TiberiumCrystal)GenSpawn.Spawn(crystal, dest, map);
                     newCrystal.boundProducer = crystal.boundProducer;
                     crystal.boundProducer.boundCrystals.Add(newCrystal);
                     return newCrystal;
@@ -249,37 +245,6 @@ namespace TiberiumRim
             else if (mode == SeedTargFindMode.MapEdge)
             {
                 radius = 40f;
-            }
-
-            int num = GenRadial.NumCellsInRadius(crystalDef.tiberium.reproduceRadius);
-
-            for (int i = 0; i < num; i++)
-            {
-                IntVec3 pos = source + GenRadial.RadialPattern[i];
-                if (pos.InBounds(map))
-                {
-                    Plant plant = pos.GetPlant(map);
-                    if (plant != null && !friendlyTo.Contains(plant.def) && GenSight.LineOfSight(source, plant.Position, map))
-                    {
-                        if (Rand.Chance(0.45f))
-                        {
-                            String name = plant.def.defName;
-                            ThingDef flora = GetAnyPlant(name);
-                            TerrainDef setTerrain = TerrainDef.Named("TiberiumSoilGreen");
-                            IntVec3 loc = plant.Position;
-
-                            plant.Destroy(DestroyMode.Vanish);
-
-                            GenSpawn.Spawn(flora, loc, map);
-                            ChangeTerrain(loc, map, setTerrain);
-
-                        }
-                        else
-                        {
-                            plant.Destroy(DestroyMode.Vanish);
-                        }
-                    }
-                }
             }
             Predicate<IntVec3> validator = (IntVec3 c) => crystalDef.CanEverGrowTo(c, map) && GenPlant.SnowAllowsPlanting(c, map) && source.InHorDistOf(c, radius) && GenSight.LineOfSight(source, c, map, true, null, 0, 0);
             return CellFinder.TryFindRandomCellNear(source, map, Mathf.CeilToInt(radius), validator, out foundCell);

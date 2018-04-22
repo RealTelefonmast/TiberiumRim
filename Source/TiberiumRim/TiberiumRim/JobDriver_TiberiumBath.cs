@@ -6,14 +6,30 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class JobGiver_Tiberium : ThinkNode_JobGiver
+    public class JobGiver_TiberiumBath : ThinkNode_JobGiver
     {
         protected override Job TryGiveJob(Pawn pawn)
         {
-            TraverseParms traverseParms = TraverseParms.For(pawn, Danger.Some, TraverseMode.PassDoors, false);
-            Thing targetA = TiberiumUtility.ClosestPreferableReachableAndReservableTiberiumForHarvester(pawn, pawn.Position, pawn.Map, null, true, traverseParms, PathEndMode.OnCell);
-            JobDef job = DefDatabase<JobDef>.GetNamed("TiberiumBath");
-            return new Job(job, targetA);
+            if(pawn.Downed || pawn.CarriedBy != null || pawn.Drafted || pawn.InAggroMentalState || pawn.InContainerEnclosed)
+            {
+                return null;
+            }
+            if (!pawn.health.hediffSet.HasHediff(TiberiumHediffDefOf.TiberAddHediff))
+            {
+                Need_Tiberium Need = (pawn.needs.AllNeeds.Find((Need x) => x is Need_Tiberium) as Need_Tiberium);
+                if (Need != null && Need.CurCategory != TiberiumNeedCategory.Statisfied && !Need.IsInTiberium)
+                {
+                    TraverseParms traverseParms = TraverseParms.For(pawn, Danger.Some, TraverseMode.PassDoors, false);
+                    Thing targetA = TiberiumUtility.ClosestPreferableReachableAndReservableTiberiumForHarvester(pawn, pawn.Position, pawn.Map, null, true, traverseParms, PathEndMode.OnCell);
+                    Thing targetB = pawn.Map.listerThings.AllThings.Find((Thing x) => x != null && x.def.defName.Contains("TiberAdd") && pawn.CanReserve(x) && !x.IsForbidden(pawn) && pawn.CanReach(x.Position, PathEndMode.Touch, Danger.Some));
+                    if (targetA != null || targetB != null)
+                    {
+                        JobDef job = DefDatabase<JobDef>.GetNamed("TiberiumBath");
+                        return new Job(job, targetA, targetB);
+                    }
+                }
+            }
+            return null;
         }
     }
 
@@ -29,33 +45,92 @@ namespace TiberiumRim
             }
         }
 
+        public LocalTargetInfo MainTarget
+        {
+            get
+            {
+                if (TargetA != null)
+                {
+                    return TargetA;
+                }
+                if(TargetB != null)
+                {
+                    return TargetB;
+                }
+                return null;
+            }
+        }
+
+        public TargetIndex MainIndex
+        {
+            get
+            {
+                if (TargetA != null)
+                {
+                    return TargetIndex.A;
+                }
+                if (TargetB != null)
+                {
+                    return TargetIndex.B;
+                }
+                return TargetIndex.None;
+            }
+        }
+
+        public override string GetReport()
+        {
+            if(MainTarget == TargetA)
+            {
+                return "TibRest".Translate();
+            }
+            return "TibConsume".Translate();
+        }
+
         public override bool TryMakePreToilReservations()
         {
-            if (pawn.CanReserve(this.TargetA))
+            if (pawn.CanReserve(MainTarget))
             {
-                return this.pawn.Reserve(this.TargetA, this.job);
+                return this.pawn.Reserve(MainTarget, job);
             }
             return false;
         }
 
-        [DebuggerHidden]
+        private Need_Tiberium Need
+        {
+            get
+            {
+                return this.pawn.needs.AllNeeds.Find((Need x) => x is Need_Tiberium) as Need_Tiberium;
+            }
+        }
+
         protected override IEnumerable<Toil> MakeNewToils()
         {
-            yield return Toils_Goto.GotoCell(TargetIndex.A, PathEndMode.OnCell);
-            this.bath = new Toil
+            Toil gotoToil = Toils_Goto.GotoCell(MainIndex, PathEndMode.OnCell);
+            gotoToil.FailOnDespawnedOrNull(MainIndex);
+            yield return gotoToil;
+
+            if(MainIndex == TargetIndex.B)
             {
-                tickAction = delegate
+                yield return Toils_Ingest.ChewIngestible(pawn, 1f, TargetIndex.B);
+                yield return Toils_Ingest.FinalizeIngest(pawn, TargetIndex.B);
+            }
+
+            if (MainIndex == TargetIndex.A)
+            {
+                this.bath = new Toil
                 {
-                    if (this.pawn.needs.joy != null)
+                    tickAction = delegate
                     {
-                        JoyUtility.JoyTickCheckEnd(this.pawn, JoyTickFullJoyAction.EndJob, 1f);
-                    }
-                },
-                defaultCompleteMode = ToilCompleteMode.Delay,
-                defaultDuration = base.job.def.joyDuration
-            };
-            this.bath.FailOn(() => this.pawn.Position.GetTiberium(this.pawn.Map) != null);
-            yield return bath;
+                        if (Need.CurCategory != TiberiumNeedCategory.Statisfied)
+                        {
+                            Need.CurLevel += 0.05f;
+                        }
+                    },
+                };
+                this.FailOnDespawnedOrNull(MainIndex);
+                this.bath.FailOn(() => Need.CurCategory == TiberiumNeedCategory.Statisfied);
+                yield return bath;
+            }
         }
 
     }

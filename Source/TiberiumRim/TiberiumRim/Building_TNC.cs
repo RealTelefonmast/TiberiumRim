@@ -166,10 +166,10 @@ namespace TiberiumRim
                 yield return g;
             }
 
-            Designator_BuildWithParent builder = new Designator_BuildWithParent(DefDatabase<ThingDef>.GetNamed("Connector_TNW"), this)
+            Designator_BuildWithParent builder_SB = new Designator_BuildWithParent(DefDatabase<ThingDef>.GetNamed("Connector_TNW"), this)
             {
             };
-            yield return builder;
+            yield return builder_SB;
         }
 
         public override string GetInspectString()

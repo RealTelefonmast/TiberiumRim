@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-  <ThingDef Abstract="True" Name="EggBase" ParentName="OrganicProductBase" >
+  <ThingDef Abstract="True" Name="EggBase_TR" ParentName="OrganicProductBase">
     <graphicData>
       <texPath>Things/Item/Resource/AnimalProductRaw/EggBirdSmall</texPath>
       <graphicClass>Graphic_StackCount</graphicClass>
@@ -21,7 +21,7 @@
     </statBases>
   </ThingDef>
 
-  <ThingDef Abstract="True" Name="EggUnfertBase" ParentName="EggBase" >
+  <ThingDef Abstract="True" Name="EggUnfertBase_TR" ParentName="EggBase_TR">
     <ingestible>
       <preferability>RawBad</preferability>
     </ingestible>
@@ -39,7 +39,7 @@
     </comps>
   </ThingDef>
 
-  <ThingDef Abstract="True" Name="EggFertBase" ParentName="EggBase" >
+  <ThingDef Abstract="True" Name="EggFertBase_TR" ParentName="EggBase_TR">
     <tickerType>Normal</tickerType>
     <ingestible>
       <preferability>DesperateOnly</preferability>
@@ -61,7 +61,7 @@
   
     <!-- Crawler Egg-->
 	
-	<ThingDef ParentName="EggUnfertBase">
+	<ThingDef ParentName="EggUnfertBase_TR">
 		<defName>EggCrawelerUnfertilized</defName>
 		<label>crawler egg (unfert.)</label>
 		<description>Unfertilized crawler egg. It can be eaten raw, but it's much, much better cooked.</description>
@@ -73,7 +73,7 @@
 		</statBases>
 	</ThingDef>
 	
-	<ThingDef ParentName="EggFertBase">
+	<ThingDef ParentName="EggFertBase_TR">
 		<defName>EggCrawlerFertilized</defName>
 		<label>crawler egg (fert.)</label>
 		<description>Fertilized crawler egg. If all goes well, it should hatch into a baby crawler. It can be eaten raw, but it's much better cooked.</description>

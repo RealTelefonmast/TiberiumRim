@@ -13,7 +13,7 @@
 	<BodyPartDef>
 		<defName>HarvesterContainer</defName>
 		<label>Container</label>
-		<hitPoints>100</hitPoints>
+		<hitPoints>175</hitPoints>
 		<oldInjuryBaseChance>0</oldInjuryBaseChance>
 		<skinCovered>false</skinCovered>
 		<isSolid>true</isSolid>

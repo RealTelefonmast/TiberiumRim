@@ -11,8 +11,6 @@ namespace TiberiumRim
     {
         public Building_TiberiumGeyser geyser;
 
-        public override float FilledPct => 0f;
-
         public override bool IsActivated => false;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)

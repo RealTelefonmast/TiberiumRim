@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using RimWorld;
 using Verse;
+using System.Collections;
+using UnityEngine;
 
 namespace TiberiumRim
 {
@@ -18,8 +20,6 @@ namespace TiberiumRim
         CompGlower compGlower;
 
         private IntVec3 savedPos;
-
-        private CellRect savedRect;
 
         private int ticksToDoWork;
 
@@ -40,7 +40,6 @@ namespace TiberiumRim
             {
                 savedPos = new IntVec3(parent.Position.x, parent.Position.y, parent.Position.z);
                 CellRect c = parent.OccupiedRect();
-                savedRect = new CellRect(c.minX,c.minZ, c.Width, c.Height);
                 Container = new TiberiumContainer(props.maxStorage, this);
                 ResetWorkTimer();
             }
@@ -53,7 +52,6 @@ namespace TiberiumRim
             Scribe_Values.Look<int>(ref ticksToPower, "ticksToPower");
             Scribe_Values.Look<bool>(ref isSludged, "isSludged");
             Scribe_Values.Look<IntVec3>(ref savedPos, "savedPos");
-            Scribe_Values.Look<CellRect>(ref savedRect, "savedRect");
             Scribe_Deep.Look<TiberiumContainer>(ref Container, "TiberiumContainer");
             Scribe_References.Look<Building_Connector>(ref Connector, "Connector");
         }
@@ -67,7 +65,7 @@ namespace TiberiumRim
             }
             if (mode == DestroyMode.KillFinalize)
             {
-                LeakTiberium(savedPos, savedRect, previousMap);
+                LeakTiberium(savedPos, previousMap);
             }
             Container = null;
             compGlower.UpdateLit(previousMap);
@@ -306,7 +304,7 @@ namespace TiberiumRim
             }
         }
 
-        public void LeakTiberium(IntVec3 parentPos, CellRect parentRect, Map map)
+        public void LeakTiberium(IntVec3 parentPos, Map map)
         {
             List<TiberiumCrystal> tibList = new List<TiberiumCrystal>();
             foreach (TiberiumType type in Container.GetTypes)
@@ -324,7 +322,7 @@ namespace TiberiumRim
                     }
                 }
             }
-            List<IntVec3> spawnCells = FindPositions(tibList, parentPos, parentRect, map);
+            List<IntVec3> spawnCells = FindPositions(tibList, parentPos, map);
             for (int i = 0; i < tibList.Count; i++)
             {
                 if (tibList[i] != null)
@@ -338,12 +336,7 @@ namespace TiberiumRim
                     {
                         crystal = tibList[i].def;
                     }
-                    if(terrain == null)
-                    {
-                        terrain = tibList[i].def.defaultTerrain;
-                    }
                     GenSpawn.Spawn(crystal, spawnCells[i], map);
-                    map.terrainGrid.SetTerrain(spawnCells[i], terrain);
                 }
             }
         }
@@ -366,11 +359,10 @@ namespace TiberiumRim
             return def;
         }
 
-        public List<IntVec3> FindPositions(List<TiberiumCrystal> tibList, IntVec3 origin, CellRect rect, Map map)
+        public List<IntVec3> FindPositions(List<TiberiumCrystal> tibList, IntVec3 origin, Map map)
         {
             List<IntVec3> Positions = new List<IntVec3>();
             Positions.Add(origin);
-
             int cells = 0;
             while (cells < tibList.Count)
             {
@@ -378,24 +370,24 @@ namespace TiberiumRim
                 cells += room.CellCount - cells;
                 if (room.CellCount < tibList.Count)
                 {
-                    Building building = room.BorderCells.RandomElement<IntVec3>().GetFirstBuilding(map);
-                    if(building != null)
+                    Building building = room.BorderCells.RandomElement().GetFirstBuilding(map);
+                    if (building != null)
                     {
                         building.Destroy();
                     }
-                }               
+                }
             }
 
             while (Positions.Count < tibList.Count)
             {
-                List<IntVec3> checkCells = Positions.FindAll((IntVec3 x) => x.CellsAdjacent8Way().Where((IntVec3 y) => !Positions.Contains(y)).Count<IntVec3>() > 0);
+                List<IntVec3> checkCells = Positions.FindAll((IntVec3 x) => x.CellsAdjacent8Way().Where((IntVec3 y) => !Positions.Contains(y)).Count() > 0);
                 for (int i = 0; i < checkCells.Count; i++)
-                {
+                {                    
                     IntVec3 c = checkCells[i];
-                    List<IntVec3> list = c.CellsAdjacent8Way().Where((IntVec3 y) => y.InBounds(map) && y.GetFirstBuilding(map) == null && !Positions.Contains(y)).ToList();
+                    HashSet<IntVec3> list = new HashSet<IntVec3>();  list.AddRange(c.CellsAdjacent8Way().Where((IntVec3 y) => y.InBounds(map) && y.GetTiberium(map) == null && (y.GetFirstBuilding(map) != null ? y.GetFirstBuilding(map).def.terrainAffordanceNeeded == TerrainAffordance.Light && y.GetFirstBuilding(map).def.thingClass != typeof(Mineable) : true) && !Positions.Contains(y)).ToList());
                     if (list.Count > 0)
                     {
-                        IntVec3 cell = list.RandomElement<IntVec3>();
+                        IntVec3 cell = list.RandomElement();
                         Positions.Add(cell);
                     }
                 }
@@ -405,12 +397,14 @@ namespace TiberiumRim
 
         public override IEnumerable<Gizmo> CompGetGizmosExtra()
         {
-            if (props.isGlobalStorage)
+            if (props.isGlobalStorage && !props.isLocalStorage)
             {
-                yield return new Command_Action
+                Command_Action ContainMode = new Command_Action
                 {
-                    defaultLabel = "Sludge Container",
-                    icon = null,
+                    defaultLabel = !isSludged ? "StorageMode".Translate() : "SludgeMode".Translate(),
+                    defaultDesc = "ContainModeDesc".Translate(),
+                    icon = isSludged ? ContentFinder<Texture2D>.Get("UI/Icons/ContainMode_Sludge", true) : ContentFinder<Texture2D>.Get("UI/Icons/ContainMode_Storage", true),
+                    hotKey = KeyBindingDefOf.Misc1,
                     action = delegate
                     {
                         if (!isSludged)
@@ -421,6 +415,7 @@ namespace TiberiumRim
                         else { this.Container.SetAllowedType(TiberiumType.None); isSludged = !isSludged; }
                     }
                 };
+                yield return ContainMode;
             }
 
             if (Prefs.DevMode)

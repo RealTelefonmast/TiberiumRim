@@ -21,6 +21,10 @@ namespace TiberiumRim
 
         public float WorldCorruptAdder;
 
+        public float TiberiumMinTemp;
+
+        public float AmalgamationChance;
+
         public Color GreenColor;
 
         public Color BlueColor;

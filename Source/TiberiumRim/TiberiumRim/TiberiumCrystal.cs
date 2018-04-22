@@ -19,9 +19,9 @@ namespace TiberiumRim
         public Building_TiberiumProducer boundProducer = null;
 
         //Properties
-        public float MinGrowthTemperature = -12; //MainTCD.MainTiberiumControlDef.TiberiumMinTemp;
+        public float MinGrowthTemperature = MainTCD.MainTiberiumControlDef.TiberiumMinTemp;
 
-        private const float GridPosRandomnessFactor = 0.3f;
+        private const float GridPosRandomnessFactor = 0.4f;
 
         private static readonly FloatRange DyingDamagePerTickBecauseInhibited = new FloatRange(0.0001f, 0.001f);
 
@@ -43,7 +43,9 @@ namespace TiberiumRim
 
         private int bledTimes = 0;
 
-        //
+        // SpawnSetup --
+        // Setting up the MapComp and adding Tiberium to its list.
+        // Also adding the tiles which get affected by the mapComp - tiberium itself is just the messenger inbetween.
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
@@ -60,6 +62,7 @@ namespace TiberiumRim
             }            
         }
 
+        // On Despawn() this crystal needs to be removed from the mapcomp, aswell as the affected tiles.
         public override void DeSpawn()
         {
             RemoveTiles();
@@ -93,6 +96,31 @@ namespace TiberiumRim
                 }
             }
 
+            Plant plant = this.Position.GetPlant(Map);
+            if(plant != null)
+            {
+                if (!def.friendlyTo.Contains(plant.def))
+                {
+                    if (Rand.Chance(0.06f))
+                    {
+                        ThingDef plantdef = GenTiberiumReproduction.GetAnyPlant(plant.def.defName);
+                        GenSpawn.Spawn(plantdef, plant.Position, Map);
+                        plant.DeSpawn();
+                    }
+                    plant.TakeDamage(new DamageInfo(DamageDefOf.Deterioration, Rand.Range(8, 26)));
+                }
+            }
+
+            if(this.LifeStage == TiberiumLifeStage.ProducesTerrain)
+            {
+                TerrainDef terrain = this.Position.GetTerrain(Map);
+                if(!(terrain is TiberiumTerrainDef))
+                {
+                    GenTiberiumReproduction.SetTiberiumTerrainAndType(this.def, terrain, out TiberiumCrystalDef crystalDef, out TerrainDef tDef);
+                    Map.terrainGrid.SetTerrain(this.Position, tDef);
+                }
+            }
+
             float growthInt = this.growthInt;
             bool mature = this.LifeStage == TiberiumLifeStage.Mature;
             this.growthInt += this.GrowthPerTick * 2000f;
@@ -108,7 +136,6 @@ namespace TiberiumRim
             {
                 GenTiberiumReproduction.TryReproduceFrom(base.Position, this, SeedTargFindMode.Reproduce, base.Map, mapComp, this.def.friendlyTo);
             }
-
             this.ageInt += 2000;
             if (this.Dying)
             {
@@ -123,9 +150,17 @@ namespace TiberiumRim
         {
             get
             {
-                if (this.growthInt > 0.999f)
+                if(this.growthInt > 0.33f)
+                {
+                    return TiberiumLifeStage.ProducesTerrain;
+                }
+                if (this.growthInt > 0.77f)
                 {
                     return TiberiumLifeStage.Mature;
+                }
+                if (this.growthInt > 0.999f)
+                {
+                    return TiberiumLifeStage.Evolving;
                 }
                 return TiberiumLifeStage.Growing;
             }
@@ -371,7 +406,7 @@ namespace TiberiumRim
         {
             get
             {
-                if (this.LifeStage != TiberiumLifeStage.Growing || this.Resting)
+                if (this.growthInt >= 1f || this.Resting)
                 {
                     return 0f;
                 }
@@ -442,18 +477,14 @@ namespace TiberiumRim
         public override string GetInspectString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            if (this.LifeStage == TiberiumLifeStage.Growing)
+            stringBuilder.AppendLine("PercentGrowth".Translate(new object[]
             {
-                stringBuilder.AppendLine("PercentGrowth".Translate(new object[]
-                {
                     this.GrowthPercentString
-                }));
-                stringBuilder.AppendLine("GrowthRate".Translate() + ": " + this.GrowthRate.ToStringPercent());
+            }));
 
-                if (this.Resting)
-                {
-                    stringBuilder.AppendLine("PlantResting".Translate());
-                }
+            if (this.Resting)
+            {
+                stringBuilder.AppendLine("PlantResting".Translate());
             }
             else if (this.LifeStage == TiberiumLifeStage.Mature)
             {

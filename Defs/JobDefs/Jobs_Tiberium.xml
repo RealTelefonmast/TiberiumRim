@@ -2,6 +2,16 @@
 <Defs>
 
 	<JobDef>
+		<defName>RepairMechanicalPawn</defName>
+		<driverClass>TiberiumRim.JobDriver_RapairAnyMechWithinRange</driverClass>
+	</JobDef>
+	
+	<JobDef>
+		<defName>WanderAtParent</defName>
+		<driverClass>TiberiumRim.JobDriver_WanderAtParent</driverClass>
+	</JobDef>
+
+	<JobDef>
 		<defName>SearchAndHarvestTiberium</defName>
 		<driverClass>TiberiumRim.JobDriver_SearchAndHarvestTiberium</driverClass>
 	</JobDef>
@@ -19,12 +29,14 @@
 	</JobDef>
 	
 	<JobDef>
+		<defName>FormAmalgamation</defName>
+		<driverClass>TiberiumRim.JobDriver_Amalgamation</driverClass>
+		<reportString>forming Amalgamation.</reportString>
+	</JobDef>
+	
+	<JobDef>
 		<defName>TiberiumBath</defName>
 		<driverClass>TiberiumRim.JobDriver_TiberiumBath</driverClass>
-		<reportString>resting in Tiberium.</reportString>
-		<joyDuration>6000</joyDuration>
-		<joyGainRate>1</joyGainRate>
-		<joyKind>Meditative</joyKind>
 	</JobDef>
   
 </Defs>

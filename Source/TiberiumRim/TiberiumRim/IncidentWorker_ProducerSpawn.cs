@@ -69,13 +69,12 @@ namespace TiberiumRim
                     int randomInRange = intRange.RandomInRange;
                     for (int i = 0; i < randomInRange; i++)
                     {
-                        TerrainDef spawnTerrain = null;
                         TiberiumCrystalDef finalCrystalDef = null;
                         if (!CellFinder.TryRandomClosewalkCellNear(spawnCell, map, (def.asteroidType as TiberiumProducerDef).terrainRadius, out IntVec3 intVec, delegate (IntVec3 x) 
                         {
                             if(CanSpawnAt(x, map))
                             {
-                                GenTiberiumReproduction.SetTiberiumTerrainAndType(def.tiberiumType, x.GetTerrain(map), out finalCrystalDef, out spawnTerrain);
+                                GenTiberiumReproduction.SetTiberiumTerrainAndType(def.tiberiumType, x.GetTerrain(map), out finalCrystalDef, out TerrainDef spawnTerrain);
                                 if (finalCrystalDef != null)
                                 {
                                     return true;

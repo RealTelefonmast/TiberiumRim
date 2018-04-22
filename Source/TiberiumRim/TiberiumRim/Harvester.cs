@@ -19,7 +19,7 @@ namespace TiberiumRim
     }
 
     [StaticConstructorOnStartup]
-    public class Harvester : Pawn, IHarvestPreferenceSettable
+    public class Harvester : Mechanical_Pawn, IHarvestPreferenceSettable
     {
         public new HarvesterKindDef kindDef;
 
@@ -114,7 +114,7 @@ namespace TiberiumRim
 
         public void UpdateRefineriesOrAddNewMain()
         {
-            foreach (Building_Refinery refinery in Map.listerBuildings.allBuildingsColonist.FindAll((Building x) => x.def.thingClass == typeof(Building_Refinery)))
+            foreach (Building_Refinery refinery in Map.listerBuildings.allBuildingsColonist.FindAll((Building x) => x is Building_Refinery))
             {
                 if (refinery != null)
                 {
@@ -158,7 +158,10 @@ namespace TiberiumRim
                 }
                 foreach(Building_Refinery refinery in availableRefineries)
                 {
-                    return refinery;
+                    if (refinery != null)
+                    {
+                        return refinery;
+                    }
                 }
                 return null;
             }
@@ -177,9 +180,12 @@ namespace TiberiumRim
                 }
                 foreach (Building_Refinery refinery in availableRefineries)
                 {
-                    if (!refinery.NetworkComp.Container.CapacityFull)
+                    if (refinery != null)
                     {
-                        return refinery;
+                        if (!refinery.NetworkComp.Container.CapacityFull)
+                        {
+                            return refinery;
+                        }
                     }
                 }         
                 return null;
@@ -343,6 +349,10 @@ namespace TiberiumRim
             foreach (Gizmo g in base.GetGizmos())
             {
                 yield return g;
+            }          
+            if(this.Faction.def != FactionDefOf.PlayerColony)
+            {
+                yield break;
             }
 
             Command_Action returnToRefinery = new Command_Action();

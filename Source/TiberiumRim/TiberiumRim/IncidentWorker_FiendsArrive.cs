@@ -30,12 +30,13 @@ namespace TiberiumRim
                 return false;
             }
 
+
+            //TODO: balance patch
             Rot4 rot = Rot4.FromAngleFlat((map.Center - intVec).AngleFlat);
             for (int i = 0; i < 12; i++)
             {
                 Pawn pawn = null;
                 PawnKindDef creature = SelectCreature();
-                Log.Message("creature: " + creature);
                 PawnGenerationRequest request = new PawnGenerationRequest(creature, null, PawnGenerationContext.NonPlayer, map.Tile, false, false, false, false, true, false, 1f, false, true, true);
                 pawn = PawnGenerator.GeneratePawn(request);
                 IntVec3 loc = CellFinder.RandomClosewalkCellNear(intVec, map, 10, null);

@@ -39,13 +39,11 @@ namespace TiberiumRim
             base.WorldComponentTick();
             if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
             { 
-                Log.Message("should spread");
                 AffectSurroundingTiles();
             }
-            //gotta change this to ticksperday again       
-            if (Find.TickManager.TicksGame % GenDate.TicksPerHour == 0)
+            
+            if (Find.TickManager.TicksGame % GenDate.TicksPerDay == 0)
             {
-                Log.Message("should grow");
                 GrowBiomes();
             }
         }
@@ -61,25 +59,32 @@ namespace TiberiumRim
                     Find.WorldGrid.GetTileNeighbors(tile, tmpNeighbors);
                     for (int i = 0; i < tmpNeighbors.Count; i++)
                     {
-                        if (!TiberiumTiles.ContainsKey(tmpNeighbors[i]))
+                        int tile2 = tmpNeighbors[i];
+                        if (!TiberiumTiles.ContainsKey(tile2))
                         {
-                            if (Find.WorldGrid.tiles[tmpNeighbors[i]].biome.defName.Contains("Ice"))
+                            Tile tile3 = world.grid.tiles[tile2];
+                            if (tile3.biome.defName.Contains("Ice"))
                             {
-                                tmpNeighbors.Remove(tmpNeighbors[i]);
+                                tmpNeighbors.Remove(tile2);
                             }
                             else
                             {
-                                if (world.grid.tiles[tmpNeighbors[i]] != Find.AnyPlayerHomeMap.TileInfo)
+                                if (!TiberiumTiles.ContainsKey(tile2))
                                 {
-                                    Log.Message("affacting neighbours but not colony");
-                                    TiberiumTiles.Add(tmpNeighbors[i], MainTCD.MainTiberiumControlDef.WorldCorruptAdder);
-                                    tmpNeighbors.Remove(tmpNeighbors[i]);
+                                    TiberiumTiles.Add(tile2, MainTCD.MainTiberiumControlDef.WorldCorruptAdder);
+                                    tmpNeighbors.Remove(tile2);
                                 }
-                                else
+                            }
+                        }
+                        else
+                        {
+                            if(TiberiumTiles[tile2] < MainTCD.MainTiberiumControlDef.WorldCorruptMinPct)
+                            if (Rand.Chance(0.001f))
+                            {
+                                Map map = Find.Maps.Find((Map x) => x.Tile == tile2);
+                                if (map != null && map.IsPlayerHome)
                                 {
-                                    Log.Message("affacting colony, I think");
-                                    TiberiumType type = Rand.Element<TiberiumType>(TiberiumType.Green, TiberiumType.Blue);
-                                    Map map = Find.Maps.Find((Map x) => x.TileInfo == world.grid.tiles[tmpNeighbors[i]]);
+                                    TiberiumType type = Rand.Element(TiberiumType.Green, TiberiumType.Blue);
                                     TiberiumUtility.SpawnTiberiumFromMapEdge(map, type, out TiberiumCrystal crystal);
                                     Messages.Message("TiberiumSpawnFromOutside".Translate(), crystal, MessageTypeDefOf.NeutralEvent);
                                 }

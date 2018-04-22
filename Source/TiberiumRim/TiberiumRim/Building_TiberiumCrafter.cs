@@ -19,11 +19,13 @@ namespace TiberiumRim
             base.ExposeData();
         }
 
-        public override float FilledPct
+        public override void Tick()
         {
-            get
+            Comp_GraphicExtra extra = this.TryGetComp<Comp_GraphicExtra>();
+            if(extra != null)
             {
-                return (this.billStack.Bills.Find((Bill x) => (x as TibBill).isBeingDone) != null ? 1f : 0);
+                //TODO: Weird reee
+                extra.FilledPct = (this.billStack.Bills.Find((Bill x) => (x as TibBill).isBeingDone) != null ? 1f : 0);
             }
         }
 

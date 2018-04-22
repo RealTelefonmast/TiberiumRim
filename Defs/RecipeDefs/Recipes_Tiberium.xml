@@ -4,14 +4,14 @@
 	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
 		<defName>ExtractSteel</defName>
 		<label>Get Steel</label>
-		<description>Make steel.</description>
+		<description>Extract steel from the stored Tiberium.\n\nYou will get 5 steel for 30 Tiberium credits.</description>
 		<jobString>extracting steel</jobString>
 		<workAmount>250</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
-		<tiberiumCost>75</tiberiumCost>
+		<tiberiumCost>30</tiberiumCost>
 		<products>
-			<Steel>25</Steel>
+			<Steel>5</Steel>
 		</products>
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
@@ -19,14 +19,14 @@
 	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
 		<defName>ExtractPlasteel</defName>
 		<label>Get Plasteel</label>
-		<description>Make plasteel.</description>
+		<description>Extract plasteel from the stored Tiberium.\n\nYou will get 5 plasteel for 210 Tiberium credits.</description>
 		<jobString>extracting plasteel</jobString>
-		<workAmount>250</workAmount>
+		<workAmount>750</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
-		<tiberiumCost>100</tiberiumCost>
+		<tiberiumCost>210</tiberiumCost>
 		<products>
-			<Plasteel>4</Plasteel>
+			<Plasteel>5</Plasteel>
 		</products>
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
@@ -34,14 +34,14 @@
 	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
 		<defName>ExtractGold</defName>
 		<label>Get Gold</label>
-		<description>Make gold.</description>
+		<description>Extract gold from the stored Tiberium.\n\nYou will get 5 gold for 150 Tiberium credits.</description>
 		<jobString>extracting gold</jobString>
-		<workAmount>250</workAmount>
+		<workAmount>500</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
-		<tiberiumCost>100</tiberiumCost>
+		<tiberiumCost>150</tiberiumCost>
 		<products>
-			<Gold>2</Gold>
+			<Gold>5</Gold>
 		</products>
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
@@ -49,14 +49,14 @@
 	<RecipeDef Class="TiberiumRim.RecipeDef_Tiberium">
 		<defName>ExtractUranium</defName>
 		<label>Get Uranium</label>
-		<description>Make uranium.</description>
+		<description>Extract uranium from the stored Tiberium.\n\nYou will get 5 uranium for 90 Tiberium credits.</description>
 		<jobString>extracting uranium</jobString>
-		<workAmount>250</workAmount>
+		<workAmount>450</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
-		<tiberiumCost>100</tiberiumCost>
+		<tiberiumCost>90</tiberiumCost>
 		<products>
-			<Uranium>8</Uranium>
+			<Uranium>5</Uranium>
 		</products>
 		<workSkill>Crafting</workSkill>
 	</RecipeDef>
@@ -66,7 +66,7 @@
 		<label>Burn Sludge</label>
 		<description>Get rid of the useless sludge.</description>
 		<jobString>burning sludge.</jobString>
-		<workAmount>75</workAmount>
+		<workAmount>150</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
 		<tiberiumCost>100</tiberiumCost>
@@ -83,8 +83,22 @@
 		<workAmount>300</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
-		<tiberiumCost>25</tiberiumCost>
 		<drainType>Green</drainType>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<products>
 		  <BookRiparius>1</BookRiparius>
 		</products>
@@ -98,8 +112,22 @@
 		<workAmount>300</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
-		<tiberiumCost>50</tiberiumCost>
 		<drainType>Blue</drainType>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<products>
 		  <BookVinifera>1</BookVinifera>
 		</products>
@@ -113,8 +141,22 @@
 		<workAmount>300</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
-		<tiberiumCost>75</tiberiumCost>
 		<drainType>Red</drainType>
+		<ingredients>
+		  <li>
+			<filter>
+			  <thingDefs>
+				<li>WoodLog</li>
+			  </thingDefs>
+			</filter>
+			<count>5</count>
+		  </li>
+		</ingredients>
+		<fixedIngredientFilter>
+			<thingDefs>
+				<li>WoodLog</li>
+			</thingDefs>
+		</fixedIngredientFilter>
 		<products>
 		  <BookRutila>1</BookRutila>
 		</products>

@@ -11,51 +11,58 @@ using Verse.AI.Group;
 
 namespace TiberiumRim
 {
-    public class RepairDroneDef : ThingDef
+    public class RepairDroneDef : PawnKindDef
     {
-        public float repairAmount;
+        public float healFloat = 0.1f;
     }
 
-    public class RepairDrone : Pawn
+    public class RepairDrone : Mechanical_Pawn
     {
-        public new RepairDroneDef def;
+        public new RepairDroneDef kindDef;
 
         public Comp_RepairDrone parentComp;
 
         public Building parent;
 
-        public int radiusCells;
+        private int radialCells;
 
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
             base.SpawnSetup(map, respawningAfterLoad);
-            this.radiusCells = GenRadial.NumCellsInRadius(this.parentComp.repairProps.radius);
+            this.kindDef = base.kindDef as RepairDroneDef;
+            this.parentComp = this.parent.GetComp<Comp_RepairDrone>();
+            this.radialCells = GenRadial.NumCellsInRadius(this.parentComp.repairProps.radius);
         }
 
+        public override void DeSpawn()
+        {
+            this.parentComp.repairDrones.Remove(this);
+            base.DeSpawn();    
+        }
 
-        public bool MechAvailable
+        public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
+        {
+            this.DeSpawn();
+        }
+
+        public Mechanical_Pawn AvailableMech
         {
             get
             {
-                for (int i = 0; i < radiusCells; i++)
+                for (int i = 0; i < radialCells; i++)
                 {
                     IntVec3 pos = this.parent.Position + GenRadial.RadialPattern[i];
                     if (pos.InBounds(this.Map))
                     {
-                        return pos.GetFirstPawn(this.Map) != null;
+                        Pawn pawn = pos.GetFirstPawn(this.Map);
+                        if (pawn != null && pawn is Mechanical_Pawn && pawn.health.hediffSet.hediffs.Find((Hediff x) => x.Severity > 0) != null)
+                        {
+                            return pawn as Mechanical_Pawn;
+                        }
                     }
                 }
-                return false;
-            }
-        }
-
-        public Pawn AvailableMech
-        {
-            get
-            {
                 return null;
             }
         }
-
     }
 }
