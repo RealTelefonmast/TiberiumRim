@@ -34,7 +34,7 @@
 		<defName>GreenTiberiumChunk</defName>
 		<label>green tiberium chunk</label>
 		<statBases>
-		  <MaxHitPoints>600</MaxHitPoints>
+		  <MaxHitPoints>300</MaxHitPoints>
 		</statBases>
 		<graphicData>
 			<texPath>Item/StoneGreen</texPath>
@@ -54,7 +54,7 @@
 			</li>
 		</comps>
 		<killedLeavings>
-            <TiberiumGreen>1</TiberiumGreen>
+            <TiberiumGreen>3</TiberiumGreen>
         </killedLeavings>
 	</ThingDef>
 	
@@ -62,7 +62,7 @@
 		<defName>BlueTiberiumChunk</defName>
 		<label>blue tiberium chunk</label>
 		<statBases>
-		  <MaxHitPoints>900</MaxHitPoints>
+		  <MaxHitPoints>200</MaxHitPoints>
 		</statBases>
 		<graphicData>
 			<texPath>Item/StoneBlue</texPath>
@@ -90,7 +90,7 @@
 		<defName>RedTiberiumChunk</defName>
 		<label>red tiberium chunk</label>
 		<statBases>
-		  <MaxHitPoints>1200</MaxHitPoints>
+		  <MaxHitPoints>100</MaxHitPoints>
 		</statBases>
 		<graphicData>
 			<texPath>Item/StoneRed</texPath>
