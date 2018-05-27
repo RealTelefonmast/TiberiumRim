@@ -23,16 +23,16 @@
 			<MaxHitPoints>250</MaxHitPoints>
 			<WorkToBuild>2500</WorkToBuild>
 			<Flammability>1.0</Flammability>
-			<Beauty>-13</Beauty>
+			<Beauty>-5</Beauty>
 		</statBases>
 		<drawerType>MapMeshAndRealTime</drawerType>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
 		<fillPercent>0.65</fillPercent>
 		<costList>
 			<Steel>175</Steel>
-			<Component>10</Component>
+			<Component>5</Component>
 		</costList>
-		<specialDisplayRadius>10.5</specialDisplayRadius>
+		<specialDisplayRadius>11.5</specialDisplayRadius>
 		<comps>
 			<li Class="CompProperties_HeatPusher">
 				<heatPerSecond>-200</heatPerSecond>
@@ -49,8 +49,8 @@
 			<li Class="CompProperties_Breakdownable"/>
 			<li Class="TiberiumRim.CompProperties_GroundFreezer">
 				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
-				<radius>10.5</radius>
-				<daysToRadius>3.5</daysToRadius>
+				<radius>11.5</radius>
+				<daysToRadius>4.5</daysToRadius>
 				<requiresElectricity>true</requiresElectricity>
 			</li>
 		</comps>
@@ -99,12 +99,12 @@
 			<li>PlaceWorker_CoolerSimple</li>
 		</placeWorkers>
 		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
-		<specialDisplayRadius>4.5</specialDisplayRadius>
+		<specialDisplayRadius>5.5</specialDisplayRadius>
 		<comps>
 			<li Class="TiberiumRim.CompProperties_GroundFreezer">
 				<compClass>TiberiumRim.Comp_GroundFreezer</compClass>
-				<radius>4.5</radius>
-				<daysToRadius>1.5</daysToRadius>
+				<radius>5.5</radius>
+				<daysToRadius>2.5</daysToRadius>
 				<requiresElectricity>false</requiresElectricity>
 			</li>
 			<li Class="CompProperties_HeatPusher">
