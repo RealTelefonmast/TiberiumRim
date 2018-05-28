@@ -12,7 +12,7 @@
 		<letterLabel>Green Tiberium Asteroid</letterLabel>
 		<letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</letterText>
 		<letterDef>NegativeEvent</letterDef>
-		<minRefireDays>175</minRefireDays>
+		<minRefireDays>200</minRefireDays>
 		<category>ShipChunkDrop</category>
 		<asteroidType>TiberiumCraterGreen_TBNS</asteroidType>
 		<skyfallerDef>GreenTiberiumMeteorIncoming</skyfallerDef>
@@ -31,7 +31,7 @@
 		<letterLabel>Blue Tiberium Asteroid</letterLabel>
 		<letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</letterText>
 		<letterDef>NegativeEvent</letterDef>
-		<minRefireDays>150</minRefireDays>
+		<minRefireDays>250</minRefireDays>
 		<category>ShipChunkDrop</category>
 		<asteroidType>TiberiumCraterBlue_TBNS</asteroidType>
 		<skyfallerDef>BlueTiberiumMeteorIncoming</skyfallerDef>
@@ -50,7 +50,7 @@
 		<letterLabel>Tiberium Meteor Drop</letterLabel>
 		<letterText>An unusual meteorite has crashed nearby.\n\nThere seems to be some strange crystals poking out of it.\n\nBe careful, the substance could be dangerous!</letterText>
 		<letterDef>NegativeEvent</letterDef>
-		<minRefireDays>56</minRefireDays>
+		<minRefireDays>50</minRefireDays>
 		<category>ShipChunkDrop</category>
 		<asteroidType>TiberiumMeteor_TBNS</asteroidType>
 		<skyfallerDef>TiberiumMeteorIncoming</skyfallerDef>
@@ -68,7 +68,7 @@
 		<letterLabel>Tiberium shard</letterLabel>
 		<letterText>An unusual type of shard has dropped. It's spreading red crystals around itself.\n\nBe careful, the substance could be dangerous!</letterText>
 		<letterDef>NegativeEvent</letterDef>
-		<minRefireDays>356</minRefireDays>
+		<minRefireDays>300</minRefireDays>
 		<category>ShipChunkDrop</category>
 		<asteroidType>TiberiumShard_TBNS</asteroidType>
 		<skyfallerDef>RedTiberiumShardIncoming</skyfallerDef>
@@ -87,7 +87,7 @@
 		<letterLabel>Unknown gas!</letterLabel>
 		<letterText>A cloud of unknown gas has passed the map and mutated a tree. Be careful around it!</letterText>
 		<letterDef>NegativeEvent</letterDef>
-		<minRefireDays>180</minRefireDays>
+		<minRefireDays>150</minRefireDays>
 		<category>ShipChunkDrop</category>
 		<asteroidType>BlossomTree_TBNS</asteroidType>
 		<sourceThing>Tree</sourceThing>
@@ -108,7 +108,7 @@
 		<letterLabel>Veinhole!</letterLabel>
 		<letterText>A veinhole monster appeared on your map!</letterText>
 		<letterDef>NegativeEvent</letterDef>
-		<minRefireDays>680</minRefireDays>
+		<minRefireDays>350</minRefireDays>
 		<category>ShipChunkDrop</category>
 		<asteroidType>Veinhole_TBNS</asteroidType>
 		<spawnCrystals>true</spawnCrystals>
@@ -130,7 +130,7 @@
 		<letterDef>NegativeEvent</letterDef>
 		<baseChance>3.0</baseChance>
 		<category>ThreatSmall</category>
-		<minRefireDays>15</minRefireDays>
+		<minRefireDays>20</minRefireDays>
 		<durationDays>
 		  <min>0.1</min>
 		  <max>1</max>
@@ -151,7 +151,7 @@
 		<letterDef>NegativeEvent</letterDef>
 		<baseChance>2.0</baseChance>
 		<category>ThreatSmall</category>
-		<minRefireDays>21</minRefireDays>
+		<minRefireDays>20</minRefireDays>
 		<durationDays>
 		  <min>0.1</min>
 		  <max>1</max>
