@@ -13,7 +13,7 @@
 		<letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</letterText>
 		<letterDef>NegativeEvent</letterDef>
 		<minRefireDays>175</minRefireDays>
-		<category>ThreatBig</category>
+		<category>ShipChunkDrop</category>
 		<asteroidType>TiberiumCraterGreen_TBNS</asteroidType>
 		<skyfallerDef>GreenTiberiumMeteorIncoming</skyfallerDef>
 		<pointsScaleable>true</pointsScaleable>
@@ -32,7 +32,7 @@
 		<letterText>An unusual meteorite has crashed nearby and made a crater.\n\nThere seems to be some strange crystals poking out of it, and a few have broken off and scattered around the site.\n\nBe careful, the substance could be dangerous!</letterText>
 		<letterDef>NegativeEvent</letterDef>
 		<minRefireDays>150</minRefireDays>
-		<category>ThreatBig</category>
+		<category>ShipChunkDrop</category>
 		<asteroidType>TiberiumCraterBlue_TBNS</asteroidType>
 		<skyfallerDef>BlueTiberiumMeteorIncoming</skyfallerDef>
 		<pointsScaleable>true</pointsScaleable>
@@ -69,7 +69,7 @@
 		<letterText>An unusual type of shard has dropped. It's spreading red crystals around itself.\n\nBe careful, the substance could be dangerous!</letterText>
 		<letterDef>NegativeEvent</letterDef>
 		<minRefireDays>356</minRefireDays>
-		<category>ThreatBig</category>
+		<category>ShipChunkDrop</category>
 		<asteroidType>TiberiumShard_TBNS</asteroidType>
 		<skyfallerDef>RedTiberiumShardIncoming</skyfallerDef>
 		<pointsScaleable>true</pointsScaleable>
@@ -88,7 +88,7 @@
 		<letterText>A cloud of unknown gas has passed the map and mutated a tree. Be careful around it!</letterText>
 		<letterDef>NegativeEvent</letterDef>
 		<minRefireDays>180</minRefireDays>
-		<category>ThreatBig</category>
+		<category>ShipChunkDrop</category>
 		<asteroidType>BlossomTree_TBNS</asteroidType>
 		<sourceThing>Tree</sourceThing>
 		<spawnCrystals>true</spawnCrystals>
@@ -109,7 +109,7 @@
 		<letterText>A veinhole monster appeared on your map!</letterText>
 		<letterDef>NegativeEvent</letterDef>
 		<minRefireDays>680</minRefireDays>
-		<category>ThreatBig</category>
+		<category>ShipChunkDrop</category>
 		<asteroidType>Veinhole_TBNS</asteroidType>
 		<spawnCrystals>true</spawnCrystals>
 		<tiberiumType>TiberiumVein</tiberiumType>
@@ -129,8 +129,8 @@
 		<letterText>An Ion storm has begun.\n\nThe intense radiation will shut down all electrical devices.\n\nBe careful about Tiberium spread.</letterText>
 		<letterDef>NegativeEvent</letterDef>
 		<baseChance>3.0</baseChance>
-		<category>ThreatBig</category>
-		<minRefireDays>14</minRefireDays>
+		<category>ThreatSmall</category>
+		<minRefireDays>15</minRefireDays>
 		<durationDays>
 		  <min>0.1</min>
 		  <max>1</max>
