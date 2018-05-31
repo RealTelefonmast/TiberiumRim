@@ -5,7 +5,7 @@
   <TRRailgun.deathMessage>{0}(이)가 관통당해 죽었습니다.</TRRailgun.deathMessage>
 
   <TRLaser.label>레이저 빔</TRLaser.label>
-  <TRLaser.deathMessage>{{0}(이)가 관통당해 죽었습니다.</TRLaser.deathMessage>
+  <TRLaser.deathMessage>{0}(이)가 고열에 융해되어 죽었습니다.</TRLaser.deathMessage>
 
   <TRSound.label>음파</TRSound.label>
   <TRSound.deathMessage>{0}(이)가 음파 공명에 휘말려 죽었습니다.</TRSound.deathMessage>
