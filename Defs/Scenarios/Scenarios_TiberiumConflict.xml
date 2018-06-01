@@ -103,7 +103,6 @@
           <thingDef>TiberAdd</thingDef>
 		  <count>6</count>
         </li>
-		<!--
 		<li Class="ScenPart_StartingThing_Defined">
           <def>StartingThing_Defined</def>
           <thingDef>GroundFreezer</thingDef>
@@ -114,7 +113,6 @@
           <thingDef>GroundFreezerTribal</thingDef>
           <count>3</count>
         </li>
-		-->
         <li Class="ScenPart_StartingAnimal">
           <def>StartingAnimal</def>
           <count>1</count>

@@ -11,6 +11,11 @@ namespace TiberiumRim
 
         public Dictionary<int, float> TiberiumTiles = new Dictionary<int, float>();
 
+        public WorldLayer_Tiberium tibLayer;
+
+        //Bools for world
+        public bool tiberiumSpawned = false;
+
         public WorldComponent_TiberiumSpread(World world) : base(world)
         {
         }
@@ -19,32 +24,33 @@ namespace TiberiumRim
         {
             Scribe_Collections.Look<int, float>(ref this.TiberiumTiles, "TiberiumTiles", LookMode.Value, LookMode.Value);
             Scribe_Collections.Look<int>(ref this.tmpNeighbors, "tmpNeighbors", LookMode.Value);
+            Scribe_Values.Look(ref tiberiumSpawned, "tiberiumSpawned");
             base.ExposeData();
         }
 
         public override void FinalizeInit()
         {
             base.FinalizeInit();
-            foreach (int tile in TiberiumTiles.Keys)
-            {
-                if (IsBiomeReady(tile))
-                {
-                    SetBiome(tile);
-                }
-            }
         }
 
         public override void WorldComponentTick()
         {
-            base.WorldComponentTick();
-            if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
-            { 
-                AffectSurroundingTiles();
-            }
-            
-            if (Find.TickManager.TicksGame % GenDate.TicksPerDay == 0)
+            if (TiberiumRimSettings.settings.WorldSpread)
             {
-                GrowBiomes();
+                base.WorldComponentTick();
+                if (Find.TickManager.TicksGame % GenTicks.TickRareInterval == 0)
+                {
+                    AffectSurroundingTiles();
+                }
+
+                if (Find.TickManager.TicksGame % 750 == 0)
+                {
+                    GrowBiomes();
+                    if (tibLayer != null)
+                    {
+                        tibLayer.RegenerateNow();
+                    }
+                }
             }
         }
 
@@ -71,7 +77,7 @@ namespace TiberiumRim
                             {
                                 if (!TiberiumTiles.ContainsKey(tile2))
                                 {
-                                    TiberiumTiles.Add(tile2, MainTCD.MainTiberiumControlDef.WorldCorruptAdder);
+                                    TiberiumTiles.Add(tile2, MainTCD.MainTiberiumControlDef.WorldCorruptAdder * TiberiumRimSettings.settings.SpreadMltp);
                                     tmpNeighbors.Remove(tile2);
                                 }
                             }
@@ -92,13 +98,6 @@ namespace TiberiumRim
                         }
                     }
                 }
-                else
-                {
-                    if (IsBiomeReady(tile))
-                    {
-                        SetBiome(tile);
-                    }
-                }
             }
         }
 
@@ -116,16 +115,16 @@ namespace TiberiumRim
                         float add = MainTCD.MainTiberiumControlDef.WorldCorruptAdder;
                         if (tile2.hilliness == Hilliness.Mountainous || tile2.hilliness == Hilliness.Impassable)
                         {
-                            TiberiumTiles[tile] += Rand.Range(0f, add/4);
+                            TiberiumTiles[tile] += Rand.Range(0f, add/4) * TiberiumRimSettings.settings.SpreadMltp;
                         }
                         else
                         if (tile2.temperature < 10)
                         {
-                            TiberiumTiles[tile] += Rand.Range(0f, add/2);
+                            TiberiumTiles[tile] += Rand.Range(0f, add/2) * TiberiumRimSettings.settings.SpreadMltp;
                         }
                         else
                         {
-                            TiberiumTiles[tile] += Rand.Range(0f, add);
+                            TiberiumTiles[tile] += Rand.Range(0f, add) * TiberiumRimSettings.settings.SpreadMltp;
                         }
                         if (TiberiumTiles[tile] >= 1f)
                         {
@@ -145,34 +144,13 @@ namespace TiberiumRim
             return 0f;
         }
 
-        public bool IsBiomeReady(int tile)
+        public bool IsTiberiumTile(int tileInt)
         {
-            if (TiberiumTiles.ContainsKey(tile))
+            if (TiberiumTiles[tileInt] >= MainTCD.MainTiberiumControlDef.WorldCorruptMinPct)
             {
-                return TiberiumTiles[tile] >= MainTCD.MainTiberiumControlDef.WorldCorruptMinPct;
+                return true;
             }
             return false;
         }
-
-        public bool IsTiberiumTile(int tileInt)
-        {
-            Tile tile = Find.WorldGrid.tiles[tileInt];
-            return tile.biome.defName.Contains("_TB");
-        }
-
-        public void SetBiome(int tileID)
-        {
-            Tile tile = Find.WorldGrid.tiles[tileID];
-
-            if (Find.WorldGrid.tiles[tileID].biome.canBuildBase)
-            {
-                tile.biome = DefDatabase<BiomeDef>.GetNamed("RedZone_TB");
-            }
-            else
-            {
-                tile.biome = DefDatabase<BiomeDef>.GetNamed("GlacierSea_TB");
-            }
-        }
-
     }
 }

@@ -3,14 +3,14 @@
 
 	<ThingDef ParentName="BenchBase">
 		<defName>TiberiumResearchBench</defName>
-		<label>tiberium research station</label>
-		<description>A specialized research bench for Tiberium technologies.\n\nResearch is sped up by the high-tech tools.\n\nRequires power.</description>
+		<label>research station</label>
+		<description>This station allows us to communicate to different Factions and gather information.\n\nResearch is sped up by the high-tech tools.\n\nRequires power.</description>
 		<thingClass>Building_ResearchBench</thingClass>
 		<size>(7,4)</size>
 		<costList>
-			<Uranium>25</Uranium>
-			<Steel>300</Steel>
-			<Component>6</Component>
+			<Steel>500</Steel>
+			<Plasteel>50</Plasteel>
+			<Component>10</Component>
 		</costList>
 		<graphicData>
 			<texPath>Building/Common/TibResearchStation</texPath>
@@ -29,8 +29,8 @@
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
 		<statBases>
-			<MaxHitPoints>750</MaxHitPoints>
-			<WorkToBuild>8000</WorkToBuild>
+			<MaxHitPoints>1000</MaxHitPoints>
+			<WorkToBuild>10000</WorkToBuild>
 			<Flammability>1.0</Flammability>
 			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
 		</statBases>
@@ -69,8 +69,8 @@
 		<thingClass>Building_ResearchBench</thingClass>
 		<size>(5,5)</size>
 		<costList>
-			<Steel>200</Steel>
-			<Component>6</Component>
+			<Steel>300</Steel>
+			<Component>4</Component>
 		</costList>
 		<graphicData>
 			<texPath>Building/Common/ResearchCrane</texPath>
@@ -92,9 +92,9 @@
 			<workSpeedPenaltyTemperature>false</workSpeedPenaltyTemperature>
 		</building>
 		<statBases>
-			<MaxHitPoints>750</MaxHitPoints>
-			<WorkToBuild>8000</WorkToBuild>
-			<Flammability>0.7</Flammability>
+			<MaxHitPoints>300</MaxHitPoints>
+			<WorkToBuild>3000</WorkToBuild>
+			<Flammability>0.5</Flammability>
 			<ResearchSpeedFactor>1.0</ResearchSpeedFactor>
 		</statBases>
 		<comps>
@@ -105,6 +105,9 @@
 			</li>
 			<li Class="CompProperties_Flickable"/>
 		</comps>
+		<inspectorTabs>
+			<li>TiberiumRim.ITab_TiberiumResearch</li>
+		</inspectorTabs>
 		<altitudeLayer>BuildingOnTop</altitudeLayer>
 		<fillPercent>0.5</fillPercent>
 		<interactionCellOffset>(0,0,-3)</interactionCellOffset>
@@ -118,10 +121,9 @@
 			<li>TiberiumRim.PlaceWorker_Once</li>
 		</placeWorkers>
 		<researchPrerequisites>
-			<li>MicroelectronicsBasics</li>
+			<li>Smithing</li>
 		</researchPrerequisites>
 	</ThingDef>
-	
 	
 	<ThingDef ParentName="BenchBase">
 		<defName>TiberiumResearchCraftingBench</defName>
@@ -133,14 +135,14 @@
 		<pathCost>70</pathCost>
 		<statBases>
 			<MaxHitPoints>250</MaxHitPoints>
-			<WorkToBuild>500</WorkToBuild>
+			<WorkToBuild>2500</WorkToBuild>
 			<Flammability>1.0</Flammability>
 		</statBases>
 		<size>(3,4)</size>
 		<costList>
-			<Gold>5</Gold>
-			<Steel>75</Steel>
-			<Component>2</Component>
+			<Steel>100</Steel>
+			<Plasteel>15</Plasteel>
+			<Component>5</Component>
 		</costList>
 		<castEdgeShadows>false</castEdgeShadows>
 		<staticSunShadowHeight>0</staticSunShadowHeight>
@@ -159,9 +161,6 @@
 			<li>ITab_Bills</li>
 		</inspectorTabs>
 		<recipes>
-			<li>MakeBookRiparius</li>
-			<li>MakeBookVinifera</li>
-			<li>MakeBookRutila</li>
 		</recipes>
 		<building>
 			<spawnedConceptLearnOpportunity>BillsTab</spawnedConceptLearnOpportunity>

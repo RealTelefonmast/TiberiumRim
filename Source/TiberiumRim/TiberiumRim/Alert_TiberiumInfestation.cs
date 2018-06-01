@@ -9,7 +9,6 @@ namespace TiberiumRim
 {
     public class Alert_TiberiumInfestation : Alert
     {
-
         public override string GetLabel()
         {
             return "InfestationPct".Translate(new object[] {

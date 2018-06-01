@@ -17,6 +17,13 @@ namespace TiberiumRim
             }
         }
 
+        public override void Tick()
+        {
+            CompFX FX = this.TryGetComp<CompFX>();
+            FX.ShouldDoEffectNow = this.TryGetComp<Comp_TNW>().Container.StoredPct > 0f;
+            base.Tick();
+        }
+
         public override bool IsActivated => false;
     }
 }

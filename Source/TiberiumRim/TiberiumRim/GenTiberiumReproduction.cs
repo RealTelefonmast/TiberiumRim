@@ -133,6 +133,10 @@ namespace TiberiumRim
                 }
                 return;
             }   
+            if(terrainDef is TiberiumTerrainDef)
+            {
+                crystalDefOut = crystalDefIn;
+            }
         }
 
         //Terrain Checks

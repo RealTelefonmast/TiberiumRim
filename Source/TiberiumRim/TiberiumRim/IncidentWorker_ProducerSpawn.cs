@@ -56,6 +56,29 @@ namespace TiberiumRim
             {
                 return false;
             }
+            if (!Find.World.GetComponent<WorldComponent_TiberiumSpread>().tiberiumSpawned)
+            {
+                DiaNode diaNode = new DiaNode("TiberiumArrivalDesc".Translate());
+                DiaOption diaOption = new DiaOption(". . .");
+                diaOption.action = delegate
+                {
+                    SpawnProducer(map, intRange);
+                };
+                diaOption.resolveTree = true;
+                diaNode.options.Add(diaOption);
+                Find.WindowStack.Add(new Dialog_NodeTree(diaNode, true, true, "TiberiumArrivalTitle".Translate()));
+                Find.World.GetComponent<WorldComponent_TiberiumSpread>().tiberiumSpawned = true;
+                return true;
+            }
+            if (SpawnProducer(map, intRange))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool SpawnProducer(Map map, IntRange intRange)
+        {
             if (def.appears)
             {
                 if (def.spawnCrystals)
@@ -70,9 +93,9 @@ namespace TiberiumRim
                     for (int i = 0; i < randomInRange; i++)
                     {
                         TiberiumCrystalDef finalCrystalDef = null;
-                        if (!CellFinder.TryRandomClosewalkCellNear(spawnCell, map, (def.asteroidType as TiberiumProducerDef).terrainRadius, out IntVec3 intVec, delegate (IntVec3 x) 
+                        if (!CellFinder.TryRandomClosewalkCellNear(spawnCell, map, (def.asteroidType as TiberiumProducerDef).terrainRadius, out IntVec3 intVec, delegate (IntVec3 x)
                         {
-                            if(CanSpawnAt(x, map))
+                            if (CanSpawnAt(x, map))
                             {
                                 GenTiberiumReproduction.SetTiberiumTerrainAndType(def.tiberiumType, x.GetTerrain(map), out finalCrystalDef, out TerrainDef spawnTerrain);
                                 if (finalCrystalDef != null)
@@ -82,14 +105,14 @@ namespace TiberiumRim
                             }
                             return false;
 
-                        })){break;}
+                        })) { break; }
                         TiberiumCrystal crystal = intVec.GetTiberium(map);
                         if (crystal != null)
                         {
                             crystal.Destroy(DestroyMode.Vanish);
                         }
                         Thing thing2 = GenSpawn.Spawn((finalCrystalDef as ThingDef), intVec, map);
-                        if((def.asteroidType as TiberiumProducerDef).bindsToCrystals)
+                        if ((def.asteroidType as TiberiumProducerDef).bindsToCrystals)
                         {
                             tempList.Add(thing2 as TiberiumCrystal);
                         }

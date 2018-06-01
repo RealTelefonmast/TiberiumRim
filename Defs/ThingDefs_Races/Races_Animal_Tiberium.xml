@@ -39,11 +39,11 @@
 			<baseBodySize>1.2</baseBodySize>
 			<baseHungerRate>0.4</baseHungerRate>
 			<baseHealthScale>0.5</baseHealthScale>
-			<trainableIntelligence>Simple</trainableIntelligence>
+			<trainableIntelligence>None</trainableIntelligence>
 			<leatherColor>(204,102,0)</leatherColor>
-			<leatherLabel>Visceroid Skin</leatherLabel>
+			<leatherLabel>molten skin</leatherLabel>
 			<leatherInsulation>0.2</leatherInsulation>
-			<meatLabel>Visceroid Matter</meatLabel>
+			<meatLabel>tiberium matter</meatLabel>
 			<wildness>1</wildness>
 			<gestationPeriodDays>25</gestationPeriodDays>
 			<nameOnTameChance>1</nameOnTameChance>
@@ -68,7 +68,6 @@
 		</tradeTags>
 	</ThingDef> 
   
-  
 	<PawnKindDef ParentName="AnimalKindBase_TR">
 		<defName>Visceroid_TBI</defName>
 		<label>Visceroid</label>
@@ -87,8 +86,8 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
+		<notFiend>true</notFiend>
 	</PawnKindDef>
-	
 	
 	<ThingDef ParentName="TiberiumLifeform">
 		<defName>Veinmonster_TBI</defName>
@@ -126,7 +125,7 @@
 		<baseBodySize>1.0</baseBodySize>
 		<baseHungerRate>0.5</baseHungerRate>
 		<baseHealthScale>1</baseHealthScale>
-		<trainableIntelligence>Simple</trainableIntelligence>
+		<trainableIntelligence>None</trainableIntelligence>
 		<useMeatFrom>Visceroid_TBI</useMeatFrom>
 		<useLeatherFrom>Visceroid_TBI</useLeatherFrom>
 		<wildness>1</wildness>
@@ -173,17 +172,18 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
+		<notFiend>true</notFiend>
 	</PawnKindDef>
 	
 	<ThingDef ParentName="TiberiumLifeform">
 		<defName>Amalgamation_TBI</defName>
 		<label>Amalgamation</label>
-		<description>A great irregular lifeform. Formed after the death of a creature by Tiberium.</description>
+		<description>These monstrosities are the aftermath of multiple visceroids fusing together.</description>
 		<statBases>
 			<MoveSpeed>2</MoveSpeed>
 			<ComfyTemperatureMin>-100</ComfyTemperatureMin>
-			<MarketValue>5000</MarketValue>
-			<LeatherAmount>50</LeatherAmount>
+			<MarketValue>2500</MarketValue>
+			<LeatherAmount>25</LeatherAmount>
 			<MeatAmount>50</MeatAmount>
 			<ArmorRating_Blunt>0.25</ArmorRating_Blunt>
 			<ArmorRating_Sharp>0</ArmorRating_Sharp>
@@ -210,11 +210,11 @@
 		<herdAnimal>true</herdAnimal>
 		<body>Visceroid</body>
 		<predator>true</predator>
-		<maxPreyBodySize>5</maxPreyBodySize>
+		<maxPreyBodySize>6</maxPreyBodySize>
 		<baseBodySize>5</baseBodySize>
 		<baseHungerRate>5</baseHungerRate>
 		<baseHealthScale>15</baseHealthScale>
-		<trainableIntelligence>Simple</trainableIntelligence>
+		<trainableIntelligence>None</trainableIntelligence>
 		<useMeatFrom>Visceroid_TBI</useMeatFrom>
 		<useLeatherFrom>Visceroid_TBI</useLeatherFrom>
 		<wildness>1</wildness>
@@ -245,7 +245,7 @@
 		<defName>Amalgamation_TBI</defName>
 		<label>Amalgamation</label>
 		<race>Amalgamation_TBI</race>
-		<combatPower>500</combatPower>
+		<combatPower>1000</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<lifeStages>
 			<li>
@@ -259,6 +259,7 @@
 				</dessicatedBodyGraphicData>
 			</li>
 		</lifeStages>
+		<notFiend>true</notFiend>
 	</PawnKindDef>
 
 </Defs>

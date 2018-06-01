@@ -17,7 +17,11 @@ namespace TiberiumRim
 
         public TiberiumContainer Container;
 
-        CompGlower compGlower;
+        public CompGlower compGlower;
+
+        public CompPowerTrader compPower;
+
+        public CompFlickable compFlick;
 
         private IntVec3 savedPos;
 
@@ -31,8 +35,11 @@ namespace TiberiumRim
         {
             base.PostSpawnSetup(respawningAfterLoad);
             this.props = base.props as CompProperties_TNW;
-            compGlower = (CompGlower)this.parent.AllComps.Find((ThingComp x) => x.props.compClass == typeof(CompGlower));
-            if(Container != null)
+            compGlower = this.parent.TryGetComp<CompGlower>();
+            compPower = this.parent.TryGetComp<CompPowerTrader>();
+            compFlick = this.parent.TryGetComp<CompFlickable>();
+
+            if (Container != null)
             {
                 Container.parent = this;
             }
@@ -68,7 +75,7 @@ namespace TiberiumRim
                 LeakTiberium(savedPos, previousMap);
             }
             Container = null;
-            compGlower.UpdateLit(previousMap);
+            compGlower?.UpdateLit(previousMap);
             base.PostDestroy(mode, previousMap);
         }
 
@@ -84,14 +91,14 @@ namespace TiberiumRim
             }
             if (NeedsPower)
             {
-                if (!PowerComp.PowerOn)
+                if (!compPower.PowerOn)
                 {
                     return;
                 }              
             }
-            if (CompFlickable != null)
+            if (compFlick != null)
             {
-                if (!CompFlickable.SwitchIsOn)
+                if (!compFlick.SwitchIsOn)
                 {
                     return;
                 }
@@ -100,8 +107,10 @@ namespace TiberiumRim
             {
                 if (ticksToDoWork <= 0)
                 {
-                    Container.AddCrystal((this.parent as Building_TiberiumSpike).geyser.tiberiumType, props.produceAmt, out float flt);
-                    ResetWorkTimer();
+                    if (Container.AddCrystal((this.parent as Building_TiberiumSpike).geyser.tiberiumType, props.produceAmt, out float f))
+                    {
+                        ResetWorkTimer();
+                    }
                 }
                 else { ticksToDoWork -= 1; }
             }           
@@ -122,7 +131,7 @@ namespace TiberiumRim
                         pct = value / props.consumeAmtPerDay;
                         Container.RemoveCrystal(Container.MainType, value);
                     }
-                    else { PowerComp.PowerOutput = 0f; }
+                    else { compPower.PowerOutput = 0f; }
 
                     ResetPowerTimer((int)(GenDate.TicksPerDay * pct));
 
@@ -147,11 +156,8 @@ namespace TiberiumRim
                                     List<Comp_TNW> compList = Connector.Network.AllGlobalStorages.FindAll((Comp_TNW x) => !x.Container.CapacityFull && !x.props.isLocalStorage && x.Container.AcceptsType(type));
                                     for (int i = 0; i < compList.Count; i++)
                                     {
-                                        if (Container.MainType != TiberiumType.None)
-                                        {
-                                            Comp_TNW comp = compList[i];
-                                            TransferTib(Container, comp.Container, 1f, type);
-                                        }
+                                        Comp_TNW comp = compList[i];
+                                        TransferTib(Container, comp.Container, 1f, type);
                                     }
                                 }
                             }
@@ -208,8 +214,10 @@ namespace TiberiumRim
                 type = containerFrom.MainType;
             }
             float value2 = containerFrom.ValueForType(type) < value ? containerFrom.ValueForType(type) : value;
-            containerTo.AddCrystal(type, value, out float leftOver);
-            containerFrom.RemoveCrystal(type, (value - leftOver));
+            if (containerTo.AddCrystal(type, value2, out float excess))
+            {
+                containerFrom.RemoveCrystal(type, value2 - excess);
+            }
         }
 
         public void ResetWorkTimer()
@@ -220,14 +228,6 @@ namespace TiberiumRim
         public void ResetPowerTimer(int ticks)
         {
             this.ticksToPower = ticks;            
-        }
-
-        public Map Map
-        {
-            get
-            {
-                return this.parent.Map;
-            }
         }
 
         public bool IsStorage
@@ -286,23 +286,7 @@ namespace TiberiumRim
             }
         }
 
-        public bool NeedsPower => this.PowerComp != null;
-
-        public CompPowerTrader PowerComp
-        {
-            get
-            {
-                return this.parent.TryGetComp<CompPowerTrader>();
-            }
-        }
-
-        public CompFlickable CompFlickable
-        {
-            get
-            {
-                return this.parent.GetComp<CompFlickable>();
-            }
-        }
+        public bool NeedsPower => this.compPower != null;
 
         public void LeakTiberium(IntVec3 parentPos, Map map)
         {
@@ -377,14 +361,14 @@ namespace TiberiumRim
                     }
                 }
             }
-
             while (Positions.Count < tibList.Count)
             {
                 List<IntVec3> checkCells = Positions.FindAll((IntVec3 x) => x.CellsAdjacent8Way().Where((IntVec3 y) => !Positions.Contains(y)).Count() > 0);
                 for (int i = 0; i < checkCells.Count; i++)
                 {                    
                     IntVec3 c = checkCells[i];
-                    HashSet<IntVec3> list = new HashSet<IntVec3>();  list.AddRange(c.CellsAdjacent8Way().Where((IntVec3 y) => y.InBounds(map) && y.GetTiberium(map) == null && (y.GetFirstBuilding(map) != null ? y.GetFirstBuilding(map).def.terrainAffordanceNeeded == TerrainAffordance.Light && y.GetFirstBuilding(map).def.thingClass != typeof(Mineable) : true) && !Positions.Contains(y)).ToList());
+                    HashSet<IntVec3> list = new HashSet<IntVec3>();
+                    list.AddRange(c.CellsAdjacent8Way().Where((IntVec3 y) => y.InBounds(map) && (y.GetFirstBuilding(map) != null ? y.GetFirstBuilding(map).def.terrainAffordanceNeeded == TerrainAffordance.Light && y.GetFirstBuilding(map).def.thingClass != typeof(Mineable) : true) && !Positions.Contains(y)).ToList());
                     if (list.Count > 0)
                     {
                         IntVec3 cell = list.RandomElement();
@@ -426,17 +410,18 @@ namespace TiberiumRim
                     icon = TexCommand.DesirePower,
                     action = delegate
                     {
-                        this.Container.AddCrystal(TiberiumType.Sludge, 500f, out float flt);
+                        if (this.Container.AddCrystal(TiberiumType.Sludge, 500f, out float f))
+                        { }
                     }
                 };
-
                 yield return new Command_Action
                 {
                     defaultLabel = "Fill Green",
                     icon = TexCommand.DesirePower,
                     action = delegate
                     {
-                        this.Container.AddCrystal(TiberiumType.Green, 500f, out float flt);
+                        if(this.Container.AddCrystal(TiberiumType.Green, 500f, out float f))
+                        {}
                     }
                 };
 
@@ -446,7 +431,8 @@ namespace TiberiumRim
                     icon = TexCommand.DesirePower,
                     action = delegate
                     {
-                        this.Container.AddCrystal(TiberiumType.Blue, 500f, out float flt);
+                        if (this.Container.AddCrystal(TiberiumType.Blue, 500f, out float f))
+                        { }
                     }
                 };
 
@@ -456,7 +442,8 @@ namespace TiberiumRim
                     icon = TexCommand.DesirePower,
                     action = delegate
                     {
-                        this.Container.AddCrystal(TiberiumType.Red, 500f, out float flt);
+                        if (this.Container.AddCrystal(TiberiumType.Red, 500f, out float f))
+                        { }
                     }
                 };
 
@@ -466,7 +453,8 @@ namespace TiberiumRim
                     icon = TexCommand.DesirePower,
                     action = delegate
                     {
-                        this.Container.AddCrystal(Rand.Element(TiberiumType.Green, TiberiumType.Blue, TiberiumType.Red), 100f, out float flt);
+                        if(this.Container.AddCrystal(Rand.Element(TiberiumType.Green, TiberiumType.Blue, TiberiumType.Red), 100f, out float f))
+                        {}
                     }
                 };
             }
@@ -503,19 +491,6 @@ namespace TiberiumRim
             if (props.isLocalStorage || props.isGlobalStorage)
             {
                 stringBuilder.AppendLine("StoredTib".Translate() + ": " + Math.Round(this.Container.GetTotalStorage, 0));
-                StringBuilder sb2 = new StringBuilder();
-                for( int i = 0;  i < Container.GetTypes.Count; i++)
-                {
-                    TiberiumType type = Container.GetTypes[i];
-                    if (Container.ValueForType(type) > 0f)
-                    {
-                        sb2.Append((i > 0 ? " " : "") + type + ": " + Math.Round(Container.ValueForType(type) / TiberiumUtility.CrystalDefFromType(type).tiberium.maxHarvestValue) + " |");
-                    }
-                }
-                if(sb2.Length > 4)
-                {
-                    stringBuilder.AppendLine(sb2.ToString().TrimEndNewlines());
-                }
             }
             if (props.isConsumer)
             {

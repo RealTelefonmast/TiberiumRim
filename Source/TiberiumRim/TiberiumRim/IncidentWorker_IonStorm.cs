@@ -10,9 +10,9 @@ namespace TiberiumRim
         protected override bool TryExecuteWorker(IncidentParms parms)
         {
             Map map = (Map)parms.target;
-            int count = map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Count;
+            float pct = (map.Size.x * map.Size.z) / map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Count;
             bool result;
-            if (count > 350)
+            if (pct > 0.45f)
             {
                 int duration = Mathf.RoundToInt(this.def.durationDays.RandomInRange * 60000f);
                 GameCondition cond = GameConditionMaker.MakeCondition(this.def.gameCondition, duration, 1);

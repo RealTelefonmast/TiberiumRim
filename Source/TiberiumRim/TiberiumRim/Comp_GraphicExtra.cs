@@ -13,6 +13,8 @@ namespace TiberiumRim
         public Graphic FilledOverlay;
         public Graphic OverlayGraphic;
 
+        private float fltPct = 0f;
+
         public override void PostSpawnSetup(bool respawningAfterLoad)
         {
             base.PostSpawnSetup(respawningAfterLoad);
@@ -132,15 +134,29 @@ namespace TiberiumRim
         {
             get
             {
-                float flt = 0;
-                if(Container != null)
+                float flt = SpecialPct;
+                if (!(flt > 0))
                 {
-                    flt = Container.GetTotalStorage / Container.maxStorage;
+                    if (Container != null)
+                    {
+                        if (Container.StoredPct > 0)
+                        {
+                            flt = Container.StoredPct;
+                        }
+                    }
                 }
                 return flt;
             }
+        }
+        public float SpecialPct
+        {
+            get
+            {
+                return fltPct;
+            }
             set
             {
+                fltPct = value;
             }
         }
 

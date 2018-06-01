@@ -27,6 +27,23 @@ namespace TiberiumRim
             this.stuffDef = stuffDef;
         }
 
+        /*
+        public override void DrawMouseAttachments()
+        {
+            int count = (int)parent.Position.DistanceTo(UI.MouseCell()) * 5;
+            ThingCountClass counter = entDef.costList.Find((ThingCountClass x) => x.thingDef == ThingDefOf.Steel);
+            if(counter != null)
+            {
+                counter.count = count;
+            }
+            else
+            {
+                entDef.costList.Add(new ThingCountClass(ThingDefOf.Steel, count));
+            }
+            base.DrawMouseAttachments();
+        }
+        */
+
         public override void DesignateSingleCell(IntVec3 c)
         {
             if (TutorSystem.TutorialMode && !TutorSystem.AllowAction(new EventPack(base.TutorTagDesignate, c)))

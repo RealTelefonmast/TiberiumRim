@@ -14,7 +14,12 @@ namespace TiberiumRim
 {
     [StaticConstructorOnStartup]
     public static class TiberiumUtility
-    { 
+    {
+        public static string GetCurrentDate()
+        {
+            return GenDate.DateReadoutStringAt((long)Find.TickManager.TicksAbs, Find.WorldGrid.LongLatOf(Find.VisibleMap.Tile));
+        }
+
         public static Dictionary<int, float> CopyDictionary(this Dictionary<int, float> dict)
         {
             Dictionary<int, float> newDict = new Dictionary<int, float>();
@@ -245,7 +250,7 @@ namespace TiberiumRim
             TiberiumCrystal result = null;           
             float maxValue = -1f;
             List<TiberiumCrystal> valueCheckList = new List<TiberiumCrystal>();
-            valueCheckList.AddRange(harvestable ? (preferableDef?.CanBeFound(map) == true ? map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => x.def == preferableDef && harvester.CanReserve(x)) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => harvester.CanReserve(x))) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => !x.Harvestable && x.def.defName.Contains("Moss") && harvester.CanReserve(x)));
+            valueCheckList.AddRange(harvestable ? (preferableDef != null && preferableDef.CanBeFound(map) == true ? map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => x.def == preferableDef && harvester.CanReserve(x)) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => x.Harvestable && harvester.CanReserve(x))) : map.GetComponent<MapComponent_TiberiumHandler>().AllTiberiumCrystals.Where((TiberiumCrystal x) => !x.Harvestable && x.def.defName.Contains("Moss") && harvester.CanReserve(x)));
 
             if (harvestable)
             {
@@ -317,10 +322,7 @@ namespace TiberiumRim
             {
                 return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumMutationGood);
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         public static Hediff TibSickness(Pawn p)
@@ -341,10 +343,7 @@ namespace TiberiumRim
             {
                 return p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumInfection);
             }
-            else
-            {
-                return null;
-            }
+            return null;
         }
 
         public static bool NextTo(this Thing thing, Thing closeThing)
@@ -458,7 +457,7 @@ namespace TiberiumRim
         {
             if (!def.tiberium.isFlesh)
             {
-                Infect(pawn, parent.ctrlDef.TouchInfectionFlt, map, false);
+                Infect(pawn, TiberiumRimSettings.settings.InfectionTouch, map, false);
             }
             else
             {
@@ -591,7 +590,7 @@ namespace TiberiumRim
                     Building b = parent.Position.RandomAdjacentCell8Way().GetFirstBuilding(map);
                     if (b != null && b.def == TiberiumDefOf.Veinhole_TBNS)
                     {
-                        Infect(pawn, parent.ctrlDef.TouchInfectionFlt, map, true);
+                        Infect(pawn, TiberiumRimSettings.settings.InfectionTouch, map, true);
                     }
                 }
             }

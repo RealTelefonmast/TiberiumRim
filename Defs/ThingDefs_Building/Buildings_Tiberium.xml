@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
-	<ThingDef Name="BuildingBase_TR" Abstract="True">
+	<ThingDef Name="BuildingBase_TR" Abstract="True" Class="TiberiumRim.TRThingDef">
 		<category>Building</category>
 		<thingClass>Building</thingClass>
 		<soundImpactDefault>BulletImpactMetal</soundImpactDefault>

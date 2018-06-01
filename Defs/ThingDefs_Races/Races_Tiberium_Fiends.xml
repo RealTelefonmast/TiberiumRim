@@ -76,11 +76,11 @@
 		</race>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBase_TR">
 		<defName>Thrimbo_TBI</defName>
 		<label>thrimbo</label>
 		<race>Thrimbo_TBI</race>
-		<combatPower>450</combatPower>
+		<combatPower>500</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<lifeStages>
 			<li>
@@ -135,7 +135,7 @@
 	</PawnKindDef>
 	
 	
-		<ThingDef ParentName="AnimalThingBase">
+	<ThingDef ParentName="AnimalThingBase">
 		<defName>TiberiumTerror_TBI</defName>
 		<label>Tiberium terror</label>
 		<description>A gigantic creature of unknown origin. It's black and blue appearance shows great danger in this creature.</description>
@@ -209,11 +209,11 @@
 		</race>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBase_TR">
 		<defName>TiberiumTerror_TBI</defName>
 		<label>tiberium terror</label>
 		<race>TiberiumTerror_TBI</race>
-		<combatPower>500</combatPower>
+		<combatPower>600</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<lifeStages>
 			<li>
@@ -328,11 +328,11 @@
 		</tradeTags>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBase_TR">
 		<defName>Tibscarab_TBI</defName>
 		<label>Tibscarab</label>
 		<race>Tibscarab_TBI</race>
-		<combatPower>30</combatPower>
+		<combatPower>35</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<lifeStages>
 			<li>
@@ -499,12 +499,12 @@
 	</ThingDef>
 	
 
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBase_TR">
 		<defName>TiberiumFiend_TBI</defName>
 		<label>tiberium fiend</label>
 		<labelPlural>tiberium fiends</labelPlural>
 		<race>TiberiumFiend_TBI</race>
-		<combatPower>100</combatPower>
+		<combatPower>150</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<lifeStages>
 			<li>
@@ -668,11 +668,11 @@
 		</tradeTags>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBase_TR">
 		<defName>BigTiberiumFiend_TBI</defName>
 		<label>big tiberium fiend</label>
 		<race>BigTiberiumFiend_TBI</race>
-		<combatPower>150</combatPower>
+		<combatPower>200</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<lifeStages>
 		  <li>
@@ -836,13 +836,13 @@
 		</tradeTags>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBase_TR">
 		<defName>SmallTiberiumFiend_TBI</defName>
 		<label>small tiberium fiend</label>
 		<labelPlural>small tiberium fiends</labelPlural>
 		<race>SmallTiberiumFiend_TBI</race>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
-		<combatPower>75</combatPower>
+		<combatPower>100</combatPower>
 		<lifeStages>
 			<li>
 				<label>small tiberium fiend puppy</label>
@@ -979,11 +979,11 @@
 		</tradeTags>
 	</ThingDef>
 
-	<PawnKindDef ParentName="AnimalKindBase">
+	<PawnKindDef ParentName="AnimalKindBase_TR">
 		<defName>Crawler_TBI</defName>
 		<label>crawler</label>
 		<race>Crawler_TBI</race>
-		<combatPower>50</combatPower>
+		<combatPower>85</combatPower>
 		<wildSpawn_spawnWild>true</wildSpawn_spawnWild>
 		<lifeStages>
 			<li>
@@ -1116,11 +1116,11 @@
     </tradeTags>
   </ThingDef>
 
-  <PawnKindDef ParentName="AnimalKindBase">
+  <PawnKindDef ParentName="AnimalKindBase_TR">
     <defName>Boomfiend_TBI</defName>
     <label>boomfiend</label>
     <race>Boomfiend_TBI</race>
-    <combatPower>50</combatPower>
+    <combatPower>80</combatPower>
     <wildSpawn_spawnWild>true</wildSpawn_spawnWild>
     <lifeStages>
       <li>
@@ -1291,11 +1291,11 @@
     </tradeTags>
   </ThingDef>
   
-  <PawnKindDef ParentName="AnimalKindBase">
+  <PawnKindDef ParentName="AnimalKindBase_TR">
     <defName>Spiner_TBI</defName>
     <label>spiner</label>
     <race>Spiner_TBI</race>
-    <combatPower>75</combatPower>
+    <combatPower>200</combatPower>
     <lifeStages>
       <li>
         <label>spiner puppy</label>
@@ -1405,11 +1405,11 @@
     </tradeTags>
   </ThingDef>
   
-  <PawnKindDef ParentName="AnimalKindBase">
+  <PawnKindDef ParentName="AnimalKindBase_TR">
     <defName>Tiffalo_TBI</defName>
     <label>tiffalo</label>
     <race>Tiffalo_TBI</race>
-    <combatPower>110</combatPower>
+    <combatPower>150</combatPower>
     <wildSpawn_spawnWild>true</wildSpawn_spawnWild>	
     <lifeStages>
       <li>

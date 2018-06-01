@@ -72,6 +72,7 @@ namespace TiberiumRim
                 
                 CurrentStorage += harvester.Container.GetTotalStorage;
                 harvester.pather.StopDead();
+                harvester.Rotation = harvester.AvailableRefinery.Rotation.Opposite;
             };
             unload.tickAction = delegate
             {
@@ -81,8 +82,11 @@ namespace TiberiumRim
                     if(ticksPassed < Refinery.refineTicks)
                     {
                         TiberiumType type = actor.Container.MainType;
-                        Refinery.NetworkComp.Container.AddCrystal(type,(CurrentStorage / Refinery.refineTicks), out float flt);
-                        actor.Container.RemoveCrystal(type, ((CurrentStorage / Refinery.refineTicks) - flt));
+                        float value = (CurrentStorage / Refinery.refineTicks);
+                        if (Refinery.NetworkComp.Container.AddCrystal(type, value, out float excess))
+                        {
+                            actor.Container.RemoveCrystal(type, value - excess);
+                        }
                     }
                     else
                     {

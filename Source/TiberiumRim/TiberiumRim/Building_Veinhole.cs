@@ -76,6 +76,10 @@ namespace TiberiumRim
                     SpawnVeinmonster();
                 }              
             }
+            else
+            {
+                KillHubs();
+            }
         }
 
         public void ResetTimer()

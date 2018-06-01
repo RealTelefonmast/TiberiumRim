@@ -12,8 +12,6 @@ namespace TiberiumRim
     {
         public new TiberiumCrystalDef def;
 
-        public TiberiumControlDef ctrlDef = MainTCD.MainTiberiumControlDef;
-
         private MapComponent_TiberiumHandler mapComp;
 
         public Building_TiberiumProducer boundProducer = null;
@@ -117,7 +115,10 @@ namespace TiberiumRim
                 if(!(terrain is TiberiumTerrainDef))
                 {
                     GenTiberiumReproduction.SetTiberiumTerrainAndType(this.def, terrain, out TiberiumCrystalDef crystalDef, out TerrainDef tDef);
-                    Map.terrainGrid.SetTerrain(this.Position, tDef);
+                    if (tDef != null)
+                    {
+                        Map.terrainGrid.SetTerrain(this.Position, tDef);
+                    }
                 }
             }
 
@@ -312,7 +313,7 @@ namespace TiberiumRim
                     center2.z = base.Position.ToVector3Shifted().z + this.def.graphicData.shadowData.offset.z;
                 }
                 center2.y -= 0.046875f;
-                Vector3 volume = this.def.graphicData.shadowData.volume * num2;
+                Vector3 volume = def.graphicData.shadowData.volume * num2;
                 Printer_Shadow.PrintShadow(layer, center2, volume, Rot4.North);
             }
             Rand.PopState();
@@ -323,7 +324,7 @@ namespace TiberiumRim
         {
             get
             {
-                return this.def.tiberium.maxHarvestValue > 0 && this.def.HarvestableType;
+                return def.tiberium.maxHarvestValue > 0 && def.HarvestableType;
             }
         }
 
@@ -331,7 +332,7 @@ namespace TiberiumRim
         {
             get
             {
-                return base.Spawned && this.growthInt >= 0.6f;
+                return base.Spawned && growthInt >= 0.6f;
             }
         }
 
@@ -347,7 +348,7 @@ namespace TiberiumRim
         {
             get
             {
-                return base.Spawned && mapComp.InhibitedCells.Contains(this.Position);
+                return def.tiberium.canBeInhibited && Spawned && mapComp.InhibitedCells.Contains(Position);
             }
         }
 
@@ -359,11 +360,11 @@ namespace TiberiumRim
             }
         }
 
-        public bool CountsAsMature
+        public bool CanGrowToMonolith
         {
             get
             {
-                return this.HarvestValue >= this.def.tiberium.maxHarvestValue * 0.70f;
+                return this.HarvestValue >= this.def.tiberium.maxHarvestValue;
             }
         }
 
@@ -419,7 +420,7 @@ namespace TiberiumRim
         {
             get
             {
-                return ctrlDef.TiberiumGrowthRate;
+                return TiberiumRimSettings.settings.GrowthRate;
             }
         }
 
@@ -488,7 +489,7 @@ namespace TiberiumRim
             }
             else if (this.LifeStage == TiberiumLifeStage.Mature)
             {
-                if (CountsAsMature && this.Harvestable)
+                if (this.Harvestable)
                 {
                     stringBuilder.AppendLine("HarvestReady".Translate());
                 }

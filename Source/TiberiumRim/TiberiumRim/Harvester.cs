@@ -66,7 +66,7 @@ namespace TiberiumRim
             {
                 Container = new TiberiumContainer(kindDef.maxStorage);
                 this.homePosition = this.mainRefinery.InteractionCell;
-                UpdateRefineriesOrAddNewMain();
+                UpdateRefineriesOrAddNewMain(null);
             }
         }
 
@@ -107,14 +107,14 @@ namespace TiberiumRim
             {                
                 if (AvailableRefinery != null)
                 {
-                    this.UpdateRefineriesOrAddNewMain();
+                    this.UpdateRefineriesOrAddNewMain(null);
                 }
             }
         }
 
-        public void UpdateRefineriesOrAddNewMain()
+        public void UpdateRefineriesOrAddNewMain(Building_Refinery ignore)
         {
-            foreach (Building_Refinery refinery in Map.listerBuildings.allBuildingsColonist.FindAll((Building x) => x is Building_Refinery))
+            foreach (Building_Refinery refinery in Map.listerBuildings.allBuildingsColonist.FindAll((Building x) => x is Building_Refinery && x != ignore))
             {
                 if (refinery != null)
                 {
@@ -350,7 +350,8 @@ namespace TiberiumRim
             {
                 yield return g;
             }          
-            if(this.Faction.def != FactionDefOf.PlayerColony)
+
+            if(this.Faction != Faction.OfPlayer)
             {
                 yield break;
             }

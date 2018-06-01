@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Specialized;
 using System.Collections.Generic;
 using Verse;
@@ -21,7 +22,7 @@ namespace TiberiumRim
                 List<Map> maps = Find.Maps;
                 for (int i = 0; i < maps.Count; i++)
                 {
-                    foreach (Pawn pawn in maps[i].mapPawns.AllPawns)
+                    foreach (Pawn pawn in maps[i].mapPawns.AllPawns.Where((Pawn x) => x.IsColonistPlayerControlled))
                     {
                         if (pawn != null && (pawn.needs.AllNeeds.Find((Need x) => x != null && x is Need_Tiberium) as Need_Tiberium)?.CurCategory == TiberiumNeedCategory.Urgent)
                         {

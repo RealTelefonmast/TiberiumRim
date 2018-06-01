@@ -610,5 +610,40 @@
 		  <li Class="TiberiumRim.HediffCompProperties_TiberiumInfusionImmunity" />
 		</comps>
 	</HediffDef>
+	
+		<HediffDef>
+		<defName>TiberiumReverseMutation</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(0, 204, 204)</defaultLabelColor>
+		<label>reverse mutation</label>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="TiberiumRim.HediffCompProperties_TiberiumReverseMutation" />
+		</comps>
+		<stages>
+		  <li>
+				<painOffset>0.2</painOffset>
+		  </li>
+		</stages>
+	</HediffDef>
+	
+	<HediffDef>
+		<defName>TiberBlockHediff</defName>
+		<hediffClass>HediffWithComps</hediffClass>
+		<defaultLabelColor>(204, 255, 255)</defaultLabelColor>
+		<label>TiberBlock Effect</label>
+		<isBad>false</isBad>
+		<comps>
+			<li Class="HediffCompProperties_Disappears">
+				<disappearsAfterTicks>
+					<min>55000</min>
+					<max>60000</max>
+				</disappearsAfterTicks>
+			</li>
+			<!--
+			<li Class="TiberiumRimFactions.HediffCompProperties_TiberiumDrug"/>
+			-->
+		</comps>
+	</HediffDef>
 		
 </Defs>

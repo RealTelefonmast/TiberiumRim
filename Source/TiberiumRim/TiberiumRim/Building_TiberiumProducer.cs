@@ -229,6 +229,7 @@ namespace TiberiumRim
             }
         }
 
+        //TODO: Bigger radius needs more random terrain
         public virtual void SpawnTerrain(TiberiumCrystalDef crystalDef)
         {            
             if (!this.def.spawnsTerrain)

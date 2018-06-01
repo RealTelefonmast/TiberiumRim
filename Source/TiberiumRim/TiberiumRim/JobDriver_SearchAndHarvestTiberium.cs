@@ -18,7 +18,7 @@ namespace TiberiumRim
                 TraverseParms traverseParms = TraverseParms.For(harvester, Danger.Some, TraverseMode.PassDoors, false);
                 TiberiumCrystal tiberiumTarget = TiberiumUtility.ClosestPreferableReachableAndReservableTiberiumForHarvester(harvester, harvester.Position, harvester.Map, harvester.TiberiumDefToPrefer, !erFlag, traverseParms, PathEndMode.Touch);
                 if (tiberiumTarget != null)
-                {                   
+                {
                     if (harvester.CanReach(tiberiumTarget, PathEndMode.Touch, Danger.Some, false))
                     {
                         JobDef job = DefDatabase<JobDef>.GetNamed("SearchAndHarvestTiberium");
@@ -69,7 +69,7 @@ namespace TiberiumRim
         {
             get
             {
-                return Harvester.shouldStopHarvesting || IsEradicating ? !Harvester.ShouldEradicate : Harvester.ShouldEradicate || Harvester.TiberiumDefToPrefer != null && Harvester.TiberiumDefToPrefer != Tiberium.def;
+                return Harvester.shouldStopHarvesting || IsEradicating ? !Harvester.ShouldEradicate : Harvester.ShouldEradicate;
             }
         }
 
@@ -107,7 +107,6 @@ namespace TiberiumRim
             {
                 growth += Tiberium.growthInt;
                 newTicks += (int)(Tiberium.harvestTicks * growth);
-                Harvester.Rotation = Harvester.AvailableRefinery.Rotation.Opposite;
             };
             harvest.tickAction = delegate
             {
@@ -116,8 +115,12 @@ namespace TiberiumRim
                 {
                     if (ticksPassed < newTicks)
                     {
-                        actor.Container.AddCrystal(Tiberium.def.TibType, (growth / newTicks) * Tiberium.def.tiberium.maxHarvestValue, out float flt);
-                        Tiberium.growthInt -= (growth / newTicks) - (flt / Tiberium.def.tiberium.maxHarvestValue);
+                        float value = (growth / newTicks) * Tiberium.def.tiberium.maxHarvestValue;                     
+                        if (actor.Container.AddCrystal(Tiberium.def.TibType, value, out float value2))
+                        {
+                            // growth reduction adjusted to excess value
+                            Tiberium.growthInt -= (growth / newTicks) * (1 -(value2/value));
+                        }
                     }
                     else
                     {

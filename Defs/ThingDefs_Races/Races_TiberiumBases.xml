@@ -57,7 +57,7 @@
 	</ThingDef>
 
 	
-	<PawnKindDef Name="AnimalKindBase_TR" Abstract="True">
+	<PawnKindDef Class="TiberiumRim.TiberiumKindDef" Name="AnimalKindBase_TR"  Abstract="True">
 	</PawnKindDef>
 	
   <ThingDef Abstract="True" ParentName="AnimalThingBase_TR" Name="TiberiumLifeform">

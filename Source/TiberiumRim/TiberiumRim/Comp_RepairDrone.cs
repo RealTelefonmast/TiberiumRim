@@ -7,7 +7,7 @@ using Verse;
 
 namespace TiberiumRim
 {
-    public class Comp_RepairDrone : ThingComp
+    public class Comp_RepairDrone : Comp_Upgrade
     {
         public List<RepairDrone> repairDrones = new List<RepairDrone>();
 
@@ -22,20 +22,37 @@ namespace TiberiumRim
         public override void PostExposeData()
         {
             base.PostExposeData();
-            Scribe_Collections.Look<RepairDrone>(ref repairDrones, "repairDrones");
+            Scribe_Collections.Look(ref repairDrones, "repairDrones", LookMode.Reference);
         }
 
         public override void CompTick()
         {
-            if((bool)parent.TryGetComp<CompPowerTrader>()?.PowerOn)
+            base.CompTick();
+            if (IsPowered)
             {
                 if (repairDrones.Count < repairProps.droneAmount && Find.TickManager.TicksGame % 750 == 0)
                 {
-                    repairDrones.Add(SpawnDrone());
+                    RepairDrone drone = SpawnDrone();
+                    repairDrones.Add(drone);
                 }
             }
             else{RemoveDrones();}
-            base.CompTick();
+        }
+
+        public bool IsPowered
+        {
+            get
+            {   CompPowerTrader comp = this.parent.TryGetComp<CompPowerTrader>();
+                if(comp == null)
+                {
+                    return true;
+                }
+                if (comp.PowerOn)
+                {
+                    return true;
+                }
+                return false;
+            }
         }
 
         public override void PostDestroy(DestroyMode mode, Map previousMap)
@@ -46,14 +63,14 @@ namespace TiberiumRim
 
         public void RemoveDrones()
         {
-            for (int i = 0; i < repairDrones.Count; i++)
+            foreach(RepairDrone drone in repairDrones)
             {
-                RepairDrone drone = repairDrones[i];
                 if (drone != null)
                 {
                     drone.Destroy();
-                }
+                }              
             }
+            repairDrones.Clear();
         }
 
         public RepairDrone SpawnDrone()
@@ -62,7 +79,7 @@ namespace TiberiumRim
             drone.ageTracker.AgeBiologicalTicks = 0;
             drone.ageTracker.AgeChronologicalTicks = 0;
             drone.Rotation = Rot4.Random;
-            drone.parent = this.parent as Building;
+            drone.parent = this.parent as Building;           
             IntVec3 spawnLoc = this.parent.Position;
             return (RepairDrone)GenSpawn.Spawn(drone, spawnLoc, this.parent.Map);
         }
@@ -70,10 +87,14 @@ namespace TiberiumRim
         public override void PostDraw()
         {
             base.PostDraw();
+            if (Find.Selector.IsSelected(this.parent))
+            {
+                GenDraw.DrawRadiusRing(this.parent.TrueCenter().ToIntVec3(), repairProps.radius);
+            }
         }
     }
 
-    public class CompProperties_RepairDrone : CompProperties
+    public class CompProperties_RepairDrone : CompProperties_Upgrade
     {
         public int droneAmount = 1;
 

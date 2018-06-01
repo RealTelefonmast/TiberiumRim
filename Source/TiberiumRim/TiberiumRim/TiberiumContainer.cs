@@ -30,10 +30,10 @@ namespace TiberiumRim
 
         public void ExposeData()
         {
-            Scribe_Collections.Look<TiberiumType, float>(ref ContainedTiberium, "ContainedTinerium");
-            Scribe_Values.Look<float>(ref maxStorage, "maxStorage");
-            Scribe_Values.Look<TiberiumType>(ref allowedType, "allowedType");
-            Scribe_Values.Look<float>(ref maxStorage, "maxStorage");
+            Scribe_Collections.Look(ref ContainedTiberium, "ContainedTinerium");
+            Scribe_Values.Look(ref maxStorage, "maxStorage");
+            Scribe_Values.Look(ref allowedType, "allowedType");
+            Scribe_Values.Look(ref maxStorage, "maxStorage");
         }
 
         public Color Color
@@ -63,23 +63,21 @@ namespace TiberiumRim
 
         public Color TypeColor (TiberiumType type)
         {
-            Color color = new Color();
+            Color color = Color.white;
             TiberiumControlDef def = MainTCD.MainTiberiumControlDef;
-            if(type == TiberiumType.Green)
-            {
-                color = def.GreenColor;
-            }
-            if (type == TiberiumType.Blue)
-            {
-                color = def.BlueColor;
-            }
-            if (type == TiberiumType.Red)
-            {
-                color = def.RedColor;
-            }
-            if(type == TiberiumType.Sludge)
-            {
-                color = def.SludgeColor;
+            switch (type) {
+                case TiberiumType.Green:
+                    color = def.GreenColor;
+                    break;
+                case TiberiumType.Blue:
+                    color = def.BlueColor;
+                    break;
+                case TiberiumType.Red:
+                    color = def.RedColor;
+                    break;
+                case TiberiumType.Sludge:
+                    color = def.SludgeColor;
+                    break;
             }
             return color;
         }
@@ -117,6 +115,14 @@ namespace TiberiumRim
                 return ContainedTiberium[type];
             }
             return 0f;
+        }
+
+        public float StoredPct
+        {
+            get
+            {
+                return GetTotalStorage / maxStorage;
+            }
         }
 
         public float GetTotalStorage
@@ -165,12 +171,12 @@ namespace TiberiumRim
                     bool flag = false;
                     foreach (TiberiumType type in ContainedTiberium.Keys)
                     {
-                        if (type == allowedType)
+                        if (type != allowedType && !flag)
                         {
                             flag = true;
                         }
                     }
-                    return !flag;
+                    return flag;
                 }
                 return false;
             }
@@ -193,24 +199,31 @@ namespace TiberiumRim
             }
             return true;
         }
-        public void AddCrystal(TiberiumType type, float value, out float leftOver)
+
+        public bool AddCrystal(TiberiumType type, float value, out float excess)
         {
-            leftOver = 0f;
+            excess = 0;
+            float value2 = value;
             if (CapacityFull)
             {
-                leftOver = value;
-                return;
+                excess = value;
+                return false;
+            }
+            if (ContainedTiberium.ContainsKey(type))
+            {
+                if(ContainedTiberium[type] + value > maxStorage)
+                {
+                    excess = (ContainedTiberium[type] + value) - maxStorage;
+                    value2 = value - excess;
+                }
             }
             if (!ContainedTiberium.ContainsKey(type))
             {
                 ContainedTiberium.Add(type, value);
-                return;
+               return true;
             }
-            if (ContainedTiberium[type] + value > maxStorage)
-            {
-                value = (ContainedTiberium[type] + value) - ContainedTiberium[type];
-            }
-            ContainedTiberium[type] += value;
+            ContainedTiberium[type] += value2;
+            return true;
         }
 
         public void RemoveCrystal(TiberiumType type, float value)

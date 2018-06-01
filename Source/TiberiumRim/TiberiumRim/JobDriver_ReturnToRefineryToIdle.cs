@@ -49,7 +49,7 @@ namespace TiberiumRim
             {
                 Harvester actor = idle.actor as Harvester;
                 actor.pather.StopDead();
-                actor.Rotation = actor.AvailableRefinery.Rotation.Opposite;
+                actor.Rotation = actor.AvailableRefinery != null ? actor.AvailableRefinery.Rotation.Opposite : Rot4.Random;
             };
             idle.tickAction = delegate
             {

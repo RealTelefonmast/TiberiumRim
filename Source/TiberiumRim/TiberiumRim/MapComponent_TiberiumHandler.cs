@@ -7,7 +7,7 @@ using RimWorld;
 
 namespace TiberiumRim
 {
-    public class MapComponent_TiberiumHandler : MapComponent
+    public class MapComponent_TiberiumHandler : MapComponent_WaterHandler
     {
         public HashSet<IntVec3> AffectedTiles = new HashSet<IntVec3>();
 
@@ -38,12 +38,12 @@ namespace TiberiumRim
 
         public override void ExposeData()
         {
-            Scribe_Values.Look<int>(ref this.ProducerCount, "producerAmt");
-            Scribe_Collections.Look<IntVec3>(ref this.ForcedAllowedCells, "ForcedAllowedCells", LookMode.Value);
-            Scribe_Collections.Look<IntVec3>(ref this.SuppressedCells, "SuppressedCells", LookMode.Value);
-            Scribe_Collections.Look<IntVec3>(ref this.InhibitedCells, "InhibitedCells", LookMode.Value);
-            Scribe_Collections.Look<IntVec3>(ref this.AffectedTiles, "AffectedTiles", LookMode.Value);
-            Scribe_Collections.Look<TiberiumCrystal>(ref this.AllTiberiumCrystals, "AllTiberiumCrystals", LookMode.Reference);
+            Scribe_Values.Look(ref this.ProducerCount, "producerAmt");
+            Scribe_Collections.Look(ref this.ForcedAllowedCells, "ForcedAllowedCells", LookMode.Value);
+            Scribe_Collections.Look(ref this.SuppressedCells, "SuppressedCells", LookMode.Value);
+            Scribe_Collections.Look(ref this.InhibitedCells, "InhibitedCells", LookMode.Value);
+            Scribe_Collections.Look(ref this.AffectedTiles, "AffectedTiles", LookMode.Value);
+            Scribe_Collections.Look(ref this.AllTiberiumCrystals, "AllTiberiumCrystals", LookMode.Reference);
             base.ExposeData();
         }
 
@@ -96,14 +96,6 @@ namespace TiberiumRim
             }
         }
 
-        public bool IsRedZone
-        {
-            get
-            {
-                return map.Biome.defName.Contains("RedZone_TB");
-            }
-        }
-
         public void SetPct()
         {
             if (!worldComp.TiberiumTiles.ContainsKey(MapTile))
@@ -123,24 +115,29 @@ namespace TiberiumRim
 
         public bool HarvestableTiberiumExists => AllTiberiumCrystals.Where((TiberiumCrystal x) => x.Harvestable).Count() > 0;
 
+        public int MaxMonoliths => (map.Size.x * map.Size.y) / MainTCD.MainTiberiumControlDef.cellsPerMonolith;
+
         private bool CanSpawnMonolith(TiberiumCrystal parent)
         {
-            if (parent.CountsAsMature)
+            if (map.listerThings.AllThings.FindAll((Thing x) => x.def.thingClass == typeof(Building_Monolith)).Count < MaxMonoliths)
             {
-                int num = 0;
-                foreach (IntVec3 intVec in GenAdjFast.AdjacentCells8Way(parent.Position, parent.Rotation, parent.RotatedSize))
+                if (parent.CanGrowToMonolith)
                 {
-                    if (intVec.InBounds(map))
+                    int num = 0;
+                    foreach (IntVec3 intVec in GenAdjFast.AdjacentCells8Way(parent.Position, parent.Rotation, parent.RotatedSize))
                     {
-                        if (intVec.GetTiberium(map) != null && intVec.GetTiberium(map).CountsAsMature)
+                        if (intVec.InBounds(map))
                         {
-                            num++;
+                            if (intVec.GetTiberium(map) != null && intVec.GetTiberium(map).CanGrowToMonolith)
+                            {
+                                num++;
+                            }
                         }
                     }
-                }
-                if(num == 8)
-                {
-                    return true;
+                    if (num == 8)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -148,8 +145,11 @@ namespace TiberiumRim
 
         public void MonolithRise(Map map, ThingDef tower, TiberiumCrystal parent)
         {
-            IntVec3 loc = parent.Position;
-            GenSpawn.Spawn(tower, loc, map);
+            if (tower != null)
+            {
+                IntVec3 loc = parent.Position;
+                GenSpawn.Spawn(tower, loc, map);
+            }
         }
 
         public static List<TiberiumCrystal> Sources(IntVec3 c, Map map, bool returnOne = false)
@@ -187,15 +187,15 @@ namespace TiberiumRim
             {
                 if(affectedTiles.Contains(affectedTile))
                 {
-                    if (affectedTile.InBounds(this.map))
+                    if (affectedTile.InBounds(map))
                     {
                         TiberiumCrystal parent = Sources(affectedTile, map, true).GetOneThing();
                         if(parent != null)
                         {
                             TiberiumCrystalDef def = parent.def;
-                            DamageInfo damageEntity = new DamageInfo(DamageDefOf.Deterioration, def.tiberium.entityDamage.RandomInRange);
-                            DamageInfo damageBuilding = new DamageInfo(DamageDefOf.Deterioration, def.tiberium.buildingDamage.RandomInRange);
-                            if(spawnedMonolith && def.monolithDef != null && CanSpawnMonolith(parent) && Rand.Chance(0.005f) && Find.TickManager.TicksGame % GenDate.TicksPerDay == 0)
+                            DamageInfo damageEntity = new DamageInfo(DamageDefOf.Deterioration, (int)(def.tiberium.entityDamage.RandomInRange * TiberiumRimSettings.settings.ItemDamageMltp));
+                            DamageInfo damageBuilding = new DamageInfo(DamageDefOf.Deterioration, (int)(def.tiberium.buildingDamage.RandomInRange * TiberiumRimSettings.settings.BuildingDamageMltp));
+                            if(Rand.Chance(0.005f) && Find.TickManager.TicksGame % GenDate.TicksPerDay == 0 && def.monolithDef != null && !spawnedMonolith && CanSpawnMonolith(parent))
                             {
                                 MonolithRise(map, def.monolithDef, parent);
                                 spawnedMonolith = true;
@@ -215,12 +215,12 @@ namespace TiberiumRim
                                             TiberiumUtility.AffectPawn(thing as Pawn, def, parent, map);
                                         }
                                     }
-                                    else if (thing.def.EverHaulable && def.tiberium.entityDamage.max > 0)
+                                    else if (thing.def.EverHaulable && def.tiberium.entityDamage.min > 0)
                                     {
                                         if(TiberiumRimSettings.settings.EntityDamage)
                                         DamageEntities(thing, affectedTile, damageEntity, parent, def);
                                     }
-                                    else if(def.tiberium.buildingDamage.max > 0)
+                                    else if(def.tiberium.buildingDamage.min > 0)
                                     {
                                         if(TiberiumRimSettings.settings.BuildingDamage)
                                         DamageBuildings(thing, affectedTile, damageBuilding, parent, def);

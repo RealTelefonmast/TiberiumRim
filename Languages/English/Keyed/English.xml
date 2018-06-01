@@ -1,6 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
 
+  <!-- Missions -->
+  <NewMission>New mission available!</NewMission>
+  <NewMissionDesc>You have a new mission available, check it out in the missions tab!</NewMissionDesc>
+  <StationNeeded>Necessary station</StationNeeded>
+  
   <!-- Pawn  Messages-->
   <MessageTiberiumSuitLeak>A Tiberium protection suit is leaking!</MessageTiberiumSuitLeak>
   <TiberiumNeed>Pawn Needs Tiberium!</TiberiumNeed>
@@ -32,6 +37,10 @@
   <NewRefinerySet>New Tiberium refinery set for {0}.</NewRefinerySet>
   <RefineryLost>Refinery Lost.</RefineryLost>
   
+  <StorageMode>Storing RGB</StorageMode>
+  <SludgeMode>Storing Sludge</SludgeMode>
+  <IsSludged>This silo will only store sludge.</IsSludged>
+  
   <!-- World -->
   <InfestationPct>Tiberium Infestation at: {0}</InfestationPct>
   <InfestationPctExp>One or more maps contain Tiberium!\n\n{0}</InfestationPctExp>   
@@ -52,6 +61,24 @@
   <BuildingDamageDesc>Activate this to let Tiberium damage any structure.</BuildingDamageDesc>
   <EntityDamage>Item Damage</EntityDamage>
   <EntityDamageDesc>Activate this to let Tiberium damage any item or object.</EntityDamageDesc>
+  <ExposureRate>Infection Rate</ExposureRate>
+  <BuildingDmgMltp>Tiberium Building Damage Multiplier</BuildingDmgMltp>
+  <ItemDmgMltp>Tiberium Item Damage Multiplier</ItemDmgMltp>
+  <TibGrowthRate>Tiberium Growth Multiplier</TibGrowthRate>
+  <SettingsGeneral>General Settings</SettingsGeneral>
+  <SettingsSpecial>Specialized Settings</SettingsSpecial>
+  <WorldSpread>World Infestation</WorldSpread>
+  <WorldSpreadDesc>This option allows Tiberium to spread on world tiles.</WorldSpreadDesc>
+  <SpreadMltp>World Spread Multiplier</SpreadMltp>
+  
+  <Easy>What is Tiberium?</Easy>
+  <EasySetting>You probably never heard of Tiberium, nor the Command and Conquer games, but that is fine, you don't need to know about that. If you worry you might get overwhelmed by what this mod offers, this is the option for you. It will reduce the threat of Tiberium and make this experience as newcomer friendly as possible.</EasySetting>
+  <Standard>The way it should be.</Standard>
+  <StandardSetting>You either already played TiberiumRim in an earlier stage or know enough about the Tiberium universe to at least guess what threats await you. All settings will be standard and Tiberium will behave the way it should be. This can be quite hard for any new players and also be a challange for some experienced RimWorld players, though it is not impossible nor hard.</StandardSetting>
+  <Hard>Gimme the glowy stuff!</Hard>
+  <HardSetting>You probably have quite a bit of experience with Tiberium, and might be bored the way it is, this setting will make the mod harder, but not impossible. It increases growth speed, infection amount and damage amount of Tiberium. Have fun!</HardSetting>
+  <SettingNotice>NOTICE: You can still customize your settings in the mod options afterwards!</SettingNotice>
+  <ConfirmSettings>Are you sure you want to use "{0}" as a preset?</ConfirmSettings>
   
   <!-- Harvester -->
   <ReturnToRefineryIdling>Idling.</ReturnToRefineryIdling>
@@ -85,4 +112,6 @@
   <TiberiumHomeAlert>Tiberium in home area!</TiberiumHomeAlert>
   <TiberiumHomeAlertExp>Tiberium has spread to your home area, it might cause damage soon!</TiberiumHomeAlertExp>
   
+  <TiberiumArrivalTitle>Strange Encounter</TiberiumArrivalTitle>
+  <TiberiumArrivalDesc>An unidentifiable object is approaching our map, it's origin is unknown and the compositions seems to be highly exotic - in ways we cannot describe. Approach with caution.</TiberiumArrivalDesc>
 </LanguageData>

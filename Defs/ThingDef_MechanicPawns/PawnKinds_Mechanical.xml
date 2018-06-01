@@ -43,7 +43,7 @@
 				<bodyGraphicData>
 					<texPath>Pawn/Mechanical/RepairDrones/Common/RepairDrone_Common</texPath>
 					<graphicClass>Graphic_Multi</graphicClass>
-					<drawSize>1</drawSize>
+					<drawSize>1.5</drawSize>
 					<shadowData>
 						<volume>(0.4, 0.8, 0.4)</volume>
 					</shadowData>

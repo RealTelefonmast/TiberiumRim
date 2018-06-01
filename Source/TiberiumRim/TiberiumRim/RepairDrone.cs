@@ -24,20 +24,25 @@ namespace TiberiumRim
 
         public Building parent;
 
-        private int radialCells;
-
         public override void SpawnSetup(Map map, bool respawningAfterLoad)
         {
-            base.SpawnSetup(map, respawningAfterLoad);
             this.kindDef = base.kindDef as RepairDroneDef;
             this.parentComp = this.parent.GetComp<Comp_RepairDrone>();
-            this.radialCells = GenRadial.NumCellsInRadius(this.parentComp.repairProps.radius);
+            base.SpawnSetup(map, respawningAfterLoad);
         }
 
-        public override void DeSpawn()
+        public int RadialCells
         {
-            this.parentComp.repairDrones.Remove(this);
-            base.DeSpawn();    
+            get
+            {
+                return GenRadial.NumCellsInRadius(this.parentComp.repairProps.radius);
+            }
+        }
+
+        public override void ExposeData()
+        {
+            Scribe_References.Look(ref parent, "parent");
+            base.ExposeData();
         }
 
         public override void Kill(DamageInfo? dinfo, Hediff exactCulprit = null)
@@ -49,13 +54,13 @@ namespace TiberiumRim
         {
             get
             {
-                for (int i = 0; i < radialCells; i++)
+                for (int i = 0; i < RadialCells; i++)
                 {
                     IntVec3 pos = this.parent.Position + GenRadial.RadialPattern[i];
                     if (pos.InBounds(this.Map))
                     {
                         Pawn pawn = pos.GetFirstPawn(this.Map);
-                        if (pawn != null && pawn is Mechanical_Pawn && pawn.health.hediffSet.hediffs.Find((Hediff x) => x.Severity > 0) != null)
+                        if (pawn != null && pawn is Mechanical_Pawn && !(pawn is RepairDrone) && pawn.health.hediffSet.hediffs.Find((Hediff x) => x.Severity > 0) != null)
                         {
                             return pawn as Mechanical_Pawn;
                         }

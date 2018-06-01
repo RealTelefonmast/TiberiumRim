@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+		
+	<TiberiumRim.TiberiumMissionDef>
+		<defName>Mission1_Discovery</defName>
+		<label>What is that?</label>
+		<description>On $DATE, $PAWN has spotted an unusual object in the sky. On the Rim it is nothing special to see meteoroids or space debris fly by at the night sky, or even have one land in front of your doorstep, but this one is different. At first it seemed like another toxic ship part, but the colorful trail is unlike anything we have seen so far. It's obviously more than just another space rock and could use some more observation, but how...?</description>
+		<objectives>
+			<li>HowDoTelescopesWork</li>
+			<li>TelescopicWork</li>
+			<li>TelescopesDiscoverThings</li>
+		</objectives>
+	</TiberiumRim.TiberiumMissionDef>
+	
+	<TiberiumRim.MissionObjectiveDef>
+		<defName>HowDoTelescopesWork</defName>
+		<description>We will most likely need a telescope to continue observing the meteor, maybe we can scrap some of our parts together to create something similar at the very least.</description>
+		<label>Develop a telescope.</label>
+		<oType>Research</oType>
+		<workCost>1250</workCost>
+		<stationDef>SimpleResearchBench</stationDef>
+		<images>
+			<li>UI/GreenMeteor</li>
+		</images>
+	</TiberiumRim.MissionObjectiveDef>
+
+	<TiberiumRim.MissionObjectiveDef>
+		<defName>TelescopicWork</defName>
+		<description></description>
+		<label>Construct a telescope.</label>
+		<oType>Construct</oType>
+		<objective>Telescope</objective>
+		<images>
+			<li>UI/GreenMeteor</li>
+		</images>
+	</TiberiumRim.MissionObjectiveDef>
+	
+	<TiberiumRim.MissionObjectiveDef>
+		<defName>TelescopesDiscoverThings</defName>
+		<description>With the telescope installed we can have one of our colonists observe the foreign object. What could it possibly be? More importantly, what if it's more than just a lose rock?</description>
+		<label>Observe the meteor.</label>
+		<oType>Research</oType>
+		<workCost>2000</workCost>
+		<stationDef>Telescope</stationDef>
+		<images>
+			<li>UI/GreenMeteor</li>
+		</images>
+	</TiberiumRim.MissionObjectiveDef>
+	
+	
+	<Tiberiumrim.TiberiumMissionDef>
+		<defName>Mission_TiberiumExamination</defName>
+		<label>M2</label>
+	</Tiberiumrim.TiberiumMissionDef>
+	
+	<Tiberiumrim.TiberiumMissionDef>
+		<defName>Mission_TiberiumDefense</defName>
+		<label>M3</label>
+	</Tiberiumrim.TiberiumMissionDef>
+	
+</Defs>

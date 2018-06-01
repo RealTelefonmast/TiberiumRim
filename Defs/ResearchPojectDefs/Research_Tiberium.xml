@@ -8,7 +8,7 @@
 
 	<ResearchProjectDef>
 		<defName>TiberiumResearch</defName>
-		<label>Tiberium Basics</label>
+		<label>What is that?</label>
 		<description>Use the Tiberium source to study the alien substance.</description>
 		<baseCost>1000</baseCost>
 		<techLevel>Industrial</techLevel>
@@ -37,16 +37,16 @@
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
-		<defName>TiberiumContainment</defName>
-		<label>Tiberium Containment</label>
-		<description>Even Tiberium can be stopped in a rather risky but simple way.\nUnlocks:\n\n-Concrete Walls</description>
+		<defName>RepairDrones</defName>
+		<label>Repair Drones</label>
+		<description></description>
 		<baseCost>500</baseCost>
 		<techLevel>Industrial</techLevel>
 		<tab>Tiberium</tab>
 		<prerequisites>
 			<li>TiberiumKnowledge</li>
 		</prerequisites>
-		<requiredResearchBuilding>TiberiumResearchCrane_TBNS</requiredResearchBuilding>
+		<requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
 		<researchViewX>2</researchViewX>
 		<researchViewY>2</researchViewY>
 	</ResearchProjectDef>
@@ -99,7 +99,7 @@
 	</ResearchProjectDef>
 	
 	<ResearchProjectDef>
-		<defName>TiberiumInhibitionTribal</defName>
+		<defName>TiberiumFreezingTribal</defName>
 		<label>Tiberium Freezing Box</label>
 		<description>Your tribe found a clever solution how to reduce the Tiberium threat. An ice box so cold it freezes the ground in a small radius around itself.</description>
 		<baseCost>750</baseCost>

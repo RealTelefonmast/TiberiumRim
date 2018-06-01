@@ -54,6 +54,7 @@
 		<workAmount>450</workAmount>
 		<effectWorking>Cremate</effectWorking>
 		<soundWorking>Recipe_Cremate</soundWorking>
+		<drainType>Red</drainType>
 		<tiberiumCost>90</tiberiumCost>
 		<products>
 			<Uranium>5</Uranium>

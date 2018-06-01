@@ -6,7 +6,7 @@ namespace TiberiumRim
 {
     public class Gas_Tiberium : Gas
     {
-        private float gasFlt = MainTCD.MainTiberiumControlDef.GasInfectionFlt / GenTicks.TickLongInterval;
+        private float gasFlt = (TiberiumRimSettings.settings.InfectionTouch / 10f)/GenTicks.TickLongInterval;
 
         public override void Tick()
         {

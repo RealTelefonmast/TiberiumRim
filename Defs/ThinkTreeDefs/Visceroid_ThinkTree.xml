@@ -10,8 +10,9 @@
 					    <!-- Flee explosion -->
 						<li Class="JobGiver_FleePotentialExplosion" />
 									
-						<!-- Try To Unite -->
+						<!-- Do That Weird Thing -->
 						<li Class="TiberiumRim.JobGiver_Amalgamation"/>
+						
 						<!-- Wild animals flee tornados, meteorites, etc. -->
 						<li Class="ThinkNode_ConditionalHasFaction">
 							<invert>true</invert>

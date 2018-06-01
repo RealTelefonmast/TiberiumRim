@@ -4,6 +4,10 @@ namespace TiberiumRim
 {
     public class HediffComp_Tiberium : HediffComp
     {
+        private HediffDef Stage1 = TiberiumHediffDefOf.TiberiumStage1;
+        private HediffDef Stage2 = TiberiumHediffDefOf.TiberiumStage2;
+        private TiberiumControlDef TCD = MainTCD.MainTiberiumControlDef;
+
         public override void CompPostTick(ref float severityAdjustment)
         {
             if (base.Pawn.IsHashIntervalTick(GenTicks.TickRareInterval))
@@ -12,20 +16,8 @@ namespace TiberiumRim
             }
         }
 
-        public HediffCompProperties_Tiberium Props
-        {
-            get
-            {
-                return (HediffCompProperties_Tiberium)this.props;
-            }
-        }
-
         public void CheckSeverity(Pawn p)
-        {
-            HediffDef Stage1 = TiberiumHediffDefOf.TiberiumStage1;
-            HediffDef Stage2 = TiberiumHediffDefOf.TiberiumStage2;
-            Hediff R = p.health.hediffSet.hediffs.Find((Hediff x) => x.def.defName.Contains("TiberiumStage1"));
-
+        {         
             if (!p.health.hediffSet.HasHediff(Stage1) && !p.health.hediffSet.HasHediff(Stage2) && this.parent.Severity > 0.3 && Rand.Chance(0.3f))
             {
                 if (p.AnimalOrWildMan())
@@ -43,6 +35,7 @@ namespace TiberiumRim
                 HealthUtility.AdjustSeverity(p, Stage2, 0.2f);
                 p.health.RemoveHediff(this.parent);
 
+                Hediff R = p.health.hediffSet.hediffs.Find((Hediff x) => x.def == TiberiumHediffDefOf.TiberiumStage1);
                 if (R != null)
                 {
                     p.health.RemoveHediff(R);
@@ -50,7 +43,6 @@ namespace TiberiumRim
                 return;
             }
         }
-
     }
 
     public class HediffCompProperties_Tiberium : HediffCompProperties

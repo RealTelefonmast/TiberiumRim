@@ -6,6 +6,8 @@ namespace TiberiumRim
 {
     public class HediffComp_TiberiumAddiction : HediffComp
     {
+        private HediffDef Exposure = TiberiumHediffDefOf.TiberiumExposure;
+
         public override void CompPostTick(ref float severityAdjustment)
         {
             if (this.Pawn.CarriedBy == null)
@@ -21,11 +23,9 @@ namespace TiberiumRim
             {
                 if (pawn.Position.InBounds(pawn.Map))
                 {
-                    Need_Tiberium N = (Need_Tiberium)pawn.needs.AllNeeds.Find((Need x) => x.def.defName.Contains("Need_Tiberium"));
-                    HediffDef Exposure = TiberiumHediffDefOf.TiberiumExposure;
+                    Need_Tiberium N = (Need_Tiberium)pawn.needs.AllNeeds.Find((Need x) => x.GetType() == typeof(Need_Tiberium));                  
                     if (N != null)
                     {
-                        Log.Message("Pct: " + N.CurLevelPercentage + " final pct: " + (1 - N.CurLevelPercentage * 0.999999f));
                         this.parent.Severity = 1 - N.CurLevelPercentage * 0.999999f;
                     }
 
@@ -34,14 +34,6 @@ namespace TiberiumRim
                         HealthUtility.AdjustSeverity(pawn, Exposure, -0.5f);
                     }
                 }
-            }
-        }
-
-        public HediffCompProperties_TiberiumAddiction Props
-        {
-            get
-            {
-                return (HediffCompProperties_TiberiumAddiction)this.props;
             }
         }
     }

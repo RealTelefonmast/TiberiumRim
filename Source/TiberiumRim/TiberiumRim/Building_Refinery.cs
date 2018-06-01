@@ -49,7 +49,7 @@ namespace TiberiumRim
             if (!respawningAfterLoad)
             {
                 Harvester harvester = SpawnHarvester();
-                harvester.UpdateRefineriesOrAddNewMain();
+                harvester.UpdateRefineriesOrAddNewMain(null);
 
                 UpdateOrAddMissingHarvesters();
             }
@@ -65,7 +65,7 @@ namespace TiberiumRim
                     if (!this.harvesterList.Contains(harvester))
                     {
                         harvesterList.Add(harvester);
-                        harvester.UpdateRefineriesOrAddNewMain();
+                        harvester.UpdateRefineriesOrAddNewMain(null);
                     }
                 }
             }
@@ -98,20 +98,14 @@ namespace TiberiumRim
                     harvester.mainRefinery = null;
                     if (mode != DestroyMode.Deconstruct)
                     {
-                        if(!Destroyed)
-                        {
-                            base.Destroy();                     
-                        }
-                        harvester.UpdateRefineriesOrAddNewMain();
+                        harvester.availableRefineries.Remove(this);
+                        harvester.UpdateRefineriesOrAddNewMain(this);
                         Messages.Message("RefineryLost".Translate(), this, MessageTypeDefOf.NegativeEvent);
                     }
                 }
-                harvester.availableRefineries.Remove(this);               
+                harvester.availableRefineries.Remove(this);
             }
-            if (!Destroyed)
-            {
-                base.Destroy(mode);
-            }
+            base.Destroy(mode);
         }
 
         private Harvester SpawnHarvester()

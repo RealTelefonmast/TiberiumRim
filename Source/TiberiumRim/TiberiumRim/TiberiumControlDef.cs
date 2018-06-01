@@ -7,13 +7,7 @@ namespace TiberiumRim
 {
     public class TiberiumControlDef : Def
     {
-        public float TouchInfectionFlt;
-
-        public float GasInfectionFlt;
-
         public float VeinHitDamage;
-
-        public float TiberiumGrowthRate;
 
         public float TiberiumLeakScale;
 
@@ -24,6 +18,8 @@ namespace TiberiumRim
         public float TiberiumMinTemp;
 
         public float AmalgamationChance;
+
+        public int cellsPerMonolith;
 
         public Color GreenColor;
 

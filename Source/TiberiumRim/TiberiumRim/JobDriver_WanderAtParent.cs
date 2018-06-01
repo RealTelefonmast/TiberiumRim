@@ -12,11 +12,14 @@ namespace TiberiumRim
         protected override Job TryGiveJob(Pawn pawn)
         {
             RepairDrone drone = pawn as RepairDrone;
-            IntVec3 gotoIdle = drone.parent.Position + GenRadial.RadialPattern[GenRadial.NumCellsInRadius(Rand.Range(1, drone.parentComp.repairProps.radius))];
-            if (drone.AvailableMech == null)
+            IntVec3 gotoIdle = drone.parent.Position + GenRadial.RadialPattern[Rand.Range(0, drone.RadialCells)];
+            if (GenSight.LineOfSight(drone.parent.Position, gotoIdle, drone.Map))
             {
-                JobDef job = DefDatabase<JobDef>.GetNamed("WanderAtParent");
-                return new Job(job, gotoIdle);
+                if (drone.AvailableMech == null)
+                {
+                    JobDef job = DefDatabase<JobDef>.GetNamed("WanderAtParent");
+                    return new Job(job, gotoIdle);
+                }
             }
             return null;
         }

@@ -16,20 +16,19 @@ namespace TiberiumRim
         public override void ExposeData()
         {
             base.ExposeData();
-            Scribe_Collections.Look<Building_Connector>(ref Connectors, "Connectors", LookMode.Reference);
+            Scribe_Collections.Look(ref Connectors, "Connectors", LookMode.Reference);
         }
 
-        public override void Destroy(DestroyMode mode = DestroyMode.Vanish)
+        public override void DeSpawn()
         {
-            for (int i = 0; i < Connectors.Count; i++)
+            foreach(Building_Connector c in Connectors)
             {
-                Building_Connector c = Connectors[i];
                 if (!c.Destroyed)
                 {
-                    c.Destroy();
+                    c.Destroy(DestroyMode.Deconstruct);
                 }
             }
-            base.Destroy(mode);
+            base.DeSpawn();
         }
 
         public List<Comp_TNW> AllStorages

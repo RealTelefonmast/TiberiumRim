@@ -41,13 +41,11 @@ namespace TiberiumRim
             get
             {
                 bool flag1 = false;
-                bool flag2 = false;
-                bool flag3 = false;
                 if (def.activeGraphicPath.Length > 0)
                 {
                     flag1 = ActivatedGraphic != null;
                 }
-                return flag1 && flag2 && flag3;
+                return flag1;
             }
         }
 

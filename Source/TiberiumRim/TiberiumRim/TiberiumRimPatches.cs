@@ -65,6 +65,15 @@ namespace TiberiumRim
             }
         }
 
+        [HarmonyPatch(typeof(Designator_Build)), HarmonyPatch("DesignateSingleCell")]
+        class BuildPatch
+        {
+            [HarmonyPostfix]
+            static void Fix()
+            {
+            }
+        }
+
         [HarmonyPatch(typeof(UI_BackgroundMain)), HarmonyPatch("BackgroundOnGUI"), StaticConstructorOnStartup]
         internal static class Custom_UI_BackgroundMain
         {
@@ -76,11 +85,11 @@ namespace TiberiumRim
             {
                 if (TiberiumRimSettings.settings.UseCustomBackground)
                 {
-                    if (Custom_UI_BackgroundMain.Custom_Background)
+                    if (Custom_Background)
                     {
                         float width = (float)UI.screenWidth;
-                        float num = (float)UI.screenWidth * (Custom_UI_BackgroundMain.MainBackgroundSize.y / Custom_UI_BackgroundMain.MainBackgroundSize.x);
-                        GUI.DrawTexture(new Rect(0f, (float)UI.screenHeight / 2f - num / 2f, width, num), Custom_UI_BackgroundMain.Custom_Background, ScaleMode.ScaleToFit, true);
+                        float num = (float)UI.screenWidth * (MainBackgroundSize.y / MainBackgroundSize.x);
+                        GUI.DrawTexture(new Rect(0f, (float)UI.screenHeight / 2f - num / 2f, width, num), Custom_Background, ScaleMode.ScaleToFit, true);
                     }
                     return false;
                 }
@@ -96,11 +105,23 @@ namespace TiberiumRim
             {
                 if (TiberiumRimSettings.settings.FirstStartUp)
                 {
-                    Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation("Hey hey hey, playing first time?", delegate
+                    TiberiumRimMod mod = LoadedModManager.ModHandles.Where((Mod x) => x is TiberiumRimMod).RandomElement() as TiberiumRimMod;
+                    TiberiumSettings sets = TiberiumRimSettings.settings;
+                    sets.SetBool(ref sets.FirstStartUp, false);
+                    Find.WindowStack.Add(new Dialog_Difficulty(delegate
                     {
-                        TiberiumRimSettings.settings.StartUp(ref TiberiumRimSettings.settings.FirstStartUp);
-                    }, true, "Welcome!"));
-                }
+                        TiberiumRimSettings.settings.SetEasy();
+                        mod.WriteSettings();
+                    }, delegate
+                    {
+                        TiberiumRimSettings.settings.ResetToDefault();
+                        mod.WriteSettings();
+                    },
+                    delegate {
+                        TiberiumRimSettings.settings.SetHard();
+                        mod.WriteSettings();
+                    }));
+                }               
             }
         }
 
@@ -142,6 +163,7 @@ namespace TiberiumRim
             }
         }
 
+        //TODO: Better light thing
         [HarmonyPatch(typeof(CompGlower))]
         [HarmonyPatch("ShouldBeLitNow", PropertyMethod.Getter)]
         public class GlowerPatch
@@ -162,37 +184,25 @@ namespace TiberiumRim
                 }
             }
         }
-        // Gizmo Overlay
-        /*
-        [HarmonyPatch(typeof(GizmoGridDrawer))]
-        [HarmonyPatch("DrawGizmoGrid")]
-        public class GizmoPatch
-        {
-            private static readonly Texture2D Border = ContentFinder<Texture2D>.Get("UI/Icons/DesBorder", true);
 
-            [HarmonyPostfix]
-            static void Fix(IEnumerable<Gizmo> gizmos, float startX)
+        [HarmonyPatch(typeof(Designator_Build))]
+        [HarmonyPatch("Visible", 0)]
+        internal static class Harmony_Designator_Build_Patch
+        {
+            // Token: 0x0600000C RID: 12 RVA: 0x000021B4 File Offset: 0x000003B4
+            public static void Postfix(Designator_Build __instance, ref bool __result)
             {
-                List<Gizmo> list = new List<Gizmo>();
-                list.AddRange(gizmos);
-                Vector2 topLeft = new Vector2(startX, (float)(UI.screenHeight - 35) - 14f - 75f);
-                for (int i = 0; i < list.Count(); i++)
+                TRThingDef thingDef;
+                if ((thingDef = (__instance.PlacingDef as TRThingDef)) != null && !DebugSettings.godMode && thingDef.objectivePrerequisites != null)
                 {
-                    Gizmo g = list[i];
-                    if (g is Designator && (g as Designator) != null)
+                    if (thingDef.objectivePrerequisites.Any((MissionObjectiveDef x) => x.IsFinished))
                     {
-                        Designator d = (Designator)g;
-                        if (g.GetType() == typeof(Designator_BuildWithParent))
-                        {
-                            Rect rect = new Rect(topLeft.x, topLeft.y, g.Width, 75f + 14f);
-                            rect = rect.ContractedBy(-12f);
-                            Widgets.DrawAtlas(rect, Border);
-                        }
-                        topLeft.x += g.Width + 5f;
+                        __result = true;
+                        return;
                     }
+                    __result = false;
                 }
             }
         }
-        */
     }
 }

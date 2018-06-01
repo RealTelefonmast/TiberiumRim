@@ -11,7 +11,6 @@ namespace TiberiumRim
         private Building_TiberiumProducer producer = null;
         public override AcceptanceReport AllowsPlacing(BuildableDef checkingDef, IntVec3 loc, Rot4 rot, Map map, Thing thingToIgnore = null)
         {
-
             GetRects(checkingDef, loc, map, out CellRect checkingRect, out CellRect thingRect, out Thing thing);
             if (thing != null)
             {
@@ -21,7 +20,7 @@ namespace TiberiumRim
                     return true;
                 }
             }
-            return false;
+            return "OnTiberiumProducer".Translate();
         }
 
         public void GetRects(BuildableDef checkDef, IntVec3 loc, Map map, out CellRect checkingRect, out CellRect thingRect, out Thing thing)
@@ -38,8 +37,12 @@ namespace TiberiumRim
             {
                 thingRect = thing.OccupiedRect();
                 if (thingRect.Width <= 2)
-                {
+                {                   
                     checkingRect.maxZ -= 1;
+                    if (thingRect.Width <= 1)
+                    {
+                        checkingRect.maxZ -= 1;
+                    }
                 }
             }
         }

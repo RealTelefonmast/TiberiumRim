@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>
 
-	<ThingDef Name="HatBase" ParentName="ApparelBase" Abstract="True">
-		<thingCategories>
-		<li>Headgear</li>
-		</thingCategories>
-	</ThingDef>
-
-	<ThingDef Name="HatMakeableBase" ParentName="ApparelMakeableBase" Abstract="True">
-		<thingCategories>
-		<li>Headgear</li>
-		</thingCategories>
-	</ThingDef>
-
-	<ThingDef Name="ArmorHelmetMakeableBase" ParentName="ArmorMakeableBase" Abstract="True">
-		<thingCategories>
-		<li>Headgear</li>
-		</thingCategories>
-	</ThingDef>
-
-	<ThingDef ParentName="HatMakeableBase">
+	<ThingDef ParentName="HatMakeableBase_TR">
 		<defName>TiberiumSuitMask_TBP</defName>
 		<label>Tiberium protection mask</label>
 		<description>A mask to protect your head from Tiberium radiation.\n\n Also protects from toxic fallout.</description>

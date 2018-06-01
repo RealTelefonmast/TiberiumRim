@@ -26,6 +26,7 @@
 		<priorityInType>97</priorityInType>
 		<fixedBillGiverDefs>
 			<li>TiberiumResearchCraftingBench</li>
+			<li>TiberiumWorkbench</li>
 		</fixedBillGiverDefs>
 		<verb>make Tiberium item at</verb>
 		<gerund>making Tiberium item at</gerund>

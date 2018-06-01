@@ -21,11 +21,19 @@ namespace TiberiumRim
 
         public override void Tick()
         {
-            Comp_GraphicExtra extra = this.TryGetComp<Comp_GraphicExtra>();
-            if(extra != null)
+            Comp_GraphicExtra GraphicComp = this.TryGetComp<Comp_GraphicExtra>();
+            CompFX FX = this.TryGetComp<CompFX>();
+            GraphicComp.SpecialPct = (IsActive ? 1f : 0f);
+            FX.ShouldDoEffectNow = IsActive;
+            base.Tick();
+        }
+
+        private bool IsActive
+        {
+            get
             {
-                //TODO: Weird reee
-                extra.FilledPct = (this.billStack.Bills.Find((Bill x) => (x as TibBill).isBeingDone) != null ? 1f : 0);
+                
+                return this.billStack.Bills.Find((Bill x) => (x as TibBill).isBeingDone) != null;
             }
         }
 

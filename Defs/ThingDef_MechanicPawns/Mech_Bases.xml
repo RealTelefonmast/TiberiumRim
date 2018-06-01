@@ -83,6 +83,16 @@
 		</race>
 		<tools>
 			<li>
+				<label>cockpit</label>
+				<capacities>
+				<li>Blunt</li>
+				</capacities>
+				<power>3</power>
+				<cooldownTime>2.5</cooldownTime>
+				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
+				<commonality>0.2</commonality>
+			</li>
+			<li>
 				<label>left collector arm</label>
 				<capacities>
 				<li>Cut</li>
@@ -101,16 +111,6 @@
 				<cooldownTime>1.7</cooldownTime>
 				<linkedBodyPartsGroup>RightHand</linkedBodyPartsGroup>
 				<commonality>0.8</commonality>
-			</li>
-			<li>
-				<label>cockpit</label>
-				<capacities>
-				<li>Blunt</li>
-				</capacities>
-				<power>3</power>
-				<cooldownTime>2.5</cooldownTime>
-				<linkedBodyPartsGroup>HeadAttackTool</linkedBodyPartsGroup>
-				<commonality>0.2</commonality>
 			</li>
 		</tools>
 	</ThingDef>

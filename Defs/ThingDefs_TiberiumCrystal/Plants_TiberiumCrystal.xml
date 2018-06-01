@@ -491,10 +491,9 @@ It only harms items but is still toxic to living beings.</description>
 		</graphicData>
 		<selectable>true</selectable>
 		<pathCost>200</pathCost>
-		<passability>PassThroughOnly</passability>
+		<passability>Impassable</passability>
 		<tiberium>		
-			<canBeInhibited>False</canBeInhibited>
-			
+			<canBeInhibited>False</canBeInhibited>	
 			<entityDamage>
 				<min>3</min>
 				<max>4</max>

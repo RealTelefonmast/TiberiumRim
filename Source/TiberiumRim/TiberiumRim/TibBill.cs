@@ -23,8 +23,8 @@ namespace TiberiumRim
 
         public override void ExposeData()
         {
-            Scribe_Values.Look<bool>(ref isBeingDone, "isBeingDone");
-            Scribe_Defs.Look<RecipeDef_Tiberium>(ref def, "def");
+            Scribe_Values.Look(ref isBeingDone, "isBeingDone");
+            Scribe_Defs.Look(ref def, "def");
             base.ExposeData();
         }
 
@@ -50,31 +50,9 @@ namespace TiberiumRim
             }
         }
 
-        //TODO: Fix shit
         public override bool ShouldDoNow()
         {
-            if(this.def.tiberiumCost == 0)
-            {
-                if (Map.listerBuildings.allBuildingsColonist.Find((Building x) => x is Building_ResearchBench && x.def.defName == "TiberiumResearchCrane_TBNS") is Building_ResearchBench r)
-                {
-                    if (r.Position.GetThingList(r.Map).Find((Thing x) => x.def.thingClass == typeof(Building_TiberiumProducer)) is Building_TiberiumProducer p)
-                    {
-                        foreach (TiberiumCrystalDef def in p.def.crystalDefs)
-                        {
-                            TiberiumType type = def.TibType;
-                            if (type == this.def.drainType)
-                            {
-                                if (base.ShouldDoNow())
-                                {
-                                    return true;
-                                }
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-            Building_TiberiumCrafter b = this.billStack.billGiver as Building_TiberiumCrafter;
+            Building b = this.billStack.billGiver as Building;
             Comp_TNW comp = b.GetComp<Comp_TNW>();
             if (comp != null)
             {
@@ -113,8 +91,8 @@ namespace TiberiumRim
         {
             if(this.def.tiberiumCost == 0)
             {
-                base.Notify_IterationCompleted(billDoer, ingredients);
                 isBeingDone = false;
+                base.Notify_IterationCompleted(billDoer, ingredients);
                 return;
             }
             Building_TiberiumCrafter crafter = null;
@@ -149,8 +127,8 @@ namespace TiberiumRim
                 }
                 if(priceLeft <= 0)
                 {
-                    base.Notify_IterationCompleted(billDoer, ingredients);
                     isBeingDone = false;
+                    base.Notify_IterationCompleted(billDoer, ingredients);
                 }
             }     
         }

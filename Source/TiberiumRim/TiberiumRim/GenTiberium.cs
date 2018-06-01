@@ -31,7 +31,11 @@ namespace TiberiumRim
             for (int i = 0; i < list.Count; i++)
             {
                 Thing thing = list[i];
-                if(thing.def.thingClass == typeof(TiberiumCrystal))
+                if (thing.def.category == ThingCategory.Building)
+                {
+                    return false;
+                }
+                if (thing.def.thingClass == typeof(TiberiumCrystal))
                 {
                     return false;
                 }

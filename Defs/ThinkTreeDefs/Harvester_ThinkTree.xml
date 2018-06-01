@@ -83,12 +83,11 @@
 						<li Class="JobGiver_ReactToCloseMeleeThreat"/>		
 						<li Class="JobGiver_FleePotentialExplosion" />
 						<li Class="JobGiver_FleeImmediateDanger" />
-											
+									
+						<li Class="JobGiver_ConfigurableHostilityResponse"/>									
 						<!-- Do Work -->
 						<li Class="TiberiumRim.JobGiver_SearchAndHarvestTiberium"/>
-						<li Class="TiberiumRim.JobGiver_ReturnToRefineryToUnload"/>
-						
-						<li Class="JobGiver_ConfigurableHostilityResponse"/>
+						<li Class="TiberiumRim.JobGiver_ReturnToRefineryToUnload"/>											
 					</subNodes>
 				</li>
 			</subNodes>
